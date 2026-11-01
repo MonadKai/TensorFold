@@ -4,6 +4,8 @@ Each release's page on GitHub has its notes and measurements. See [the 1.0.0 rel
 
 ## Unreleased
 
+- The dense Qwen Metal loader validates config-derived projection geometry through shared structural checks, retaining the current 9B and 27B qualification policy and the 2B's separate engine (part of #503).
+
 - A model family can declare that its replies never carry a reasoning block, so the whole reply is answer content whatever `enable_thinking` the chat template renders; the OCR models in #1927 are the first to need it (#1933). Thanks to @laudney.
 
 - The tokenizer supports NFKC and NFKD normalizers, as Nemotron Parse uses, and a normalized added token decodes as the checkpoint spells it, matching Hugging Face tokenizers. No model we serve decodes differently (#1931, part of #1927). Thanks to @laudney.
