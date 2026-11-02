@@ -261,7 +261,7 @@ pub const File = struct {
         const linux = std.os.linux;
         // a map that fell back to a heap copy (no mmap) holds the only bytes: DONTNEED would zero them
         if (self.map.section != null) _ = linux.madvise(self.map.memory.ptr, self.map.memory.len, linux.MADV.DONTNEED);
-        _ = linux.fadvise(self.file.handle, 0, 0, linux.POSIX_FADV.DONTNEED);
+        @import("checkpoint_drop.zig").drop(self.file);
     }
 
     pub fn get(self: *const File, name: []const u8) ?Tensor {
