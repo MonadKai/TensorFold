@@ -4,6 +4,8 @@ Each release's page on GitHub has its notes and measurements. See [the 1.0.0 rel
 
 ## Unreleased
 
+- The Metal vision towers' shard reader and the cluster planner's checkpoint reader check a safetensors header's length with core's `headerSize` before reading it, so a malformed or oversized header is refused before any large allocation (#1872).
+
 - On HIP, the planned decode score takes four keys a warp on long spans and two on short ones, with the same lane order and folds, so decode runs 7.5-18.9% faster on Qwen3.6-35B-A3B and Qwen3.8-27B at 32K and 64K with identical tokens on a gfx1151 (#1932). Thanks to @AbrahamCete.
 
 - Ling's grouped expert routing runs on Metal, checked against a float64 reference: sigmoid scores plus the routing bias, groups picked by their top scores, empty picks handled and both infinities in a group refused (#1836, part of #1247). Thanks to @ThinkOffApp.
