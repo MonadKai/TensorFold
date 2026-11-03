@@ -47,6 +47,7 @@ pub fn identity(a: std.mem.Allocator, io: std.Io, dir: []const u8, context: usiz
 pub const Session = struct {
     gpa: std.mem.Allocator,
     rank: usize,
+    benchmark_group: ?[]const u8 = null,
     link: wire.Link,
     collective: Collective,
     engine: *prompt.Engine = undefined,
@@ -106,6 +107,7 @@ pub const Session = struct {
         var wi = s.windows.valueIterator();
         while (wi.next()) |d| d.deinit();
         s.windows.deinit(s.gpa);
+        if (s.benchmark_group) |b| s.gpa.free(b);
         s.collective.deinit();
         var qi = s.seqs.valueIterator();
         while (qi.next()) |q| {
