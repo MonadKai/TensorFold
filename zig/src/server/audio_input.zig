@@ -41,6 +41,12 @@ pub fn sampling(cx: *Cx, body: json.Value) errors.Refused!void {
     };
 }
 
+pub fn numbers(cx: *Cx, raw: json.Value) errors.Refused!json.Value {
+    const body = try @import("fields.zig").parseNumbersPreservingTopK(cx, raw);
+    try sampling(cx, body);
+    return body;
+}
+
 pub fn checkModel(cx: *Cx, model: []const u8, served: []const u8) errors.Refused!void {
     if (!std.mem.eql(u8, model, served)) return cx.fail(.not_found, "The model `{s}` does not exist.", .{model});
 }
@@ -51,10 +57,10 @@ test "ASR sampling follows vLLM ranges and refuses silent integer normalization"
     var cx: Cx = .{ .a = arena.allocator() };
     for ([_][]const u8{ "{\"temperature\":-1}", "{\"temperature\":3}", "{\"top_p\":0}", "{\"top_p\":1.5}", "{\"top_k\":-2}", "{\"seed\":9223372036854775808}", "{\"max_tokens\":0}" }) |source| {
         const value = (try json.parse(cx.a, source)).ok;
-        try std.testing.expectError(error.Refused, sampling(&cx, value));
+        try std.testing.expectError(error.Refused, numbers(&cx, value));
     }
-    for ([_][]const u8{ "{\"temperature\":1.5}", "{\"top_k\":-1}", "{\"top_k\":0}", "{\"seed\":-9223372036854775808}" }) |source|
-        try sampling(&cx, (try json.parse(cx.a, source)).ok);
+    for ([_][]const u8{ "{\"temperature\":1.5}", "{\"top_k\":-1}", "{\"top_k\":0}", "{\"seed\":-9223372036854775808}", "{\"top_k\":\"-1\",\"temperature\":\"1.5\"}" }) |source|
+        _ = try numbers(&cx, (try json.parse(cx.a, source)).ok);
 }
 
 pub fn language(cx: *Cx, code: []const u8) errors.Refused![]const u8 {

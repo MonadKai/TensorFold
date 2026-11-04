@@ -126,7 +126,7 @@ pub fn chatInput(srv: *Server, cx: *Cx, raw: Value) errors.Refused!chat.Input {
 
 /// Everything checked before a reply starts (a refusal here is a 400 with no stream opened).
 fn plan(srv: *Server, cx: *Cx, is_chat: bool, raw: Value) errors.Refused!Plan {
-    const body = try fields.parseNumbers(cx, raw);
+    const body = if (srv.info.audio != null) try @import("audio_input.zig").numbers(cx, raw) else try fields.parseNumbers(cx, raw);
     try fields.validateModalities(cx, body);
     // rows need each token's exact bytes: a tokenizer whose decoding depends on context (null) can't give them
     const asked = if (is_chat) json.truthyField(body, "logprobs") else body.field("logprobs") != null;
