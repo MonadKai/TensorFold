@@ -1,0 +1,18 @@
+{
+  "encode_cases": 1588,
+  "encode_mismatches": 0,
+  "decode_cases": 4087,
+  "decode_mismatches": 0,
+  "reference": "original Qwen2TokenizerFast, Transformers 4.57.6, tokenizers 0.22.2",
+  "native": "existing tokenizer/check.zig, original vocab/merges with NFC",
+  "seed": 20261104,
+  "fixture_sha256": "5cbbaf8f6e91cb84c5b0e1c7f9d6b67296323428f695ebcc9f7315563d880b5d",
+  "hash_tokens": [
+    [
+      565
+    ],
+    [
+      820
+    ]
+  ]
+}

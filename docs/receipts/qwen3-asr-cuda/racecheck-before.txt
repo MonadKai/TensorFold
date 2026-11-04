@@ -1,0 +1,24 @@
+========= COMPUTE-SANITIZER
+========= Warning: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [512 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [4100 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [4096 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [4096 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [4100 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [4100 hazards]
+========= 
+========= Error: Race reported between Read access at tf_asr_audio_attention+0x1030
+=========     and Write access at tf_asr_audio_attention+0x1140 [25144 hazards]
+========= 
+========= Target application returned an error
+========= RACECHECK SUMMARY: 7 hazards displayed (6 errors, 1 warning)

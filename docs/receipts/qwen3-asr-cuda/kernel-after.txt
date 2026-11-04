@@ -1,0 +1,25 @@
+PASS nonfinite cuda ASR mel im2col f32 to bf16: 3 non-finite and 1797 finite outputs match the float64 classes
+PASS repeat cuda ASR mel im2col f32 to bf16: five runs byte-identical (28800 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR mel im2col f32 to bf16: 8 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR mel im2col f32 to bf16: declares none sums
+PASS nonfinite cuda ASR convolution im2col: 3 non-finite and 431997 finite outputs match the float64 classes
+PASS repeat cuda ASR convolution im2col: five runs byte-identical (6912000 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR convolution im2col: 8 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR convolution im2col: declares none sums
+PASS nonfinite cuda ASR convolution time-major pack: 3 non-finite and 61437 finite outputs match the float64 classes
+PASS repeat cuda ASR convolution time-major pack: five runs byte-identical (199680 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR convolution time-major pack: 7 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR convolution time-major pack: declares none sums
+FAIL shapes CONTROL ASR truncated convolution pack: at 13x16x480 output 1 is 1.308594e-1 where float64 gives -5.976563e-1: 312.05 of its bound
+CONTROL CONTROL ASR truncated convolution pack: red at shapes, as planted
+PASS nonfinite cuda ASR bidirectional window attention, 16 heads of 64: 392 non-finite and 7800 finite outputs match the float64 classes
+PASS repeat cuda ASR bidirectional window attention, 16 heads of 64: five runs byte-identical (131072 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR bidirectional window attention, 16 heads of 64: 18 shapes within the float64 bound (worst 0.985 of the bound), 0 edges refused by the kernel
+PASS sums cuda ASR bidirectional window attention, 16 heads of 64: exact sums at k 104, where fp16 sums would miss by 128x and bf16 by 128x
+PASS nonfinite cuda ASR attention QK cancellation: 197 non-finite and 4923 finite outputs match the float64 classes
+PASS repeat cuda ASR attention QK cancellation: five runs byte-identical (8192 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR attention QK cancellation: 2 shapes within the float64 bound (worst 0.964 of the bound), 0 edges refused by the kernel
+PASS sums cuda ASR attention QK cancellation: exact sums at k 104, where fp16 sums would miss by 5435x and bf16 by 5868x
+FAIL shapes CONTROL ASR attention wrong window: at 7800x1024x104 output 0 is 8.046875e-1 where float64 gives 4.445346e-3: 25110.74 of its bound
+CONTROL CONTROL ASR attention wrong window: red at shapes, as planted
+ASR FOCUSED: 5 passed, 0 failed; 2/2 controls red; full backend gates still required

@@ -1,0 +1,21 @@
+PASS nonfinite cuda ASR mel im2col f32 to bf16: 3 non-finite and 1797 finite outputs match the float64 classes
+PASS repeat cuda ASR mel im2col f32 to bf16: five runs byte-identical (28800 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR mel im2col f32 to bf16: 8 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR mel im2col f32 to bf16: declares none sums
+PASS nonfinite cuda ASR convolution im2col: 3 non-finite and 431997 finite outputs match the float64 classes
+PASS repeat cuda ASR convolution im2col: five runs byte-identical (6912000 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR convolution im2col: 8 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR convolution im2col: declares none sums
+PASS nonfinite cuda ASR convolution time-major pack: 3 non-finite and 61437 finite outputs match the float64 classes
+PASS repeat cuda ASR convolution time-major pack: five runs byte-identical (199680 bytes), inputs and guards untouched, no overlap
+PASS shapes cuda ASR convolution time-major pack: 7 shapes within the float64 bound (worst 0.000 of the bound), 0 edges refused by the kernel
+N/A  sums cuda ASR convolution time-major pack: declares none sums
+FAIL shapes CONTROL ASR truncated convolution pack: at 13x16x480 output 1 is 1.308594e-1 where float64 gives -5.976563e-1: 312.05 of its bound
+CONTROL CONTROL ASR truncated convolution pack: red at shapes, as planted
+PASS nonfinite cuda ASR bidirectional window attention, 16 heads of 64: 392 non-finite and 7800 finite outputs match the float64 classes
+FAIL repeat cuda ASR bidirectional window attention, 16 heads of 64: 1 of 4 repeats differ from the first run's bytes, first at byte 67328
+FAIL shapes cuda ASR bidirectional window attention, 16 heads of 64: at 390x1024x104 output 105536 is 3.417969e-2 where float64 gives 2.235510e-2: 114.63 of its bound
+FAIL sums cuda ASR bidirectional window attention, 16 heads of 64: declares fp32 sums but its test simulates none
+FAIL shapes CONTROL ASR attention wrong window: at 390x1024x104 output 0 is 5.859375e-1 where float64 gives 8.810702e-2: 1383.83 of its bound
+CONTROL CONTROL ASR attention wrong window: red at shapes, as planted
+ASR FOCUSED: 3 passed, 1 failed; 2/2 controls red; full backend gates still required

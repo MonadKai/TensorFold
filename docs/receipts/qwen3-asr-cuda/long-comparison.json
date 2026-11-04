@@ -1,0 +1,38 @@
+[
+  {
+    "fixture": "en_65s.wav",
+    "http_status": 200,
+    "native_seconds": 4.742618783027865,
+    "vllm_seconds": 1.9015806129900739,
+    "exact_text_equal": false,
+    "normalized_word_edits": 2,
+    "reference_words": 145,
+    "normalized_word_error_fraction": 0.013793103448275862,
+    "native_characters": 755,
+    "reference_characters": 745
+  },
+  {
+    "fixture": "en_140s.wav",
+    "http_status": 200,
+    "native_seconds": 10.065768823958933,
+    "vllm_seconds": 3.2225373149849474,
+    "exact_text_equal": true,
+    "normalized_word_edits": 0,
+    "reference_words": 318,
+    "normalized_word_error_fraction": 0.0,
+    "native_characters": 1629,
+    "reference_characters": 1629
+  },
+  {
+    "fixture": "en_600s.wav",
+    "http_status": 200,
+    "native_seconds": 41.98441592697054,
+    "vllm_seconds": 9.56372834497597,
+    "exact_text_equal": false,
+    "normalized_word_edits": 8,
+    "reference_words": 1340,
+    "normalized_word_error_fraction": 0.005970149253731343,
+    "native_characters": 6919,
+    "reference_characters": 6903
+  }
+]
