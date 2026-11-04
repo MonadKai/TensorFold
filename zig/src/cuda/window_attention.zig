@@ -67,7 +67,7 @@ pub const WindowAttention = struct {
     part_fn: Function,
     merge_fn: Function,
     tc_fn: Function,
-    prompt_fns: [2]Function, // 4, then 8 query heads a block
+    prompt_fns: [3]Function, // 2, 4, then 8 query heads a block
     rows: Module, // window_rows.cu
     pages: ?Module = null, // window_pages.cu (loadPages): window_rows.cuh over paged caches
     put_fn: ?Function = null, // tf_wrows_put: rows into paged caches
@@ -83,8 +83,8 @@ pub const WindowAttention = struct {
         if (!kernels.available) return error.BuiltWithoutKernels;
         var mod = try Module.load(d, kernels.window_attention);
         errdefer mod.unload();
-        var p: [2]Function = undefined;
-        inline for (.{ 4, 8 }, 0..) |hpc, i| {
+        var p: [3]Function = undefined;
+        inline for (.{ 2, 4, 8 }, 0..) |hpc, i| {
             p[i] = try mod.function(std.fmt.comptimePrint(prompt_name, .{hpc}));
             try p[i].allowDynamicShared(prompt_smem);
         }
@@ -253,9 +253,9 @@ pub const WindowAttention = struct {
     pub fn prompt(g: *const WindowAttention, s: Stream, q: u64, kc: u64, vc: u64, out: u64, p0: usize, n: usize, w: Window) !void {
         if (wide(w.d)) return g.promptRows(s, q, kc, vc, out, p0, n, w, null);
         const grp = w.h / w.hk;
-        if (w.d != 128 or w.hk == 0 or w.h % w.hk != 0 or grp % 4 != 0) return error.WindowShape;
+        if (w.d != 128 or w.hk == 0 or w.h % w.hk != 0 or grp % 2 != 0) return error.WindowShape;
         if (n == 0) return;
-        const hpc: usize = if (grp % 8 == 0) 8 else 4;
+        const hpc: usize = if (grp % 8 == 0) 8 else if (grp % 4 == 0) 4 else 2;
         var a: launch_.Args = .{};
         for ([_]u64{ q, kc, vc, out }) |v| a.add(v);
         for ([_]usize{ p0, n, w.h, w.hk, grp }) |v| a.add(@as(i32, @intCast(v)));
@@ -264,7 +264,7 @@ pub const WindowAttention = struct {
         a.add(@as(i32, @intCast(w.ring)));
         const rows = 16 * (8 / hpc);
         const cfg: launch_.Config = .{ .grid = .{ .x = @intCast((n + rows - 1) / rows), .y = @intCast(w.hk * (grp / hpc)), .z = 1 }, .block = .{ .x = 256 }, .shared = prompt_smem };
-        try launch_.launch(g.prompt_fns[if (hpc == 8) 1 else 0], cfg, s, &a);
+        try launch_.launch(g.prompt_fns[if (hpc == 8) 2 else if (hpc == 4) 1 else 0], cfg, s, &a);
     }
 
     /// Wide prompt rows, G up to 16; row i's last key hi[i] (int32, in [p0 + i, p0 + n)) or its position (null).

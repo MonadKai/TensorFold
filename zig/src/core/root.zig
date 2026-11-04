@@ -3,6 +3,8 @@
 pub const weight_only = @import("weight_only.zig");
 pub const profile = @import("profile");
 pub const safetensors = @import("safetensors.zig");
+pub const audio_features = @import("audio_features.zig");
+pub const audio_decode = @import("audio_decode.zig");
 pub const gguf = @import("gguf.zig");
 pub const npy = @import("npy.zig");
 pub const exl3_format = @import("exl3_format.zig");

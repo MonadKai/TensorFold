@@ -110,6 +110,7 @@ fn post(srv: *Server, conn: *Conn, a: Allocator) void {
     const route = auth.routePath(conn.path);
     for (tokens.paths) |r| if (std.mem.eql(u8, route, r)) return tokens.post(srv, conn, a, std.mem.endsWith(u8, route, "/detokenize"));
     const is_speech = std.mem.eql(u8, route, "/v1/audio/speech");
+    const is_transcription = std.mem.eql(u8, route, "/v1/audio/transcriptions");
     const is_embedding = std.mem.eql(u8, route, "/v1/embeddings");
     const is_anthropic = anthropic.route(conn.path);
     const is_responses = if (responses.route(route)) |rid| rid.len == 0 else false;
@@ -118,7 +119,7 @@ fn post(srv: *Server, conn: *Conn, a: Allocator) void {
     const is_slide = std.mem.eql(u8, route, "/v1/slide/learn");
     const imprint_op: ?api.ImprintOp = if (std.mem.eql(u8, route, "/v1/imprint/resume")) .where else if (std.mem.eql(u8, route, "/v1/imprint/load")) .load else null;
     const is_chat = std.mem.endsWith(u8, route, "/chat/completions");
-    if (!is_embedding and !is_speech and !is_slide and imprint_op == null and !is_anthropic and !is_responses and !is_decisions and !is_systemone and !is_chat and !std.mem.endsWith(u8, route, "/completions")) {
+    if (!is_transcription and !is_embedding and !is_speech and !is_slide and imprint_op == null and !is_anthropic and !is_responses and !is_decisions and !is_systemone and !is_chat and !std.mem.endsWith(u8, route, "/completions")) {
         discardBody(conn, a);
         return unknown(conn, a);
     }
@@ -162,6 +163,7 @@ fn post(srv: *Server, conn: *Conn, a: Allocator) void {
         }
     }
     if (std.mem.eql(u8, route, "/v1/audio/speech")) return speech.post(srv, conn, a) catch {};
+    if (is_transcription) return @import("transcriptions.zig").post(srv, conn, a);
     if (is_embedding) return embeddings.post(srv, conn, a);
     if (is_slide) return slide.learn(srv, conn, a);
     if (imprint_op) |op| return imprint.post(srv, conn, a, op);

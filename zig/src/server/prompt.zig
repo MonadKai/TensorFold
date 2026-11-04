@@ -12,7 +12,7 @@ const Value = json.Value;
 const Cx = errors.Cx;
 
 /// With image input, `ids` holds each image's tokens, `images` the images and `cache_key` the prompt the cache matches.
-pub const Rendered = struct { ids: []const u32, history_len: usize = 0, rewind_len: usize = 0, user_end: usize = 0, images: []const api.Image = &.{}, cache_key: []const u32 = &.{} };
+pub const Rendered = struct { ids: []const u32, history_len: usize = 0, rewind_len: usize = 0, user_end: usize = 0, images: []const api.Image = &.{}, audios: []const api.Audio = &.{}, cache_key: []const u32 = &.{} };
 
 /// Where lessons decide to act on a reply: the row before the generation prompt's `<think>`, else before its last.
 pub fn decideOf(srv: *const Server, ids: []const u32) u32 {
@@ -112,8 +112,9 @@ pub fn prepare(srv: *Server, cx: *Cx, input: chat.Input, thinking: bool, effort:
             error.OutOfMemory => return error.OutOfMemory,
             error.Template => return cx.fail(.server, "the tokenizer cannot encode this prompt", .{}),
         } },
-        .ids => |ids| return .{ .ids = ids },
+        .ids => |ids| return .{ .ids = ids, .audios = input.audios },
     };
+    if (srv.info.audio != null) return @import("audio_input.zig").render(srv, cx, input.messages);
     const prompt = try renderIds(srv, cx, input.messages, input.tools, thinking, effort, true);
     const history = try renderIds(srv, cx, input.messages, input.tools, thinking, effort, false);
     var history_len: usize = 0;

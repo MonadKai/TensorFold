@@ -17,6 +17,7 @@ const split_why = "a score's absolute rounding error is its weight's relative er
 pub const Cfg = struct { name: []const u8, h: usize, hk: usize, d: usize, win: usize, ring: usize, streams: usize = 1, prompt: bool = false, served: []const c.Shape };
 
 pub const cfgs = [_]Cfg{
+    .{ .name = "cuda window prompt wattn_kernel<128, 8, 2, 8>, Qwen3-ASR 16/8 heads", .h = 16, .hk = 8, .d = 128, .win = 8192, .ring = 8192, .prompt = true, .served = &.{ .{ .rows = 256, .n = 16, .k = 0 }, .{ .rows = 65, .n = 16, .k = 7936 } } },
     // Kolibri's sliding layers (48 heads over 4, window 513): decode on tensor cores, prompt rows 4 heads a block
     .{ .name = "cuda window decode tf_window_decode_tc, 48/4 heads, window 513, ring 640", .h = 48, .hk = 4, .d = 128, .win = 513, .ring = 640, .streams = 2, .served = &.{ .{ .rows = 16, .n = 48, .k = 3000 }, .{ .rows = 64, .n = 48, .k = 1000 } } },
     .{ .name = "cuda window decode tf_window_decode_tc, 16/1 heads, no window, ring 300", .h = 16, .hk = 1, .d = 128, .win = 0, .ring = 300, .served = &.{.{ .rows = 16, .n = 16, .k = 300 }} },
@@ -33,7 +34,8 @@ fn keyChain(s: c.Shape) usize {
 /// Decode: rows, query heads (n) and the positions' bound (k); prompt: chunk rows, query heads and the chunk's start.
 pub fn spec(f: Cfg) c.Spec {
     const key_tile: usize = if (f.prompt or f.d != 128) 64 else 32;
-    const row_tile: usize = if (f.prompt) 16 * (8 / (if ((f.h / f.hk) % 8 == 0) @as(usize, 8) else 4)) else 0;
+    const hpc: usize = if ((f.h / f.hk) % 8 == 0) 8 else if ((f.h / f.hk) % 4 == 0) 4 else 2;
+    const row_tile: usize = if (f.prompt) 16 * (8 / hpc) else 0;
     const k_tile: c.Tile = if (f.prompt) .{ .size = 64, .min = 0 } else .{ .size = key_tile };
     return .{ .name = f.name, .accum = .f32, .depth = keyChain, .ops = 1, .out = .bf16, .tiles = .{ .{ .size = row_tile }, .{}, k_tile }, .served = f.served, .sums = .{ .why = if (f.d == 128) attn.why else split_why } };
 }

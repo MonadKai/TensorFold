@@ -1,8 +1,9 @@
 //! The shared attention, sigmoid routing and dense-row CUDA launch records; values retained from their fixtures.
 const std = @import("std");
 const wattn_symbol = "_ZN16tf_window_prompt12wattn_kernelILi128ELi8ELi{d}ELi8EEEvPK13__nv_bfloat16S3_S3_PS1_iiiiifii";
-pub fn records(comptime Record: type) [39]Record {
+pub fn records(comptime Record: type) [40]Record {
     return .{
+        .{ .launch = .{ .name = "window attention wattn_kernel<128, 8, 2, 8>", .symbol = std.fmt.comptimePrint(wattn_symbol, .{2}), .image = "window_attention", .threads = 256, .dynamic = 65536, .opt_in = true }, .usage = @splat(.{ .regs = 222, .static = 0, .bound = 256 }) },
         .{ .launch = .{ .name = "tree attention tf_tree_paths", .symbol = "tf_tree_paths", .image = "tree_attention", .threads = 128 }, .usage = .{ .{ .regs = 32, .static = 0, .bound = 0 }, .{ .regs = 40, .static = 0, .bound = 0 }, .{ .regs = 40, .static = 0, .bound = 0 }, .{ .regs = 30, .static = 0, .bound = 0 }, .{ .regs = 30, .static = 0, .bound = 0 } } },
         .{ .launch = .{ .name = "tree attention tf_tree_shared", .symbol = "tf_tree_shared", .image = "tree_attention", .threads = 128, .dynamic = 65536, .opt_in = true }, .usage = .{ .{ .regs = 202, .static = 0, .bound = 128 }, .{ .regs = 202, .static = 0, .bound = 128 }, .{ .regs = 202, .static = 0, .bound = 128 }, .{ .regs = 212, .static = 0, .bound = 128 }, .{ .regs = 212, .static = 0, .bound = 128 } } },
         .{ .launch = .{ .name = "tree attention tf_tree_shared_w1", .symbol = "tf_tree_shared_w1", .image = "tree_attention", .threads = 32, .dynamic = 32768, .opt_in = true }, .usage = .{ .{ .regs = 193, .static = 0, .bound = 32 }, .{ .regs = 193, .static = 0, .bound = 32 }, .{ .regs = 193, .static = 0, .bound = 32 }, .{ .regs = 195, .static = 0, .bound = 32 }, .{ .regs = 195, .static = 0, .bound = 32 } } },

@@ -110,6 +110,7 @@ pub const Image = struct {
     tokens: u32,
     hash: u64 = 0, // core/picture/identity.zig's: the bytes and the grid, as the prompt cache's key names the image
 };
+pub const Audio = @import("audio.zig").Audio;
 
 pub const Spec = struct {
     id: []const u8,
@@ -143,6 +144,7 @@ pub const Spec = struct {
     grammar: ?*grammar.Constraint = null, // structured output: the reply stays in it (the creator frees it)
     decode_spans: []const [2]u32 = &.{}, // prompt rows an earlier reply decoded (Request.decode_spans), for backends that keep their bits
     images: []const Image = &.{}, // in prompt order; the backend's tower fills their rows
+    audios: []const Audio = &.{},
     key: []const u32 = &.{}, // the prompt as the cache matches it (image rows by their image); empty: the prompt
 };
 
@@ -184,6 +186,7 @@ pub const Stream = struct {
     decide: ?u32 = null,
     untaught: bool = false,
     images: []const Image = &.{},
+    audios: []const Audio = &.{},
     key: []const u32 = &.{},
     cached: u32 = 0, // prompt tokens the backend restored from `reuse` (its prompt pass started there)
     fill_at: std.atomic.Value(u32) = .init(0), // prompt tokens the pass has prefilled; the engine thread writes
@@ -275,6 +278,7 @@ pub const Stream = struct {
             .grammar = spec.grammar,
             .decode_spans = spec.decode_spans,
             .images = spec.images,
+            .audios = spec.audios,
             .key = spec.key,
         };
         // under a grammar a forced close ends at the think end: the grammar takes the reply from the next token

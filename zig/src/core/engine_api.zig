@@ -18,6 +18,8 @@ pub const load_ledger = @import("load_ledger.zig");
 
 /// One image of a request (``Request.images``): the tower's input and the placeholder rows its output replaces.
 pub const Image = lanes.stream.Image;
+pub const Audio = lanes.stream.Audio;
+pub const AudioInfo = struct { sample_rate: u32 = 16000, token: u32 = 151676, max_seconds: u32 = 600 };
 
 /// A prompt's reproducible seed (``seed_for``), for requests that name none.
 pub const seedFor = lanes.sampling.seedFor;
@@ -116,6 +118,7 @@ pub const Request = struct {
     prompt_logprobs: ?u8 = null,
     /// Images whose rows replace placeholder tokens of ``prompt``, in order; only when ``Info.vision`` is set.
     images: []const Image = &.{},
+    audios: []const Audio = &.{},
     /// The prompt as the prompt cache matches it (each image's placeholders by its content); empty: ``prompt``.
     cache_key: []const u32 = &.{},
 
@@ -177,6 +180,7 @@ pub const Info = struct {
     text_generation: bool = true,
     embeddings: ?lanes.embedding.Info = null,
     speech: ?SpeechInfo = null,
+    audio: ?AudioInfo = null,
     lanes: u32 = 1,
     /// Prompt plus reply tokens one request may use (0: no limit).
     context_window: u32 = 0,
@@ -455,6 +459,16 @@ pub const Engine = struct {
     pub fn submit(e: Engine, id: Id, request: *const Request, sink: Sink) SubmitError!void {
         try @import("cache_modes.zig").validate(request.decode_spans);
         const info_ = e.info();
+        if (request.audios.len != 0) {
+            if (info_.audio == null or request.audios.len != 1 or request.images.len != 0 or request.embedding != null)
+                return error.InvalidRequest;
+            for (request.audios) |audio| {
+                if (audio.frames < 2 or audio.frames > 60000 or audio.features.len != @as(usize, audio.frames) * 128 or
+                    audio.at > request.prompt.len or audio.tokens > request.prompt.len - audio.at)
+                    return error.InvalidRequest;
+                for (audio.features) |v| if (!std.math.isFinite(v)) return error.InvalidRequest;
+            }
+        } else if (info_.audio != null) return error.InvalidRequest;
         if (request.embedding) |batch| {
             const cap = info_.embeddings orelse return error.InvalidRequest;
             if (info_.text_generation or request.max_tokens != 0 or request.drafts or request.sampling != null or

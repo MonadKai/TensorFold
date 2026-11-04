@@ -56,6 +56,7 @@ pub fn engines(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std.bu
             .{ .name = "gemma4_cuda", .module = @import("gemma4_cuda.zig").module(b, target, optimize, cuda, core, lanes) },
             .{ .name = "spark25", .module = @import("spark25.zig").module(b, target, optimize, cuda, core, lanes) },
             .{ .name = "dory", .module = @import("dory.zig").module(b, target, optimize, cuda, core, lanes) },
+            .{ .name = "qwen3_asr", .module = @import("qwen3_asr.zig").module(b, target, optimize, cuda, core, lanes) },
         },
     });
     mod.addImport("qwen4", @import("qwen4.zig").module(b, target, optimize, core));

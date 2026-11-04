@@ -103,6 +103,8 @@ pub fn run(gpu: check.Gpu) !void {
     defer rank_sum.unload();
     var kernels: std.ArrayList(g.Kernel) = .empty;
     defer kernels.deinit(a);
+    const asr = try @import("contract_asr_group.zig").Group.create(a, gpu, s, &kernels);
+    defer asr.destroy();
     var vit = try cuda.vit.Kernels.load(gpu.d);
     defer vit.unload();
     var glue: [12]vit_k.Glue = undefined;

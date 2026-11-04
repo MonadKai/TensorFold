@@ -423,7 +423,10 @@ pub const Tokenizer = struct {
 pub fn loadTokenizer(io: std.Io, a: Allocator, path: []const u8) !Tokenizer {
     const file = if (std.mem.endsWith(u8, path, ".json")) try a.dupe(u8, path) else try std.fmt.allocPrint(a, "{s}/tokenizer.json", .{path});
     defer a.free(file);
-    const bytes = try std.Io.Dir.cwd().readFileAlloc(io, file, a, .limited(1 << 30));
+    const bytes = std.Io.Dir.cwd().readFileAlloc(io, file, a, .limited(1 << 30)) catch |e| switch (e) {
+        error.FileNotFound => if (!std.mem.endsWith(u8, path, ".json")) try @import("qwen_legacy.zig").read(io, a, path) else return e,
+        else => return e,
+    };
     defer a.free(bytes);
     return parse(a, bytes);
 }

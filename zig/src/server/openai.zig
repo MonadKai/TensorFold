@@ -134,7 +134,7 @@ fn plan(srv: *Server, cx: *Cx, is_chat: bool, raw: Value) errors.Refused!Plan {
     if (srv.config.request_log) |path| request_log.append(cx.a, path, body);
     var input: chat.Input = .{ .fields = undefined };
     if (is_chat) {
-        input.messages = try messages.normalizeWith(cx, body.get("messages"), "system", srv.needs_user_after_tool, .of(srv.info.vision));
+        input.messages = if (srv.info.audio != null) body.get("messages") orelse return cx.refuse("messages is required") else try messages.normalizeWith(cx, body.get("messages"), "system", srv.needs_user_after_tool, .of(srv.info.vision));
         input.tools = try tool_specs.active(cx, body.get("tools"), body.get("tool_choice"));
     } else if (body.get("messages")) |m| if (m == .array and m.array.len > 0) {
         input.messages = try messages.normalizeWith(cx, m, "system", srv.needs_user_after_tool, .of(srv.info.vision));
@@ -162,6 +162,8 @@ fn plan(srv: *Server, cx: *Cx, is_chat: bool, raw: Value) errors.Refused!Plan {
     if (thinking.clear) |c| try sampling.put(cx.a, "clear_thinking", .{ .bool = c });
     input.fields = .{ .object = sampling };
     const streamed = if (body.get("stream")) |s| s.truthy() else false;
+    if (srv.info.audio != null and streamed) return cx.refuse("Qwen3-ASR currently supports stream=false only");
+    if (srv.info.audio != null and input.tools.len != 0) return cx.refuse("Qwen3-ASR does not support tools");
     input.prompt_logprobs = try fields.promptLogprobs(cx, body, !is_chat, streamed, srv.info.prompt_logprobs);
     if (logprobs != null) {
         // 0.6.6's set: the rows describe the plain reply text, so nothing may reshape it
