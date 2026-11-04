@@ -43,7 +43,7 @@ pub const Encoder = struct {
     }
 
     pub fn run(e: *Encoder, m: *Model, features: []const f32, frames: usize) !u64 {
-        if (frames < 2 or frames > max_frames or features.len != 128 * frames) return error.BadAudioFeatures;
+        if (frames == 0 or frames > max_frames or features.len != 128 * frames) return error.BadAudioFeatures;
         try m.upload(e.features, std.mem.sliceAsBytes(features));
         try m.tap("audio.mel", e.features, 128, frames, false);
         const chunk_width: usize = @min(frames, 100);

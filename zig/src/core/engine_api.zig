@@ -20,7 +20,6 @@ pub const load_ledger = @import("load_ledger.zig");
 pub const Image = lanes.stream.Image;
 pub const Audio = lanes.stream.Audio;
 pub const AudioInfo = struct { sample_rate: u32 = 16000, token: u32 = 151676, max_seconds: u32 = 600 };
-
 /// A prompt's reproducible seed (``seed_for``), for requests that name none.
 pub const seedFor = lanes.sampling.seedFor;
 
@@ -460,14 +459,8 @@ pub const Engine = struct {
         try @import("cache_modes.zig").validate(request.decode_spans);
         const info_ = e.info();
         if (request.audios.len != 0) {
-            if (info_.audio == null or request.audios.len != 1 or request.images.len != 0 or request.embedding != null)
-                return error.InvalidRequest;
-            for (request.audios) |audio| {
-                if (audio.frames < 2 or audio.frames > 60000 or audio.features.len != @as(usize, audio.frames) * 128 or
-                    audio.at > request.prompt.len or audio.tokens > request.prompt.len - audio.at)
-                    return error.InvalidRequest;
-                for (audio.features) |v| if (!std.math.isFinite(v)) return error.InvalidRequest;
-            }
+            if (info_.audio == null or request.audios.len != 1 or request.images.len != 0 or request.embedding != null) return error.InvalidRequest;
+            for (request.audios) |audio| if (!audio.valid(request.prompt, info_.audio.?.token)) return error.InvalidRequest;
         } else if (info_.audio != null) return error.InvalidRequest;
         if (request.embedding) |batch| {
             const cap = info_.embeddings orelse return error.InvalidRequest;

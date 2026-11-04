@@ -8,7 +8,21 @@ const Cx = errors.Cx;
 const Rendered = @import("prompt.zig").Rendered;
 
 pub const language_codes = [_][]const u8{ "zh", "en", "yue", "ar", "de", "fr", "es", "pt", "id", "it", "ko", "ru", "th", "vi", "ja", "tr", "hi", "ms", "nl", "sv", "da", "fi", "pl", "cs", "tl", "fa", "el", "ro", "hu", "mk" };
-const language_names = [_][]const u8{ "Chinese", "English", "Cantonese", "Arabic", "German", "French", "Spanish", "Portuguese", "Indonesian", "Italian", "Korean", "Russian", "Thai", "Vietnamese", "Japanese", "Turkish", "Hindi", "Malay", "Dutch", "Swedish", "Danish", "Finnish", "Polish", "Czech", "Filipino", "Persian", "Greek", "Romanian", "Hungarian", "Macedonian" };
+const language_names = [_][]const u8{ "Chinese", "English", "Cantonese", "Arabic", "German", "French", "Spanish", "Portuguese", "Indonesian", "Italian", "Korean", "Russian", "Thai", "Vietnamese", "Japanese", "Turkish", "Hindi", "Malay", "Dutch", "Swedish", "Danish", "Finnish", "Polish", "Czech", "Tagalog", "Persian", "Greek", "Romanian", "Hungarian", "Macedonian" };
+
+pub fn validate(srv: *Server, cx: *Cx, body: json.Value, streamed: bool, tools: usize) errors.Refused!void {
+    const model = body.strField("model") orelse return cx.refuse("model is required");
+    try checkModel(cx, model, srv.config.served_name);
+    if (streamed) return cx.refuse("Qwen3-ASR currently supports stream=false only");
+    if (tools != 0) return cx.refuse("Qwen3-ASR does not support tools");
+    if (body.get("n")) |n| if (n != .null and (n != .int or n.int64() != 1)) return cx.refuse("Qwen3-ASR supports n=1 only");
+    for ([_][]const u8{ "logit_bias", "allowed_token_ids", "truncate_prompt_tokens", "continue_final_message", "add_generation_prompt", "repetition_penalty" }) |key|
+        if (body.get(key)) |v| if (v != .null) return cx.fail(.request, "unsupported Qwen3-ASR parameter: {s}", .{key});
+}
+
+pub fn checkModel(cx: *Cx, model: []const u8, served: []const u8) errors.Refused!void {
+    if (!std.mem.eql(u8, model, served)) return cx.fail(.not_found, "The model `{s}` does not exist.", .{model});
+}
 
 pub fn language(cx: *Cx, code: []const u8) errors.Refused![]const u8 {
     for (language_codes, language_names) |c, name| if (std.ascii.eqlIgnoreCase(c, code)) return name;

@@ -89,6 +89,7 @@ pub const Gone = @import("stream_live.zig").Gone;
 pub fn errorBody(a: Allocator, cx: *const Cx, param: ?[]const u8) Allocator.Error!Value {
     const o = try json.newObject(a);
     try o.put(a, "message", .{ .string = cx.message });
+    if (cx.kind == .not_found) return @import("model_error.zig").body(a, cx.message);
     if (cx.kind == .other or cx.kind == .server) return .{ .object = o };
     try o.put(a, "type", .{ .string = "invalid_request_error" });
     if (cx.kind == .context_length) {
@@ -162,8 +163,7 @@ fn plan(srv: *Server, cx: *Cx, is_chat: bool, raw: Value) errors.Refused!Plan {
     if (thinking.clear) |c| try sampling.put(cx.a, "clear_thinking", .{ .bool = c });
     input.fields = .{ .object = sampling };
     const streamed = if (body.get("stream")) |s| s.truthy() else false;
-    if (srv.info.audio != null and streamed) return cx.refuse("Qwen3-ASR currently supports stream=false only");
-    if (srv.info.audio != null and input.tools.len != 0) return cx.refuse("Qwen3-ASR does not support tools");
+    if (srv.info.audio != null) try @import("audio_input.zig").validate(srv, cx, body, streamed, input.tools.len);
     input.prompt_logprobs = try fields.promptLogprobs(cx, body, !is_chat, streamed, srv.info.prompt_logprobs);
     if (logprobs != null) {
         // 0.6.6's set: the rows describe the plain reply text, so nothing may reshape it
@@ -597,6 +597,4 @@ const Run = struct {
     }
 };
 
-fn roleDelta(a: Allocator) Allocator.Error!Value {
-    return chat.deltaOf(a, "role", "assistant");
-}
+const roleDelta = chat.roleDelta;

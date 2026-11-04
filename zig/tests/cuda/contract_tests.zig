@@ -63,10 +63,7 @@ const contract = core.contract;
 const g = contract.gates;
 const kk = cuda.kernels;
 
-const images = struct {
-    pub const controls align(16) = @embedFile("fatbin_contract_controls").*;
-    pub const h3 align(16) = @embedFile("fatbin_h3").*;
-};
+const images = @import("contract_limits.zig").images;
 
 /// Gates 1-4 on every registered CUDA kernel and each control at its own gate, then gate 5 on this GPU.
 pub fn run(gpu: check.Gpu) !void {

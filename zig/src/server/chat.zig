@@ -595,8 +595,5 @@ const Generation = struct {
 };
 
 /// ``{key: text}``: a streamed delta (role, content or reasoning_content).
-pub fn deltaOf(a: Allocator, key: []const u8, text: []const u8) Allocator.Error!Value {
-    const o = try json.newObject(a);
-    try o.put(a, key, .{ .string = text });
-    return .{ .object = o };
-}
+pub const deltaOf = @import("reply_text.zig").deltaOf;
+pub const roleDelta = @import("reply_text.zig").roleDelta;

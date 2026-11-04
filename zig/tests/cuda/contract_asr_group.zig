@@ -9,7 +9,7 @@ pub const Group = struct {
     a: std.mem.Allocator,
     mod: cuda.Module,
     layouts: [4]layout.Layout,
-    attentions: [2]attention.Attention,
+    attentions: [3]attention.Attention,
 
     pub fn create(a: std.mem.Allocator, gpu: check.Gpu, s: cuda.Stream, kernels: *std.ArrayList(core.contract.gates.Kernel)) !*Group {
         const group = try a.create(Group);
@@ -29,9 +29,10 @@ pub const Group = struct {
         for (&group.attentions, 0..) |*item, i| item.* = .{
             .rig = .{ .gpu = gpu, .s = s },
             .f = attn,
-            .fault = i == 1,
+            .fault = i == 2,
+            .qk_stress = i == 1,
         };
-        try kernels.ensureUnusedCapacity(a, 6);
+        try kernels.ensureUnusedCapacity(a, 7);
         for (&group.layouts) |*item| kernels.appendAssumeCapacity(item.kernel());
         for (&group.attentions) |*item| kernels.appendAssumeCapacity(item.kernel());
         return group;

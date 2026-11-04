@@ -289,6 +289,7 @@ pub const Server = struct {
             .frequency = @floatCast(number(options.get("frequency_penalty")) orelse 0),
         };
         if (!p.active() or srv.info.penalties) return p;
+        if (srv.info.audio != null) return cx.refuse("Qwen3-ASR does not support presence_penalty or frequency_penalty");
         if (!srv.penalties_logged.swap(true, .monotonic)) log.line("presence_penalty and frequency_penalty are ignored: {s} does not apply them", .{srv.backendName()});
         return .{};
     }

@@ -40,7 +40,7 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
             valid = valid or std.mem.eql(u8, key, name);
         if (!valid) return cx.fail(.request, "unsupported transcription parameter: {s}", .{key});
     }
-    if (form.fields.get("model")) |name| if (!std.mem.eql(u8, name, srv.config.served_name)) return cx.refuse("requested model is not served");
+    if (form.fields.get("model")) |name| try audio.checkModel(cx, name, srv.config.served_name);
     if (form.fields.get("stream")) |v| if (!std.ascii.eqlIgnoreCase(v, "false") and !std.mem.eql(u8, v, "0")) return cx.refuse("Qwen3-ASR supports stream=false only");
     const format = form.fields.get("response_format") orelse "json";
     if (!std.mem.eql(u8, format, "json") and !std.mem.eql(u8, format, "text")) return cx.refuse("Qwen3-ASR supports json and text without timestamps");
@@ -49,6 +49,7 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     const samples = core.audio_decode.decode(a, form.file) catch |e| return cx.fail(.request, "audio decode failed: {s}", .{@errorName(e)});
     const fields = try json.newObject(a);
     var temperature: f64 = 0;
+    try fields.put(a, "temperature", .{ .float = 0 });
     for ([_][]const u8{ "temperature", "top_p", "min_p" }) |key| if (form.fields.get(key)) |v| {
         const value = std.fmt.parseFloat(f64, v) catch return cx.refuse("invalid floating-point transcription parameter");
         if (!std.math.isFinite(value) or value < 0 or value > 1) return cx.refuse("transcription probabilities must be between 0 and 1");

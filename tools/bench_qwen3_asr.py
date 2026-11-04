@@ -35,10 +35,13 @@ def request(base_url, route, body, content_type):
 
 def run_one(args, path, mode, index=0):
     data = path.read_bytes()
-    common = {"model": args.model, "temperature": 0, "max_completion_tokens": args.tokens}
+    common = {"model": args.model, "temperature": args.temperature, "max_completion_tokens": args.tokens}
+    if args.seed is not None:
+        common["seed"] = args.seed
     if mode == "chat":
         common.update(
             stream=False,
+            return_token_ids=True,
             messages=[{"role": "user", "content": [
                 {"type": "input_audio", "input_audio": {
                     "data": base64.b64encode(data).decode(), "format": "wav"
@@ -71,6 +74,8 @@ def main():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--tokens", type=int, default=1024)
     parser.add_argument("--language")
+    parser.add_argument("--temperature", type=float, default=0)
+    parser.add_argument("--seed", type=int)
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--modes", nargs="+", choices=("chat", "transcription"), default=("chat", "transcription"))
     args = parser.parse_args()

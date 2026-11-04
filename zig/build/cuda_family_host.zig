@@ -33,8 +33,12 @@ pub fn steps(b: *std.Build, cuda: *std.Build.Module, mods: anytype, step: *std.B
     @import("dory.zig").host(b, @import("dory.zig").module(b, host, .debug, cuda, mods.core, mods.lanes), step);
     const asr = @import("qwen3_asr.zig").module(b, host, .debug, cuda, mods.core, mods.lanes);
     const asr_run = b.addRunArtifact(b.addTest(.{ .root_module = asr }));
-    b.step("test-qwen3-asr-host", "Qwen3-ASR geometry and native Log-Mel checks").dependOn(&asr_run.step);
+    const asr_host = b.step("test-qwen3-asr-host", "Qwen3-ASR geometry and native Log-Mel checks");
+    asr_host.dependOn(&asr_run.step);
     step.dependOn(&asr_run.step);
+    const features = b.addRunArtifact(b.addTest(.{ .root_module = b.createModule(.{ .root_source_file = b.path("zig/src/core/audio_features.zig"), .target = host, .optimize = .debug, .link_libc = true }) }));
+    asr_host.dependOn(&features.step);
+    step.dependOn(&features.step);
     const attention = b.addRunArtifact(b.addTest(.{ .root_module = mods.qwen35, .filters = &.{"Qwen attention path:"} }));
     b.step("test-qwen35-attention-path-host", "Contiguous and paged CUDA attention selection and graph identity without devices").dependOn(&attention.step);
     step.dependOn(&attention.step);

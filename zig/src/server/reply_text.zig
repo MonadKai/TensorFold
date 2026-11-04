@@ -1,5 +1,16 @@
 //! Reply text as it streams: think blocks, tool markup held back, Harmony channels, stop strings.
 const std = @import("std");
+
+pub fn roleDelta(a: std.mem.Allocator) std.mem.Allocator.Error!@import("json").Value {
+    return deltaOf(a, "role", "assistant");
+}
+
+pub fn deltaOf(a: std.mem.Allocator, key: []const u8, text: []const u8) std.mem.Allocator.Error!@import("json").Value {
+    const json = @import("json");
+    const o = try json.newObject(a);
+    try o.put(a, key, .{ .string = text });
+    return .{ .object = o };
+}
 const Allocator = std.mem.Allocator;
 
 pub const Markers = struct { open: []const u8, close: []const u8 };

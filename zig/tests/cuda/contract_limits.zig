@@ -1,5 +1,10 @@
 //! tf-cuda-test kernel-contract: the images the records name, and gate 5 on this GPU.
 const std = @import("std");
+
+pub const images = struct {
+    pub const controls align(16) = @embedFile("fatbin_contract_controls").*;
+    pub const h3 align(16) = @embedFile("fatbin_h3").*;
+};
 const cuda = @import("cuda");
 const core = @import("core");
 const options = @import("contract_options");

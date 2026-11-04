@@ -17,6 +17,8 @@ pub const Server = server.Server;
 pub const Config = server.Config;
 
 test {
+    _ = @import("audio_form.zig");
+    _ = @import("transcriptions.zig");
     _ = @import("profile_line.zig");
     _ = @import("auth_scope_test.zig");
     _ = @import("family_sampling.zig");

@@ -4,12 +4,21 @@ const core = @import("core");
 const rig = @import("contract_rig.zig");
 const c = core.contract.spec;
 const g = core.contract.gates;
+const served = blk: {
+    var shapes: [15]c.Shape = undefined;
+    shapes[0] = .{ .rows = 7800, .n = 1024, .k = 104 };
+    for (shapes[1..13], 1..) |*s, n| s.* = .{ .rows = n, .n = 1024, .k = n * 8 };
+    shapes[13] = .{ .rows = 13, .n = 1024, .k = 104 };
+    shapes[14] = .{ .rows = 105, .n = 1024, .k = 104 };
+    break :blk shapes;
+};
 
 pub const Attention = struct {
     const vtable = g.hooks(Attention);
     rig: rig.Rig,
     f: cuda.Function,
     fault: bool = false,
+    qk_stress: bool = false,
     source: []f32 = &.{},
     shape: c.Shape = .{ .rows = 0, .n = 0, .k = 0 },
     input: u64 = 0,
@@ -26,14 +35,14 @@ pub const Attention = struct {
 
     pub fn kernel(t: *Attention) g.Kernel {
         return .{ .ctx = t, .vt = &vtable, .control = if (t.fault) .shapes else null, .spec = .{
-            .name = if (t.fault) "CONTROL ASR attention wrong window" else "cuda ASR bidirectional window attention, 16 heads of 64",
+            .name = if (t.fault) "CONTROL ASR attention wrong window" else if (t.qk_stress) "cuda ASR attention QK cancellation" else "cuda ASR bidirectional window attention, 16 heads of 64",
             .accum = .f32,
             .depth = depth,
             .out = .bf16,
             .ops = 8,
-            .served = &.{ .{ .rows = 390, .n = 1024, .k = 104 }, .{ .rows = 105, .n = 1024, .k = 104 }, .{ .rows = 13, .n = 1024, .k = 104 } },
+            .served = if (t.qk_stress) &.{.{ .rows = 4, .n = 1024, .k = 104 }} else &served,
             .tiles = .{ .{ .size = 104 }, .{}, .{} },
-            .sums = .{ .why = "zero QK gives four exact 1/4 weights; V cancellation stays exact in fp32" },
+            .sums = if (t.qk_stress) .{ .exact = false, .why = "QK integer cancellation is exact in fp32; softmax and PV use the FP64 rounding bound" } else .{ .why = "zero QK gives four exact 1/4 weights; V cancellation stays exact in fp32" },
         } };
     }
 
@@ -54,6 +63,19 @@ pub const Attention = struct {
             @memset(t.source[0 .. 2 * shape.rows * 1024], 0);
             for (t.source[2 * shape.rows * 1024 ..], 0..) |*v, i|
                 v.* = ([_]f32{ 8192, 1, -8192, 1 })[i / 1024];
+            if (t.qk_stress) {
+                @memset(t.source[0 .. shape.rows * 1024], 1);
+                for (t.source[shape.rows * 1024 ..][0 .. shape.rows * 1024], 0..) |*v, i| {
+                    const nudge: f32 = @floatFromInt(i / 1024);
+                    v.* = switch (i % 64) {
+                        0 => 8192,
+                        1, 3 => nudge,
+                        2 => -8192,
+                        else => 0,
+                    };
+                }
+                for (t.source[2 * shape.rows * 1024 ..], 0..) |*v, i| v.* = ([_]f32{ -8, 0, 1, 3 })[i / 1024];
+            }
         }
         if (fill == .nonfinite) {
             t.source[0] = std.math.nan(f32);
@@ -75,6 +97,20 @@ pub const Attention = struct {
 
     pub fn simulate(t: *Attention, acc: c.Accum, order: g.Order, out: []f64) !void {
         if (t.shape.rows != 4) return error.InvalidStressShape;
+        if (t.qk_stress) {
+            var weights: [4]f64 = undefined;
+            for (&weights, 0..) |*v, i| {
+                const nudge: f64 = @floatFromInt(i);
+                v.* = core.contract.rows.sumIn(acc, order, &.{ 8192, nudge, -8192, nudge }) * 0.125;
+            }
+            const maximum = @max(@max(weights[0], weights[1]), @max(weights[2], weights[3]));
+            for (&weights) |*v| v.* = @exp(v.* - maximum);
+            const sum = core.contract.rows.sumIn(acc, order, &weights);
+            for (&weights, [_]f64{ -8, 0, 1, 3 }) |*v, value| v.* = v.* / sum * value;
+            const value = core.contract.rows.sumIn(acc, order, &weights);
+            @memset(out, c.fromBf16(c.toBf16(@floatCast(value))));
+            return;
+        }
         const value = core.contract.rows.sumIn(acc, order, &.{ 2048, 0.25, -2048, 0.25 });
         @memset(out, c.fromBf16(c.toBf16(@floatCast(value))));
     }

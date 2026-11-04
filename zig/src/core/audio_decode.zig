@@ -42,3 +42,7 @@ pub fn decode(a: std.mem.Allocator, bytes: []const u8) ![]f32 {
     defer f.free(ptr.?);
     return a.dupe(f32, ptr.?[0..n]);
 }
+
+pub fn available() !void {
+    _ = try load();
+}

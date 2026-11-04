@@ -47,6 +47,16 @@ def main():
     model = Qwen3ASRForConditionalGeneration.from_pretrained(
         args.model, dtype=torch.bfloat16, attn_implementation="sdpa",
     ).to("cuda").eval()
+    tower = model.thinker.audio_tower
+
+    def audio_mask(_module, inputs, kwargs):
+        hidden = inputs[0] if inputs else kwargs["hidden_states"]
+        boundaries = inputs[1] if len(inputs) > 1 else kwargs["cu_seqlens"]
+        kwargs["attention_mask"] = tower._prepare_attention_mask(hidden, boundaries)
+        return inputs, kwargs
+
+    # The pinned source constructs this SDPA mask but does not pass it from the encoder loop.
+    mask_handles = [layer.register_forward_pre_hook(audio_mask, with_kwargs=True) for layer in tower.layers]
     device_batch = batch.to("cuda").to(torch.bfloat16)
     with torch.inference_mode():
         generated = model.generate(**device_batch, max_new_tokens=128, do_sample=False)
@@ -69,7 +79,6 @@ def main():
         records.append({"name": name, "file": filename, "shape": list(array.shape)})
 
     handles = []
-    tower = model.thinker.audio_tower
     handles.append(tower.layers[0].register_forward_pre_hook(
         lambda _m, inputs, kwargs: save("audio.conv", inputs[0] if inputs else kwargs["hidden_states"]), with_kwargs=True))
     for index in (0, 23):
@@ -94,8 +103,11 @@ def main():
             past = result.past_key_values
     for handle in handles:
         handle.remove()
+    for handle in mask_handles:
+        handle.remove()
     receipt = {
         "torch": torch.__version__, "dtype": "bf16", "attention": "sdpa",
+        "audio_mask": "original _prepare_attention_mask passed explicitly at each encoder layer",
         "audio_sha256": hashlib.sha256(args.audio.read_bytes()).hexdigest(),
         "generated_ids": output, "generated_text": processor.tokenizer.decode(output, skip_special_tokens=True),
         "records": records,

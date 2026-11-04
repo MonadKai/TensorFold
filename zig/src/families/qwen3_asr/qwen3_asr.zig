@@ -21,10 +21,18 @@ pub const Options = struct { context: usize, drafts: bool, segments: usize = 1, 
 pub const Loaded = struct { backend: lanes.backend.Backend, facts: lanes.Model, rows: u32, stream_bytes: usize, free_streams: u32, ctx: *anyopaque, deinit: *const fn (*anyopaque) void, target: *Backend };
 const Owned = struct { a: std.mem.Allocator, w: weights.Weights, k: Kernels, s: cuda.Stream, m: Model, b: Backend };
 
+pub fn contextCeiling(a: std.mem.Allocator, io: std.Io, dir: []const u8, yarn: ?f64) !i64 {
+    if (yarn != null) return error.UnsupportedRopeScaling;
+    const path = try std.fs.path.join(a, &.{ dir, "config.json" });
+    const bytes = try std.Io.Dir.cwd().readFileAlloc(io, path, a, .limited(4 << 20));
+    return @intCast((try @import("config.zig").Config.parse(a, bytes)).context);
+}
+
 pub fn open(a: std.mem.Allocator, io: std.Io, ctx: *const cuda.Context, dir: []const u8, captured: ?[]const u8, o: Options) !Loaded {
     if (captured != null) return error.CapturedKernels;
     if (o.context > 65536 or o.context == 0) return error.BadContext;
     if (o.lanes_fixed and (o.lanes == 0 or o.lanes > 8)) return error.ParallelLimit;
+    try @import("core").audio_decode.available();
     const own = try a.create(Owned);
     errdefer a.destroy(own);
     own.a = a;
@@ -68,6 +76,7 @@ pub fn explain(_: ?*anyopaque, e: anyerror) ?[]const u8 {
         error.CapturedKernels => "Qwen3-ASR uses native CUDA kernels; unset TENSORFOLD_CUDA_KERNELS",
         error.BadContext => "Qwen3-ASR context must be between 1 and 65536 tokens",
         error.UnsupportedCheckpointSchema => "this Qwen3-ASR slice loads the original checkpoint with thinker_config",
+        error.AudioLibraryUnavailable => "Qwen3-ASR requires libtfaudio.so; run zig build audio with FFmpeg development libraries",
         error.UnsupportedQwen3AsrGeometry => "this Qwen3-ASR CUDA slice qualifies the original BF16 1.7B geometry only",
         else => null,
     };

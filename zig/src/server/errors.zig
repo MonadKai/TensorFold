@@ -13,6 +13,7 @@ pub const Kind = enum {
     other,
     /// An exception while the reply runs: 500 with ``{"message"}``, or a stream's server_error event.
     server,
+    not_found,
 };
 
 pub const context_limit = "This server's maximum context length is"; // OpenAI's wording, which clients match to compact
@@ -49,6 +50,7 @@ pub const Cx = struct {
         return switch (cx.kind) {
             .capacity => 503,
             .server => 500,
+            .not_found => 404,
             else => 400,
         };
     }
