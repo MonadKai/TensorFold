@@ -34,4 +34,20 @@ the failing receipt beside the passing result; do not replace the complete backe
 
 ## Round 2
 
-Pending the independent review of the corrected candidate and its qualification evidence.
+Candidate: `d73e08a1d`. Independent reviewers identified one Standards finding and two Spec findings.
+
+### Standards
+
+The original-assets tokenizer fallback dropped 96 valid merge rules beginning with `#`. A regression through
+the actual loader/encoder reproduced `##` splitting into two tokens. Preserve all merge rules and skip only
+the first-line version metadata. Retain the failing and passing test outputs and a real hash-context API case.
+
+### Spec
+
+Unify chat/transcription parameter validation with vLLM's actual limits: temperature `[0,2]`, `top_p` `(0,1]`,
+`min_p` `[0,1]`, `top_k >= -1`, signed 64-bit seeds and positive output lengths. Reject malformed values before
+inference rather than silently clamping them. When both output-length fields are supplied, ASR chat must
+prefer `max_completion_tokens`, as vLLM does. Preserve other model families' existing compatibility behavior.
+
+The corrected patch and final API differentials are checked again by the same independent reviewers before
+closing these findings; their original findings remain recorded above.

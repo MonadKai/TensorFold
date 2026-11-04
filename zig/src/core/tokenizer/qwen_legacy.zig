@@ -17,9 +17,12 @@ pub fn read(io: std.Io, a: std.mem.Allocator, dir: []const u8) ![]u8 {
     var root = try std.json.parseFromSliceLeaky(std.json.Value, tmp, raw, .{});
     var list: std.array_list.Managed(std.json.Value) = .init(tmp);
     var lines = std.mem.splitScalar(u8, merges, '\n');
+    var first = true;
     while (lines.next()) |line| {
         const clean = std.mem.trim(u8, line, "\r");
-        if (clean.len == 0 or clean[0] == '#') continue;
+        const header = first and std.mem.startsWith(u8, clean, "#version:");
+        first = false;
+        if (clean.len == 0 or header) continue;
         try list.append(.{ .string = clean });
     }
     root.object.getPtr("model").?.object.getPtr("merges").?.* = .{ .array = list };

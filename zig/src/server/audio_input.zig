@@ -13,6 +13,7 @@ const language_names = [_][]const u8{ "Chinese", "English", "Cantonese", "Arabic
 pub fn validate(srv: *Server, cx: *Cx, body: json.Value, streamed: bool, tools: usize) errors.Refused!void {
     const model = body.strField("model") orelse return cx.refuse("model is required");
     try checkModel(cx, model, srv.config.served_name);
+    try sampling(cx, body);
     if (streamed) return cx.refuse("Qwen3-ASR currently supports stream=false only");
     if (tools != 0) return cx.refuse("Qwen3-ASR does not support tools");
     if (body.get("n")) |n| if (n != .null and (n != .int or n.int64() != 1)) return cx.refuse("Qwen3-ASR supports n=1 only");
@@ -20,8 +21,40 @@ pub fn validate(srv: *Server, cx: *Cx, body: json.Value, streamed: bool, tools: 
         if (body.get(key)) |v| if (v != .null) return cx.fail(.request, "unsupported Qwen3-ASR parameter: {s}", .{key});
 }
 
+pub fn sampling(cx: *Cx, body: json.Value) errors.Refused!void {
+    for ([_][]const u8{ "temperature", "top_p", "min_p" }) |key| if (body.get(key)) |value| {
+        if (value == .null) continue;
+        const n = switch (value) {
+            .float => value.float,
+            .int => std.fmt.parseFloat(f64, value.int) catch return cx.refuse("invalid sampling number"),
+            else => return cx.refuse("sampling parameters must be numeric"),
+        };
+        const upper: f64 = if (std.mem.eql(u8, key, "temperature")) 2 else 1;
+        if (!std.math.isFinite(n) or n < 0 or n > upper or (std.mem.eql(u8, key, "top_p") and n == 0))
+            return cx.fail(.request, "invalid {s}: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]", .{key});
+    };
+    for ([_][]const u8{ "top_k", "seed", "max_tokens", "max_completion_tokens" }) |key| if (body.get(key)) |value| {
+        if (value == .null) continue;
+        const n = value.int64() orelse return cx.fail(.request, "{s} must be a signed 64-bit integer", .{key});
+        if ((std.mem.eql(u8, key, "top_k") and n < -1) or (std.mem.startsWith(u8, key, "max_") and n < 1))
+            return cx.fail(.request, "invalid {s}: top_k must be at least -1 and token limits positive", .{key});
+    };
+}
+
 pub fn checkModel(cx: *Cx, model: []const u8, served: []const u8) errors.Refused!void {
     if (!std.mem.eql(u8, model, served)) return cx.fail(.not_found, "The model `{s}` does not exist.", .{model});
+}
+
+test "ASR sampling follows vLLM ranges and refuses silent integer normalization" {
+    var arena = std.heap.ArenaAllocator.init(std.testing.allocator);
+    defer arena.deinit();
+    var cx: Cx = .{ .a = arena.allocator() };
+    for ([_][]const u8{ "{\"temperature\":-1}", "{\"temperature\":3}", "{\"top_p\":0}", "{\"top_p\":1.5}", "{\"top_k\":-2}", "{\"seed\":9223372036854775808}", "{\"max_tokens\":0}" }) |source| {
+        const value = (try json.parse(cx.a, source)).ok;
+        try std.testing.expectError(error.Refused, sampling(&cx, value));
+    }
+    for ([_][]const u8{ "{\"temperature\":1.5}", "{\"top_k\":-1}", "{\"top_k\":0}", "{\"seed\":-9223372036854775808}" }) |source|
+        try sampling(&cx, (try json.parse(cx.a, source)).ok);
 }
 
 pub fn language(cx: *Cx, code: []const u8) errors.Refused![]const u8 {

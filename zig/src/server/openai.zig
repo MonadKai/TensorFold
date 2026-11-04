@@ -142,8 +142,8 @@ fn plan(srv: *Server, cx: *Cx, is_chat: bool, raw: Value) errors.Refused!Plan {
     };
     if (!is_chat and input.messages.array.len == 0) input.prompt = try legacyPrompt(srv, cx, body.get("prompt"));
     // ``body.get("max_tokens") or body.get("max_completion_tokens")``: both are ints or None by now
-    const first = body.get("max_tokens");
-    const max = if (first != null and first.?.truthy()) first else body.get("max_completion_tokens");
+    const first = body.get(if (srv.info.audio != null) "max_completion_tokens" else "max_tokens");
+    const max = if (first != null and first.?.truthy()) first else body.get(if (srv.info.audio != null) "max_tokens" else "max_completion_tokens");
     input.max_tokens = if (max) |m| switch (m) {
         .int => |t| m.int64() orelse (if (t[0] == '-') @as(i64, -1) else std.math.maxInt(i32)),
         .null => null,

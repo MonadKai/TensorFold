@@ -80,10 +80,23 @@ def main():
     chat("chat-base")
     chat("chat-data-uri", audio={"type": "audio_url", "audio_url": {"url": "data:audio/wav;base64," + encoded}})
     chat("chat-system", system="Music interviews.")
+    chat("chat-hash-context", system="## Music\n#include <music>\n#### Interviews.")
     chat("chat-stream-unsupported", {"stream": True})
     chat("chat-n-unsupported", {"n": 2})
     chat("chat-penalty-unsupported", {"presence_penalty": 1})
     chat("chat-invalid-base64", audio={"type": "input_audio", "input_audio": {"data": "not_base64", "format": "wav"}})
+    limits = [
+        ("temperature-negative", {"temperature": -1}), ("temperature-1.5", {"temperature": 1.5}),
+        ("temperature-3", {"temperature": 3}), ("top-p-zero", {"top_p": 0}),
+        ("top-p-1.5", {"top_p": 1.5}), ("top-k-negative", {"top_k": -2}),
+        ("seed-overflow", {"seed": 9223372036854775808}), ("max-zero", {"max_tokens": 0}),
+        ("max-negative", {"max_tokens": -1}),
+    ]
+    for name, extra in limits:
+        chat("chat-" + name, {"max_tokens": 8, "seed": 1234, **extra})
+        if not name.startswith("max-"):
+            stt("stt-" + name, {"max_completion_tokens": "8", "seed": "1234", **{k: str(v) for k, v in extra.items()}})
+    chat("chat-length-priority", {"max_tokens": 2, "max_completion_tokens": 8})
     args.output.write_text(json.dumps({"model": args.model, "results": results}, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps({"cases": len(results), "statuses": {r["case"]: r["status"] for r in results}}))
 

@@ -52,7 +52,7 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     try fields.put(a, "temperature", .{ .float = 0 });
     for ([_][]const u8{ "temperature", "top_p", "min_p" }) |key| if (form.fields.get(key)) |v| {
         const value = std.fmt.parseFloat(f64, v) catch return cx.refuse("invalid floating-point transcription parameter");
-        if (!std.math.isFinite(value) or value < 0 or value > 1) return cx.refuse("transcription probabilities must be between 0 and 1");
+        if (!std.math.isFinite(value)) return cx.refuse("transcription sampling parameters must be finite");
         try fields.put(a, key, .{ .float = value });
         if (std.mem.eql(u8, key, "temperature")) temperature = value;
     };
@@ -62,6 +62,7 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     };
     const max_tokens = if (form.fields.get("max_completion_tokens")) |v| std.fmt.parseInt(i64, v, 10) catch return cx.refuse("invalid max_completion_tokens") else 1024;
     if (max_tokens < 1) return cx.refuse("max_completion_tokens must be positive");
+    try audio.sampling(cx, .{ .object = fields });
     const no_space = if (form.fields.get("language")) |code| std.ascii.eqlIgnoreCase(code, "zh") or std.ascii.eqlIgnoreCase(code, "ja") else false;
     var text: std.ArrayList(u8) = .empty;
     var start: usize = 0;
