@@ -217,7 +217,8 @@ pub const Window = struct {
         const last = self.at(self.shape.rows - 1).p;
         const lo = self.first(last);
         const hi = self.at(0).p;
-        const col = try a.alloc(f32, hi + 1 - lo);
+        // Keep every partial integer sum below 2^24, even for ASR's 8192-key cache; remaining values stay zero.
+        const col = try a.alloc(f32, @min(hi + 1 - lo, 512));
         defer a.free(col);
         for (0..f.hk) |kh| for (0..f.d) |e| {
             attn.mirrored(rng, col);
