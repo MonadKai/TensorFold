@@ -53,3 +53,9 @@ The same independent reviewers rechecked `586d32814` and `65db63e3a`. A follow-u
 normalization hiding negative `top_k` before validation; ASR now preserves it through parsing and validates
 the actual route path. Standards and Spec each report zero unresolved findings after these fixes. Their
 original findings remain recorded above; final GPU/API results are reported separately.
+
+Expanded original-checkpoint tokenizer parity additionally exposed an omitted NFC normalizer. The minimal
+loader/encoder regression first failed on decomposed `e + acute`; after restoring Qwen2 NFC, all 1,588 encode
+and 4,087 decode cases from the existing parity corpus agree with the original Qwen2TokenizerFast. This
+comparison includes valid/invalid UTF-8, multilingual scripts, combining marks, emoji, all special tokens,
+hash-prefixed merges and random decode IDs. The original model assets remain unchanged.

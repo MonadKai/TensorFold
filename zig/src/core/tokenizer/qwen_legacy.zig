@@ -11,7 +11,7 @@ pub fn read(io: std.Io, a: std.mem.Allocator, dir: []const u8) ![]u8 {
     if (cls != .string or !std.mem.eql(u8, cls.string, "Qwen2Tokenizer")) return error.UnsupportedTokenizer;
     const vocab = try file(io, tmp, dir, "vocab.json");
     const merges = try file(io, tmp, dir, "merges.txt");
-    const raw = try std.fmt.allocPrint(tmp, "{{\"model\":{{\"type\":\"BPE\",\"vocab\":{s},\"merges\":[]}},\"added_tokens\":[]," ++
+    const raw = try std.fmt.allocPrint(tmp, "{{\"normalizer\":{{\"type\":\"NFC\"}},\"model\":{{\"type\":\"BPE\",\"vocab\":{s},\"merges\":[]}},\"added_tokens\":[]," ++
         "\"pre_tokenizer\":{{\"type\":\"Sequence\",\"pretokenizers\":[{{\"type\":\"Split\",\"pattern\":{{\"Regex\":\"(?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\r\\n\\\\p{{L}}\\\\p{{N}}]?\\\\p{{L}}+|\\\\p{{N}}| ?[^\\\\s\\\\p{{L}}\\\\p{{N}}]+[\\r\\n]*|\\\\s*[\\r\\n]+|\\\\s+(?!\\\\S)|\\\\s+\"}},\"behavior\":\"Isolated\",\"invert\":false}},{{\"type\":\"ByteLevel\",\"add_prefix_space\":false,\"trim_offsets\":false,\"use_regex\":false}}]}}," ++
         "\"decoder\":{{\"type\":\"ByteLevel\",\"add_prefix_space\":false,\"trim_offsets\":false,\"use_regex\":false}}}}", .{vocab});
     var root = try std.json.parseFromSliceLeaky(std.json.Value, tmp, raw, .{});

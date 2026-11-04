@@ -21,7 +21,8 @@ The upstream proposal `ashhart/TensorFold#2105` still requires its maintainer-ag
 
 The family loads the unchanged original `thinker_config` and BF16 safetensors. The loader checks every tensor's
 shape and type, the 1.7B geometry, vocabulary, special tokens, context and complete tensor consumption. A
-Qwen2 tokenizer fallback reads the original vocabulary, merges and added tokens when `tokenizer.json` is absent.
+Qwen2 tokenizer fallback reads the original vocabulary, merges and added tokens with Qwen2's NFC normalization
+when `tokenizer.json` is absent.
 
 ```mermaid
 flowchart LR
