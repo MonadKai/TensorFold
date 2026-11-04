@@ -49,5 +49,7 @@ Unify chat/transcription parameter validation with vLLM's actual limits: tempera
 inference rather than silently clamping them. When both output-length fields are supplied, ASR chat must
 prefer `max_completion_tokens`, as vLLM does. Preserve other model families' existing compatibility behavior.
 
-The corrected patch and final API differentials are checked again by the same independent reviewers before
-closing these findings; their original findings remain recorded above.
+The same independent reviewers rechecked `586d32814` and `65db63e3a`. A follow-up caught shared numeric
+normalization hiding negative `top_k` before validation; ASR now preserves it through parsing and validates
+the actual route path. Standards and Spec each report zero unresolved findings after these fixes. Their
+original findings remain recorded above; final GPU/API results are reported separately.
