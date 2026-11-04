@@ -58,6 +58,10 @@ def main():
 
     with urllib.request.urlopen(args.base_url.rstrip("/") + "/v1/models") as response:
         results.append({"case": "models", "status": response.status, "response": json.load(response)})
+    for name, prompt in (("tokenize-hash", "## Music\n#include <stdio.h>\n#### Interviews."),
+                         ("tokenize-unicode", "中文 日本語 😀 e\u0301 123456789")):
+        body = json.dumps({"model": args.model, "prompt": prompt, "add_special_tokens": False}).encode()
+        results.append({"case": name, **request(args.base_url, "/tokenize", body, "application/json")})
     stt("stt-default")
     stt("stt-explicit-greedy", {"temperature": "0"})
     stt("stt-language-en", {"temperature": "0", "language": "en"})
@@ -81,6 +85,10 @@ def main():
     chat("chat-data-uri", audio={"type": "audio_url", "audio_url": {"url": "data:audio/wav;base64," + encoded}})
     chat("chat-system", system="Music interviews.")
     chat("chat-hash-context", system="## Music\n#include <music>\n#### Interviews.")
+    chat("chat-history-unsupported", {"messages": [
+        {"role": "user", "content": "Previous turn"},
+        {"role": "user", "content": [{"type": "input_audio", "input_audio": {"data": encoded, "format": "wav"}}]},
+    ]})
     chat("chat-stream-unsupported", {"stream": True})
     chat("chat-n-unsupported", {"n": 2})
     chat("chat-penalty-unsupported", {"presence_penalty": 1})

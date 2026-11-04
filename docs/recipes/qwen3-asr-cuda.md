@@ -69,6 +69,7 @@ use 8,192 tokens; admission includes weights, shared scratch, each stream's KV a
 | `POST /v1/chat/completions` | One `input_audio` Base64 or `audio_url` data/public-HTTPS part, optional system context, raw Qwen ASR text, normal chat usage. |
 | `POST /v1/audio/transcriptions` | Multipart `file`, optional `model`, ISO language code, context `prompt`, `json`/`text`, duration usage. |
 
+Chat accepts one user turn and an optional preceding system context; multi-turn histories fail explicitly.
 Both generation endpoints support non-streaming greedy or seeded sampling with `temperature`, `top_p`,
 `top_k`, `min_p`, `seed` and `max_completion_tokens`. Chat also accepts `max_tokens`. Unknown model names
 return 404. Unsupported streaming, tools, multiple choices, penalties and timestamps fail explicitly.

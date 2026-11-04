@@ -129,11 +129,20 @@ pub fn render(srv: *Server, cx: *Cx, messages: json.Value) errors.Refused!Render
     if (messages != .array or messages.array.len == 0) return cx.refuse("messages must be a non-empty list");
     var audio: ?[]const u8 = null;
     var context: std.ArrayList(u8) = .empty;
+    var user_seen = false;
+    var system_seen = false;
     for (messages.array) |message| {
         const role = message.strField("role") orelse return cx.refuse("message requires a role");
         const content = message.get("content") orelse return cx.refuse("message requires content");
         const system = std.mem.eql(u8, role, "system");
         if (!system and !std.mem.eql(u8, role, "user")) return cx.refuse("Qwen3-ASR accepts system and user messages");
+        if (system) {
+            if (system_seen or user_seen) return cx.refuse("Qwen3-ASR accepts one optional system context before its user turn");
+            system_seen = true;
+        } else {
+            if (user_seen) return cx.refuse("Qwen3-ASR accepts one user turn");
+            user_seen = true;
+        }
         if (content == .string) {
             if (system) try context.appendSlice(cx.a, content.string);
             continue;
