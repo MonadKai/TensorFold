@@ -1,0 +1,1 @@
+FAIL sums cuda window prompt wattn_kernel<128, 8, 2, 8>, Qwen3-ASR 16/8 heads: fp32 sums of its stress inputs leave the bound (sequential order)

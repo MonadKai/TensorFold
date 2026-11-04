@@ -21,8 +21,26 @@ This downstream fork's [recipe](../../recipes/qwen3-asr-cuda.md) defines the sup
 - [Two review rounds](reviews.md): independent Standards and Spec reviews, fixes and follow-up checks;
   zero unresolved findings in either axis after repair.
 
-The focused kernel receipt does not replace the complete CUDA backend gates and launch-limit checks.
-Final API, lifecycle and complete-backend outcomes are bound separately in the qualification summary.
+The [qualification summary](qualification.json) binds the native binary, production-code identity and outcomes.
+[API comparison](api-comparison.json) covers 50 cases: 45 equal statuses and five documented scope differences.
+The English/Chinese short fixtures match vLLM text and all 60 generated token IDs, including EOS.
+[Concurrency and recovery](concurrency.json) cover 68 successful requests across greedy/mixed four-stream,
+seeded sampling and eight-stream runs. Every concurrent chat token sequence equals its solo baseline;
+transcription text, active/queued cancellation recovery and unaffected sibling requests also agree.
+OpenAI SDK 3.10.0 exercises both generation routes, unknown-model errors and explicit streaming refusal.
+
+The complete CUDA backend command was run and **exited 1**: 558/559 kernels passed, all 361 planted controls
+turned red, with six known findings and 190 resource-record problems. The one new failure was in the GQA=2
+stress fixture's FP32 simulation, before GPU execution: long integer partial sums exceeded 2^24. Retain its
+[failure](window-sums-before.txt) and [repair](window-sums-after.txt). Limiting nonzero stress terms keeps every
+partial sum exact without relaxing bounds or changing production kernels; FP16 overflows and BF16 still
+misses by 204,644 times. [All 11 affected ASR/window registrations](kernels-window-final.txt) then pass gates
+1–4, including both planted ASR controls. This is a targeted repair validation, not a passing full-suite rerun.
+
+The [190 remaining limit findings](backend-limit-findings.json) are 168 missing static records and 22 live
+record mismatches in unchanged existing CUDA/contract sources. This source comparison identifies ownership;
+the baseline GPU runner was not rerun. All three new audio operators and the GQA=2 specialization pass live
+GB10 resource checks and have compile records for SM 80/86/89/120/121. The complete backend remains non-green.
 
 ## Long-audio comparison
 
@@ -32,24 +50,30 @@ Both engines split at the same low-energy boundaries. The original clips are pub
 
 | Audio | Native seconds | vLLM seconds | Exact text | Word edits against vLLM |
 | --- | ---: | ---: | --- | ---: |
-| 65 s | 4.743 | 1.902 | No | 2 / 145 |
-| 140 s | 10.066 | 3.223 | Yes | 0 / 318 |
-| 600 s | 41.984 | 9.564 | No | 8 / 1340 |
+| 65 s | 4.721 | 1.839 | No | 2 / 145 |
+| 140 s | 9.929 | 3.193 | Yes | 0 / 318 |
+| 600 s | 41.558 | 9.429 | No | 6 / 1345 |
 
 These are development measurements at the stated settings, not an alternating performance study or a speed
-qualification against vLLM. [Full comparison](long-comparison.json) preserves status, latency and differences.
+qualification against vLLM. The 600-second real-time factors are 0.0693 native and 0.0157 vLLM.
+[Full comparison](long-comparison.json) preserves status, latency and differences.
 The word comparison lowercases text and ignores punctuation; vLLM is a comparison engine, not human ground
 truth. Differences include filled pauses and punctuation. All three requests completed without NaNs.
 Do not interpret this small fixture as a multilingual ASR accuracy benchmark.
 
 ## Remaining limits
 
-Only the named checkpoint and GB10 workload are qualified here. Compile-limit records for other CUDA SMs
+The named checkpoint and GB10 workload passed the model/API checks above; the backend-wide resource gate
+remains unresolved. Compile-limit records for other CUDA SMs
 are compile evidence, not device/model runs. Production uses native CUDA neural operators, native FFT/Log-Mel
 and a native FFmpeg decoder; Python/PyTorch/vLLM belong to the reference harness.
 
 This first implementation interleaves streams through the existing LaneHost with single-row decoder calls;
 it does not batch their GEMMs. It is slower than the vLLM baseline on these workloads. There is no streaming,
 realtime, timestamps, diarization, forced alignment, translation endpoint, quantization, MTP, tensor parallel,
-prefix reuse or CUDA graph support. Optional decoder packaging is documented in the recipe; no existing
+prefix reuse or CUDA graph support. Automatic context selection was checked at 65,536 with a short request,
+not a full-length context. The direct 600-second chat probe admitted 7,815 prompt tokens with a 64-token
+output cap; full long transcription is tested separately through the chunked endpoint. The four-stream
+process peaked at 4,752,368 KiB RSS; device allocation peak was not sampled. Optional decoder packaging is documented
+in the recipe; no existing
 release archive or upstream landing gate is claimed to include this fork's feature.

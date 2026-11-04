@@ -1,0 +1,504 @@
+{
+  "runs": [
+    {
+      "fixture_set": "native-short-final.json",
+      "solo_requests": 4,
+      "concurrent_requests": 16,
+      "all_http_200": true,
+      "comparisons": [
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "transcription",
+          "index": 0,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 0,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "transcription",
+          "index": 1,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 1,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "transcription",
+          "index": 2,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 2,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "transcription",
+          "index": 3,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 3,
+          "text_equal_to_solo": true
+        }
+      ]
+    },
+    {
+      "fixture_set": "native-mixed-final.json",
+      "solo_requests": 4,
+      "concurrent_requests": 16,
+      "all_http_200": true,
+      "comparisons": [
+        {
+          "fixture": "en_65s.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "47bb2e6dfabc14d4c20200862cd58d3b8b2403980dc36d4d6579e9ef6c1ebeae"
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "transcription",
+          "index": 0,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 0,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "47bb2e6dfabc14d4c20200862cd58d3b8b2403980dc36d4d6579e9ef6c1ebeae"
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "transcription",
+          "index": 1,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 1,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "47bb2e6dfabc14d4c20200862cd58d3b8b2403980dc36d4d6579e9ef6c1ebeae"
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "transcription",
+          "index": 2,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 2,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "47bb2e6dfabc14d4c20200862cd58d3b8b2403980dc36d4d6579e9ef6c1ebeae"
+        },
+        {
+          "fixture": "en_65s.wav",
+          "mode": "transcription",
+          "index": 3,
+          "text_equal_to_solo": true
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "transcription",
+          "index": 3,
+          "text_equal_to_solo": true
+        }
+      ]
+    },
+    {
+      "fixture_set": "native-sampled-final.json",
+      "solo_requests": 2,
+      "concurrent_requests": 8,
+      "all_http_200": true,
+      "comparisons": [
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        }
+      ]
+    },
+    {
+      "fixture_set": "native-parallel8.json",
+      "solo_requests": 2,
+      "concurrent_requests": 16,
+      "all_http_200": true,
+      "comparisons": [
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 0,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 1,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 2,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 3,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 4,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 4,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 5,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 5,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 6,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 6,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        },
+        {
+          "fixture": "asr_en_16k.wav",
+          "mode": "chat",
+          "index": 7,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+        },
+        {
+          "fixture": "asr_zh_16k.wav",
+          "mode": "chat",
+          "index": 7,
+          "text_equal_to_solo": true,
+          "token_ids_equal_to_solo": true,
+          "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+        }
+      ]
+    }
+  ],
+  "cross_engine_short": [
+    {
+      "fixture": "asr_en_16k.wav",
+      "mode": "chat",
+      "native_seconds": 1.1650701659964398,
+      "vllm_seconds": 1.0957084170076996,
+      "text_equal": true,
+      "token_ids_equal": true,
+      "tokens": 49,
+      "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417"
+    },
+    {
+      "fixture": "asr_en_16k.wav",
+      "mode": "transcription",
+      "native_seconds": 1.1629756409674883,
+      "vllm_seconds": 1.1109789130277932,
+      "text_equal": true
+    },
+    {
+      "fixture": "asr_zh_16k.wav",
+      "mode": "chat",
+      "native_seconds": 0.26890762406401336,
+      "vllm_seconds": 0.29645839100703597,
+      "text_equal": true,
+      "token_ids_equal": true,
+      "tokens": 11,
+      "token_sha256": "7da9808b3293eef1c1338924ba7253103c8806070dbf5cbe0bf3d04337960824"
+    },
+    {
+      "fixture": "asr_zh_16k.wav",
+      "mode": "transcription",
+      "native_seconds": 0.27932068903464824,
+      "vllm_seconds": 0.2667986829765141,
+      "text_equal": true
+    }
+  ],
+  "cancellation": {
+    "active_abort_recovery_ids_equal": true,
+    "queued_abort_recovery_ids_equal": true,
+    "siblings_ids_equal": true
+  },
+  "context_auto": {
+    "reported_limit": 65536,
+    "short_chat_status": 200,
+    "full_length_context_tested": false
+  },
+  "openai_sdk": {
+    "version": "3.10.0",
+    "transcription_and_chat": 200,
+    "unknown_model": 404,
+    "stream": 400
+  }
+}

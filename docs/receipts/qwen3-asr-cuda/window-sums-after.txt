@@ -1,0 +1,1 @@
+PASS sums cuda window prompt wattn_kernel<128, 8, 2, 8>, Qwen3-ASR 16/8 heads: exact sums at k 7936, where fp16 sums would miss by infx and bf16 by 204644x

@@ -59,3 +59,16 @@ loader/encoder regression first failed on decomposed `e + acute`; after restorin
 and 4,087 decode cases from the existing parity corpus agree with the original Qwen2TokenizerFast. This
 comparison includes valid/invalid UTF-8, multilingual scripts, combining marks, emoji, all special tokens,
 hash-prefixed merges and random decode IDs. The original model assets remain unchanged.
+
+## Final contract follow-up
+
+The complete CUDA runner found one new GQA=2 stress-fixture failure and 190 existing resource-record
+problems. The integer stress generator could exceed FP32's exact partial-sum range on the long ASR cache.
+Commit `6ff406825` caps nonzero terms at 512, retaining all served keys, bounds and low-precision rejection
+thresholds. The focused runner now includes all six shared window configurations as well as the five ASR
+registrations. The repaired single gate and all 11 registrations pass; both ASR controls remain red.
+
+Fresh independent follow-up reviewers report Standards: zero hard violations or smells; Spec: zero missing,
+out-of-scope or incorrect requirements. They checked the integer bound, deferred ownership and strict
+diagnostic CLI. The 190 unchanged resource-record problems remain explicit in the qualification receipt;
+neither review calls the full backend runner green.

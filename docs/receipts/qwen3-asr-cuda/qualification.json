@@ -1,0 +1,62 @@
+{
+  "scope": "Original BF16 Qwen3-ASR-1.7B, Linux AArch64, GB10 sm_121; downstream development validation",
+  "production_code_commit": "31724e9a6",
+  "native_run_checkout": "a45e8f605a7ad50df008b26fc39225ae169a1c43",
+  "test_fix_commit": "6ff406825",
+  "native_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+  "host_tests": {
+    "command": "zig build test test-kernel-contract test-golden fuzz-cortheon --summary all",
+    "exit_code": 0,
+    "steps": 521,
+    "passed": 2048,
+    "skipped": 8,
+    "total": 2056,
+    "note": "Cached targets are retained in the build receipt; the count is executed tests, not an invented sum of all cached cases."
+  },
+  "full_cuda_backend": {
+    "command": "zig build kernel-contract -Dnvcc=/usr/local/cuda/bin/nvcc -Dsm=121 -j4",
+    "exit_code": 1,
+    "registered_kernels": 559,
+    "passed_before_fixture_fix": 558,
+    "gate_failures_before_fixture_fix": 1,
+    "known_findings": 6,
+    "controls_red": 361,
+    "controls_missed": 0,
+    "resource_problems": 190,
+    "resolution": "The new GQA=2 stress fixture exceeded the exact-fp32 integer-sum envelope. Bounded nonzero terms fix the fixture without relaxing precision bounds or changing GPU code. All 11 ASR/shared-window fixtures pass gates 1-4 after repair.",
+    "remaining": "168 missing static records and 22 live record mismatches are in unchanged pre-existing CUDA/contract sources. Baseline GPU runner was not rerun. The complete backend command remains non-green; do not infer a passing global rerun from focused results."
+  },
+  "focused_after_repair": {
+    "passed": 11,
+    "failed": 0,
+    "controls_red": 2,
+    "controls_missed": 0
+  },
+  "new_launch_limits": {
+    "static_compile_targets": [
+      80,
+      86,
+      89,
+      120,
+      121
+    ],
+    "live_sm": 121,
+    "new_audio_operators_passed": 3,
+    "new_GQA_prompt_specialization_passed": true,
+    "other_device_model_inference_tested": false
+  },
+  "api": "api-comparison.json",
+  "concurrency": "concurrency.json",
+  "long_audio": "long-comparison.json",
+  "memory": {
+    "native_parallel": 4,
+    "context": 8192,
+    "peak_process_rss_kib": 4752368,
+    "startup_admission_estimate_gib": {
+      "model_and_shared": 8.4,
+      "per_stream": 0.9
+    },
+    "note": "RSS and admission estimates are distinct; a device allocation peak was not sampled."
+  },
+  "accuracy_limit": "No human-labelled corpus or all-language ASR accuracy qualification."
+}

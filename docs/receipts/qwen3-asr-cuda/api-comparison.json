@@ -1,0 +1,421 @@
+{
+  "reference": "vLLM 0.29.0",
+  "cases": [
+    {
+      "case": "models",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": null,
+      "vllm_content_type": null
+    },
+    {
+      "case": "tokenize-hash",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "tokens_equal": true,
+      "tokens": [
+        565,
+        10717,
+        198,
+        1067,
+        366,
+        10345,
+        860,
+        397,
+        820,
+        88072,
+        13
+      ]
+    },
+    {
+      "case": "tokenize-unicode",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "tokens_equal": true,
+      "tokens": [
+        104811,
+        75402,
+        21894,
+        102819,
+        90316,
+        3958,
+        220,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "case": "stt-default",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-explicit-greedy",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-language-en",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-language-tl",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-context",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-text",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-invalid-language",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-stream-unsupported",
+      "native_status": 400,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "text/event-stream; charset=utf-8",
+      "scope_difference": "Streaming is outside the first release."
+    },
+    {
+      "case": "stt-timestamps-unsupported",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-unknown-model",
+      "native_status": 404,
+      "vllm_status": 404,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "error_objects_equal": true
+    },
+    {
+      "case": "stt-missing-file",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-invalid-audio",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-invalid-temperature",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-samples-0",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-samples-200",
+      "native_status": 400,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "scope_difference": "The native decoder requires more than 200 samples for reflected STFT."
+    },
+    {
+      "case": "stt-samples-201",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-samples-319",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-samples-320",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-codec-asr_en.flac",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-codec-asr_en.mp3",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "stt-codec-asr_en_48k_stereo.wav",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-base",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-data-uri",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-system",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-hash-context",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-history-unsupported",
+      "native_status": 400,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "scope_difference": "The native ASR request accepts one user turn and an optional preceding system context."
+    },
+    {
+      "case": "chat-stream-unsupported",
+      "native_status": 400,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "text/event-stream; charset=utf-8",
+      "scope_difference": "Streaming is outside the first release."
+    },
+    {
+      "case": "chat-n-unsupported",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-penalty-unsupported",
+      "native_status": 400,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "scope_difference": "Nonzero penalties are explicitly refused."
+    },
+    {
+      "case": "chat-invalid-base64",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-temperature-negative",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-temperature-negative",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-temperature-1.5",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": false
+    },
+    {
+      "case": "stt-temperature-1.5",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    },
+    {
+      "case": "chat-temperature-3",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-temperature-3",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-top-p-zero",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-top-p-zero",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-top-p-1.5",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-top-p-1.5",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-top-k-negative",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-top-k-negative",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-seed-overflow",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "stt-seed-overflow",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-max-zero",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-max-negative",
+      "native_status": 400,
+      "vllm_status": 400,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json"
+    },
+    {
+      "case": "chat-length-priority",
+      "native_status": 200,
+      "vllm_status": 200,
+      "native_content_type": "application/json",
+      "vllm_content_type": "application/json",
+      "text_equal": true
+    }
+  ],
+  "summary": {
+    "cases": 50,
+    "same_status": 45,
+    "documented_scope_differences": 5,
+    "stt_default_equals_explicit_greedy_with_server_temperature_0_8": true,
+    "completion_length_precedence": 8
+  },
+  "note": "Shared supported behavior is compared. Response metadata and null optional fields are not byte-identical."
+}

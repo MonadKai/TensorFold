@@ -1,0 +1,682 @@
+{
+  "baseline": "532589e40a0765c1a0f497a058e548b1fc448f8b",
+  "scope": "source-derived ownership check; baseline GPU runner was not rerun",
+  "missing_records": [
+    "nvfp4_experts_tile tf_nvfp4_tile_swiglu on sm_80: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_swiglu on sm_86: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_swiglu on sm_89: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_swiglu on sm_120: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_swiglu on sm_121: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_down_f32 on sm_80: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_down_f32 on sm_86: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_down_f32 on sm_89: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_down_f32 on sm_120: no compiled usage recorded",
+    "nvfp4_experts_tile tf_nvfp4_tile_down_f32 on sm_121: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_legacy on sm_80: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_legacy on sm_86: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_legacy on sm_89: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_legacy on sm_120: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_legacy on sm_121: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_legacy on sm_80: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_legacy on sm_86: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_legacy on sm_89: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_legacy on sm_120: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_legacy on sm_121: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_paged on sm_80: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_paged on sm_86: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_paged on sm_89: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_paged on sm_120: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_paged on sm_121: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_paged on sm_80: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_paged on sm_86: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_paged on sm_89: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_paged on sm_120: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_paged on sm_121: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_contiguous on sm_80: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_contiguous on sm_86: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_contiguous on sm_89: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_contiguous on sm_120: no compiled usage recorded",
+    "qwen35 tf_q35_attn_partial_contiguous on sm_121: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_contiguous on sm_80: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_contiguous on sm_86: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_contiguous on sm_89: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_contiguous on sm_120: no compiled usage recorded",
+    "qwen35_kv8 tf_q35_attn_partial8_contiguous on sm_121: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection on sm_80: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection on sm_86: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection on sm_89: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection on sm_120: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_sums on sm_80: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_sums on sm_86: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_sums on sm_89: no compiled usage recorded",
+    "qwen4_projection tf_qwen4_projection_bad_sums on sm_120: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain on sm_80: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain on sm_86: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain on sm_89: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_activation_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_hc_pointwise_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_hc qwen4_dense_act_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_sums on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_sums on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_sums on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_gate_bad_sums on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_sums on sm_80: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_sums on sm_86: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_sums on sm_89: no compiled usage recorded",
+    "qwen4_ple qwen4_ple_conv_bad_sums on sm_120: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_nan on sm_80: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_nan on sm_86: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_nan on sm_89: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_nan on sm_120: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_repeat on sm_80: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_repeat on sm_86: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_repeat on sm_89: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_repeat on sm_120: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_tail on sm_80: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_tail on sm_86: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_tail on sm_89: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_tail on sm_120: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_sums on sm_80: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_sums on sm_86: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_sums on sm_89: no compiled usage recorded",
+    "qwen4_gdn qwen4_gdn_chain_bad_sums on sm_120: no compiled usage recorded"
+  ],
+  "live_mismatches": [
+    "FAIL limits live nvfp4_experts_tile tf_nvfp4_tile_swiglu: 128 threads launched, the driver allows 128; 255 registers, 0 + 34816 shared bytes (recorded 0, 0)",
+    "FAIL limits live nvfp4_experts_tile tf_nvfp4_tile_down_f32: 128 threads launched, the driver allows 128; 128 registers, 0 + 19200 shared bytes (recorded 0, 0)",
+    "FAIL limits live flashnext_batch fn_qsa_select: 1024 threads launched, the driver allows 1024; 64 registers, 1168 + 0 shared bytes (recorded 40, 1168)",
+    "FAIL limits live flashnext_batch fn_gdn_chain_tpr: 256 threads launched, the driver allows 256; 156 registers, 0 + 49664 shared bytes (recorded 154, 0)",
+    "FAIL limits live flashnext_batch fn_gdn_fused: 384 threads launched, the driver allows 384; 168 registers, 0 + 82496 shared bytes (recorded 166, 0)",
+    "FAIL limits live flashnext_batch fn_gdn_front_log: 256 threads launched, the driver allows 256; 34 registers, 1024 + 0 shared bytes (recorded 32, 1024)",
+    "FAIL limits live flashnext_hc fn_hc_writeback_norm_moe: 256 threads launched, the driver allows 256; 70 registers, 1296 + 0 shared bytes (recorded 62, 1296)",
+    "FAIL limits live qwen35 tf_q35_attn_partial_legacy: 1024 threads launched, the driver allows 1024; 56 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live qwen35_kv8 tf_q35_attn_partial8_legacy: 1024 threads launched, the driver allows 1024; 62 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live qwen35 tf_q35_attn_rows: 256 threads launched, the driver allows 256; 254 registers, 6912 + 65536 shared bytes (recorded 244, 6912)",
+    "FAIL limits live qwen35_kv8 tf_q35_attn_partial8: 128 threads launched, the driver allows 128; 205 registers, 44672 + 0 shared bytes (recorded 197, 44672)",
+    "FAIL limits live qwen35_kv8 tf_q35_attn_rows8: 256 threads launched, the driver allows 256; 247 registers, 39936 + 0 shared bytes (recorded 243, 39936)",
+    "FAIL limits live qwen35_keep tf_q35k_compact: 256 threads launched, the driver allows 256; 23 registers, 0 + 0 shared bytes (recorded 36, 0)",
+    "FAIL limits live qwen35_kv8 tf_q35k_compact8: 256 threads launched, the driver allows 256; 36 registers, 0 + 0 shared bytes (recorded 28, 0)",
+    "FAIL limits live qwen35 tf_q35_attn_partial_paged: 1024 threads launched, the driver allows 1024; 56 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live qwen35_kv8 tf_q35_attn_partial8_paged: 1024 threads launched, the driver allows 1024; 54 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live qwen35 tf_q35_attn_partial_contiguous: 1024 threads launched, the driver allows 1024; 40 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live qwen35_kv8 tf_q35_attn_partial8_contiguous: 1024 threads launched, the driver allows 1024; 34 registers, 0 + 0 shared bytes (recorded 0, 0)",
+    "FAIL limits live flashnext_attn fn_qsa_scores_lanes: 256 threads launched, the driver allows 256; 218 registers, 16384 + 0 shared bytes (recorded 220, 16384)",
+    "FAIL limits live flashnext_attn fn_attn_chunks_lanes: 128 threads launched, the driver allows 128; 71 registers, 768 + 77312 shared bytes (recorded 72, 768)",
+    "FAIL limits live flashnext_attn fn_attn_merge_lanes: 256 threads launched, the driver allows 256; 28 registers, 0 + 0 shared bytes (recorded 26, 0)",
+    "FAIL limits live flashnext_batch fn_qsa_select_lanes: 1024 threads launched, the driver allows 1024; 64 registers, 1168 + 0 shared bytes (recorded 44, 1168)"
+  ],
+  "unchanged_kernel_sources": [
+    {
+      "path": "zig/kernels/cuda/flashnext_attn.cu",
+      "sha256": "0fc6f93a4c37cd8d18cce429d70848e26236fbe00b3fecd9b4b1baad8dddf54e",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/flashnext_batch.cu",
+      "sha256": "e9a4128c7cbf2d49f5b599e4fa1a241660a964ecc2a28b3dbadfdba5bc836f93",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/flashnext_hc.cu",
+      "sha256": "4b6578c2dcb3a51bd1f8666582261bd87347ff2e57adef52a933ac6e8a9a1303",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/nvfp4_experts_tile.cu",
+      "sha256": "bce71c15fc95c7e58c86382b6cc9574c8628957775322a3287ef079c7a097ad1",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen35.cu",
+      "sha256": "9f39fae379e506dffe7047925a5d13b57041d623be9d36fac25efba5487b7f10",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen35_keep.cu",
+      "sha256": "403cf841b89ad61da0818bdad8976ed4b286b3282c8c22df7171921b7e06eb6d",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen35_kv8.cu",
+      "sha256": "d89b7ca18309bd371132df40b463a3377f6d3d68691f4733f0b5de9691928ae9",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen4_gdn.cu",
+      "sha256": "e2c6027380240cd43ff219c5bfe6f4ae87ceb7f784faefaac58e58c46d36b34d",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen4_hc.cu",
+      "sha256": "1b4c10ac26d5fe922dbb57c2391b6fb770baff45b49ca961b0230fe9f7ce5390",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen4_ple.cu",
+      "sha256": "c3bb4f8d858bf1bcf8dfa04a0d4e1ba2ed17b27bb1a31a84b6bccd2f028ddbc0",
+      "equal_to_base": true
+    },
+    {
+      "path": "zig/kernels/cuda/qwen4_projection.cu",
+      "sha256": "e70ebd20ceb29a6176888ec5493ab8e312811911c142a932dc81c28ebdd1e15b",
+      "equal_to_base": true
+    }
+  ],
+  "unchanged_contract_sources": [
+    {
+      "path": "zig/src/core/contract/affine.zig",
+      "sha256": "e2f407779c9fa5ce7f6545c1155f241be8e236779537f63a4cbea933d117b665"
+    },
+    {
+      "path": "zig/src/core/contract/affine_verify_records.zig",
+      "sha256": "f111f87b105c835d455b279299d3f7cb8302ea64446614aa11b80ac6372b0a86"
+    },
+    {
+      "path": "zig/src/core/contract/attention_pv.zig",
+      "sha256": "10dd151a075472a4d28c93d8df13b23c236a453f0aca42b41d0d72de885a9b7f"
+    },
+    {
+      "path": "zig/src/core/contract/attention_pv_records.zig",
+      "sha256": "5cee27d1cdb32c232637cea2c66bd878e16380d13fdd9bf818987af60ec1f4d3"
+    },
+    {
+      "path": "zig/src/core/contract/contract.zig",
+      "sha256": "02d1734fe1b36c668f9837ea777f14bf037873353c94797d2fbbd3a45910f947"
+    },
+    {
+      "path": "zig/src/core/contract/cubin.zig",
+      "sha256": "8f27aff3fe19c4e61dd5d755e6bb424495af0555420354a330318bfbd2fabcd2"
+    },
+    {
+      "path": "zig/src/core/contract/cuda_lane_pending.zig",
+      "sha256": "519a3fc77e95684ce0271918f1ed2c91519d4fc56cc38b3669a710c6ddc2c60d"
+    },
+    {
+      "path": "zig/src/core/contract/delta_slots_records.zig",
+      "sha256": "509e70c9c957181f75d613ff26a4c9fb72c0c29b93031533c665748d27d0d253"
+    },
+    {
+      "path": "zig/src/core/contract/delta_slots_ref.zig",
+      "sha256": "409d23283f63ccda8e5ec5aea76d577c88ad84ffc40203498184c94f16078398"
+    },
+    {
+      "path": "zig/src/core/contract/dense.zig",
+      "sha256": "30d01987c7a36b7b649e9ca25b53520e76609b19b24694bb20e3a297c2fe2969"
+    },
+    {
+      "path": "zig/src/core/contract/dory_cuda_records.zig",
+      "sha256": "ff6e8e8417cec5874e1c4a5b8f5562df61482036c208aae61e1490c995b2ccda"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_attn_records.zig",
+      "sha256": "1d1fa1c4f43adaf276633952b2b831f59f13fa397338ab4bd0c88b1c4d6253d9"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_experts_records.zig",
+      "sha256": "d95dd2fa42b4ade8ef2ca086a4955fe5fd33b77a1f3159ba2d0a82c3fa69e069"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_fp8_mma_records.zig",
+      "sha256": "559fdc6b3ded9689e0ce7393159255531809b9d3390e158d39586f5701399211"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_fp8_records.zig",
+      "sha256": "ce4893f22efa74382b53122152a1d9b484ae4561f0271df1090ef0793e65f92b"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_metal_records.zig",
+      "sha256": "f61ecb1b17910f3bdc4904be806d57d1c9cf6935d4641a9656f37b5b9c46a642"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_pending_1.zig",
+      "sha256": "67e483b8f399f26122a528442c90a5f6a350ed1ea5df7d1b960fc757a5d1f1cd"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_pending_2.zig",
+      "sha256": "a1f3566ae8936af8b8d35a9087df66df2c9a0f66589458afaf094fcce233278f"
+    },
+    {
+      "path": "zig/src/core/contract/dsv41_xmma_records.zig",
+      "sha256": "ab1248cf90748e46e743848faf6b489fa568c2afd34b2975679f70bd680e673d"
+    },
+    {
+      "path": "zig/src/core/contract/exl3_dense_records.zig",
+      "sha256": "2b8b23a0a56467912b3eddbf52192e1f1101820bc7f44371c57301da649ae033"
+    },
+    {
+      "path": "zig/src/core/contract/exl3_grouped_records.zig",
+      "sha256": "8266a9328866f88ef896370b4bf7f26f35e86266a65dfd0ead71211ac51ebdda"
+    },
+    {
+      "path": "zig/src/core/contract/fakes.zig",
+      "sha256": "268a38d5dc38614970c2d1e3c0d5c3328ea6b95885dd6eccf39cfd90ed974c1f"
+    },
+    {
+      "path": "zig/src/core/contract/fatbin_zstd.zig",
+      "sha256": "4a8ad8777e13159b333ac8d9d00b7b4966856112060399d7376599c8248d7be6"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_attention_records.zig",
+      "sha256": "cd8dc8c9c91830916372f7525cb6793fdf09e0652c6b70b813d3a862889079f8"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_attn_lanes_pending.zig",
+      "sha256": "2f00ec6ec3e72988958f407d4bddd499c05aabfee6d064af30cb3fab4451fb9e"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_cuda_records.zig",
+      "sha256": "6145ae02e28ee7d4e1a16bb377b5a525ec17acd65fbd78c2094fc5c234b6f9d5"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_pages_pending.zig",
+      "sha256": "4b419d1d9fe59c799dcd0e306f5b63e8d11847204e95e58fe18083eb5a3b1e6f"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_pending.zig",
+      "sha256": "0c7d880462c507758ef8ff22d13f37ba5e7d6c03d1ce6c4b0800f976c5d276a0"
+    },
+    {
+      "path": "zig/src/core/contract/flashnext_tile_records.zig",
+      "sha256": "63021f54243b2224f4c27804a5b0ff1bd9f771eba29d549a2fa8bbfdd76015ff"
+    },
+    {
+      "path": "zig/src/core/contract/fsr_records.zig",
+      "sha256": "1353452d86e9db1db0949c07261c8fde840e292ac783df5a37d2065515e8d876"
+    },
+    {
+      "path": "zig/src/core/contract/gates.zig",
+      "sha256": "91453fbf30dd76c453fc12d6486bc4a8f5e6e62060cb7c207a14fd5a7bb39121"
+    },
+    {
+      "path": "zig/src/core/contract/gb10_many_records.zig",
+      "sha256": "ba36a57ca304e437af11af2c624e163e28ae4ae5ce1cf3ecc38d30ba13f45c2f"
+    },
+    {
+      "path": "zig/src/core/contract/gemma_attention_records.zig",
+      "sha256": "fc296a4bdaaabfdceb11f31b0a5e69a18b57a03ef76267a94f62092214a14206"
+    },
+    {
+      "path": "zig/src/core/contract/gemma_cuda_records.zig",
+      "sha256": "09f1c956d036680bbc1bfd4a05d163ef3588f1d0d29acbc368ec0f9ec716d046"
+    },
+    {
+      "path": "zig/src/core/contract/glm_cuda_records.zig",
+      "sha256": "ae6d5aea573155a8d869fa3997156952f845f488a95963b6a01c315228e76043"
+    },
+    {
+      "path": "zig/src/core/contract/glm_f32w_pending.zig",
+      "sha256": "36695db6020f5ae503849d92a426f67736507940b65a3998d916707244f050f9"
+    },
+    {
+      "path": "zig/src/core/contract/glm_kv_pending.zig",
+      "sha256": "a211a9efc1e896c899b56bd2ee2992956fee9e481467f1498e088ae58953ffe6"
+    },
+    {
+      "path": "zig/src/core/contract/glm_rows_records.zig",
+      "sha256": "f9072674539e4acc352850bc7f8a8b24338a5316a339282ba50367cd02d58670"
+    },
+    {
+      "path": "zig/src/core/contract/glm_sampling_pending.zig",
+      "sha256": "28ebc41b6d24690b530639867b2ed6a2dabb299becf9da1d7ac1fe87800f2a02"
+    },
+    {
+      "path": "zig/src/core/contract/gradient_pending.zig",
+      "sha256": "dd325624881b272a20b5099f2885b1fd7e13ce22477be12075e5547cd2a8a70c"
+    },
+    {
+      "path": "zig/src/core/contract/hc_activation.zig",
+      "sha256": "057bbeb2d31fcec8fb0d6f5b33740ae00d956b2d184807b77384555e14ea1cc2"
+    },
+    {
+      "path": "zig/src/core/contract/hc_activation_records.zig",
+      "sha256": "5b6ab5f905008f7f08f3267c496cfa0cc69b1fe709e9e8070d4e529c2bca3811"
+    },
+    {
+      "path": "zig/src/core/contract/hc_pointwise.zig",
+      "sha256": "bd836002d7ec277c6959f81386eda1da8f4b9473c0c8e7e18eb81ff45703a059"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records.zig",
+      "sha256": "d55602df14dda4524648f8a49bcec855826d957ab9524a7eca35749f0efa6ad3"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_pair.zig",
+      "sha256": "82fd66712f96387939001d68789c68612c96fdc3ea17f310591a96081f057034"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_prompt.zig",
+      "sha256": "ad81464b29c563319885364538be2d07dad8f09618cab009e4e1c50250a0f674"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_score.zig",
+      "sha256": "25faa3003864f6adcf0607cb1d52743fcdb9a26a15e7edc5992967e607e9bd2c"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_stream.zig",
+      "sha256": "8e3fb88350961aafc9756d0c74adadcb591c45ce73a296bf339792650b048802"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_stream_plain.zig",
+      "sha256": "93f41cd4371e57571ae112491557bbcde960694d3ab1ae940e6017681daf9b06"
+    },
+    {
+      "path": "zig/src/core/contract/hip_records_stream_swiglu.zig",
+      "sha256": "3d64873500b60364686c4fffb07fa46836b03370818515a54bab4559451de88b"
+    },
+    {
+      "path": "zig/src/core/contract/hsaco.zig",
+      "sha256": "8818aba4d635ded943a3fdd46610f6ef1a5117324f911e6b902c49d1fdc36918"
+    },
+    {
+      "path": "zig/src/core/contract/inc4_pending.zig",
+      "sha256": "0e6f9440f13e6e218ba8125e8dafc23e17e2d779bd8716b8272454c6916d61cd"
+    },
+    {
+      "path": "zig/src/core/contract/lane_half_records.zig",
+      "sha256": "10c664d7ee38cb5bfdeb007bb9dc2953f6486547f8bac669e7747892c275d084"
+    },
+    {
+      "path": "zig/src/core/contract/lfm2_records.zig",
+      "sha256": "a67cd08db5f587d71b1b216f365acc0bfeed0add925ab742004a649491cd6af2"
+    },
+    {
+      "path": "zig/src/core/contract/limits.zig",
+      "sha256": "3f9135260dbc7c328a5654a92caaf4ddc0c595ce9aa5a2cc8bd6171ba1a400c0"
+    },
+    {
+      "path": "zig/src/core/contract/ling_route_records.zig",
+      "sha256": "c2ef03453b0bb3b4feb57510297af6e668ae791078cf6be329159571c8b09ca1"
+    },
+    {
+      "path": "zig/src/core/contract/metal_pair_records.zig",
+      "sha256": "0864289fe5fdde929be2ba8a7b176214ae8cb2b3c8bae8da5663264fa18d2107"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_cuda_records.zig",
+      "sha256": "acd95dd176d5b516bf32610811458735c213b3f26116d97ca1bfd87ead79e12c"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_draft_records.zig",
+      "sha256": "b23afd0bca9bf74b93cca54d861d0e739421856bf778a9700d8f556bfbdef151"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_glue_records.zig",
+      "sha256": "7da3a74bbf9965a17eedd197a098e812fcb0497a6be20dd317c307cad4b72c88"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_nax_records.zig",
+      "sha256": "478976df21a95d87c6a29a2c3322cc08ee62a6cf365593c10fbada981129dd5a"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_records.zig",
+      "sha256": "1794e944c561c00fb764f4e1e9fd2fc68301773b2389191407497b37f226c30e"
+    },
+    {
+      "path": "zig/src/core/contract/minimax_route_records.zig",
+      "sha256": "fe8ead43cc5658d86a5fe97b69b1339271aef61d76b5bf4e2ace8bee3de336a8"
+    },
+    {
+      "path": "zig/src/core/contract/modelopt_lane_records.zig",
+      "sha256": "e4b906eba904954d2200cccda2826192829694c6c6cb1b929e53418863a25210"
+    },
+    {
+      "path": "zig/src/core/contract/moss_image_cuda_records.zig",
+      "sha256": "d66395c4aa1cbd5c7d6813070a40680bd0d4b6f9f4b86385da022bb92f7558ed"
+    },
+    {
+      "path": "zig/src/core/contract/moss_image_records.zig",
+      "sha256": "29c122025c74a2109b1c15331d43e0b2832c530953ff5b465eb79100e727b3ef"
+    },
+    {
+      "path": "zig/src/core/contract/nemotron_attention_records.zig",
+      "sha256": "300c92e93ac1ea0eb2e16f9100e5c7f61475a5a3e7ceb604b5ee4110fa8a7930"
+    },
+    {
+      "path": "zig/src/core/contract/nemotron_experts_records.zig",
+      "sha256": "a3d5179784ec8400db0a9031620af9101a9f038c141bd094660a8e175c0de2cf"
+    },
+    {
+      "path": "zig/src/core/contract/nemotron_pages_records.zig",
+      "sha256": "0f3ab249701559eec157301ecb83c21c50414be27b3758748b08d41fd3ddf259"
+    },
+    {
+      "path": "zig/src/core/contract/nemotron_prompt_records.zig",
+      "sha256": "cdbe7369a0ec9a548d778d88d89babd10e1fc7f3cfa0363d25df7272380a5c5e"
+    },
+    {
+      "path": "zig/src/core/contract/nemotron_ssd_records.zig",
+      "sha256": "5aa71fd1555567b54bd4b6e307b681d0a431b7eef04396eceac891055cfb3d6d"
+    },
+    {
+      "path": "zig/src/core/contract/nvcc_133_records.zig",
+      "sha256": "45e44ebc204f4f22ef800991bf768a31c0f3008308a87948e2244880a08ddc9a"
+    },
+    {
+      "path": "zig/src/core/contract/nvfp4_fact_records.zig",
+      "sha256": "5c72f339b7e493cb25529f9c579fb1ebb3f239d49f64c79c4f65022399e53573"
+    },
+    {
+      "path": "zig/src/core/contract/nvfp4_tile_pending.zig",
+      "sha256": "2b7da1a79ebbb8369fce4517d0e4bdd7a385a2e927148ab7c5d8e562fe19995e"
+    },
+    {
+      "path": "zig/src/core/contract/paging_pending.zig",
+      "sha256": "3bc5895a6af7a3c6d70103082abdd92c63229d5c8985b669b82b2334e9e0a903"
+    },
+    {
+      "path": "zig/src/core/contract/penalty_sampling_records.zig",
+      "sha256": "062ec18fca5a482c1d3daba77d30853cbb5492ea7ca0024271bac8dab71ca011"
+    },
+    {
+      "path": "zig/src/core/contract/pending_132.zig",
+      "sha256": "461242cb3bff250773ab10e09b60cd59e3fbe0846c3f530dc956b5c21978814f"
+    },
+    {
+      "path": "zig/src/core/contract/pending_132_test.zig",
+      "sha256": "3388c44336de3b2a9646422975ccdd002ca72cd830a7c30cf60f9adddc2c29e7"
+    },
+    {
+      "path": "zig/src/core/contract/pocket_records.zig",
+      "sha256": "51fe3cba9560e3c04fe204856cb412e322f4bbccd6e38d93726aa2ac897a1e9d"
+    },
+    {
+      "path": "zig/src/core/contract/proposal_sampling_pending.zig",
+      "sha256": "0045ef8eb7d5fa445acdc41233d1790269d9eab23cc95af24b18ac6fcff9f5c3"
+    },
+    {
+      "path": "zig/src/core/contract/proposal_sampling_records.zig",
+      "sha256": "0031d1910e99e4eb3a963b94cb3c12ce7bb2bc4a2357e916261a55205aff4819"
+    },
+    {
+      "path": "zig/src/core/contract/qwen4_cuda_receipts_test.zig",
+      "sha256": "f4c220c799f591e49be5a58a4fdad825a1aff58d61952e745569ced0aec9b137"
+    },
+    {
+      "path": "zig/src/core/contract/qwen4_records.zig",
+      "sha256": "287a0eb362037987ca85af1377bd32790cf930162ccd97192ea50259a3714177"
+    },
+    {
+      "path": "zig/src/core/contract/qwen_decode_pending.zig",
+      "sha256": "09237fe374e6d93b2d14867ffc44bb316c780939edb6c9b45319ebd6dcef1e79"
+    },
+    {
+      "path": "zig/src/core/contract/qwen_learning_pending.zig",
+      "sha256": "e9ce29415f1e339f01bfb29814be27b12f1409b047ac7228ef6e8b8a6e9683b3"
+    },
+    {
+      "path": "zig/src/core/contract/qwen_served_records.zig",
+      "sha256": "d83849541bc87aa3dcbbbcea6e99ff3120f8ea752bf98f977aca756d607210d5"
+    },
+    {
+      "path": "zig/src/core/contract/qwen_whole_records.zig",
+      "sha256": "ae7c12453debcbf7fa779dd8e8201683b152719a7779a52eeba7d0bdd4d237f1"
+    },
+    {
+      "path": "zig/src/core/contract/reference_threads.zig",
+      "sha256": "395537771d6086fdd9298a68f4cdc2c33a3db59ed146cf0fd419d70f6b8233bc"
+    },
+    {
+      "path": "zig/src/core/contract/registry_learning.zig",
+      "sha256": "5d0e3f36f6cde38f1a82b6408d7fc7f6c5e4f5801b9dbf766b4bd8d01e19a955"
+    },
+    {
+      "path": "zig/src/core/contract/registry_media.zig",
+      "sha256": "e300e038166ec501073e859d684181fe3a483231311aa8a8e3a48c63eeeac9df"
+    },
+    {
+      "path": "zig/src/core/contract/registry_pending_test.zig",
+      "sha256": "53ca49313b7663d53e756aec3ca6ab172f0745ed0e26f3a65db6b0ebb3f471be"
+    },
+    {
+      "path": "zig/src/core/contract/registry_sets_test.zig",
+      "sha256": "6bda8a8c01e21e9ffc06cb0d8049293c35fd360e04689d5277dc609356a6b7de"
+    },
+    {
+      "path": "zig/src/core/contract/registry_target.zig",
+      "sha256": "3892c96696c349f04f2f5eb5d26468eeb40b7908d35c67b3b7ab9e88175aa82f"
+    },
+    {
+      "path": "zig/src/core/contract/registry_union.zig",
+      "sha256": "973823ce94d8133ea921ac51aa0f38e1beaed4d6e508d590bedf6093dc6c1dfd"
+    },
+    {
+      "path": "zig/src/core/contract/row_cuda_records.zig",
+      "sha256": "74d458de582b8e33bc86e59fd4d8b97beaf3cd66ec0e3c1824aca1614032d9df"
+    },
+    {
+      "path": "zig/src/core/contract/rows.zig",
+      "sha256": "ce5f6e0386307ea1ffc8a23943f13ead94302dffc30922cb2df82a7d5661c109"
+    },
+    {
+      "path": "zig/src/core/contract/seed_test.zig",
+      "sha256": "79bcb7e1b1212227e5c004d23dd5befe49396fc61ebbec0c0e9e6cd49a5be1a0"
+    },
+    {
+      "path": "zig/src/core/contract/simd_pairs_records.zig",
+      "sha256": "a29e7c62406563b4ed265ab20e63bbae976308f5b012ac86cb457d5d7878e0cd"
+    },
+    {
+      "path": "zig/src/core/contract/spark25_records.zig",
+      "sha256": "b20bd439ac5680f8364e81547f3f615397d4905360346d9fd30a3e13f2c8a93d"
+    },
+    {
+      "path": "zig/src/core/contract/spark_cuda_records.zig",
+      "sha256": "897d2737f985af439a91ef2eea4b7114c14ced3763a628a2c7fa5c24cb8c23ed"
+    },
+    {
+      "path": "zig/src/core/contract/vit_records.zig",
+      "sha256": "dc2d0980ac085eef579231f717a043d9a0eae4176a011eda7589c725dcd13957"
+    },
+    {
+      "path": "zig/src/core/contract/vulkan_records.zig",
+      "sha256": "c286c4bc7fc70fd4332338b273fcd80f1f6cda7e9620428db19a604ecc43189c"
+    },
+    {
+      "path": "zig/src/core/contract/weight_only.zig",
+      "sha256": "b1f325b86156a4a169ddba549ed4fb6ce4d6df8416e1cf0143b72c622fb3d0c0"
+    },
+    {
+      "path": "zig/src/core/contract/weight_only_records.zig",
+      "sha256": "defca5872adbd6bc3f70735d20e148b59d42ea527f1c8442f406701dc00a0c2e"
+    },
+    {
+      "path": "zig/src/core/contract/window_rows_records.zig",
+      "sha256": "45ceb75724c16920ba61ab721579e45e05ae9d04c8b26dfdea6382db7e176a7f"
+    }
+  ],
+  "changed_registry_surface": "registry adds only ASR records; shared attention adds only HPC=2, neither is among the failures",
+  "counts": {
+    "static": 168,
+    "live": 22
+  }
+}
