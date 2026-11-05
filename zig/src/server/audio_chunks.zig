@@ -4,6 +4,7 @@ const json = @import("json");
 const audio = @import("audio_input.zig");
 const chat = @import("chat.zig");
 const errors = @import("errors.zig");
+const quota = @import("audio_quota.zig");
 const Server = @import("server.zig").Server;
 
 pub const Span = struct { start: usize, end: usize };
@@ -22,6 +23,7 @@ const State = struct {
     next: std.atomic.Value(usize) = .init(0),
     left: std.atomic.Value(usize),
     cancelled: std.atomic.Value(bool) = .init(false),
+    parent: quota.Parent = .{},
 
     pub fn check(state: *State) bool {
         return state.cancelled.load(.acquire);
@@ -45,8 +47,8 @@ const State = struct {
         const clock = @import("clock.zig");
         const queued = if (profile) clock.nowNs(state.srv.io) else 0;
         const gate = &state.srv.audio_children;
-        try gate.wait(state.srv.io, @import("audio_quota.zig").Gate.limit(state.srv.info.lanes), state);
-        defer gate.release(state.srv.io);
+        try gate.wait(state.srv.io, quota.Gate.limit(state.srv.info.lanes), &state.parent, state);
+        defer gate.release(state.srv.io, &state.parent);
         const admission_seconds = if (profile) clock.seconds(clock.nowNs(state.srv.io) - queued) else 0;
         var arena = std.heap.ArenaAllocator.init(state.srv.gpa);
         defer arena.deinit();
@@ -78,9 +80,11 @@ pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Sp
         if (result.runtime) |runtime| srv.gpa.free(runtime);
         if (result.message) |message| srv.gpa.free(message);
     };
-    const count = @min(@max(srv.info.lanes / 2, 1), 2);
+    const count = @min(@min(quota.Gate.limit(srv.info.lanes), spans.len), 8);
     var state: State = .{ .srv = srv, .samples = samples, .spans = spans, .results = results, .context = context, .lang = lang, .fields = fields, .max_tokens = max_tokens, .temperature = temperature, .left = .init(count) };
-    var threads: [2]std.Thread = undefined;
+    srv.audio_children.register(srv.io, &state.parent);
+    defer srv.audio_children.unregister(srv.io, &state.parent);
+    var threads: [8]std.Thread = undefined;
     var started: usize = 0;
     defer {
         state.cancelled.store(true, .release);

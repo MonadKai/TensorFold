@@ -1,6 +1,8 @@
 const R = @import("registry.zig").CudaRecord;
 
 pub const cuda = [_]R{
+    .{ .launch = .{ .name = "Qwen3-ASR shared-weight row GEMM", .symbol = "tf_asr_rows_gemm", .image = "qwen3_asr", .threads = 64 },
+        .usage = .{ .{ .regs = 48, .static = 2048, .bound = 64 }, .{ .regs = 64, .static = 2048, .bound = 64 }, .{ .regs = 48, .static = 2048, .bound = 64 }, .{ .regs = 40, .static = 2048, .bound = 64 }, .{ .regs = 40, .static = 2048, .bound = 64 } }, .later_pending = true },
     .{ .launch = .{ .name = "Qwen3-ASR im2col", .symbol = "tf_asr_im2col", .image = "qwen3_asr", .threads = 256 },
         .usage = .{ .{ .regs = 26, .static = 0, .bound = 0 }, .{ .regs = 24, .static = 0, .bound = 0 }, .{ .regs = 24, .static = 0, .bound = 0 }, .{ .regs = 32, .static = 0, .bound = 0 }, .{ .regs = 32, .static = 0, .bound = 0 } } },
     .{ .launch = .{ .name = "Qwen3-ASR convolution pack", .symbol = "tf_asr_conv_pack", .image = "qwen3_asr", .threads = 256 },

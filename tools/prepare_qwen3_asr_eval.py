@@ -91,7 +91,7 @@ def pick(records):
     return selected
 
 
-def libri_index(path):
+def libri_index(path, select=True):
     records, labels = [], {}
     with tarfile.open(path, "r:gz") as archive:
         for member in archive:
@@ -106,7 +106,7 @@ def libri_index(path):
                 frames, rate, channels = audio_info(archive.extractfile(member).read(42))
                 records.append({"id": identity, "speaker": identity.split("-")[0], "frames": frames,
                                 "rate": rate, "channels": channels, "member": member.name})
-    selected = pick(records)
+    selected = pick(records) if select else records
     for row in selected:
         row["reference"] = labels[row["id"]]
     return selected

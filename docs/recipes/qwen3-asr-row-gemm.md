@@ -141,3 +141,32 @@ Preserve historical results. Two fresh independent Standards/Spec review rounds 
 raw evidence, claims and limits; subsequent findings remain open until fixed and rechecked. Restore all
 borrowed instances and independently audit IDs/images/state/health/restart, task ports/processes/containers.
 The final clean source HEAD receives a new environment preflight and tested-binary/input/hash binding.
+## Candidate updates and frozen workloads
+
+The original P8/P32 cuBLASLt candidates are retained as rejected experiments: their model logits exceed
+the preregistered relative-L2 guard. Their mathematical matmul checks, batch invariance and recognition
+quality are separate results; none overrides a failed model gate. The eight-position prefetch experiment
+also remains a negative performance result. The acceptance thresholds above are unchanged.
+
+The replacement candidate shares weights across up to eight logical rows inside one CUDA block. Each
+row keeps sixteen ordered FP32 accumulation chains followed by the same halving reduction, with BF16
+rounding only at the original output node. Inactive rows have no input reads, output writes, KV or RNG
+state. This is a fixed row capacity with guards, rather than a physically padded cuBLASLt matrix. Both
+the original single-row vendor oracle and an independent FP64 gate remain registered. The stable mode
+remains the default until all applicable promotion gates have evidence.
+
+The bilingual quality manifest was frozen before recognition: SHA-256
+`0d8a427d232e76df2dbfa0d6bdc314799db47d4006050b1d0fe7bbf75f5a552a`, 256 utterances and 32 speakers,
+1753.46675 seconds. No quality utterances or scoring thresholds are replaced after seeing results.
+
+The sustained unique-input pool has 2048 recordings per language from the same pinned source assets.
+Filter durations to 2..20 seconds, sort IDs, select 2048 nearest-even rank quantiles per language, then
+shuffle with seed 20261106. Its manifest SHA-256 is
+`0fee55d4af8280da27b953018c77aa956a547bba9a2e762df8e194b1a593f377`: 4096 unique waveform SHAs and
+24335.7471875 audio seconds. A unique-input cell must fail as incomplete if it exhausts this pool.
+
+Principal sustained cells are cache-off, unique inputs, B=4/8, natural stopping and 128 output tokens,
+each at least 120 seconds and 64 completions. Native stable/throughput comparisons use interleaved
+repetitions; other cache and batch cells retain at least 64 completions and repeated measurements.
+Equal-token diagnostics never report complete-ASR audio throughput. Whole-request latency includes HTTP
+transport; internal TTFT and CUDA-event stages retain their own clock boundaries.

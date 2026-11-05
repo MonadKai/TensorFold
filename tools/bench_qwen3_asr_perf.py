@@ -51,13 +51,16 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("base_url")
     parser.add_argument("model")
-    parser.add_argument("clips", nargs="+", type=Path)
+    parser.add_argument("clips", nargs="*", type=Path)
+    parser.add_argument("--clip-manifest", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--identity", required=True, type=Path)
     parser.add_argument("--cache-condition", required=True, choices=("disabled", "enabled", "production"))
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--reps", type=int, default=1)
     parser.add_argument("--warmup", type=int, default=0)
+    parser.add_argument("--warmup-requests", type=int, default=0)
+    parser.add_argument("--unique-requests", action="store_true")
     parser.add_argument("--seconds", type=float, default=0)
     parser.add_argument("--min-requests", type=int, default=0)
     parser.add_argument("--seed", type=int, default=0)
@@ -67,9 +70,20 @@ def main():
     parser.add_argument("--pid", type=int)
     parser.add_argument("--extra-pid", type=int, action="append", default=[])
     args = parser.parse_args()
+    manifest_sha = None
+    manifest_clips = None
+    if args.clip_manifest:
+        if args.clips:
+            parser.error("choose positional clips or --clip-manifest")
+        data = args.clip_manifest.read_bytes()
+        manifest_sha = hashlib.sha256(data).hexdigest()
+        manifest_clips = json.loads(data)["clips"]
+        args.clips = [args.clip_manifest.parent / r["file"] for r in manifest_clips]
+    if not args.clips:
+        parser.error("audio clips are required")
     if min(args.concurrency, args.reps, args.tokens) < 1:
         parser.error("concurrency, reps and tokens must be positive")
-    if args.seconds < 0 or args.min_requests < 0 or args.warmup < 0:
+    if args.seconds < 0 or args.min_requests < 0 or args.warmup < 0 or args.warmup_requests < 0:
         parser.error("seconds, min-requests and warmup cannot be negative")
     if args.workload == "equal_tokens" and args.mode != "chat":
         parser.error("equal token diagnostics require chat ignore_eos")
@@ -81,6 +95,10 @@ def main():
         with wave.open(str(path)) as clip:
             duration = clip.getnframes() / clip.getframerate()
         fixtures.append({"name": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "audio_seconds": duration})
+    if manifest_clips and any(a["sha256"] != b["sha256"] for a, b in zip(fixtures, manifest_clips)):
+        parser.error("input waveforms differ from the frozen manifest")
+    if args.unique_requests and len({r["sha256"] for r in fixtures}) != len(fixtures):
+        parser.error("--unique-requests requires distinct waveform identities")
     options = SimpleNamespace(model=args.model, base_url=args.base_url, temperature=0, seed=args.seed,
                               tokens=args.tokens, language=None, ignore_eos=args.workload == "equal_tokens")
     def valid(r):
@@ -93,7 +111,10 @@ def main():
         return isinstance(choices, list) and bool(choices) and isinstance(choices[0].get("message", {}).get("content"), str)
 
 
-    warmup_results = [run_one(options, clip, args.mode) for _ in range(args.warmup) for clip in args.clips]
+    warmup_paths = [clip for _ in range(args.warmup) for clip in args.clips]
+    warmup_paths += [args.clips[-1 - (i % len(args.clips))] for i in range(args.warmup_requests)]
+    with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+        warmup_results = list(pool.map(lambda path: run_one(options, path, args.mode), warmup_paths))
     before = metrics(args.base_url)
     resources = []
     stop = threading.Event()
@@ -116,6 +137,7 @@ def main():
     monitor.start()
     start = time.monotonic()
     results = []
+    exhausted = False
     try:
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
             if args.seconds or args.min_requests:
@@ -123,11 +145,14 @@ def main():
                 issue_lock = threading.Lock()
 
                 def worker():
-                    nonlocal issued
+                    nonlocal issued, exhausted
                     rows = []
                     while True:
                         with issue_lock:
-                            if time.monotonic() - start >= args.seconds and issued >= max(args.min_requests, args.reps * len(args.clips)):
+                            if time.monotonic() - start >= args.seconds and issued >= max(args.min_requests, 1):
+                                break
+                            if args.unique_requests and issued >= len(args.clips):
+                                exhausted = True
                                 break
                             index = issued
                             issued += 1
@@ -169,11 +194,14 @@ def main():
 
     stops = [natural_stop(r) for r in successful] if args.workload == "natural" else []
     full_audio = args.workload == "natural" and bool(stops) and all(x is True for x in stops)
+    unique_work = not args.unique_requests or len({r["sha256"] for r in results}) == len(results)
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
         "workload": {"fixtures": fixtures, "concurrency": args.concurrency, "reps": args.reps, "warmup_excluded": args.warmup,
                      "mode": args.mode, "temperature": 0, "seed": args.seed, "output_cap": args.tokens,
                      "kind": args.workload, "minimum_seconds": args.seconds, "minimum_requests": args.min_requests,
+                     "clip_manifest_sha256": manifest_sha, "unique_requests": args.unique_requests,
+                     "warmup_requests": len(warmup_results),
                      "arrival_model": "closed loop; request latency begins at each HTTP submission"},
         "measurements": {"batch_wall_seconds": elapsed, "requests": len(results), "successful": len(successful),
                          "latency_p50_seconds": percentile([r["seconds"] for r in successful], .5),
@@ -191,7 +219,8 @@ def main():
                          "pinned_allocation_peak_bytes": next((after[key] for key in after if "pinned_memory_peak_bytes" in key), None), "gpu_active_seconds": None},
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
-        "complete": bool(results) and len(successful) == len(results) and all(valid(r) for r in warmup_results) and work_matches and not any(x is False for x in stops),
+        "complete": bool(results) and len(successful) == len(results) and all(valid(r) for r in warmup_results) and work_matches and unique_work and not exhausted and not any(x is False for x in stops),
+        "unique_pool_exhausted": exhausted,
         "natural_stop_observations": stops,
         "equal_token_work_matches": work_matches if args.workload == "equal_tokens" else None,
         "decode_batch_metric_deltas": {key: after[key] - before[key] for key in after if key in before and "asr_decode_" in key},
@@ -203,7 +232,7 @@ def main():
                         "CPU includes explicitly selected PIDs only; RSS is the primary PID alone, not aggregate physical memory.",
                         "Missing resource counters remain null; zeros are not substituted.",
                         "Transcription token counters require an isolated server with no unrelated requests.",
-                        "Device allocation peak, when exported, is the server lifetime peak including startup and warmup."]}
+                        "Device and pinned allocation peaks are server lifetime peaks including startup and warmup."]}
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result["measurements"]))
     return int(not result["complete"])
