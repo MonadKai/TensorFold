@@ -73,9 +73,17 @@ def main():
             duration = clip.getnframes() / clip.getframerate()
         fixtures.append({"name": path.name, "sha256": hashlib.sha256(path.read_bytes()).hexdigest(), "audio_seconds": duration})
     options = SimpleNamespace(model=args.model, base_url=args.base_url, temperature=0, seed=None, tokens=args.tokens, language=None)
-    for _ in range(args.warmup):
-        for clip in args.clips:
-            run_one(options, clip, args.mode)
+    def valid(r):
+        value = r["response"]
+        if r["status"] != 200 or not isinstance(value, dict):
+            return False
+        if args.mode == "transcription":
+            return isinstance(value.get("text"), str)
+        choices = value.get("choices")
+        return isinstance(choices, list) and bool(choices) and isinstance(choices[0].get("message", {}).get("content"), str)
+
+
+    warmup_results = [run_one(options, clip, args.mode) for _ in range(args.warmup) for clip in args.clips]
     before = metrics(args.base_url)
     resources = []
     stop = threading.Event()
@@ -103,14 +111,6 @@ def main():
         monitor.join()
     final = proc(args.pid)
     after = metrics(args.base_url)
-    def valid(r):
-        value = r["response"]
-        if r["status"] != 200 or not isinstance(value, dict):
-            return False
-        if args.mode == "transcription":
-            return isinstance(value.get("text"), str)
-        choices = value.get("choices")
-        return isinstance(choices, list) and bool(choices) and isinstance(choices[0].get("message", {}).get("content"), str)
 
     successful = [r for r in results if valid(r)]
     attempted_audio = sum(f["audio_seconds"] for f in fixtures) * args.reps
@@ -135,7 +135,8 @@ def main():
                          "device_allocation_peak_bytes": next((after[key] for key in after if "device_memory_peak_bytes" in key), None),
                          "pinned_allocation_bytes_after": next((after[key] for key in after if "pinned_memory_bytes" in key), None), "gpu_active_seconds": None},
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
-        "gpu_intervals": intervals, "requests": results,
+        "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
+        "complete": len(successful) == len(results) and all(valid(r) for r in warmup_results),
         "generation_token_source": "response usage" if args.mode == "chat" else "isolated server counter delta, includes chunk control tokens",
         "limitations": ["CUDA event intervals are elapsed stream intervals, not device active time.",
                         "Shared-batch GPU intervals are charged whole to each participating request; do not sum them.",
@@ -145,7 +146,7 @@ def main():
                         "Device allocation peak, when exported, is the server lifetime peak including startup and warmup."]}
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result["measurements"]))
-    return int(len(successful) != len(results))
+    return int(not result["complete"])
 
 
 if __name__ == "__main__":
