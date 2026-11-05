@@ -208,6 +208,12 @@ TENSORFOLD_QWEN3_ASR_MATH=throughput zig-out/native/bin/tensorfold-native serve 
 coverage of all 256 quality utterances. `check_qwen3_asr_determinism.py` compares greedy and fixed-seed
 sampling across concurrency, order and reused slots; `--reference` checks another process's fingerprints.
 `check_qwen3_asr_lifecycle.py` requires observed active/queued work and actual cancellation-counter changes.
+`check_qwen3_asr_seed_cancellation.py` adds 64 fixed greedy/sampled Chat probes, capped at 128 tokens with
+`ignore_eos=true` and automatic language in both solo and disturbed runs. Three fixed schedules use
+duration buckets of seven, then reverse and rotate3 wave/row orders. Each wave first queues all probes
+behind eight decoding holders and cancels one queued neighbor. It releases seven holders, observes all
+probes decoding alongside the remaining holder, cancels that holder, then requires another decode of all
+probes before comparing token IDs. This capped lifecycle check does not replace natural-stop STT quality.
 `check_qwen3_asr_parents.py` checks quota shrink, continued four-slot decode, queued/active parent cancellation
 and ordered completion of real and repeated long audio. Both long fixtures must have at least four chunks.
 
