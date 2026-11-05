@@ -1,0 +1,2722 @@
+{
+  "schema": 1,
+  "exact_mode": false,
+  "passed": false,
+  "reference_manifest_sha256": "306415c40a2498794cf249d0084a5feed7bf7e3f12974753fcac2f4258b02362",
+  "candidate_manifest_sha256": "306415c40a2498794cf249d0084a5feed7bf7e3f12974753fcac2f4258b02362",
+  "stage_records": 137,
+  "byte_equal_records": 40,
+  "logit_rows": 33,
+  "top1_equal": 33,
+  "top1_difference_rows": 0,
+  "near_tie_difference_rows": 0,
+  "nontie_difference_rows": 0,
+  "default_decision_gate": true,
+  "records": [
+    {
+      "name": "audio.mel",
+      "byte_equal": true,
+      "rows": 128,
+      "width": 1505,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "audio.conv",
+      "byte_equal": true,
+      "rows": 196,
+      "width": 1024,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "audio.layer0",
+      "byte_equal": true,
+      "rows": 196,
+      "width": 1024,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "audio.layer23",
+      "byte_equal": true,
+      "rows": 196,
+      "width": 1024,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "audio.embeddings",
+      "byte_equal": true,
+      "rows": 196,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 211,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": true,
+      "rows": 211,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": true,
+      "rows": 211,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.0625,
+      "rmse": 0.0005420227020832564,
+      "relative_l2": 0.00011143651759010773,
+      "min_row_cosine": 0.999999993793155,
+      "mean_row_cosine": 0.999999993793155,
+      "requires_exact": false,
+      "passed": true,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.125,
+      "decisions": [
+        {
+          "reference_top2": [
+            11528,
+            4128
+          ],
+          "candidate_top2": [
+            11528,
+            4128
+          ],
+          "reference_margin": 12.0,
+          "candidate_margin": 12.0,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            34.5,
+            22.5
+          ],
+          "candidate_at_reference_contenders": [
+            34.5,
+            22.5
+          ]
+        }
+      ],
+      "bounded_logits_passed": true
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0006524711133396073,
+      "relative_l2": 0.0023186064026611353,
+      "min_row_cosine": 0.999997315014408,
+      "mean_row_cosine": 0.999997315014408,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.6231826093261051,
+      "relative_l2": 0.02791071438664016,
+      "min_row_cosine": 0.9996142956577504,
+      "mean_row_cosine": 0.9996142956577504,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.441162109375,
+      "rmse": 0.08950159857320435,
+      "relative_l2": 0.013989546842561935,
+      "min_row_cosine": 0.9999021440158226,
+      "mean_row_cosine": 0.9999021440158226,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.88232421875,
+      "decisions": [
+        {
+          "reference_top2": [
+            6364,
+            22574
+          ],
+          "candidate_top2": [
+            6364,
+            22574
+          ],
+          "reference_margin": 12.0,
+          "candidate_margin": 12.125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            42.75,
+            30.75
+          ],
+          "candidate_at_reference_contenders": [
+            42.75,
+            30.625
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0009311496745786058,
+      "relative_l2": 0.0030263574753266924,
+      "min_row_cosine": 0.9999954206901156,
+      "mean_row_cosine": 0.9999954206901156,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 6.0,
+      "rmse": 0.746808274133519,
+      "relative_l2": 0.013576471873167437,
+      "min_row_cosine": 0.9999112035064798,
+      "mean_row_cosine": 0.9999112035064798,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.05631150293454174,
+      "relative_l2": 0.01305205545420602,
+      "min_row_cosine": 0.9999181704693161,
+      "mean_row_cosine": 0.9999181704693161,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            151704,
+            151669
+          ],
+          "candidate_top2": [
+            151704,
+            151669
+          ],
+          "reference_margin": 9.9375,
+          "candidate_margin": 9.8125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.25,
+          "reference_contenders": [
+            20.75,
+            10.8125
+          ],
+          "candidate_at_reference_contenders": [
+            20.625,
+            10.8125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0625,
+      "rmse": 0.003393063052931685,
+      "relative_l2": 0.004073771592139868,
+      "min_row_cosine": 0.9999925433169015,
+      "mean_row_cosine": 0.9999925433169015,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 5.0,
+      "rmse": 0.4769787183671747,
+      "relative_l2": 0.01710838760364234,
+      "min_row_cosine": 0.9998557673412356,
+      "mean_row_cosine": 0.9998557673412356,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.4453125,
+      "rmse": 0.11022340786101535,
+      "relative_l2": 0.021188892191287688,
+      "min_row_cosine": 0.9997996251053076,
+      "mean_row_cosine": 0.9997996251053076,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.890625,
+      "decisions": [
+        {
+          "reference_top2": [
+            71791,
+            80022
+          ],
+          "candidate_top2": [
+            71791,
+            80022
+          ],
+          "reference_margin": 1.0,
+          "candidate_margin": 1.0,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            36.75,
+            35.75
+          ],
+          "candidate_at_reference_contenders": [
+            36.75,
+            35.75
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0007128131804282925,
+      "relative_l2": 0.00211638909319518,
+      "min_row_cosine": 0.9999977604480753,
+      "mean_row_cosine": 0.9999977604480753,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.9811173085453613,
+      "relative_l2": 0.026194602149573053,
+      "min_row_cosine": 0.999660227803329,
+      "mean_row_cosine": 0.999660227803329,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.4453125,
+      "rmse": 0.09516355220104948,
+      "relative_l2": 0.01721530339948264,
+      "min_row_cosine": 0.9998549320986934,
+      "mean_row_cosine": 0.9998549320986934,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.890625,
+      "decisions": [
+        {
+          "reference_top2": [
+            56743,
+            2832
+          ],
+          "candidate_top2": [
+            56743,
+            2832
+          ],
+          "reference_margin": 6.75,
+          "candidate_margin": 6.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            33.5,
+            26.75
+          ],
+          "candidate_at_reference_contenders": [
+            33.5,
+            27.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.00071778992894262,
+      "relative_l2": 0.0023210190752108134,
+      "min_row_cosine": 0.9999973067262986,
+      "mean_row_cosine": 0.9999973067262986,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4555453232223741,
+      "relative_l2": 0.020341380203342765,
+      "min_row_cosine": 0.9997932139816056,
+      "mean_row_cosine": 0.9997932139816056,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.40625,
+      "rmse": 0.07730942842547966,
+      "relative_l2": 0.017348793460383212,
+      "min_row_cosine": 0.9998496994753778,
+      "mean_row_cosine": 0.9998496994753778,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.8125,
+      "decisions": [
+        {
+          "reference_top2": [
+            13,
+            11
+          ],
+          "candidate_top2": [
+            13,
+            11
+          ],
+          "reference_margin": 8.25,
+          "candidate_margin": 8.0,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            48.0,
+            39.75
+          ],
+          "candidate_at_reference_contenders": [
+            48.0,
+            40.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 0.9999999999999998,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.00036685484662853926,
+      "relative_l2": 0.0015118565211402015,
+      "min_row_cosine": 0.999998857400664,
+      "mean_row_cosine": 0.999998857400664,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.45208629455059873,
+      "relative_l2": 0.019589958157428748,
+      "min_row_cosine": 0.9998169464975488,
+      "mean_row_cosine": 0.9998169464975488,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.08952249290224497,
+      "relative_l2": 0.01104052804534776,
+      "min_row_cosine": 0.9999589514909182,
+      "mean_row_cosine": 0.9999589514909182,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            8670,
+            21607
+          ],
+          "candidate_top2": [
+            8670,
+            21607
+          ],
+          "reference_margin": 16.375,
+          "candidate_margin": 16.125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            47.0,
+            30.625
+          ],
+          "candidate_at_reference_contenders": [
+            46.75,
+            30.625
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.00044471245558582275,
+      "relative_l2": 0.0015015529754668542,
+      "min_row_cosine": 0.9999988733174519,
+      "mean_row_cosine": 0.9999988733174519,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.5783974137205051,
+      "relative_l2": 0.021446980339996157,
+      "min_row_cosine": 0.9997773272807606,
+      "mean_row_cosine": 0.9997773272807606,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.4375,
+      "rmse": 0.08763167537166579,
+      "relative_l2": 0.011819810233952526,
+      "min_row_cosine": 0.9999345389910642,
+      "mean_row_cosine": 0.9999345389910642,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.875,
+      "decisions": [
+        {
+          "reference_top2": [
+            21639,
+            11
+          ],
+          "candidate_top2": [
+            21639,
+            11
+          ],
+          "reference_margin": 8.5,
+          "candidate_margin": 8.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            40.75,
+            32.25
+          ],
+          "candidate_at_reference_contenders": [
+            40.75,
+            32.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0008178815133761935,
+      "relative_l2": 0.0027128830683973183,
+      "min_row_cosine": 0.9999963378500173,
+      "mean_row_cosine": 0.9999963378500173,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4988910103682655,
+      "relative_l2": 0.022885278820191837,
+      "min_row_cosine": 0.9997573148801876,
+      "mean_row_cosine": 0.9997573148801876,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.40625,
+      "rmse": 0.08255156553233498,
+      "relative_l2": 0.015532734330505619,
+      "min_row_cosine": 0.9998797088336346,
+      "mean_row_cosine": 0.9998797088336346,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.8125,
+      "decisions": [
+        {
+          "reference_top2": [
+            11,
+            21639
+          ],
+          "candidate_top2": [
+            11,
+            21639
+          ],
+          "reference_margin": 6.5,
+          "candidate_margin": 6.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            46.75,
+            40.25
+          ],
+          "candidate_at_reference_contenders": [
+            46.75,
+            40.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.000414613268017667,
+      "relative_l2": 0.001605715516957296,
+      "min_row_cosine": 0.9999987111182945,
+      "mean_row_cosine": 0.9999987111182945,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 3.0,
+      "rmse": 0.4478833397306563,
+      "relative_l2": 0.018940573554435975,
+      "min_row_cosine": 0.9998338896475697,
+      "mean_row_cosine": 0.9998338896475697,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.4375,
+      "rmse": 0.07995335941932255,
+      "relative_l2": 0.010471447539715892,
+      "min_row_cosine": 0.9999468794401616,
+      "mean_row_cosine": 0.9999468794401616,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.875,
+      "decisions": [
+        {
+          "reference_top2": [
+            21639,
+            21607
+          ],
+          "candidate_top2": [
+            21639,
+            21607
+          ],
+          "reference_margin": 14.25,
+          "candidate_margin": 14.25,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            49.25,
+            35.0
+          ],
+          "candidate_at_reference_contenders": [
+            49.25,
+            35.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.03125,
+      "rmse": 0.0009267028691319841,
+      "relative_l2": 0.0030680819720554325,
+      "min_row_cosine": 0.9999956226614157,
+      "mean_row_cosine": 0.9999956226614157,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4109667558191634,
+      "relative_l2": 0.017103800112562375,
+      "min_row_cosine": 0.999853804096922,
+      "mean_row_cosine": 0.999853804096922,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.10138174687247373,
+      "relative_l2": 0.020623902913235414,
+      "min_row_cosine": 0.999890513092468,
+      "mean_row_cosine": 0.999890513092468,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            13,
+            11
+          ],
+          "candidate_top2": [
+            13,
+            11
+          ],
+          "reference_margin": 2.25,
+          "candidate_margin": 2.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            46.25,
+            44.0
+          ],
+          "candidate_at_reference_contenders": [
+            46.5,
+            44.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 0.9999999999999998,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.015625,
+      "rmse": 0.0009064661208599223,
+      "relative_l2": 0.003914783742110122,
+      "min_row_cosine": 0.9999938964502785,
+      "mean_row_cosine": 0.9999938964502785,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4784214549921657,
+      "relative_l2": 0.02039524879706311,
+      "min_row_cosine": 0.9997926698900159,
+      "mean_row_cosine": 0.9997926698900159,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.11471859713393842,
+      "relative_l2": 0.014670406833382459,
+      "min_row_cosine": 0.9999356003689663,
+      "mean_row_cosine": 0.9999356003689663,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            1260,
+            566
+          ],
+          "candidate_top2": [
+            1260,
+            566
+          ],
+          "reference_margin": 12.75,
+          "candidate_margin": 13.0,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            46.0,
+            33.25
+          ],
+          "candidate_at_reference_contenders": [
+            46.25,
+            33.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.001953125,
+      "rmse": 0.0003673887188133479,
+      "relative_l2": 0.0013428069819238155,
+      "min_row_cosine": 0.9999990984852853,
+      "mean_row_cosine": 0.9999990984852853,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 16.0,
+      "rmse": 0.47967977991322086,
+      "relative_l2": 0.017438237149800206,
+      "min_row_cosine": 0.9998479673115733,
+      "mean_row_cosine": 0.9998479673115733,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.04966488343339224,
+      "relative_l2": 0.006549823484543884,
+      "min_row_cosine": 0.9999794391918679,
+      "mean_row_cosine": 0.9999794391918679,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            5710,
+            572
+          ],
+          "candidate_top2": [
+            5710,
+            572
+          ],
+          "reference_margin": 14.875,
+          "candidate_margin": 14.75,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            41.5,
+            26.625
+          ],
+          "candidate_at_reference_contenders": [
+            41.5,
+            26.75
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0004889632003988506,
+      "relative_l2": 0.0017423344556663273,
+      "min_row_cosine": 0.9999984823964997,
+      "mean_row_cosine": 0.9999984823964997,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 4.0,
+      "rmse": 0.4278444993205701,
+      "relative_l2": 0.015769273494135223,
+      "min_row_cosine": 0.9998758005241362,
+      "mean_row_cosine": 0.9998758005241362,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.06212993958071919,
+      "relative_l2": 0.010770746443450602,
+      "min_row_cosine": 0.9999420205500954,
+      "mean_row_cosine": 0.9999420205500954,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            944,
+            1405
+          ],
+          "candidate_top2": [
+            944,
+            1405
+          ],
+          "reference_margin": 15.25,
+          "candidate_margin": 15.125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            43.25,
+            28.0
+          ],
+          "candidate_at_reference_contenders": [
+            43.25,
+            28.125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.00047052642010957015,
+      "relative_l2": 0.0016605139466805375,
+      "min_row_cosine": 0.9999986218439993,
+      "mean_row_cosine": 0.9999986218439993,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.3830962054289614,
+      "relative_l2": 0.01678975086978988,
+      "min_row_cosine": 0.999859044401529,
+      "mean_row_cosine": 0.999859044401529,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.06386410596839198,
+      "relative_l2": 0.007397748739713304,
+      "min_row_cosine": 0.9999741092803467,
+      "mean_row_cosine": 0.9999741092803467,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            1496,
+            78978
+          ],
+          "candidate_top2": [
+            1496,
+            78978
+          ],
+          "reference_margin": 20.125,
+          "candidate_margin": 20.125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            50.25,
+            30.125
+          ],
+          "candidate_at_reference_contenders": [
+            50.25,
+            30.125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999998,
+      "mean_row_cosine": 0.9999999999999998,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0006531899817624703,
+      "relative_l2": 0.002334078523083055,
+      "min_row_cosine": 0.9999972849627693,
+      "mean_row_cosine": 0.9999972849627693,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.39259154797375767,
+      "relative_l2": 0.01620606114184325,
+      "min_row_cosine": 0.9998731394954623,
+      "mean_row_cosine": 0.9998731394954623,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.10260164331523597,
+      "relative_l2": 0.013343435893398273,
+      "min_row_cosine": 0.9999504224531103,
+      "mean_row_cosine": 0.9999504224531103,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            429,
+            2938
+          ],
+          "candidate_top2": [
+            429,
+            2938
+          ],
+          "reference_margin": 19.75,
+          "candidate_margin": 19.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            47.75,
+            28.0
+          ],
+          "candidate_at_reference_contenders": [
+            47.5,
+            28.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005643568712241989,
+      "relative_l2": 0.0022165057727567216,
+      "min_row_cosine": 0.9999975462680665,
+      "mean_row_cosine": 0.9999975462680665,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 2.0,
+      "rmse": 0.3509945871981931,
+      "relative_l2": 0.012994595238640222,
+      "min_row_cosine": 0.9999157366379747,
+      "mean_row_cosine": 0.9999157366379747,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.054415963157988544,
+      "relative_l2": 0.005748933807190778,
+      "min_row_cosine": 0.9999836911014253,
+      "mean_row_cosine": 0.9999836911014253,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            2409,
+            16154
+          ],
+          "candidate_top2": [
+            2409,
+            16154
+          ],
+          "reference_margin": 17.5,
+          "candidate_margin": 17.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            46.25,
+            28.75
+          ],
+          "candidate_at_reference_contenders": [
+            46.25,
+            28.75
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005559690457995689,
+      "relative_l2": 0.0018057933387892956,
+      "min_row_cosine": 0.9999983724056006,
+      "mean_row_cosine": 0.9999983724056006,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 16.0,
+      "rmse": 0.5365704009407017,
+      "relative_l2": 0.024054676196987614,
+      "min_row_cosine": 0.9997229280706132,
+      "mean_row_cosine": 0.9997229280706132,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.0999950545912763,
+      "relative_l2": 0.01271455110114996,
+      "min_row_cosine": 0.9999576534768976,
+      "mean_row_cosine": 0.9999576534768976,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            979,
+            13
+          ],
+          "candidate_top2": [
+            979,
+            13
+          ],
+          "reference_margin": 17.875,
+          "candidate_margin": 17.875,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            47.25,
+            29.375
+          ],
+          "candidate_at_reference_contenders": [
+            47.25,
+            29.375
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0004977144164639809,
+      "relative_l2": 0.0018632854013940214,
+      "min_row_cosine": 0.9999982657562612,
+      "mean_row_cosine": 0.9999982657562612,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4013145695372912,
+      "relative_l2": 0.01813767821640158,
+      "min_row_cosine": 0.9998358472478208,
+      "mean_row_cosine": 0.9998358472478208,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.12599010735313232,
+      "relative_l2": 0.01703047875198743,
+      "min_row_cosine": 0.9999179510506261,
+      "mean_row_cosine": 0.9999179510506261,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            358,
+            600
+          ],
+          "candidate_top2": [
+            358,
+            600
+          ],
+          "reference_margin": 18.125,
+          "candidate_margin": 18.25,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            47.5,
+            29.375
+          ],
+          "candidate_at_reference_contenders": [
+            47.5,
+            29.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0005449184804488273,
+      "relative_l2": 0.0019870024909496445,
+      "min_row_cosine": 0.9999980265051792,
+      "mean_row_cosine": 0.9999980265051792,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 24.0,
+      "rmse": 0.7108703492488562,
+      "relative_l2": 0.024400790227215575,
+      "min_row_cosine": 0.9997034174855399,
+      "mean_row_cosine": 0.9997034174855399,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.08118301702213215,
+      "relative_l2": 0.009107339100488731,
+      "min_row_cosine": 0.9999725943768696,
+      "mean_row_cosine": 0.9999725943768696,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            3855,
+            35812
+          ],
+          "candidate_top2": [
+            3855,
+            35812
+          ],
+          "reference_margin": 15.5,
+          "candidate_margin": 15.625,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            41.75,
+            26.25
+          ],
+          "candidate_at_reference_contenders": [
+            41.75,
+            26.125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0008241580939862348,
+      "relative_l2": 0.002575089396042647,
+      "min_row_cosine": 0.9999966896871535,
+      "mean_row_cosine": 0.9999966896871535,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 2.5625,
+      "rmse": 0.40921928013916165,
+      "relative_l2": 0.013225618091713314,
+      "min_row_cosine": 0.999912862701532,
+      "mean_row_cosine": 0.999912862701532,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.3125,
+      "rmse": 0.09372815123803034,
+      "relative_l2": 0.010014178186952789,
+      "min_row_cosine": 0.999975406453606,
+      "mean_row_cosine": 0.999975406453606,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.625,
+      "decisions": [
+        {
+          "reference_top2": [
+            14289,
+            74819
+          ],
+          "candidate_top2": [
+            14289,
+            74819
+          ],
+          "reference_margin": 15.75,
+          "candidate_margin": 15.75,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            42.0,
+            26.25
+          ],
+          "candidate_at_reference_contenders": [
+            42.0,
+            26.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.015625,
+      "rmse": 0.0008660245658174201,
+      "relative_l2": 0.002698639846495416,
+      "min_row_cosine": 0.9999963831972469,
+      "mean_row_cosine": 0.9999963831972469,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4293010382584913,
+      "relative_l2": 0.01782831925459787,
+      "min_row_cosine": 0.9998440750015476,
+      "mean_row_cosine": 0.9998440750015476,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.37109375,
+      "rmse": 0.09101937895583401,
+      "relative_l2": 0.014369356082521345,
+      "min_row_cosine": 0.9999286928944594,
+      "mean_row_cosine": 0.9999286928944594,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.7421875,
+      "decisions": [
+        {
+          "reference_top2": [
+            311,
+            13
+          ],
+          "candidate_top2": [
+            311,
+            13
+          ],
+          "reference_margin": 22.5,
+          "candidate_margin": 22.625,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            49.5,
+            27.0
+          ],
+          "candidate_at_reference_contenders": [
+            49.5,
+            26.875
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.015625,
+      "rmse": 0.0008982617329237254,
+      "relative_l2": 0.0031299368983709556,
+      "min_row_cosine": 0.9999951231861065,
+      "mean_row_cosine": 0.9999951231861065,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 16.0,
+      "rmse": 0.5221587760120385,
+      "relative_l2": 0.02004506641870373,
+      "min_row_cosine": 0.9998000999799608,
+      "mean_row_cosine": 0.9998000999799608,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.11200785583986725,
+      "relative_l2": 0.014737207823667737,
+      "min_row_cosine": 0.9999415324040748,
+      "mean_row_cosine": 0.9999415324040748,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            1435,
+            20426
+          ],
+          "candidate_top2": [
+            1435,
+            20426
+          ],
+          "reference_margin": 19.125,
+          "candidate_margin": 19.125,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            46.5,
+            27.375
+          ],
+          "candidate_at_reference_contenders": [
+            46.5,
+            27.375
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0008474193228543322,
+      "relative_l2": 0.0032115333266894332,
+      "min_row_cosine": 0.9999948842876928,
+      "mean_row_cosine": 0.9999948842876928,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 3.0,
+      "rmse": 0.3141237927404901,
+      "relative_l2": 0.014248849545279704,
+      "min_row_cosine": 0.9998984805725428,
+      "mean_row_cosine": 0.9998984805725428,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.2734375,
+      "rmse": 0.06009130386364342,
+      "relative_l2": 0.014262882025175795,
+      "min_row_cosine": 0.9998987691005116,
+      "mean_row_cosine": 0.9998987691005116,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.546875,
+      "decisions": [
+        {
+          "reference_top2": [
+            11,
+            13
+          ],
+          "candidate_top2": [
+            11,
+            13
+          ],
+          "reference_margin": 2.75,
+          "candidate_margin": 2.75,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            48.0,
+            45.25
+          ],
+          "candidate_at_reference_contenders": [
+            48.0,
+            45.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.00031813348059235233,
+      "relative_l2": 0.0013109707492089848,
+      "min_row_cosine": 0.9999991407579047,
+      "mean_row_cosine": 0.9999991407579047,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.3839229054306167,
+      "relative_l2": 0.016608583181228133,
+      "min_row_cosine": 0.9998624166123588,
+      "mean_row_cosine": 0.9998624166123588,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.09286201590190285,
+      "relative_l2": 0.01352033401209697,
+      "min_row_cosine": 0.9999491777536904,
+      "mean_row_cosine": 0.9999491777536904,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            714,
+            1988
+          ],
+          "candidate_top2": [
+            714,
+            1988
+          ],
+          "reference_margin": 14.5,
+          "candidate_margin": 14.25,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            48.0,
+            33.5
+          ],
+          "candidate_at_reference_contenders": [
+            48.0,
+            33.75
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005455598516756181,
+      "relative_l2": 0.002111059417035449,
+      "min_row_cosine": 0.9999977717128576,
+      "mean_row_cosine": 0.9999977717128576,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.3875272275988012,
+      "relative_l2": 0.016690346119903814,
+      "min_row_cosine": 0.9998621652558415,
+      "mean_row_cosine": 0.9998621652558415,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.08917247391776349,
+      "relative_l2": 0.013212222750078342,
+      "min_row_cosine": 0.9999361381430985,
+      "mean_row_cosine": 0.9999361381430985,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            323,
+            11
+          ],
+          "candidate_top2": [
+            323,
+            11
+          ],
+          "reference_margin": 6.75,
+          "candidate_margin": 6.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            41.5,
+            34.75
+          ],
+          "candidate_at_reference_contenders": [
+            41.5,
+            35.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0003618047303884732,
+      "relative_l2": 0.0015700808869745253,
+      "min_row_cosine": 0.9999987675302823,
+      "mean_row_cosine": 0.9999987675302823,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.3684584379232506,
+      "relative_l2": 0.01694825421385749,
+      "min_row_cosine": 0.9998563687503753,
+      "mean_row_cosine": 0.9998563687503753,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.375,
+      "rmse": 0.14257601429389274,
+      "relative_l2": 0.02208581326239337,
+      "min_row_cosine": 0.999862408072832,
+      "mean_row_cosine": 0.999862408072832,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.75,
+      "decisions": [
+        {
+          "reference_top2": [
+            806,
+            5301
+          ],
+          "candidate_top2": [
+            806,
+            5301
+          ],
+          "reference_margin": 16.25,
+          "candidate_margin": 16.25,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            51.25,
+            35.0
+          ],
+          "candidate_at_reference_contenders": [
+            51.25,
+            35.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005422065193005562,
+      "relative_l2": 0.002035237512401454,
+      "min_row_cosine": 0.9999979310748681,
+      "mean_row_cosine": 0.9999979310748681,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4074494303183869,
+      "relative_l2": 0.014007047464295408,
+      "min_row_cosine": 0.9999045943330827,
+      "mean_row_cosine": 0.9999045943330827,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.06510848100826465,
+      "relative_l2": 0.006986555114608829,
+      "min_row_cosine": 0.9999794370316212,
+      "mean_row_cosine": 0.9999794370316212,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            13529,
+            35123
+          ],
+          "candidate_top2": [
+            13529,
+            35123
+          ],
+          "reference_margin": 18.125,
+          "candidate_margin": 18.25,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            43.5,
+            25.375
+          ],
+          "candidate_at_reference_contenders": [
+            43.5,
+            25.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0078125,
+      "rmse": 0.0007958465739413308,
+      "relative_l2": 0.0026700191651702425,
+      "min_row_cosine": 0.9999964461696084,
+      "mean_row_cosine": 0.9999964461696084,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 1.5,
+      "rmse": 0.3065453052051942,
+      "relative_l2": 0.011970310838685539,
+      "min_row_cosine": 0.9999287876796439,
+      "mean_row_cosine": 0.9999287876796439,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.05513478044187099,
+      "relative_l2": 0.007139419417468496,
+      "min_row_cosine": 0.9999760737739294,
+      "mean_row_cosine": 0.9999760737739294,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            4627,
+            3091
+          ],
+          "candidate_top2": [
+            4627,
+            3091
+          ],
+          "reference_margin": 14.625,
+          "candidate_margin": 14.5,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            44.5,
+            29.875
+          ],
+          "candidate_at_reference_contenders": [
+            44.5,
+            30.0
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005483292486500154,
+      "relative_l2": 0.0017864851003520253,
+      "min_row_cosine": 0.9999984042368135,
+      "mean_row_cosine": 0.9999984042368135,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4702665908559697,
+      "relative_l2": 0.017550987803266263,
+      "min_row_cosine": 0.9998481699704773,
+      "mean_row_cosine": 0.9998481699704773,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.28125,
+      "rmse": 0.057996532269330256,
+      "relative_l2": 0.007506928342573238,
+      "min_row_cosine": 0.9999721761127794,
+      "mean_row_cosine": 0.9999721761127794,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5625,
+      "decisions": [
+        {
+          "reference_top2": [
+            3207,
+            3171
+          ],
+          "candidate_top2": [
+            3207,
+            3171
+          ],
+          "reference_margin": 15.5,
+          "candidate_margin": 15.375,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            43.5,
+            28.0
+          ],
+          "candidate_at_reference_contenders": [
+            43.5,
+            28.125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 0.9999999999999999,
+      "mean_row_cosine": 0.9999999999999999,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0004797409571313297,
+      "relative_l2": 0.0018000489012638616,
+      "min_row_cosine": 0.9999983883986149,
+      "mean_row_cosine": 0.9999983883986149,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 16.0,
+      "rmse": 0.5295255033508209,
+      "relative_l2": 0.020043500576975043,
+      "min_row_cosine": 0.9997999169867174,
+      "mean_row_cosine": 0.9997999169867174,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.28125,
+      "rmse": 0.05693474807730956,
+      "relative_l2": 0.009677261243493015,
+      "min_row_cosine": 0.9999543976961993,
+      "mean_row_cosine": 0.9999543976961993,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5625,
+      "decisions": [
+        {
+          "reference_top2": [
+            944,
+            4605
+          ],
+          "candidate_top2": [
+            944,
+            4605
+          ],
+          "reference_margin": 17.75,
+          "candidate_margin": 17.75,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            44.0,
+            26.25
+          ],
+          "candidate_at_reference_contenders": [
+            44.0,
+            26.25
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0000000000000002,
+      "mean_row_cosine": 1.0000000000000002,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.015625,
+      "rmse": 0.0007260578422734024,
+      "relative_l2": 0.0024529497349795207,
+      "min_row_cosine": 0.9999970938287299,
+      "mean_row_cosine": 0.9999970938287299,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 8.0,
+      "rmse": 0.4633496097351881,
+      "relative_l2": 0.015872698318050726,
+      "min_row_cosine": 0.9998801029252714,
+      "mean_row_cosine": 0.9998801029252714,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.04952930218973761,
+      "relative_l2": 0.005629417311687461,
+      "min_row_cosine": 0.9999848675536068,
+      "mean_row_cosine": 0.9999848675536068,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            653,
+            2982
+          ],
+          "candidate_top2": [
+            653,
+            2982
+          ],
+          "reference_margin": 17.625,
+          "candidate_margin": 17.875,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.5,
+          "reference_contenders": [
+            44.75,
+            27.125
+          ],
+          "candidate_at_reference_contenders": [
+            45.0,
+            27.125
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    },
+    {
+      "name": "decoder.embeddings",
+      "byte_equal": true,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "min_row_cosine": 1.0,
+      "mean_row_cosine": 1.0,
+      "requires_exact": true,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer0",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 0.00390625,
+      "rmse": 0.0005396211767639467,
+      "relative_l2": 0.002086237705758826,
+      "min_row_cosine": 0.9999978238072069,
+      "mean_row_cosine": 0.9999978238072069,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.layer27",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 2048,
+      "max_abs": 2.5,
+      "rmse": 0.43868092827358973,
+      "relative_l2": 0.010726960441537868,
+      "min_row_cosine": 0.9999431841135177,
+      "mean_row_cosine": 0.9999431841135177,
+      "requires_exact": false,
+      "passed": true
+    },
+    {
+      "name": "decoder.logits",
+      "byte_equal": false,
+      "rows": 1,
+      "width": 151936,
+      "max_abs": 0.25,
+      "rmse": 0.06709980665849569,
+      "relative_l2": 0.0083563869297693,
+      "min_row_cosine": 0.9999786137918125,
+      "mean_row_cosine": 0.9999786137918125,
+      "requires_exact": false,
+      "passed": false,
+      "error_limit_exceeded_columns": 0,
+      "maximum_normalized_delta": 0.5,
+      "decisions": [
+        {
+          "reference_top2": [
+            38432,
+            916
+          ],
+          "candidate_top2": [
+            38432,
+            916
+          ],
+          "reference_margin": 8.875,
+          "candidate_margin": 9.0,
+          "top1_equal": true,
+          "near_tie": false,
+          "near_tie_bound": 0.25,
+          "reference_contenders": [
+            31.375,
+            22.5
+          ],
+          "candidate_at_reference_contenders": [
+            31.375,
+            22.375
+          ]
+        }
+      ],
+      "bounded_logits_passed": false
+    }
+  ]
+}

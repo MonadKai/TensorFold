@@ -1,0 +1,17 @@
+{
+  "vllm": "0.29.0",
+  "torch": "2.13.0+cu130",
+  "python_files": 2512,
+  "python_tree_sha256": "c21e0ecc25286c5ac41e908ff6707d74eefa174becef703cd71ab57612b9e4fc",
+  "hash_method": "sorted(relative_name + NUL + file_sha256_hex + LF)",
+  "selected_files": {
+    "entrypoints/speech_to_text/base/serving.py": "1f4e24493983bb3967e5ab3236881a594a4772ab7da6e69574d2034919e127a0",
+    "model_executor/models/qwen3_asr.py": "cf001ea36d74f37c664a859e7858e4bbe7832888fa5ff764484340c0ccc4ec20",
+    "model_executor/models/qwen3_asr_forced_aligner.py": "3b700b72576a4e9b48ae319d3f0c0deb083f3df7a1484ae282882b366f9d2c91",
+    "model_executor/models/qwen3_asr_realtime.py": "fc1da8db3b418384be5e8298a5eb618577d65a48989610457d4952149c24916c",
+    "renderers/base.py": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+    "transformers_utils/configs/qwen3_asr.py": "9fd83da198c3c754e159c146508f78af5daa3d4a6c58e27c020584edbc834546",
+    "transformers_utils/processors/qwen3_asr.py": "f676fc249482fac2918cc1893b39a80f6ec6d497f2aa58a46ab92854b112f4ee",
+    "v1/core/encoder_cache_manager.py": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1"
+  }
+}

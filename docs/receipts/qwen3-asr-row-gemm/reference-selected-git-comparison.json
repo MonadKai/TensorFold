@@ -1,0 +1,54 @@
+{
+  "git_revision": "98dff2a81d747d1dba01a47f939f48c3526d4206",
+  "selected_files": [
+    {
+      "file": "entrypoints/speech_to_text/base/serving.py",
+      "image_sha256": "1f4e24493983bb3967e5ab3236881a594a4772ab7da6e69574d2034919e127a0",
+      "git_sha256": "1f4e24493983bb3967e5ab3236881a594a4772ab7da6e69574d2034919e127a0",
+      "matches": true
+    },
+    {
+      "file": "model_executor/models/qwen3_asr.py",
+      "image_sha256": "cf001ea36d74f37c664a859e7858e4bbe7832888fa5ff764484340c0ccc4ec20",
+      "git_sha256": "cf001ea36d74f37c664a859e7858e4bbe7832888fa5ff764484340c0ccc4ec20",
+      "matches": true
+    },
+    {
+      "file": "model_executor/models/qwen3_asr_forced_aligner.py",
+      "image_sha256": "3b700b72576a4e9b48ae319d3f0c0deb083f3df7a1484ae282882b366f9d2c91",
+      "git_sha256": "3b700b72576a4e9b48ae319d3f0c0deb083f3df7a1484ae282882b366f9d2c91",
+      "matches": true
+    },
+    {
+      "file": "model_executor/models/qwen3_asr_realtime.py",
+      "image_sha256": "fc1da8db3b418384be5e8298a5eb618577d65a48989610457d4952149c24916c",
+      "git_sha256": "fc1da8db3b418384be5e8298a5eb618577d65a48989610457d4952149c24916c",
+      "matches": true
+    },
+    {
+      "file": "renderers/base.py",
+      "image_sha256": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+      "git_sha256": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+      "matches": true
+    },
+    {
+      "file": "transformers_utils/configs/qwen3_asr.py",
+      "image_sha256": "9fd83da198c3c754e159c146508f78af5daa3d4a6c58e27c020584edbc834546",
+      "git_sha256": "9fd83da198c3c754e159c146508f78af5daa3d4a6c58e27c020584edbc834546",
+      "matches": true
+    },
+    {
+      "file": "transformers_utils/processors/qwen3_asr.py",
+      "image_sha256": "f676fc249482fac2918cc1893b39a80f6ec6d497f2aa58a46ab92854b112f4ee",
+      "git_sha256": "f676fc249482fac2918cc1893b39a80f6ec6d497f2aa58a46ab92854b112f4ee",
+      "matches": true
+    },
+    {
+      "file": "v1/core/encoder_cache_manager.py",
+      "image_sha256": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1",
+      "git_sha256": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1",
+      "matches": true
+    }
+  ],
+  "scope": "Only the eight listed Python source files; no whole-image equivalence claim."
+}

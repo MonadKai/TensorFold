@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "in_progress",
+  "qualification_pass": false,
+  "default_math": "stable",
+  "candidate_math": "throughput",
+  "canonical_source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "canonical_native_sha256": "3070578687c397ee37f3e61427679647e98d65dd8479f88df3ffb0df99b2eff5",
+  "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
+  "pending": [
+    "canonical service quality, determinism, API and strengthened lifecycle",
+    "unfiltered CUDA backend completion",
+    "uncontended microbenchmark, counter and whole-service performance",
+    "fresh reference service and model-stage checks",
+    "matched-input performance pairing and scheduler ablations",
+    "two complete independent Standards/Spec review rounds",
+    "final clean source preflight and independent resource restoration audit"
+  ]
+}

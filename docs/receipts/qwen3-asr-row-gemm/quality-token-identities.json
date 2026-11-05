@@ -1,0 +1,18 @@
+{
+  "schema": 1,
+  "comparisons": [
+    {
+      "candidate": "throughput-c1",
+      "utterances": 256,
+      "different_ids": [],
+      "passed": true
+    },
+    {
+      "candidate": "throughput-c8",
+      "utterances": 256,
+      "different_ids": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

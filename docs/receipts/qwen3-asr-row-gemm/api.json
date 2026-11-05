@@ -1,0 +1,1164 @@
+{
+  "schema": 1,
+  "runs": [
+    {
+      "label": "api-current",
+      "raw_sha256": "ec4fa938fa7e6be9f34a32e20aad4e6b1043e902f47820d674a5fd35d43a6e92",
+      "report": {
+        "model": "Qwen/Qwen3-ASR-1.7B",
+        "results": [
+          {
+            "case": "models",
+            "status": 200,
+            "response": {
+              "object": "list",
+              "data": [
+                {
+                  "id": "Qwen/Qwen3-ASR-1.7B",
+                  "object": "model",
+                  "created": 1793913867,
+                  "owned_by": "tensorfold",
+                  "context_length": 8192,
+                  "max_model_len": 8192,
+                  "reasoning": {
+                    "default_enabled": false
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "case": "tokenize-hash",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.0005568680353462696,
+            "response": {
+              "count": 11,
+              "max_model_len": 8192,
+              "tokens": [
+                565,
+                10717,
+                198,
+                1067,
+                366,
+                10345,
+                860,
+                397,
+                820,
+                88072,
+                13
+              ]
+            }
+          },
+          {
+            "case": "tokenize-unicode",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.010251922998577356,
+            "response": {
+              "count": 16,
+              "max_model_len": 8192,
+              "tokens": [
+                104811,
+                75402,
+                21894,
+                102819,
+                90316,
+                3958,
+                220,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24
+              ]
+            }
+          },
+          {
+            "case": "stt-default",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.5202829469926655,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-explicit-greedy",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1724010179750621,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-language-en",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1090758590726182,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-language-tl",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.017911654082127,
+            "response": {
+              "text": "mmhmm oh yeah yeah he wasn't even that big when I started listening to him but and his solo music didn't do overly well but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-context",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1735633050557226,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-text",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1756813530810177,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-invalid-language",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0012647280236706138,
+            "response": {
+              "error": {
+                "message": "unsupported Qwen3-ASR language code",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-stream-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.00118989497423172,
+            "response": {
+              "error": {
+                "message": "Qwen3-ASR supports stream=false only",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-timestamps-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0020719170570373535,
+            "response": {
+              "error": {
+                "message": "Qwen3-ASR supports json and text without timestamps",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-unknown-model",
+            "status": 404,
+            "content_type": "application/json",
+            "seconds": 0.0011119591072201729,
+            "response": {
+              "error": {
+                "message": "The model `unknown-model` does not exist.",
+                "type": "NotFoundError",
+                "param": "model",
+                "code": 404
+              }
+            }
+          },
+          {
+            "case": "stt-missing-file",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0006853010272607207,
+            "response": {
+              "error": {
+                "message": "file is required",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-invalid-audio",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0007927090628072619,
+            "response": {
+              "error": {
+                "message": "audio decode failed: InvalidAudio",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-invalid-temperature",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.005951959057711065,
+            "response": {
+              "error": {
+                "message": "transcription sampling parameters must be finite",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-samples-0",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0008851260645315051,
+            "response": {
+              "error": {
+                "message": "audio decode failed: InvalidAudio",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-samples-200",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.000871333060786128,
+            "response": {
+              "error": {
+                "message": "audio decode failed: InvalidAudio",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-samples-201",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.11656214902177453,
+            "response": {
+              "text": "",
+              "usage": {
+                "type": "duration",
+                "seconds": 1
+              }
+            }
+          },
+          {
+            "case": "stt-samples-319",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.09506549697834998,
+            "response": {
+              "text": "",
+              "usage": {
+                "type": "duration",
+                "seconds": 1
+              }
+            }
+          },
+          {
+            "case": "stt-samples-320",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.09446909301914275,
+            "response": {
+              "text": "",
+              "usage": {
+                "type": "duration",
+                "seconds": 1
+              }
+            }
+          },
+          {
+            "case": "stt-codec-asr_en.flac",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1717069309670478,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-codec-asr_en.mp3",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.0929640220711008,
+            "response": {
+              "text": "Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "stt-codec-asr_en_48k_stereo.wav",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.2486130030592903,
+            "response": {
+              "text": "Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people.",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "chat-base",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1652539049973711,
+            "response": {
+              "id": "chatcmpl-b1eeb4b20b5ab129f7b49d6a246fcd52",
+              "object": "chat.completion",
+              "created": 1793913878,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people."
+                  },
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 211,
+                "completion_tokens": 49,
+                "total_tokens": 260,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 44.328545614911526,
+                "seconds": 1.082823705,
+                "queued_seconds": 2.0256e-05,
+                "prefill_seconds": 0.04105225,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.080941789,
+                "sampling": "greedy",
+                "drafts": true,
+                "token_sha": "4bb9f1c9611f",
+                "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  71791,
+                  56743,
+                  13,
+                  8670,
+                  21639,
+                  11,
+                  21639,
+                  13,
+                  1260,
+                  5710,
+                  944,
+                  1496,
+                  429,
+                  2409,
+                  979,
+                  358,
+                  3855,
+                  14289,
+                  311,
+                  1435,
+                  11,
+                  714,
+                  323,
+                  806,
+                  13529,
+                  4627,
+                  3207,
+                  944,
+                  653,
+                  38432,
+                  1632,
+                  11,
+                  714,
+                  566,
+                  1521,
+                  1602,
+                  1632,
+                  979,
+                  566,
+                  3855,
+                  4378,
+                  369,
+                  1008,
+                  1251,
+                  13,
+                  151645
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 48,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.0208333333333333
+              }
+            }
+          },
+          {
+            "case": "chat-data-uri",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.17822179896757,
+            "response": {
+              "id": "chatcmpl-67b0a8f6b0589d25ceab589bd5edaa2e",
+              "object": "chat.completion",
+              "created": 1793913879,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people."
+                  },
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 211,
+                "completion_tokens": 49,
+                "total_tokens": 260,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 44.36532279374704,
+                "seconds": 1.081926085,
+                "queued_seconds": 0.000118817,
+                "prefill_seconds": 0.04120758,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.093816753,
+                "sampling": "greedy",
+                "drafts": true,
+                "token_sha": "4bb9f1c9611f",
+                "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  71791,
+                  56743,
+                  13,
+                  8670,
+                  21639,
+                  11,
+                  21639,
+                  13,
+                  1260,
+                  5710,
+                  944,
+                  1496,
+                  429,
+                  2409,
+                  979,
+                  358,
+                  3855,
+                  14289,
+                  311,
+                  1435,
+                  11,
+                  714,
+                  323,
+                  806,
+                  13529,
+                  4627,
+                  3207,
+                  944,
+                  653,
+                  38432,
+                  1632,
+                  11,
+                  714,
+                  566,
+                  1521,
+                  1602,
+                  1632,
+                  979,
+                  566,
+                  3855,
+                  4378,
+                  369,
+                  1008,
+                  1251,
+                  13,
+                  151645
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 48,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.0208333333333333
+              }
+            }
+          },
+          {
+            "case": "chat-system",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.1764860629336908,
+            "response": {
+              "id": "chatcmpl-247986d9e924578156c9b8d2ee9fd38e",
+              "object": "chat.completion",
+              "created": 1793913880,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people."
+                  },
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 214,
+                "completion_tokens": 49,
+                "total_tokens": 263,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 44.38452578669702,
+                "seconds": 1.081457989,
+                "queued_seconds": 2.1168e-05,
+                "prefill_seconds": 0.040662088,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.092826779,
+                "sampling": "greedy",
+                "drafts": true,
+                "token_sha": "4bb9f1c9611f",
+                "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  71791,
+                  56743,
+                  13,
+                  8670,
+                  21639,
+                  11,
+                  21639,
+                  13,
+                  1260,
+                  5710,
+                  944,
+                  1496,
+                  429,
+                  2409,
+                  979,
+                  358,
+                  3855,
+                  14289,
+                  311,
+                  1435,
+                  11,
+                  714,
+                  323,
+                  806,
+                  13529,
+                  4627,
+                  3207,
+                  944,
+                  653,
+                  38432,
+                  1632,
+                  11,
+                  714,
+                  566,
+                  1521,
+                  1602,
+                  1632,
+                  979,
+                  566,
+                  3855,
+                  4378,
+                  369,
+                  1008,
+                  1251,
+                  13,
+                  151645
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 48,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.0208333333333333
+              }
+            }
+          },
+          {
+            "case": "chat-hash-context",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 1.165692539070733,
+            "response": {
+              "id": "chatcmpl-8f95a0ddfb3a7003d0352aea2a7bc682",
+              "object": "chat.completion",
+              "created": 1793913882,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Uh huh. Oh yeah, yeah. He wasn't even that big when I started listening to him, but and his solo music didn't do overly well, but he did very well when he started writing for other people."
+                  },
+                  "finish_reason": "stop"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 221,
+                "completion_tokens": 49,
+                "total_tokens": 270,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 44.380184895394905,
+                "seconds": 1.081563768,
+                "queued_seconds": 0.000210722,
+                "prefill_seconds": 0.041791616,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.081257584,
+                "sampling": "greedy",
+                "drafts": true,
+                "token_sha": "4bb9f1c9611f",
+                "token_sha256": "4bb9f1c9611fc23aabe835350aeafc7cafba8640618ad4378e7080c865580417",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  71791,
+                  56743,
+                  13,
+                  8670,
+                  21639,
+                  11,
+                  21639,
+                  13,
+                  1260,
+                  5710,
+                  944,
+                  1496,
+                  429,
+                  2409,
+                  979,
+                  358,
+                  3855,
+                  14289,
+                  311,
+                  1435,
+                  11,
+                  714,
+                  323,
+                  806,
+                  13529,
+                  4627,
+                  3207,
+                  944,
+                  653,
+                  38432,
+                  1632,
+                  11,
+                  714,
+                  566,
+                  1521,
+                  1602,
+                  1632,
+                  979,
+                  566,
+                  3855,
+                  4378,
+                  369,
+                  1008,
+                  1251,
+                  13,
+                  151645
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 48,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.0208333333333333
+              }
+            }
+          },
+          {
+            "case": "chat-history-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0022349259816110134,
+            "response": {
+              "error": {
+                "message": "Qwen3-ASR accepts one user turn",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-stream-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0017829550197347999,
+            "response": {
+              "error": {
+                "message": "Qwen3-ASR currently supports stream=false only",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-n-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0018310199957340956,
+            "response": {
+              "error": {
+                "message": "n must be 1; multiple choices are not supported",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-penalty-unsupported",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.05352646007668227,
+            "response": {
+              "error": {
+                "message": "Qwen3-ASR does not support presence_penalty or frequency_penalty",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-invalid-base64",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0007688209880143404,
+            "response": {
+              "error": {
+                "message": "invalid Base64 audio",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-temperature-negative",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.001436554011888802,
+            "response": {
+              "error": {
+                "message": "invalid temperature: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-temperature-negative",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.00909175502602011,
+            "response": {
+              "error": {
+                "message": "invalid temperature: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-temperature-1.5",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.24167128303088248,
+            "response": {
+              "id": "chatcmpl-de8f492032d151af1b2ba2d832a909bd",
+              "object": "chat.completion",
+              "created": 1793913883,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Hmm. Oh, yeah"
+                  },
+                  "finish_reason": "length"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 211,
+                "completion_tokens": 8,
+                "total_tokens": 219,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 43.86193181206536,
+                "seconds": 0.159591694,
+                "queued_seconds": 1.152e-05,
+                "prefill_seconds": 0.040677897,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.080300282,
+                "sampling": "exact",
+                "drafts": true,
+                "token_sha": "0c6c8a45f8ea",
+                "token_sha256": "0c6c8a45f8ea68b0fcbe4d81801cfdb77cb13cea214c4cc11d5a424f7786c356",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  80022,
+                  13,
+                  8670,
+                  11,
+                  21639
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 7,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.1428571428571428
+              }
+            }
+          },
+          {
+            "case": "stt-temperature-1.5",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.25203909492120147,
+            "response": {
+              "text": "Uh huh. Oh yeah",
+              "usage": {
+                "type": "duration",
+                "seconds": 16
+              }
+            }
+          },
+          {
+            "case": "chat-temperature-3",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0016347779892385006,
+            "response": {
+              "error": {
+                "message": "invalid temperature: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-temperature-3",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.005859862081706524,
+            "response": {
+              "error": {
+                "message": "invalid temperature: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-top-p-zero",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0014238980365917087,
+            "response": {
+              "error": {
+                "message": "invalid top_p: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-top-p-zero",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.005898694973438978,
+            "response": {
+              "error": {
+                "message": "invalid top_p: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-top-p-1.5",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.001297096023336053,
+            "response": {
+              "error": {
+                "message": "invalid top_p: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-top-p-1.5",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.009364716010168195,
+            "response": {
+              "error": {
+                "message": "invalid top_p: temperature must be in [0,2], top_p in (0,1], min_p in [0,1]",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-top-k-negative",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.002190510043874383,
+            "response": {
+              "error": {
+                "message": "invalid top_k: top_k must be at least -1 and token limits positive",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-top-k-negative",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.009030074928887188,
+            "response": {
+              "error": {
+                "message": "invalid top_k: top_k must be at least -1 and token limits positive",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-seed-overflow",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0012631280114874244,
+            "response": {
+              "error": {
+                "message": "seed must be a signed 64-bit integer",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "stt-seed-overflow",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.009103131014853716,
+            "response": {
+              "error": {
+                "message": "invalid integer transcription parameter",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-max-zero",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0016983789391815662,
+            "response": {
+              "error": {
+                "message": "invalid max_tokens: top_k must be at least -1 and token limits positive",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-max-negative",
+            "status": 400,
+            "content_type": "application/json",
+            "seconds": 0.0014524889411404729,
+            "response": {
+              "error": {
+                "message": "invalid max_tokens: top_k must be at least -1 and token limits positive",
+                "type": "invalid_request_error"
+              }
+            }
+          },
+          {
+            "case": "chat-length-priority",
+            "status": 200,
+            "content_type": "application/json",
+            "seconds": 0.24012335401494056,
+            "response": {
+              "id": "chatcmpl-a8bdbe36b6938fe02849b09859d9b8b7",
+              "object": "chat.completion",
+              "created": 1793913883,
+              "model": "Qwen/Qwen3-ASR-1.7B",
+              "choices": [
+                {
+                  "index": 0,
+                  "message": {
+                    "role": "assistant",
+                    "content": "language English<asr_text>Uh huh. Oh yeah"
+                  },
+                  "finish_reason": "length"
+                }
+              ],
+              "usage": {
+                "prompt_tokens": 211,
+                "completion_tokens": 8,
+                "total_tokens": 219,
+                "prompt_tokens_details": {
+                  "cached_tokens": 0
+                },
+                "completion_tokens_details": {
+                  "reasoning_tokens": 0
+                }
+              },
+              "exact_mode": "exact",
+              "tensorfold": {
+                "enable_thinking": false,
+                "reasoning_effort": "none",
+                "engine": "lanes",
+                "tokens_per_second": 44.22985243341591,
+                "seconds": 0.15826415,
+                "queued_seconds": 1.696e-05,
+                "prefill_seconds": 0.040839482,
+                "prefill_widths": [],
+                "prefill_raised": [],
+                "time_to_first_token": 0.080392139,
+                "sampling": "greedy",
+                "drafts": true,
+                "token_sha": "e7f11a916791",
+                "token_sha256": "e7f11a916791cea90db192120db3bd205d04aca5767c4f68903794c5c18caba2",
+                "token_ids": [
+                  11528,
+                  6364,
+                  151704,
+                  71791,
+                  56743,
+                  13,
+                  8670,
+                  21639
+                ],
+                "min_rows": 1
+              },
+              "speculative": {
+                "rounds": 7,
+                "drafted": 0,
+                "accepted": 0,
+                "acceptance_rate": 0.0,
+                "tokens_per_round": 1.1428571428571428
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
