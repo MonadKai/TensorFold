@@ -179,7 +179,8 @@ def main():
     attempted_audio = sum(durations[r["sha256"]] for r in results)
     audio = sum(durations[r["sha256"]] for r in successful)
     token_counters = [after[key] - before[key] for key in after if key in before and "generation_tokens_total" in key]
-    tokens = sum(r["response"].get("usage", {}).get("completion_tokens", 0) for r in successful) if args.mode == "chat" else (sum(token_counters) if token_counters and len(successful) == len(results) else None)
+    token_counts = [r["response"].get("usage", {}).get("completion_tokens") for r in successful]
+    tokens = (sum(token_counts) if token_counts and all(isinstance(n, int) and n >= 0 for n in token_counts) else None) if args.mode == "chat" else (sum(token_counters) if token_counters and len(successful) == len(results) else None)
     cpu = final_cpu - initial_cpu if initial_cpu is not None and final_cpu is not None else None
     intervals = [r["response"].get("tensorfold", {}).get("audio_gpu_event_intervals") for r in successful]
     ttft = [r["response"].get("tensorfold", {}).get("time_to_first_token") for r in successful]
@@ -195,6 +196,12 @@ def main():
     stops = [natural_stop(r) for r in successful] if args.workload == "natural" else []
     full_audio = args.workload == "natural" and bool(stops) and all(x is True for x in stops)
     unique_work = not args.unique_requests or len({r["sha256"] for r in results}) == len(results)
+    warmup_work = all(valid(r) for r in warmup_results)
+    if args.workload == "equal_tokens":
+        warmup_work = warmup_work and all(r["response"].get("usage", {}).get("completion_tokens") == args.tokens for r in warmup_results)
+    else:
+        warmup_work = warmup_work and not any(natural_stop(r) is False for r in warmup_results if valid(r))
+    sustained_goal = elapsed >= args.seconds and len(successful) >= args.min_requests
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
         "workload": {"fixtures": fixtures, "concurrency": args.concurrency, "reps": args.reps, "warmup_excluded": args.warmup,
@@ -219,7 +226,8 @@ def main():
                          "pinned_allocation_peak_bytes": next((after[key] for key in after if "pinned_memory_peak_bytes" in key), None), "gpu_active_seconds": None},
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
-        "complete": bool(results) and len(successful) == len(results) and all(valid(r) for r in warmup_results) and work_matches and unique_work and not exhausted and not any(x is False for x in stops),
+        "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops),
+        "warmup_work_matches": warmup_work, "sustained_goal_met": sustained_goal,
         "unique_pool_exhausted": exhausted,
         "natural_stop_observations": stops,
         "equal_token_work_matches": work_matches if args.workload == "equal_tokens" else None,

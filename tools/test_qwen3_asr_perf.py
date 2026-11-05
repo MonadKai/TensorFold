@@ -12,7 +12,7 @@ import wave
 
 
 @contextlib.contextmanager
-def server(fail_first=False):
+def server(fail_first=False, omit_usage=False):
     class Handler(BaseHTTPRequestHandler):
         requests = 0
 
@@ -31,6 +31,8 @@ def server(fail_first=False):
                 "choices": [{"message": {"content": "hello"}, "finish_reason": "stop"}],
                 "usage": {"completion_tokens": 3},
             }
+            if omit_usage:
+                response.pop("usage", None)
             body = json.dumps(response).encode()
             self.send_response(503 if failed else 200)
             self.send_header("Content-Type", "application/json")
@@ -90,11 +92,19 @@ class BenchmarkAccounting(unittest.TestCase):
 
     def test_equal_token_mismatch_does_not_report_full_audio_throughput(self):
         with server() as url:
-            status, result = self.run_cell(url, "--workload", "equal_tokens", "--tokens", "4")
+            status, result = self.run_cell(url, "--workload", "equal_tokens", "--tokens", "4", "--warmup-requests", "1")
         self.assertEqual(status, 1)
         self.assertFalse(result["complete"])
         self.assertFalse(result["equal_token_work_matches"])
+        self.assertFalse(result["warmup_work_matches"])
         self.assertIsNone(result["measurements"]["audio_seconds_per_wall_second"])
+
+    def test_missing_token_usage_remains_unknown(self):
+        with server(omit_usage=True) as url:
+            status, result = self.run_cell(url)
+        self.assertEqual(status, 0)
+        self.assertIsNone(result["measurements"]["generated_tokens"])
+        self.assertIsNone(result["measurements"]["generated_tokens_per_wall_second"])
 
 
 if __name__ == "__main__":
