@@ -170,3 +170,51 @@ each at least 120 seconds and 64 completions. Native stable/throughput compariso
 repetitions; other cache and batch cells retain at least 64 completions and repeated measurements.
 Equal-token diagnostics never report complete-ASR audio throughput. Whole-request latency includes HTTP
 transport; internal TTFT and CUDA-event stages retain their own clock boundaries.
+
+## Runtime and diagnostic entry points
+
+The process selects `TENSORFOLD_QWEN3_ASR_MATH=stable|throughput` when loading the model. `stable` is the
+default. `throughput` uses the shared-weight CUDA kernel for packed QKV, attention output, packed gate/up,
+down and LM head, including the first LM head after prefill. Prefill and the encoder keep their original
+arithmetic. Runtime qualification is limited to SM121 and cuBLASLt version 130100; unsupported throughput
+configurations fail explicitly. Selecting `stable` remains the explicit recovery path.
+
+The shared kernel has a capacity of eight rows, with no physical padding or persistent workspace. One
+block owns four output columns and reuses each loaded weight across its active row accumulators. It uses
+SIMT FP32 instructions, not Tensor Core GEMM. Each output retains the original sixteen FP32 FMA chains,
+halving reduction and final BF16 rounding. The vendor P32 policy remains available to diagnostics only;
+it is not an alternative served math mode and did not pass the model-logit contract.
+
+With eight engine lanes, long parents share four child admissions. A single parent may use all four;
+additional parents receive fair turns as occupied work completes. The ordinary four-lane headroom stays
+available. Shrinking a share does not release an existing child or its KV slot. Parent results retain
+original chunk order. `audio_parents_cancelled_total` increments after a disconnected parent's workers
+have joined; the parent gauge and engine drain checks independently establish release.
+
+The existing GPU lock and service recovery protocol apply to these commands:
+
+```sh
+zig build native audio tf-qwen3-asr-check tf-qwen3-asr-gemm-bench tf-qwen3-asr-contract \
+  -Dnvcc=/usr/local/cuda/bin/nvcc -Dsm=121 -j4
+zig-out/bin/tf-qwen3-asr-gemm-bench "$MODEL" --shared
+zig-out/bin/tf-qwen3-asr-contract
+zig-out/bin/tf-cuda-test kernel-contract
+TENSORFOLD_QWEN3_ASR_MATH=throughput zig-out/native/bin/tensorfold-native serve "$MODEL" \
+  --name Qwen/Qwen3-ASR-1.7B --parallel 8 --context 8192 --prompt-cache-gib 0 --no-thinking
+```
+
+`prepare_qwen3_asr_eval.py` and `prepare_qwen3_asr_perf.py` reconstruct the frozen workloads.
+`bench_qwen3_asr_accuracy.py --require-natural-stop` and `compare_qwen3_asr_quality.py` require exact
+coverage of all 256 quality utterances. `check_qwen3_asr_determinism.py` compares greedy and fixed-seed
+sampling across concurrency, order and reused slots; `--reference` checks another process's fingerprints.
+`check_qwen3_asr_lifecycle.py` requires observed active/queued work and actual cancellation-counter changes.
+`check_qwen3_asr_parents.py` checks quota shrink, continued four-slot decode, queued/active parent cancellation
+and ordered completion of real and repeated long audio. Both long fixtures must have at least four chunks.
+
+For performance, use `bench_qwen3_asr_perf.py --clip-manifest MANIFEST --unique-requests --seconds 120
+--min-requests 64 --warmup-requests 32` with an explicit identity and cache condition. Native transcription
+qualification additionally sets `--require-natural-stop`; absent reference stopping telemetry stays unknown.
+`compare_qwen3_asr_perf.py` binds 64 unique input SHAs, actual token IDs/counts, seed, context and cache
+condition. Native token disagreements fail; cross-engine disagreements are retained separately from ASR
+quality. `bench_qwen3_asr_mixed.py` requires both natural chunk stopping and observed execution overlap.
+`summarize_qwen3_asr_ncu.py` and `summarize_qwen3_asr_trace.py` export the public subsets of private traces.
