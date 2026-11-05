@@ -21,7 +21,8 @@ def fixture():
                     raw=dict(sha256=c["sha256"], status=200,
                              response=dict(text="hello", tensorfold=dict(chunks=[dict(finish_reason="stop")]))))
                for c in clips]
-    return dict(manifest=manifest, manifest_sha256=sha, records=records,
+    return dict(manifest=manifest, manifest_sha256=sha, records=records,model="Qwen/Qwen3-ASR-1.7B",
+                seed=0, temperature=0, max_completion_tokens=1024,
                 complete=True, requires_observed_natural_stop=True), sha
 
 
@@ -48,6 +49,13 @@ class QualityIntegrity(unittest.TestCase):
         self.report["manifest"]["clips"][0]["reference"] = "changed"
         with self.assertRaisesRegex(ValueError, "frozen manifest"):
             validate_report(self.report)
+
+    def test_sampling_or_model_mismatch_is_rejected(self):
+        for name,value in (("model","other"),("seed",1),("temperature",0.7),("max_completion_tokens",128)):
+            report = copy.deepcopy(self.report)
+            report[name] = value
+            with self.assertRaisesRegex(ValueError,"model or sampling"):
+                validate_report(report)
 
     def test_raw_proof_and_counts_are_checked(self):
         for name, value in (("word_edits", -1), ("reference_characters", 0),

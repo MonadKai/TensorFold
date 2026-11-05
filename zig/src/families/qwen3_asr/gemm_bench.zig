@@ -71,6 +71,43 @@ const Rig = struct {
         defer r.a.free(text);
         std.debug.print("ASR_GEMM {s}\n", .{text});
     }
+
+    fn save(r: *Rig, io: std.Io, dir: []const u8, name: []const u8, pointer: u64, bytes: usize) !void {
+        const data = try r.a.alloc(u8, bytes);
+        defer r.a.free(data);
+        const buffer: cuda.DeviceBuffer = .{ .d = r.x.d, .ptr = pointer, .len = bytes, .borrowed = true };
+        try r.s.synchronize();
+        try buffer.download(0, data);
+        const path = try std.fs.path.join(r.a, &.{ dir, name });
+        defer r.a.free(path);
+        try std.Io.Dir.cwd().writeFile(io, .{ .sub_path = path, .data = data });
+    }
+
+    fn accuracy(r: *Rig, io: std.Io, dir: []const u8) !void {
+        try std.Io.Dir.cwd().createDirPath(io, dir);
+        var mod = try cuda.Module.load(r.x.d, cuda.kernels.qwen3_asr);
+        defer mod.unload();
+        var projection = try cuda.row_gemm.Shared.init(r.x.d, &r.stable.lt, mod);
+        try r.save(io, dir, "input.bf16", r.x.ptr, r.x.len);
+        for (shapes, 0..) |shape, index| {
+            const weight_name = try std.fmt.allocPrint(r.a, "{s}-weight.bf16", .{shape.name});
+            defer r.a.free(weight_name);
+            try r.save(io, dir, weight_name, r.weight(index, 0), shape.n * shape.k * 2);
+            for ([_]usize{ 1, 2, 4, 8 }) |rows| {
+                r.shared = null;
+                try r.run(index, rows, null, 0);
+                const base = try std.fmt.allocPrint(r.a, "{s}-b{d}-stable.bf16", .{ shape.name, rows });
+                defer r.a.free(base);
+                try r.save(io, dir, base, r.y.ptr, rows * shape.n * 2);
+                r.shared = &projection;
+                try r.run(index, rows, null, 0);
+                const candidate = try std.fmt.allocPrint(r.a, "{s}-b{d}-shared.bf16", .{ shape.name, rows });
+                defer r.a.free(candidate);
+                try r.save(io, dir, candidate, r.y.ptr, rows * shape.n * 2);
+            }
+        }
+        r.shared = null;
+    }
 };
 
 fn median(samples: [7]f64) f64 {
@@ -82,8 +119,8 @@ fn median(samples: [7]f64) f64 {
 pub fn main(init: std.process.Init) !u8 {
     const a = std.heap.c_allocator;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
-    if (args.len != 2 and args.len != 3 and args.len != 8) {
-        std.debug.print("usage: tf-qwen3-asr-gemm-bench MODEL [--staged|--shared | --trace stable|dense|staged|shared ROWS SHAPE CANDIDATE WORKSPACE_MIB]\n", .{});
+    if (args.len != 2 and args.len != 3 and args.len != 8 and !(args.len == 4 and std.mem.eql(u8, args[2], "--accuracy"))) {
+        std.debug.print("usage: tf-qwen3-asr-gemm-bench MODEL [--accuracy OUT | --staged|--shared | --trace stable|dense|staged|shared ROWS SHAPE CANDIDATE WORKSPACE_MIB]\n", .{});
         return 2;
     }
     var d = try cuda.Driver.open();
@@ -116,6 +153,10 @@ pub fn main(init: std.process.Init) !u8 {
     try x.upload(0, std.mem.sliceAsBytes(host));
     var r: Rig = .{ .a = a, .s = s, .w = &w, .x = x, .y = y, .workspace = workspace, .begin = begin, .end = end, .stable = &stable };
     try r.emit(.{ .schema = 1, .cublaslt_version = stable.lt.api.cublasLtGetVersion(), .seed = 20261106, .layers_per_sample = 28, .samples = 7, .rotating_decoder_weights = true, .includes_staging = false });
+    if (args.len == 4) {
+        try r.accuracy(init.io, args[3]);
+        return 0;
+    }
     if (args.len == 3) {
         if (std.mem.eql(u8, args[2], "--shared")) {
             var mod = try cuda.Module.load(&d, cuda.kernels.qwen3_asr);

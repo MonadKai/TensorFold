@@ -12,6 +12,9 @@ FROZEN_MANIFEST_SHA256 = "0d8a427d232e76df2dbfa0d6bdc314799db47d4006050b1d0fe7bb
 
 
 def validate_report(report):
+    expected = dict(model="Qwen/Qwen3-ASR-1.7B", seed=0, temperature=0, max_completion_tokens=1024)
+    if any(report.get(key) != value for key, value in expected.items()):
+        raise ValueError("model or sampling differs from the preregistered contract")
     manifest = report["manifest"]
     canonical = (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode()
     if report.get("manifest_sha256") != FROZEN_MANIFEST_SHA256 or hashlib.sha256(canonical).hexdigest() != FROZEN_MANIFEST_SHA256:
