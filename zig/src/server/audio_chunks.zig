@@ -41,6 +41,9 @@ const State = struct {
     }
 
     fn one(state: *State, index: usize) chat.Failure!void {
+        const gate = &state.srv.audio_children;
+        try gate.wait(state.srv.io, @import("audio_quota.zig").Gate.limit(state.srv.info.lanes), state);
+        defer gate.release(state.srv.io);
         var arena = std.heap.ArenaAllocator.init(state.srv.gpa);
         defer arena.deinit();
         var cx: errors.Cx = .{ .a = arena.allocator() };

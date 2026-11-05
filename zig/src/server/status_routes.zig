@@ -150,6 +150,7 @@ pub fn metrics(srv: *Server, conn: *Conn, a: Allocator) void {
     }
     @import("load_metrics.zig").render(&out.writer, snap, .{ .model = srv.config.served_name, .backend = srv.config.identity.backend, .version = srv.config.identity.version }) catch return;
     if (srv.config.admission.enabled()) @import("metrics.zig").renderAdmission(&out.writer, srv.admission.snapshot(srv.io)) catch return;
+    if (srv.info.audio != null) srv.audio_children.render(srv.io, &out.writer, srv.info.lanes) catch return;
     const body = out.written();
     conn.startResponse(200, null) catch return;
     conn.addHeader("Content-Type", "text/plain; version=0.0.4; charset=utf-8") catch return;

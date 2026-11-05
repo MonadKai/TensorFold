@@ -152,6 +152,7 @@ pub const Server = struct {
     idle_manager: ?*idle_unload.Manager = null,
     preparing: std.atomic.Value(i64) = .init(0),
     speech_inflight: std.atomic.Value(u32) = .init(0),
+    audio_children: @import("audio_quota.zig").Gate = .{},
     arena: std.heap.ArenaAllocator,
     /// Structured output's compiler, opened by the first structured request (Python's grammar.compiler).
     grammars: ?*api.grammar.Compiler = null,
