@@ -7,7 +7,7 @@ from compare_qwen3_asr_perf import paired
 def report():
     return dict(complete=True, warmup_work_matches=True,
                 workload=dict(kind="natural", mode="chat", temperature=0, seed=0, output_cap=1024, concurrency=8),
-                runtime=dict(context=8192, model_revision="fixed", dtype="bfloat16"),
+                runtime=dict(context=8192, model_revision="fixed", dtype="bfloat16", cache_condition="disabled"),
                 requests=[dict(sha256=f"{i:064x}", status=200, response=dict(usage=dict(completion_tokens=2),
                                choices=[dict(message=dict(content="hello"), token_ids=[1, 2], finish_reason="stop")]))
                           for i in range(64)])

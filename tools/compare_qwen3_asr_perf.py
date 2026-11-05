@@ -18,7 +18,7 @@ def paired(reference, candidate, cross_engine=False):
     for key in ("kind", "mode", "temperature", "seed", "output_cap", "concurrency"):
         if reference["workload"][key] != candidate["workload"][key]:
             raise ValueError("workload differs: " + key)
-    for key in ("context", "model_revision", "dtype"):
+    for key in ("context", "model_revision", "dtype", "cache_condition"):
         if reference["runtime"].get(key) is None or reference["runtime"].get(key) != candidate["runtime"].get(key):
             raise ValueError("runtime differs or lacks identity: " + key)
     if reference["workload"]["mode"] != "chat":
