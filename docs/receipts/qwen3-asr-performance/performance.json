@@ -1,0 +1,4104 @@
+{
+  "schema": "asr-performance-followup-v1",
+  "baseline": "126765048",
+  "performance_candidate": "dc2b72985",
+  "final_native": "f8066cdaa",
+  "checkpoint": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+  "precision": "BF16 weights/activations, FP32 accumulation",
+  "context": 8192,
+  "slots": 8,
+  "profiled_timings_excluded_from_ordinary_comparisons": true,
+  "cells": [
+    {
+      "label": "before1-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.793846532003954,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3673027289914899,
+        "latency_p95_seconds": 6.748023547523189,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 14.807703349902795,
+        "successful_requests_per_second": 0.4349765662593846,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 40.23533237899307,
+        "cpu_seconds": 1.4899999999999993,
+        "cpu_core_equivalents": 0.10801918062108046,
+        "sampled_peak_process_rss_bytes": 710176768,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "cb2d11a2d24f39e18621b7baf0207cf0c120bb39db7e12524bc6d38a88da574e"
+    },
+    {
+      "label": "before1-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.205647574970499,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 4.8060282450169325,
+        "latency_p95_seconds": 9.189332520705648,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.467260226385097,
+        "successful_requests_per_second": 0.45435106199352016,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 42.02747323440062,
+        "cpu_seconds": 1.54,
+        "cpu_core_equivalents": 0.11661677257833684,
+        "sampled_peak_process_rss_bytes": 729088000,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "219e76d60f3d69d15e31e8abc849956584417e31f7465dc5086336e169b799c9"
+    },
+    {
+      "label": "before1-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.120405416935682,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 6.028790945536457,
+        "latency_p95_seconds": 11.448013885994442,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.567749700504645,
+        "successful_requests_per_second": 0.45730294219836093,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 42.30052215334839,
+        "cpu_seconds": 1.459999999999999,
+        "cpu_core_equivalents": 0.11127704926826776,
+        "sampled_peak_process_rss_bytes": 733986816,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "0203f425b4c22c6ab86b168bf88e6669c376c8cbc4aa892d921ffd476b05d718"
+    },
+    {
+      "label": "before1-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 41.70452600403223,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 41.67981190606952,
+        "latency_p95_seconds": 41.67981190606952,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 14.386927690821581,
+        "successful_requests_per_second": 0.023978212818035968,
+        "generated_tokens": 1724.0,
+        "generated_tokens_per_wall_second": 41.33843889829401,
+        "cpu_seconds": 4.379999999999999,
+        "cpu_core_equivalents": 0.10502457214299751,
+        "sampled_peak_process_rss_bytes": 791916544,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "fd17ff7aac552e02b3297dcb6938c6f7ccc0490ccca5fb82d933da980ed8e525"
+    },
+    {
+      "label": "before1-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 38.137386659975164,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 38.11408767802641,
+        "latency_p95_seconds": 38.11408767802641,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 15.732593461357814,
+        "successful_requests_per_second": 0.026220989102263025,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 41.00962695593937,
+        "cpu_seconds": 4.16,
+        "cpu_core_equivalents": 0.10907931466541418,
+        "sampled_peak_process_rss_bytes": 791961600,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "32aa202bb77b8889ac0df6817360958c1dea1548d53faae012da9a55a48e02af"
+    },
+    {
+      "label": "after1-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.439485145034268,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3302186744986102,
+        "latency_p95_seconds": 6.5687336962728295,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.198140798977697,
+        "successful_requests_per_second": 0.44644567371815796,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 41.29622481892961,
+        "cpu_seconds": 1.3499999999999996,
+        "cpu_core_equivalents": 0.10045027658658552,
+        "sampled_peak_process_rss_bytes": 712282112,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "c06aa3cbf08fb5d05ef93bb665be0e0112076155f814534ef7b74a8471bc4ba0"
+    },
+    {
+      "label": "after1-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.513446016004309,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 4.385073898534756,
+        "latency_p95_seconds": 8.753598920244258,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.322856808489362,
+        "successful_requests_per_second": 0.47948422779194366,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 44.35229107075479,
+        "cpu_seconds": 1.13,
+        "cpu_core_equivalents": 0.09030286290081604,
+        "sampled_peak_process_rss_bytes": 730558464,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "63ac1cd8c2bc7bdde973665ed774cbbfd77e52bfc11e8cc450c76fed998f1c2e"
+    },
+    {
+      "label": "after1-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.517539795022458,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 5.591474206943531,
+        "latency_p95_seconds": 10.870730981056113,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.31751852558289,
+        "successful_requests_per_second": 0.47932741563049575,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 44.337785945820855,
+        "cpu_seconds": 1.1399999999999988,
+        "cpu_core_equivalents": 0.0910722089697941,
+        "sampled_peak_process_rss_bytes": 737206272,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "3b17105144d60fdb6182a31403a902f820d033df40da0e6c61f2c39cbfc862af"
+    },
+    {
+      "label": "after1-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 37.92232230200898,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 37.8947538199136,
+        "latency_p95_seconds": 37.8947538199136,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 15.821815848240242,
+        "successful_requests_per_second": 0.0263696930804004,
+        "generated_tokens": 1724.0,
+        "generated_tokens_per_wall_second": 45.46135087061029,
+        "cpu_seconds": 3.1799999999999997,
+        "cpu_core_equivalents": 0.08385562399567327,
+        "sampled_peak_process_rss_bytes": 766742528,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "0640551cf2732b90cb379784aee8127bce5a8905a409509b8109b45ee6ff1212"
+    },
+    {
+      "label": "after1-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 34.53548908396624,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 34.5108567730058,
+        "latency_p95_seconds": 34.5108567730058,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 17.37343283430034,
+        "successful_requests_per_second": 0.028955721390500563,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 45.28674825474288,
+        "cpu_seconds": 3.0700000000000003,
+        "cpu_core_equivalents": 0.08889406466883674,
+        "sampled_peak_process_rss_bytes": 766922752,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "3e9fbfda9b7d53244283601b2379649de6032f47fb7727d4b72189b118d001b4"
+    },
+    {
+      "label": "after2-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.746287071029656,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3538595470017754,
+        "latency_p95_seconds": 6.730206588516012,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 14.858935103317352,
+        "successful_requests_per_second": 0.43648149998591396,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 40.37453874869704,
+        "cpu_seconds": 1.37,
+        "cpu_core_equivalents": 0.09966327583011703,
+        "sampled_peak_process_rss_bytes": 712278016,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "930f99eaf68b6514431d9f2c6c1abcf0ef55a22ac8cd8b088b43e26e802b203f"
+    },
+    {
+      "label": "after2-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.910932585014962,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 4.500901275430806,
+        "latency_p95_seconds": 9.024983437760966,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.820327939522217,
+        "successful_requests_per_second": 0.46472243275159564,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 42.98682502952259,
+        "cpu_seconds": 1.2200000000000006,
+        "cpu_core_equivalents": 0.09449356132615783,
+        "sampled_peak_process_rss_bytes": 730882048,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "a386f823e35e1610bb5dad2c8798264a82c6ba17100f6fd56cae31a1eb9827c0"
+    },
+    {
+      "label": "after2-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.848283002036624,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 5.704347790509928,
+        "latency_p95_seconds": 11.161733405519044,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.897469527066212,
+        "successful_requests_per_second": 0.4669884683462312,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 43.19643332202639,
+        "cpu_seconds": 1.1600000000000001,
+        "cpu_core_equivalents": 0.09028443721360471,
+        "sampled_peak_process_rss_bytes": 737050624,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "a5f5953189adb3db58eab2001f734876604016de4ca77f9dd703025413232642"
+    },
+    {
+      "label": "after2-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 38.8524747940246,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 38.82648180995602,
+        "latency_p95_seconds": 38.82648180995602,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 15.44303170340846,
+        "successful_requests_per_second": 0.025738386172347433,
+        "generated_tokens": 1724.0,
+        "generated_tokens_per_wall_second": 44.372977761126975,
+        "cpu_seconds": 3.3000000000000007,
+        "cpu_core_equivalents": 0.08493667436874655,
+        "sampled_peak_process_rss_bytes": 766742528,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "6a795a4f3c3c919cb99ee889a30d98fd4434ed4e1aee59d0f8b5763433814c71"
+    },
+    {
+      "label": "after2-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": "3ce0d3319",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 34.663651391048916,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 34.63652922504116,
+        "latency_p95_seconds": 34.63652922504116,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 17.30919784621813,
+        "successful_requests_per_second": 0.02884866307703022,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 45.11930905247526,
+        "cpu_seconds": 3.129999999999999,
+        "cpu_core_equivalents": 0.09029631543110456,
+        "sampled_peak_process_rss_bytes": 766930944,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "3ce0d3319",
+        "binary_sha256": "0aab20dd099990fc56ed11f07f828bafa95555b59fd0bb634a9ed23079f368ba",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "06ee8b4f0d64ab9ef3c8921f15f09daee6ca8e8d80fcd3595e4e304f61a79b40"
+    },
+    {
+      "label": "after3-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.399785168003291,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.328872311511077,
+        "latency_p95_seconds": 6.549021083745174,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.243168822417484,
+        "successful_requests_per_second": 0.4477683727592226,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 41.418574480228095,
+        "cpu_seconds": 1.2800000000000002,
+        "cpu_core_equivalents": 0.09552391952196751,
+        "sampled_peak_process_rss_bytes": 707391488,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "6aa7498ed27f13bebe961c054db40bfb7da6bab3845a6f715a3a3235aa5c8443"
+    },
+    {
+      "label": "after3-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.559052296099253,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 4.426695557020139,
+        "latency_p95_seconds": 8.772700755798724,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.263582847205765,
+        "successful_requests_per_second": 0.4777430540569972,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 44.19123250027224,
+        "cpu_seconds": 1.1900000000000004,
+        "cpu_core_equivalents": 0.09475237238797114,
+        "sampled_peak_process_rss_bytes": 725737472,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "226c4d98ddf1b638da62ab955edbdf0b820c88539a7b8bc9bd0a4b5d34b8304a"
+    },
+    {
+      "label": "after3-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.510322168003768,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 5.561904869566206,
+        "latency_p95_seconds": 10.870026766962837,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.32693265265385,
+        "successful_requests_per_second": 0.47960395579144394,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 44.363365910708566,
+        "cpu_seconds": 1.1300000000000008,
+        "cpu_core_equivalents": 0.09032541167405533,
+        "sampled_peak_process_rss_bytes": 731430912,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "224857e501f60a86962825e974fc09bd05493c901c18cc0a700c8532fa414b20"
+    },
+    {
+      "label": "after3-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 37.977689397055656,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 37.95384788594674,
+        "latency_p95_seconds": 37.95384788594674,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 15.798749463850134,
+        "successful_requests_per_second": 0.02633124910641689,
+        "generated_tokens": 1724.0,
+        "generated_tokens_per_wall_second": 45.39507345946272,
+        "cpu_seconds": 3.2300000000000004,
+        "cpu_core_equivalents": 0.08504993461372658,
+        "sampled_peak_process_rss_bytes": 757170176,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "931228cb63044b5b281a36151fb03b6d196a22ed34f672bce169ac3dd6e59249"
+    },
+    {
+      "label": "after3-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 34.5240381519543,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 34.50012287101708,
+        "latency_p95_seconds": 34.50012287101708,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 17.379195254018562,
+        "successful_requests_per_second": 0.02896532542336427,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 45.30176896214172,
+        "cpu_seconds": 3.039999999999999,
+        "cpu_core_equivalents": 0.08805458928702736,
+        "sampled_peak_process_rss_bytes": 762077184,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "9d0cbdab50cbbf44399a0d1b545d3815d7dd94f42186917d1674160c260604d1"
+    },
+    {
+      "label": "before2-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.776441204943694,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3587421824922785,
+        "latency_p95_seconds": 6.736373091785936,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 14.826411586375643,
+        "successful_requests_per_second": 0.4355261210599797,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 40.28616619804812,
+        "cpu_seconds": 1.4800000000000004,
+        "cpu_core_equivalents": 0.10742977652812835,
+        "sampled_peak_process_rss_bytes": 703262720,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "fb9300d7e164ff1a28286219b6ace39260bf81d84ca405517e40ca24fb6bae62"
+    },
+    {
+      "label": "before2-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.227306431974284,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 4.789052532520145,
+        "latency_p95_seconds": 9.22404700977495,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.441933590217221,
+        "successful_requests_per_second": 0.4536070915765766,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 41.958655970833334,
+        "cpu_seconds": 1.4900000000000002,
+        "cpu_core_equivalents": 0.11264576107484987,
+        "sampled_peak_process_rss_bytes": 724049920,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "14883a82f075c7a8855aaab6dd0f7d1cf9c86e13d6b2ce5290efe5f96300f632"
+    },
+    {
+      "label": "before2-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.270795696997084,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 6.106028003094252,
+        "latency_p95_seconds": 11.575652142433682,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.39132936438912,
+        "successful_requests_per_second": 0.4521205914847804,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 41.821154712342185,
+        "cpu_seconds": 1.5199999999999996,
+        "cpu_core_equivalents": 0.11453721650947767,
+        "sampled_peak_process_rss_bytes": 729788416,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "bbbfa00c125bb9b56daefa81225dec873f5e9fcf7f67e902fc6d85cbcabe90ed"
+    },
+    {
+      "label": "before2-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 41.9861084879376,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 41.95978325500619,
+        "latency_p95_seconds": 41.95978325500619,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 14.290440853130674,
+        "successful_requests_per_second": 0.023817401421884456,
+        "generated_tokens": 1724.0,
+        "generated_tokens_per_wall_second": 41.061200051328804,
+        "cpu_seconds": 4.43,
+        "cpu_core_equivalents": 0.10551108829894813,
+        "sampled_peak_process_rss_bytes": 787337216,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "3fae410cb86bc3251d75eb301adc56bb4855551414f8d616b7f4607d63f19d59"
+    },
+    {
+      "label": "before2-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 38.316228052950464,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 38.29123912798241,
+        "latency_p95_seconds": 38.29123912798241,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 15.659161417737678,
+        "successful_requests_per_second": 0.026098602362896132,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 40.81821409556955,
+        "cpu_seconds": 4.16,
+        "cpu_core_equivalents": 0.1085701858296479,
+        "sampled_peak_process_rss_bytes": 787365888,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "3e9f4a9f9e7f9d1f2fa15423a91c079919585eb4b7ef3015c561174286874670"
+    },
+    {
+      "label": "after3-unique8-c1",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 1,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.290677874931134,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 0.6353769175475463,
+        "latency_p95_seconds": 2.135898911044933,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 12.993317694180801,
+        "successful_requests_per_second": 1.2038513122178054,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 42.13479592762319,
+        "cpu_seconds": 1.3399999999999999,
+        "cpu_core_equivalents": 0.1008225473982412,
+        "sampled_peak_process_rss_bytes": 688947200,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "d8127a46f2cae8734aa018820e9e3d94095ddce49973ed7c2c5a5cd6d393ce72"
+    },
+    {
+      "label": "after3-unique8-c4",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 4,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 11.921792458044365,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 2.2204633980290964,
+        "latency_p95_seconds": 5.94711479297257,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 14.485237904261238,
+        "successful_requests_per_second": 1.342080065250911,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 46.97280228378188,
+        "cpu_seconds": 0.9700000000000024,
+        "cpu_core_equivalents": 0.08136360395583668,
+        "sampled_peak_process_rss_bytes": 702939136,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "00169e1a74acd824901c021554dbd66e76492f3f78da7dff8755f51d443e4e3f"
+    },
+    {
+      "label": "after3-unique8-c8",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 8,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 11.829571462934837,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 4.388639740936924,
+        "latency_p95_seconds": 8.081949205952697,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 14.598161948730201,
+        "successful_requests_per_second": 1.3525426555080389,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 47.33899294278136,
+        "cpu_seconds": 0.8699999999999974,
+        "cpu_core_equivalents": 0.0735445068932494,
+        "sampled_peak_process_rss_bytes": 714989568,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "f1f205e7aee7922e688d21f8f3df0aaeefc1ac98ebe01cee27f51355307dc05d"
+    },
+    {
+      "label": "after3-fixed128",
+      "scope": "eight distinct120s clips, capped128tokens each; partial-ASR equal-work diagnostic",
+      "source_commit": "dc2b72985",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami120-0.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-1.wav",
+            "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-2.wav",
+            "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-3.wav",
+            "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-4.wav",
+            "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-5.wav",
+            "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-6.wav",
+            "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-7.wav",
+            "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 128
+      },
+      "measurements": {
+        "batch_wall_seconds": 24.10342100809794,
+        "requests": 8,
+        "successful": 8,
+        "latency_p50_seconds": 23.399667607969604,
+        "latency_p95_seconds": 23.936704401066528,
+        "attempted_audio_seconds": 960.0,
+        "successful_audio_seconds": 960.0,
+        "audio_seconds_per_wall_second": 39.82837123732238,
+        "successful_requests_per_second": 0.33190309364435316,
+        "generated_tokens": 1024,
+        "generated_tokens_per_wall_second": 42.483595986477205,
+        "cpu_seconds": 3.239999999999995,
+        "cpu_core_equivalents": 0.13442075292596284,
+        "sampled_peak_process_rss_bytes": 916119552,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "dc2b72985",
+        "binary_sha256": "2bf02854ab2dd89cbeb94eb72edee8aadd58ccdbb026bd8eb3e5fa5f707c8f33",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "6c326d0f0c704f4af706e6bd07e291c7c4b5dacf720a8e89c9dfbb67b6d1adc7"
+    },
+    {
+      "label": "before2-unique8-c1",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 1,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.55075350694824,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 0.6570535984938033,
+        "latency_p95_seconds": 2.178524444985669,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 12.743940763991613,
+        "successful_requests_per_second": 1.1807461475700147,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 41.326115164950515,
+        "cpu_seconds": 1.4800000000000004,
+        "cpu_core_equivalents": 0.10921901865022639,
+        "sampled_peak_process_rss_bytes": 687779840,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "1d036d87a4f9c195014e2522bafa1eeb481060c3ace6ad124311cbb51692fccd"
+    },
+    {
+      "label": "before2-unique8-c4",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 4,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.98743983800523,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 2.4314752650097944,
+        "latency_p95_seconds": 6.458350573724601,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 13.296692970592721,
+        "successful_requests_per_second": 1.2319595085383261,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 43.11858279884141,
+        "cpu_seconds": 1.5599999999999952,
+        "cpu_core_equivalents": 0.12011605208248642,
+        "sampled_peak_process_rss_bytes": 700129280,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "430a44230e170291b8671d1248f1eba408d02e760389b00ccf38dc319ec8f213"
+    },
+    {
+      "label": "before2-unique8-c8",
+      "scope": "eight distinct labelled clips, two measured repetitions, natural stopping",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "1272-128104-0000.wav",
+            "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+            "audio_seconds": 5.855
+          },
+          {
+            "name": "1272-128104-0001.wav",
+            "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+            "audio_seconds": 4.815
+          },
+          {
+            "name": "1272-128104-0002.wav",
+            "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+            "audio_seconds": 12.485
+          },
+          {
+            "name": "1272-128104-0003.wav",
+            "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+            "audio_seconds": 9.9
+          },
+          {
+            "name": "1272-128104-0004.wav",
+            "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+            "audio_seconds": 29.4
+          },
+          {
+            "name": "1272-128104-0005.wav",
+            "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+            "audio_seconds": 9.01
+          },
+          {
+            "name": "1272-128104-0006.wav",
+            "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+            "audio_seconds": 5.64
+          },
+          {
+            "name": "1272-128104-0007.wav",
+            "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+            "audio_seconds": 9.24
+          }
+        ],
+        "concurrency": 8,
+        "reps": 2,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.941340222023427,
+        "requests": 16,
+        "successful": 16,
+        "latency_p50_seconds": 4.832994282012805,
+        "latency_p95_seconds": 8.838948301970959,
+        "attempted_audio_seconds": 172.69,
+        "successful_audio_seconds": 172.69,
+        "audio_seconds_per_wall_second": 13.344058423417236,
+        "successful_requests_per_second": 1.2363479922095997,
+        "generated_tokens": 560,
+        "generated_tokens_per_wall_second": 43.27217972733599,
+        "cpu_seconds": 1.5500000000000043,
+        "cpu_core_equivalents": 0.1197712117453053,
+        "sampled_peak_process_rss_bytes": 713236480,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "56bd7f66d72484a17042935fe597673007566bbf61f74830228be97af9d88106"
+    },
+    {
+      "label": "before2-fixed128",
+      "scope": "eight distinct120s clips, capped128tokens each; partial-ASR equal-work diagnostic",
+      "source_commit": "126765048",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami120-0.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-1.wav",
+            "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-2.wav",
+            "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-3.wav",
+            "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-4.wav",
+            "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-5.wav",
+            "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-6.wav",
+            "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-7.wav",
+            "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 128
+      },
+      "measurements": {
+        "batch_wall_seconds": 26.362585540977307,
+        "requests": 8,
+        "successful": 8,
+        "latency_p50_seconds": 25.636683678021654,
+        "latency_p95_seconds": 26.21227812949801,
+        "attempted_audio_seconds": 960.0,
+        "successful_audio_seconds": 960.0,
+        "audio_seconds_per_wall_second": 36.41524457105322,
+        "successful_requests_per_second": 0.3034603714254435,
+        "generated_tokens": 1024,
+        "generated_tokens_per_wall_second": 38.84292754245677,
+        "cpu_seconds": 4.550000000000004,
+        "cpu_core_equivalents": 0.17259308624822114,
+        "sampled_peak_process_rss_bytes": 915320832,
+        "device_allocation_peak_bytes": 12904104704.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "126765048",
+        "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "dtype": "bfloat16",
+        "parallel": 8,
+        "context": 8192,
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "3b64a5b76909939d86cffda67b23cd9e12a88bc30a25a7a839b323f3b641d0c1"
+    },
+    {
+      "label": "final-head-c8",
+      "scope": "final profiling-ownership fix, six distinct clips, natural stopping",
+      "source_commit": "f8066cdaa",
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.487440968048759,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 5.545229736017063,
+        "latency_p95_seconds": 10.839631913229823,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.356849095232693,
+        "successful_requests_per_second": 0.480482751858609,
+        "generated_tokens": 555,
+        "generated_tokens_per_wall_second": 44.444654546921335,
+        "cpu_seconds": 1.0999999999999996,
+        "cpu_core_equivalents": 0.08808850450741162,
+        "sampled_peak_process_rss_bytes": 731709440,
+        "device_allocation_peak_bytes": 12910123520.0,
+        "pinned_allocation_bytes_after": 11571200.0,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {},
+      "cpu_process_count": 1,
+      "runtime": {
+        "engine": "TensorFold",
+        "source_commit": "f8066cdaa",
+        "binary_sha256": "9f89d9b89d5d70aa4d0c11ac49d3717dc47506fbe4d71c7881565f52ad07301b",
+        "cache_condition": "disabled",
+        "prefix_cache": false,
+        "feature_cache": false,
+        "encoder_cache": false,
+        "context": 8192,
+        "parallel": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "profiling": false
+      },
+      "raw_sha256": "0fe287d22cb0c7b8a4980590cb13e050e4728b0a792d42c61792a4d3b8a33223"
+    },
+    {
+      "label": "vllm-disabled-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 13.088868697057478,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3101097144535743,
+        "latency_p95_seconds": 6.3450975854939315,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 15.605259111959677,
+        "successful_requests_per_second": 0.4584047818700226,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 41.944037541107065,
+        "cpu_seconds": 6.259999999999998,
+        "cpu_core_equivalents": 0.4782689890843901,
+        "sampled_peak_process_rss_bytes": 2736369664,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "feea662eaa133e0d65e817a49c10d3b51b367df41f6d6b2f9bd4e9ac5a44b6ad"
+    },
+    {
+      "label": "vllm-disabled-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 8.584960525040515,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.2896687470492907,
+        "latency_p95_seconds": 6.260852000472369,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 23.79221044805399,
+        "successful_requests_per_second": 0.698896632372306,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 63.949041862066004,
+        "cpu_seconds": 4.079999999999998,
+        "cpu_core_equivalents": 0.4752497100131679,
+        "sampled_peak_process_rss_bytes": 2737180672,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "e0326106b18645b3106cd1202fb624ed455cffd7d14382f3de224aea337233e6"
+    },
+    {
+      "label": "vllm-disabled-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 7.878046135068871,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.3832672744174488,
+        "latency_p95_seconds": 6.255056871275883,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 25.927137769702128,
+        "successful_requests_per_second": 0.7616101628665503,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 69.68732990228935,
+        "cpu_seconds": 4.250000000000014,
+        "cpu_core_equivalents": 0.5394738653638083,
+        "sampled_peak_process_rss_bytes": 2739773440,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "7223519eac72b5ab2bc3cf471690a0ff8e65b08190050921e3e39538f7617ccd"
+    },
+    {
+      "label": "vllm-disabled-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 5.94784235698171,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 5.92040637799073,
+        "latency_p95_seconds": 5.92040637799073,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 100.87691703794178,
+        "successful_requests_per_second": 0.16812819506323629,
+        "generated_tokens": 1728.0,
+        "generated_tokens_per_wall_second": 290.5255210692723,
+        "cpu_seconds": 3.5900000000000034,
+        "cpu_core_equivalents": 0.6035802202770189,
+        "sampled_peak_process_rss_bytes": 2731438080,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "de2a1bf237234627e7788f933b38384d8de48694ed74641fb90c1dd6767e56af"
+    },
+    {
+      "label": "vllm-disabled-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 5.387692476040684,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 5.358289910014719,
+        "latency_p95_seconds": 5.358289910014719,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 111.36493084344134,
+        "successful_requests_per_second": 0.18560821807240224,
+        "generated_tokens": 1562.0,
+        "generated_tokens_per_wall_second": 289.9200366290923,
+        "cpu_seconds": 3.009999999999991,
+        "cpu_core_equivalents": 0.558680736397929,
+        "sampled_peak_process_rss_bytes": 2731446272,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "e47c4fb52a8eb621f33947c5265a70bbeccbfe58c25c8b34147cd01fb9d46b61"
+    },
+    {
+      "label": "vllm-disabled-fixed128",
+      "scope": "eight distinct120s clips, capped128tokens each; partial-ASR equal-work diagnostic",
+      "source_commit": null,
+      "cache_condition": "disabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami120-0.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-1.wav",
+            "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-2.wav",
+            "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-3.wav",
+            "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-4.wav",
+            "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-5.wav",
+            "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-6.wav",
+            "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-7.wav",
+            "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 128
+      },
+      "measurements": {
+        "batch_wall_seconds": 4.5676197920693085,
+        "requests": 8,
+        "successful": 8,
+        "latency_p50_seconds": 4.2918317270232365,
+        "latency_p95_seconds": 4.4112095931952355,
+        "attempted_audio_seconds": 960.0,
+        "successful_audio_seconds": 960.0,
+        "audio_seconds_per_wall_second": 210.1751116997159,
+        "successful_requests_per_second": 1.7514592641642992,
+        "generated_tokens": 1024,
+        "generated_tokens_per_wall_second": 224.1867858130303,
+        "cpu_seconds": 2.480000000000004,
+        "cpu_core_equivalents": 0.5429523718909336,
+        "sampled_peak_process_rss_bytes": 2741067776,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "disabled",
+        "prefix_caching": false,
+        "processor_cache_gb": 0,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "ad5bb7360fbf146d4c59954225025b8683130243a7183313d517351183d5d6eb"
+    },
+    {
+      "label": "vllm-enabled-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.748988329898566,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.2717694515013136,
+        "latency_p95_seconds": 6.18803167596343,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.021285941644994,
+        "successful_requests_per_second": 0.47062557786871373,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 43.062240374987304,
+        "cpu_seconds": 5.93,
+        "cpu_core_equivalents": 0.46513494612691203,
+        "sampled_peak_process_rss_bytes": 2754797568,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "bcf9a417cfe8265d75bacc0d6e5693946756e0665717edc0d6cec0e699c4ad8f"
+    },
+    {
+      "label": "vllm-enabled-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 8.338589937076904,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.1027025574585423,
+        "latency_p95_seconds": 6.09705481727724,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 24.495171131008,
+        "successful_requests_per_second": 0.7195461157433174,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 65.83846959051354,
+        "cpu_seconds": 4.27000000000001,
+        "cpu_core_equivalents": 0.5120769857039955,
+        "sampled_peak_process_rss_bytes": 2754904064,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "bd569ef313329a19c78869677cc97718193f9ede4beea413586fdcfda718477c"
+    },
+    {
+      "label": "vllm-enabled-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 7.655796430888586,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.1345132619608194,
+        "latency_p95_seconds": 6.045724885480013,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 26.67980912813962,
+        "successful_requests_per_second": 0.7837198982710669,
+        "generated_tokens": 551,
+        "generated_tokens_per_wall_second": 71.97161065789298,
+        "cpu_seconds": 3.8900000000000006,
+        "cpu_core_equivalents": 0.5081117340457418,
+        "sampled_peak_process_rss_bytes": 2754961408,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "acaca29ebf66c1def37ce903b9eb60b5691d02d55bfe4b639a9a2c7135582828"
+    },
+    {
+      "label": "vllm-enabled-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 5.388728849939071,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 5.358610083931126,
+        "latency_p95_seconds": 5.358610083931126,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 111.34351285958358,
+        "successful_requests_per_second": 0.1855725214326393,
+        "generated_tokens": 1722.0,
+        "generated_tokens_per_wall_second": 319.5558819070049,
+        "cpu_seconds": 2.9599999999999937,
+        "cpu_core_equivalents": 0.5492946634406112,
+        "sampled_peak_process_rss_bytes": 2774274048,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8012.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 7824.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "320b48d54a9c5c6f453d2ac95117bc4be7ffd0354c010d09c08adf1796e74bb1"
+    },
+    {
+      "label": "vllm-enabled-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 5.085205842973664,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 5.055949170025997,
+        "latency_p95_seconds": 5.055949170025997,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 117.98932403671182,
+        "successful_requests_per_second": 0.1966488733945197,
+        "generated_tokens": 1562.0,
+        "generated_tokens_per_wall_second": 307.1655402422398,
+        "cpu_seconds": 3.010000000000005,
+        "cpu_core_equivalents": 0.5919131089175054,
+        "sampled_peak_process_rss_bytes": 2770829312,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8011.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 7808.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "89a96013406fd9749e36a5fe8cf6abb3158e67c1414f5bc6fafa5eb46f7fa52a"
+    },
+    {
+      "label": "vllm-enabled-fixed128",
+      "scope": "eight distinct120s clips, capped128tokens each; partial-ASR equal-work diagnostic",
+      "source_commit": null,
+      "cache_condition": "enabled",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami120-0.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-1.wav",
+            "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-2.wav",
+            "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-3.wav",
+            "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-4.wav",
+            "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-5.wav",
+            "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-6.wav",
+            "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-7.wav",
+            "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 128
+      },
+      "measurements": {
+        "batch_wall_seconds": 4.110925048938952,
+        "requests": 8,
+        "successful": 8,
+        "latency_p50_seconds": 3.826560810499359,
+        "latency_p95_seconds": 3.9424103280180134,
+        "attempted_audio_seconds": 960.0,
+        "successful_audio_seconds": 960.0,
+        "audio_seconds_per_wall_second": 233.5240824319529,
+        "successful_requests_per_second": 1.9460340202662743,
+        "generated_tokens": 1024,
+        "generated_tokens_per_wall_second": 249.0923545940831,
+        "cpu_seconds": 2.4199999999999875,
+        "cpu_core_equivalents": 0.588675291130545,
+        "sampled_peak_process_rss_bytes": 2793074688,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 12600.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 12544.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "enabled",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": true,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "dcf04c795f5fdd758820b5b2d11c45393e2fadb6299797ccff20c92c6673d798"
+    },
+    {
+      "label": "vllm-production-c1",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 12.037859839969315,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.200462777982466,
+        "latency_p95_seconds": 5.839459237176925,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 16.967732654754077,
+        "successful_requests_per_second": 0.49842746798547993,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 45.60611332067141,
+        "cpu_seconds": 1.8900000000000006,
+        "cpu_core_equivalents": 0.15700465241542622,
+        "sampled_peak_process_rss_bytes": 2813624320,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "5d8070d6cc199f76221eb53b8cf7ca59cf8179332147f65413e9b9ddeceb46d0"
+    },
+    {
+      "label": "vllm-production-c4",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 4,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 7.799997995025478,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 0.9985696349758655,
+        "latency_p95_seconds": 5.70305837248452,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 26.186569231205656,
+        "successful_requests_per_second": 0.7692309669600629,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 70.38463347684575,
+        "cpu_seconds": 1.480000000000004,
+        "cpu_core_equivalents": 0.189743638516816,
+        "sampled_peak_process_rss_bytes": 2813693952,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "b245dd9c403e713a5a26e3dfcde00dee9e9f4d4c0099c86e0c06ec89485dc810"
+    },
+    {
+      "label": "vllm-production-c8",
+      "scope": "six distinct clips, natural stopping",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "asr_en_16k.wav",
+            "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+            "audio_seconds": 15.05125
+          },
+          {
+            "name": "asr_zh_16k.wav",
+            "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+            "audio_seconds": 4.2039375
+          },
+          {
+            "name": "ami10.wav",
+            "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+            "audio_seconds": 10.0
+          },
+          {
+            "name": "ami20.wav",
+            "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+            "audio_seconds": 20.0
+          },
+          {
+            "name": "ami35.wav",
+            "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+            "audio_seconds": 35.0
+          },
+          {
+            "name": "ami120.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 7.238888185005635,
+        "requests": 6,
+        "successful": 6,
+        "latency_p50_seconds": 1.0527706180000678,
+        "latency_p95_seconds": 5.691854854521807,
+        "attempted_audio_seconds": 204.2551875,
+        "successful_audio_seconds": 204.2551875,
+        "audio_seconds_per_wall_second": 28.216375537211174,
+        "successful_requests_per_second": 0.8288565656295366,
+        "generated_tokens": 549,
+        "generated_tokens_per_wall_second": 75.8403757551026,
+        "cpu_seconds": 1.4399999999999977,
+        "cpu_core_equivalents": 0.19892557575108846,
+        "sampled_peak_process_rss_bytes": 2813702144,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2746.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 2720.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "cedfd100c76490848bdb5357611c2a259df9e4b4a832b7387259543e38b4eb4b"
+    },
+    {
+      "label": "vllm-production-en_600s.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "en_600s.wav",
+            "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 5.055002407054417,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 5.02848375402391,
+        "latency_p95_seconds": 5.02848375402391,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 118.69430549878292,
+        "successful_requests_per_second": 0.19782384249797155,
+        "generated_tokens": 1729.0,
+        "generated_tokens_per_wall_second": 342.0374236789928,
+        "cpu_seconds": 1.5,
+        "cpu_core_equivalents": 0.2967357637469573,
+        "sampled_peak_process_rss_bytes": 2813509632,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8012.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 7824.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "7e0d80e1741ef6e0d21e293f9db446eb2b4e747226377f757f0025c000e20d78"
+    },
+    {
+      "label": "vllm-production-ami600.wav",
+      "scope": "complete long transcription",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami600.wav",
+            "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+            "audio_seconds": 600.0
+          }
+        ],
+        "concurrency": 1,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "transcription",
+        "temperature": 0,
+        "output_cap": 1024
+      },
+      "measurements": {
+        "batch_wall_seconds": 4.70226620498579,
+        "requests": 1,
+        "successful": 1,
+        "latency_p50_seconds": 4.676174629945308,
+        "latency_p95_seconds": 4.676174629945308,
+        "attempted_audio_seconds": 600.0,
+        "successful_audio_seconds": 600.0,
+        "audio_seconds_per_wall_second": 127.59805035364074,
+        "successful_requests_per_second": 0.2126634172560679,
+        "generated_tokens": 1564.0,
+        "generated_tokens_per_wall_second": 332.6055845884902,
+        "cpu_seconds": 1.5799999999999983,
+        "cpu_core_equivalents": 0.3360081992645869,
+        "sampled_peak_process_rss_bytes": 2829320192,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8011.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 7808.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 21.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "7e70fc9de26c6c82691b5c010cd16138ddb080ec79e7d9d75a5b37119ff95d85"
+    },
+    {
+      "label": "vllm-production-fixed128",
+      "scope": "eight distinct120s clips, capped128tokens each; partial-ASR equal-work diagnostic",
+      "source_commit": null,
+      "cache_condition": "production",
+      "workload": {
+        "fixtures": [
+          {
+            "name": "ami120-0.wav",
+            "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-1.wav",
+            "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-2.wav",
+            "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-3.wav",
+            "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-4.wav",
+            "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-5.wav",
+            "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-6.wav",
+            "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e",
+            "audio_seconds": 120.0
+          },
+          {
+            "name": "ami120-7.wav",
+            "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad",
+            "audio_seconds": 120.0
+          }
+        ],
+        "concurrency": 8,
+        "reps": 1,
+        "warmup_excluded": 1,
+        "mode": "chat",
+        "temperature": 0,
+        "output_cap": 128
+      },
+      "measurements": {
+        "batch_wall_seconds": 3.858932702918537,
+        "requests": 8,
+        "successful": 8,
+        "latency_p50_seconds": 3.5952066155150533,
+        "latency_p95_seconds": 3.7272301321092525,
+        "attempted_audio_seconds": 960.0,
+        "successful_audio_seconds": 960.0,
+        "audio_seconds_per_wall_second": 248.7734495276234,
+        "successful_requests_per_second": 2.0731120793968616,
+        "generated_tokens": 1024,
+        "generated_tokens_per_wall_second": 265.3583461627983,
+        "cpu_seconds": 1.190000000000012,
+        "cpu_core_equivalents": 0.30837542181028627,
+        "sampled_peak_process_rss_bytes": 2851307520,
+        "device_allocation_peak_bytes": null,
+        "pinned_allocation_bytes_after": null,
+        "gpu_active_seconds": null
+      },
+      "cache_metric_deltas": {
+        "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 12600.0,
+        "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 12544.0,
+        "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8.0,
+        "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 8.0
+      },
+      "cpu_process_count": 3,
+      "runtime": {
+        "engine": "vllm",
+        "version": "0.29.0",
+        "cache_condition": "production",
+        "prefix_caching": true,
+        "processor_cache_gb": 4,
+        "enforce_eager": false,
+        "context": 8192,
+        "max_num_seqs": 8,
+        "dtype": "bfloat16",
+        "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+        "container_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6"
+      },
+      "raw_sha256": "475e0ac0ba254fc83ff6f100c90263ce655412469de89c6f4e2e3fdb5180c808"
+    }
+  ],
+  "limitations": [
+    "Six-clip concurrency8 has at most6 simultaneous requests; the eight-clip cells exercise the full8.",
+    "Per-cell latency quantiles describe small heterogeneous batches, not sustained-load SLA estimates.",
+    "CPU includes selected inference and frontend PIDs where supplied; primary PID RSS is not aggregate physical footprint.",
+    "Allocation peaks include startup/warmup and backend-tracked allocations only.",
+    "CUDA elapsed event intervals and process RSS are not device active time or total physical memory.",
+    "Fixed128 cells are partial transcriptions, not complete-ASR RTF.",
+    "Historical/pilot overlapping-build runs are excluded; coordinator wall time includes deliberate holds and is not request latency."
+  ]
+}

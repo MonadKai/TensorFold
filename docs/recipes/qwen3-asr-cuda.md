@@ -40,8 +40,11 @@ Only convolution layout/packing and 64-wide bidirectional attention need new CUD
 use the existing cuBLASLt wrapper with FP32 accumulation. Normalization, GELU, SwiGLU, rotary positions,
 128-wide decoder attention and sampling reuse shared native operators. Shared prompt attention gains the
 16/8-head GQA geometry. Each admitted stream owns its KV cache, encoded audio and first-token logits.
-The first version interleaves active streams through LaneHost; its one-row decode calls do not batch GEMMs.
-It has no MTP/drafter, prefix reuse, CUDA graph capture or tensor parallel implementation.
+LaneHost now collects up to eight active slots into one decoder pass, with independent positions and KV writes.
+Decode packs QKV and gate/up weights in loader-owned device buffers; original tensor views retain the separate
+prefill projections. A strided-batch cuBLASLt path preserves each row's original single-row algorithm. This
+batches execution and sampling but does not establish cross-row weight reuse or Tensor Core GEMM speedups.
+There is no MTP/drafter, prefix reuse, CUDA graph capture or tensor parallel implementation.
 
 ## Build and run
 
@@ -114,3 +117,43 @@ own `_prepare_attention_mask` at each layer. Keep the unmasked diagnostic distin
 Export a case, run `tf-qwen3-asr-check MODEL AUDIO CASE.json OUTDIR`, then use `tools/compare_qwen3_asr.py` to
 retain Log-Mel, convolution, encoder, decoder and teacher-forced decision differences. These reference tools
 need NumPy/PyTorch and are separate from production inference.
+
+## Performance follow-up
+
+The [performance receipts](../receipts/qwen3-asr-performance/README.md) compare the original `126765048`
+implementation with row-stable batching. Decoder norms, attention, projections and LM head consume active
+rows together; one batch sampling operation and compact host readback replace per-stream token waits.
+Sampling rules remain slot-owned, while random draws use the request seed and logical token position.
+Checkpoint files are unchanged. Decoder QKV and gate/up pack in memory; prefill retains original projection
+geometry because combining its projections changed Chinese BF16 stage outputs. Do not enable unqualified
+prefill fusion or substitute that changed path as a new plain oracle.
+
+Transcription splits retain their original boundaries and order. Each parent has at most two child workers;
+a server-owned FIFO admission gate limits all long-audio children together to `max(lanes / 2, 1)`. At eight
+lanes, four remain available to ordinary requests. With one lane there is no reserved capacity. The quota
+covers preprocessing through completion; every inference still enters the existing LaneHost. Disconnects
+cancel both waiting and active children and join workers before releasing their shared input. `/metrics`
+exposes `tensorfold:audio_chunks_{active,waiting,peak,limit}`. Row prefill honors the scheduler's row budget;
+encoder work is still a complete first-stage operation, and multi-request prefill is a separate follow-up.
+
+Set `TF_ASR_PROFILE=1` for diagnostic CPU and CUDA event intervals. Chat's `tensorfold` extension reports
+native decode/resampling/Log-Mel, lane queuing, encoder, prefill, decode, LM head, sampling and postprocessing.
+Transcription also reports remaining HTTP body-read and multipart parsing intervals, plus each chunk's
+runtime and separate admission wait. Body-read timing starts after headers and buffered bytes; it is not a
+complete network-upload profiler. Event intervals measure elapsed stream time; a shared batch is charged
+whole to every participating request. Never sum those per-request GPU intervals into device busy time.
+Use a separate trace for the union of actual GPU activities and allocation peaks.
+
+The stdlib client `tools/bench_qwen3_asr_perf.py` requires an explicit runtime identity and cache condition.
+It retains successful work, failed/transport attempts and excluded warmups, batch makespan, HTTP-roundtrip
+P50/P95, actual output token counts, audio/wall and requests/wall, selected-process CPU and primary-process
+RSS. Batch wall includes client file reading/encoding and response parsing. Transcription token counters
+require an otherwise idle server. Device counters remain null when absent; exported allocation peaks include
+startup/warmup. Missing counters are not zeros. Failed measured requests or warmups make the command fail.
+Use `tools/bench_qwen3_asr_accuracy.py` with a pinned local labelled manifest for normalized corpus CER/WER.
+
+Keep three reference cells separate: unique audio with caches disabled, repeated audio with caches allowed,
+and each engine's production settings. Native caching/graphs remain unavailable. The historical repeated-
+audio vLLM run enabled prefix caching while disabling compile/graphs; its end-to-end difference is not an
+attributable operator comparison. Capped equal-output diagnostics are partial transcriptions and must not
+be presented as complete-ASR throughput. Report actual output work and cross-engine text differences.

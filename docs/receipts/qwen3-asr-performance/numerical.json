@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "comparisons": [
+    {
+      "language": "en",
+      "stage_records": 137,
+      "different_records": 0
+    },
+    {
+      "language": "en",
+      "logits_rows": 1120,
+      "different_rows": 0
+    },
+    {
+      "language": "zh",
+      "stage_records": 49,
+      "different_records": 0
+    },
+    {
+      "language": "zh",
+      "logits_rows": 350,
+      "different_rows": 0
+    }
+  ],
+  "reference_comparisons": [
+    {
+      "logit_rows": 33,
+      "top1_equal": 33,
+      "language": "en"
+    },
+    {
+      "logit_rows": 11,
+      "top1_equal": 11,
+      "language": "zh"
+    }
+  ],
+  "family_and_cuda_operator_sources_unchanged_since_3ce0": true,
+  "raw_sha256": {
+    "3ce0-numerical.json": "9df8addd38e297a6ac64b19c7bc357dac263e60cb2af0dc196c2446b35d942dc",
+    "3ce0-reference-en.json": "8cb9d87c8114e9cce1ce31b4e659da510449adff8480d129628b61ab47b60cdc",
+    "3ce0-reference-zh.json": "6a95b6bba400f54b1d3a7fee918d888b4d75cf861eea8409b5f8aac5921f39a6"
+  }
+}

@@ -1,0 +1,370 @@
+{
+  "dataset": "hf-internal-testing/librispeech_asr_dummy",
+  "revision": "5be91486e11a2d616f4ec5db8d3fd248585ac07a",
+  "clips": 8,
+  "audio_seconds": 86.345,
+  "scope": "single-speaker English smoke subset, not general/all-language accuracy qualification",
+  "results": [
+    {
+      "engine": "before1",
+      "concurrency": 1,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "37d4c819e012fd638d0bc8c015c8e893943a8d1abcf6034bee04998e3e9d35b9"
+    },
+    {
+      "engine": "before1",
+      "concurrency": 8,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "d96c0fc46c56998805aa154a019ad2b07ef6c1960635fee73a675d2193868281"
+    },
+    {
+      "engine": "after3",
+      "concurrency": 1,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "d3c896869ad599941e2e3adc9c2695851415c7c93731ec8def4578db78b0875c"
+    },
+    {
+      "engine": "after3",
+      "concurrency": 8,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "85e8b61f0b472d062a4f66c22c1aab302d5e06d83ad28b9fb91fe950e17e59c6"
+    },
+    {
+      "engine": "vllm",
+      "concurrency": 1,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "085f413dfbecb44f1e2dd3923f170872d5e36fea6f4b40a501c5285e4ea8dfaf"
+    },
+    {
+      "engine": "vllm",
+      "concurrency": 8,
+      "wer": 0.025,
+      "cer": 0.008859357696566999,
+      "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+      "reference_words": 200,
+      "reference_characters": 903,
+      "clips": [
+        {
+          "id": "1272-128104-0000",
+          "word_edits": 1,
+          "character_edits": 4,
+          "text_sha256": "ae9a38cfd60f220690ef1d7d4a430fa438a399d1e9e2fcee3de1d3398056727d"
+        },
+        {
+          "id": "1272-128104-0001",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "e3b9b48c4e61fd27d06a32a87249276b9f3f8ae6dbbad4e0649519126e22926f"
+        },
+        {
+          "id": "1272-128104-0002",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "437657bb343827743e7f8553c4211677d4b8869f55365e8f39c362428ec9ebbb"
+        },
+        {
+          "id": "1272-128104-0003",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3e7ac1d50d23b4798edce42b76186c0cd30b2a933b886b44ec6674a3d0c7af42"
+        },
+        {
+          "id": "1272-128104-0004",
+          "word_edits": 4,
+          "character_edits": 4,
+          "text_sha256": "c64d0001b73ce1985edecd040e7b66a47d585925977b1342ca1c3270441b9ff6"
+        },
+        {
+          "id": "1272-128104-0005",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "f5be515b09574be2ca6f4a9190e4ef35379a0a8ae8af45c12017ce3975f58554"
+        },
+        {
+          "id": "1272-128104-0006",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "3540adb2757cba57623b3f0569e1fd1c380b6221d6607508836a7b34eda8d282"
+        },
+        {
+          "id": "1272-128104-0007",
+          "word_edits": 0,
+          "character_edits": 0,
+          "text_sha256": "4a769b138b9fbf10227fa3721f36b84ba2c6637cfae2bf1eaf753527d1400a1c"
+        }
+      ],
+      "raw_sha256": "641ece40b97b3ccbd694eeb2046168fe7f92268f1fedd79f300f021f208ae5a6"
+    }
+  ],
+  "reference_configuration": "vLLM v0.29.0 cache-off/eager, BF16, context8192, max_num_seqs8"
+}

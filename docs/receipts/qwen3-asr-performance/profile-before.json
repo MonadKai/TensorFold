@@ -1,0 +1,174 @@
+{
+  "schema": "asr-cuda-profile-v1",
+  "tool": "Nsight Systems2025.3.2",
+  "activity_devices": [
+    0
+  ],
+  "trace_sqlite_sha256": "cdee28f8a17cd5a97b5e3e021966d995bcbd6f3aa92d9e4f5edccd0791eccfc1",
+  "workloads": [
+    {
+      "range": "asr-before-c8",
+      "range_wall_seconds": 13.551929072,
+      "cuda_activity_union_seconds": 12.740944453,
+      "kernel_union_seconds": 12.739244037,
+      "copy_union_seconds": 0.001676224,
+      "memset_union_seconds": 2.4192e-05,
+      "kernel_launches": 228519,
+      "copy_operations": 1919,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 108159,
+          "summed_seconds": 11.653476224
+        },
+        {
+          "kernel": "tf_window_decode_tc",
+          "launches": 15372,
+          "summed_seconds": 0.39985904
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x160x64_2_64x40x64_tmaAB_bz_TNNN",
+          "launches": 616,
+          "summed_seconds": 0.094377184
+        },
+        {
+          "kernel": "tf_qk_rows_w",
+          "launches": 15764,
+          "summed_seconds": 0.071887904
+        },
+        {
+          "kernel": "tf_asr_audio_attention",
+          "launches": 144,
+          "summed_seconds": 0.068921183
+        },
+        {
+          "kernel": "tf_add_rms_rows_bf16h",
+          "launches": 32083,
+          "summed_seconds": 0.059501781
+        },
+        {
+          "kernel": "tf_round_bf16_argmax",
+          "launches": 555,
+          "summed_seconds": 0.0476416
+        },
+        {
+          "kernel": "tf_vit_pointwise",
+          "launches": 32790,
+          "summed_seconds": 0.047172157
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 739,
+          "summed_seconds": 0.043722445
+        },
+        {
+          "kernel": "tf_swiglu_rows_round",
+          "launches": 15764,
+          "summed_seconds": 0.035533504
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x96x64_3_64x24x64_tmaAB_bz_TNNN",
+          "launches": 224,
+          "summed_seconds": 0.034747328
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 206,
+          "summed_seconds": 0.019288896
+        }
+      ]
+    },
+    {
+      "range": "asr-before-real600",
+      "range_wall_seconds": 38.912498016,
+      "cuda_activity_union_seconds": 35.159293735,
+      "kernel_union_seconds": 35.154724551,
+      "copy_union_seconds": 0.004569184,
+      "memset_union_seconds": 0.0,
+      "kernel_launches": 645272,
+      "copy_operations": 5444,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 303992,
+          "summed_seconds": 32.698386048
+        },
+        {
+          "kernel": "tf_window_decode_tc",
+          "launches": 43204,
+          "summed_seconds": 0.501732288
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x160x64_2_64x40x64_tmaAB_bz_TNNN",
+          "launches": 2296,
+          "summed_seconds": 0.34442064
+        },
+        {
+          "kernel": "tf_asr_audio_attention",
+          "launches": 504,
+          "summed_seconds": 0.200173553
+        },
+        {
+          "kernel": "tf_qk_rows_w",
+          "launches": 44352,
+          "summed_seconds": 0.19617568
+        },
+        {
+          "kernel": "tf_add_rms_rows_bf16h",
+          "launches": 90268,
+          "summed_seconds": 0.169490649
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x64x64_4_32x64x64_tmaAB_bz_TNNN",
+          "launches": 1764,
+          "summed_seconds": 0.136602816
+        },
+        {
+          "kernel": "tf_round_bf16_argmax",
+          "launches": 1564,
+          "summed_seconds": 0.134200704
+        },
+        {
+          "kernel": "tf_vit_pointwise",
+          "launches": 92669,
+          "summed_seconds": 0.132395013
+        },
+        {
+          "kernel": "tf_swiglu_rows_round",
+          "launches": 44352,
+          "summed_seconds": 0.100268861
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x96x64_3_64x24x64_tmaAB_bz_TNNN",
+          "launches": 560,
+          "summed_seconds": 0.0885696
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 1120,
+          "summed_seconds": 0.05989111
+        }
+      ]
+    }
+  ],
+  "captured_allocation_peak_bytes_by_kind": {
+    "Device": 12904104704,
+    "Device Static": 136,
+    "Pinned": 11571200
+  },
+  "duplicate_allocation_events": 0,
+  "unknown_free_events": 0,
+  "limitations": [
+    "Profiling overhead and workload-range client preparation are included; use separate unprofiled cells for speed claims.",
+    "Activity is the union of captured kernels, copies and memsets, not SM occupancy or total-system GPU utilization.",
+    "Activity subcategories can overlap; do not add their union durations.",
+    "Allocation peaks cover the full traced process lifetime including startup and warmups; allocation bytes are not physical-memory residency."
+  ],
+  "runtime": {
+    "engine": "TensorFold",
+    "source_commit": "126765048",
+    "cache_condition": "disabled",
+    "profiling": "Nsight Systems 2025.3.2 plus optional ASR CUDA events",
+    "binary_sha256": "b2e121a3db56cb4b0403e943c809bf399e8faf74caab25fb717225ece9f731eb"
+  }
+}

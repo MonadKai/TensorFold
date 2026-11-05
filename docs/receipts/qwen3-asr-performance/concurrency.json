@@ -1,0 +1,116 @@
+{
+  "greedy": [
+    {
+      "scope": "natural-six-c1",
+      "requests": 6,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "natural-six-c4",
+      "requests": 6,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "natural-six-c8",
+      "requests": 6,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "unique8-c1",
+      "requests": 16,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "unique8-c4",
+      "requests": 16,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "unique8-c8",
+      "requests": 16,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "fixed128",
+      "requests": 8,
+      "different_token_arrays": []
+    },
+    {
+      "scope": "en_600s.wav",
+      "text_equal": true,
+      "generated_tokens": [
+        1724.0,
+        1724.0
+      ]
+    },
+    {
+      "scope": "ami600.wav",
+      "text_equal": true,
+      "generated_tokens": [
+        1564.0,
+        1564.0
+      ]
+    }
+  ],
+  "sampled": {
+    "temperature": 0.7,
+    "seed": 314159,
+    "requests": 18,
+    "solo_vs_original_equal": true,
+    "concurrent_differences": []
+  },
+  "mixed_load": {
+    "four_long_parents": true,
+    "source_before_global_quota": "3ce0d3319",
+    "before_quota_short_seconds": 22.702312362962402,
+    "after_quota_short_seconds": 5.1399335389724,
+    "solo_short_seconds": 1.1433782080421224,
+    "recovery_equal": true,
+    "siblings_equal": true,
+    "profiled_queued_abort_observations": [
+      {
+        "queued_case": false,
+        "waiters_before": 0,
+        "waiters_observed": 1
+      },
+      {
+        "queued_case": true,
+        "waiters_before": 4,
+        "waiters_observed": 6
+      }
+    ],
+    "counters_after_drain": {
+      "requests_running": 0,
+      "requests_waiting": 0,
+      "audio_chunks_active": 0,
+      "audio_chunks_waiting": 0,
+      "audio_chunks_peak": 4,
+      "audio_chunks_limit": 4
+    }
+  },
+  "raw_files_sha256": {
+    "formal-before2-sampled.json": "c42ab135ccd5d36bc04eeeb9cb9c515b8bab4394cd8699a86332a304d89d57f7",
+    "formal-after3-sampled.json": "cfaaa2e4ef6fbc35e73165ee76e08cef7d807cf3cffe4ee399a636864a5c9ffd",
+    "formal-parent-children.json": "19c4e08d70d7a97a25dc41b05d79d91c8d9cd7884d95d95a54a97fe855261cd0",
+    "final-parent-children.json": "79790c2fbc1a9b75a580670f711ccb030fcee6c853a5ae083a9929232d84b528",
+    "profile-parent-children-observed-queue.json": "ba44b43fca7c592bd7b534eaac5bb751476c565b8ab5917b94476cf877b50aca",
+    "formal-before2-c1.json": "fb9300d7e164ff1a28286219b6ace39260bf81d84ca405517e40ca24fb6bae62",
+    "formal-before2-c4.json": "14883a82f075c7a8855aaab6dd0f7d1cf9c86e13d6b2ce5290efe5f96300f632",
+    "formal-before2-c8.json": "bbbfa00c125bb9b56daefa81225dec873f5e9fcf7f67e902fc6d85cbcabe90ed",
+    "formal-before2-unique8-c1.json": "1d036d87a4f9c195014e2522bafa1eeb481060c3ace6ad124311cbb51692fccd",
+    "formal-before2-unique8-c4.json": "430a44230e170291b8671d1248f1eba408d02e760389b00ccf38dc319ec8f213",
+    "formal-before2-unique8-c8.json": "56bd7f66d72484a17042935fe597673007566bbf61f74830228be97af9d88106",
+    "formal-before2-fixed128.json": "3b64a5b76909939d86cffda67b23cd9e12a88bc30a25a7a839b323f3b641d0c1",
+    "formal-before2-en_600s.wav.json": "3fae410cb86bc3251d75eb301adc56bb4855551414f8d616b7f4607d63f19d59",
+    "formal-before2-ami600.wav.json": "3e9f4a9f9e7f9d1f2fa15423a91c079919585eb4b7ef3015c561174286874670",
+    "formal-after3-c1.json": "6aa7498ed27f13bebe961c054db40bfb7da6bab3845a6f715a3a3235aa5c8443",
+    "formal-after3-c4.json": "226c4d98ddf1b638da62ab955edbdf0b820c88539a7b8bc9bd0a4b5d34b8304a",
+    "formal-after3-c8.json": "224857e501f60a86962825e974fc09bd05493c901c18cc0a700c8532fa414b20",
+    "formal-after3-unique8-c1.json": "d8127a46f2cae8734aa018820e9e3d94095ddce49973ed7c2c5a5cd6d393ce72",
+    "formal-after3-unique8-c4.json": "00169e1a74acd824901c021554dbd66e76492f3f78da7dff8755f51d443e4e3f",
+    "formal-after3-unique8-c8.json": "f1f205e7aee7922e688d21f8f3df0aaeefc1ac98ebe01cee27f51355307dc05d",
+    "formal-after3-fixed128.json": "6c326d0f0c704f4af706e6bd07e291c7c4b5dacf720a8e89c9dfbb67b6d1adc7",
+    "formal-after3-en_600s.wav.json": "931228cb63044b5b281a36151fb03b6d196a22ed34f672bce169ac3dd6e59249",
+    "formal-after3-ami600.wav.json": "9d0cbdab50cbbf44399a0d1b545d3815d7dd94f42186917d1674160c260604d1"
+  }
+}

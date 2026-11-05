@@ -1,0 +1,212 @@
+{
+  "natural_and_regression": [
+    {
+      "name": "asr_en_16k.wav",
+      "sha256": "8268a296392552687222947ac1276330a2b5b96ba8fa572243a2cb72659465f8",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 15.05125
+    },
+    {
+      "name": "asr_zh_16k.wav",
+      "sha256": "011588e960907d388ce7faefab242a15ac3df922f945bc37fa6173f8b358bea3",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 4.2039375
+    },
+    {
+      "name": "en_65s.wav",
+      "sha256": "6c0c1a37eb0351a37c51f722e6604083722142c9c806f8ec9af82dfcea9315ed",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 65.0
+    },
+    {
+      "name": "en_140s.wav",
+      "sha256": "fda8989ffe208d3840081e0a82cfdaae87f7faf447cf2a1e8b7d9b02e741e048",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 140.0
+    },
+    {
+      "name": "en_600s.wav",
+      "sha256": "7f658520f7014a191093811ce14128920652605403c4e31d311454b8b886d7dc",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 600.0
+    },
+    {
+      "name": "ami10.wav",
+      "sha256": "0a9403a6fce8f87723e5d9ccefca3ff6953b3141da4972e5d33e43edf53047c3",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 10.0,
+      "source_offset_seconds": 60
+    },
+    {
+      "name": "ami20.wav",
+      "sha256": "81bf38bfdfb9337a427bf743af82beee6ba412eec4a282be8cfc25fc2878adbe",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 20.0,
+      "source_offset_seconds": 120
+    },
+    {
+      "name": "ami35.wav",
+      "sha256": "f8cfa8b367a8ea27ba6f7784242b289f47bfc51fe1c19b783dc029c4c0703a01",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 35.0,
+      "source_offset_seconds": 220
+    },
+    {
+      "name": "ami120.wav",
+      "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 120.0,
+      "source_offset_seconds": 30
+    },
+    {
+      "name": "ami600.wav",
+      "sha256": "175f180d806a38ac1d79535ceb25cc382c2f884e07660bd4cc309a7d39c803e7",
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "seconds": 600.0,
+      "source_offset_seconds": 30
+    }
+  ],
+  "ami_equal_work": {
+    "source": "AMI ES2002a Mix-Headset, AMI project, Creative Commons Attribution",
+    "source_url": "https://groups.inf.ed.ac.uk/ami/AMICorpusMirror/amicorpus/ES2002a/audio/ES2002a.Mix-Headset.wav",
+    "source_sha256": "9c76866990fcc8b84006dc32d273ad99df439090b748ebe72103bb78c3216ee7",
+    "purpose": "Eight unique equal-duration inputs with capped128-token outputs; partial-ASR equal-work diagnostic, not complete transcription RTF.",
+    "clips": [
+      {
+        "file": "ami120-0.wav",
+        "start_seconds": 30,
+        "duration_seconds": 120,
+        "sha256": "87b7fa54d35b7991010ca1dca25af0c3f50a278a1047d4221ade44cd4b820ec9"
+      },
+      {
+        "file": "ami120-1.wav",
+        "start_seconds": 160,
+        "duration_seconds": 120,
+        "sha256": "90f88c93d26d6a4cb310fab198b186e8b6e491298695aafbdcbf1bcb2f89d39c"
+      },
+      {
+        "file": "ami120-2.wav",
+        "start_seconds": 290,
+        "duration_seconds": 120,
+        "sha256": "385dab79f6c3f40a6c9890a54147cd570e6880f7f8ac8a7a730fadeff7a1c10a"
+      },
+      {
+        "file": "ami120-3.wav",
+        "start_seconds": 420,
+        "duration_seconds": 120,
+        "sha256": "b94f8ae17deaa85bdcbad2b0d18fdbd152ed4b51c87d21c510d4bcd14a06e74d"
+      },
+      {
+        "file": "ami120-4.wav",
+        "start_seconds": 550,
+        "duration_seconds": 120,
+        "sha256": "27e6f16290765614477ff878a48533fa121db8d474d7e006ea05e51333d48c7f"
+      },
+      {
+        "file": "ami120-5.wav",
+        "start_seconds": 680,
+        "duration_seconds": 120,
+        "sha256": "b0ee8e65f560c98fd40b55740fe30a1c96eac44337208134d70d6cab4b324f3c"
+      },
+      {
+        "file": "ami120-6.wav",
+        "start_seconds": 810,
+        "duration_seconds": 120,
+        "sha256": "c2bfd9bcd28c93b47f308d02c5c9bf9b45adec5c73036753e0482d4aee3fba4e"
+      },
+      {
+        "file": "ami120-7.wav",
+        "start_seconds": 940,
+        "duration_seconds": 120,
+        "sha256": "fcbaf383f3e6e3349b3f86431ed599f4f20978bbf4a49e76a15dfacbe1f8d6ad"
+      }
+    ]
+  },
+  "labelled_english": {
+    "dataset": "hf-internal-testing/librispeech_asr_dummy",
+    "revision": "5be91486e11a2d616f4ec5db8d3fd248585ac07a",
+    "config": "clean",
+    "split": "validation",
+    "acquisition": "Official datasets-server rows API; repository HEAD was verified against the pinned revision at acquisition. WAV assets normalized to mono PCM16/16k.",
+    "clips": [
+      {
+        "id": "1272-128104-0000",
+        "file": "1272-128104-0000.wav",
+        "row_index": 0,
+        "sha256": "12f8eae82f20ce6725b5afbb04805a0d9f4e1b6e3d35598c545882c3fdb878cf",
+        "seconds": 5.855
+      },
+      {
+        "id": "1272-128104-0001",
+        "file": "1272-128104-0001.wav",
+        "row_index": 1,
+        "sha256": "36895794614f8c46088febdf40959f3e784bc2677dcdf33cc486242aecd0a181",
+        "seconds": 4.815
+      },
+      {
+        "id": "1272-128104-0002",
+        "file": "1272-128104-0002.wav",
+        "row_index": 2,
+        "sha256": "20dfb1e9442378e58a62c565c260858d9efdb7e30bfed6e9373189af11d0cd23",
+        "seconds": 12.485
+      },
+      {
+        "id": "1272-128104-0003",
+        "file": "1272-128104-0003.wav",
+        "row_index": 3,
+        "sha256": "e08ad6277801267a5e695f941a286f504a001628b49bb6cf97fe70cf19b1a534",
+        "seconds": 9.9
+      },
+      {
+        "id": "1272-128104-0004",
+        "file": "1272-128104-0004.wav",
+        "row_index": 4,
+        "sha256": "a944593167253cdd5db79934615a8e7eaf2809b64d2faece670121a9bd436e09",
+        "seconds": 29.4
+      },
+      {
+        "id": "1272-128104-0005",
+        "file": "1272-128104-0005.wav",
+        "row_index": 5,
+        "sha256": "bde76f559766ffb8dcd7fe4c537766a04f8a1896943d81de82725b9025b40b82",
+        "seconds": 9.01
+      },
+      {
+        "id": "1272-128104-0006",
+        "file": "1272-128104-0006.wav",
+        "row_index": 6,
+        "sha256": "dd882c27816bca758a4a4243deff5272ebc2fb3399fd6caacef1e7e369eecf18",
+        "seconds": 5.64
+      },
+      {
+        "id": "1272-128104-0007",
+        "file": "1272-128104-0007.wav",
+        "row_index": 7,
+        "sha256": "cbb2bcedb3a8de2a8bd11f6c346e672ce53b4cf039094babd9c754259691dbe3",
+        "seconds": 9.24
+      }
+    ]
+  },
+  "qwen_examples_source": "https://github.com/QwenLM/Qwen3-ASR/tree/7c6daf77a2421100f5fb066495372c00129d39ff/examples",
+  "note": "Source WAVs and labelled reference strings remain in the local pinned manifest. Repeated English files are synthetic concatenation regression cases; AMI600 is a continuous natural meeting crop."
+}

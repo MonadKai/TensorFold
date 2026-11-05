@@ -1,0 +1,246 @@
+{
+  "schema": "asr-cuda-profile-v1",
+  "tool": "Nsight Systems2025.3.2",
+  "activity_devices": [
+    0
+  ],
+  "trace_sqlite_sha256": "621c607b6c47bcc544f8b1573454efcf5f13bc5d9a607e373f3e7ad999b530e7",
+  "workloads": [
+    {
+      "range": "asr-after-c8",
+      "range_wall_seconds": 12.98125976,
+      "cuda_activity_union_seconds": 12.424598935,
+      "kernel_union_seconds": 12.422011447,
+      "copy_union_seconds": 0.002552096,
+      "memset_union_seconds": 3.5392e-05,
+      "kernel_launches": 119067,
+      "copy_operations": 2557,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 39104,
+          "summed_seconds": 11.444623328
+        },
+        {
+          "kernel": "tf_window_decode_tc",
+          "launches": 9688,
+          "summed_seconds": 0.377411072
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x160x64_2_64x40x64_tmaAB_bz_TNNN",
+          "launches": 616,
+          "summed_seconds": 0.093236672
+        },
+        {
+          "kernel": "tf_asr_audio_attention",
+          "launches": 144,
+          "summed_seconds": 0.068777504
+        },
+        {
+          "kernel": "tf_qk_rows_w",
+          "launches": 10080,
+          "summed_seconds": 0.047025984
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 739,
+          "summed_seconds": 0.043947836
+        },
+        {
+          "kernel": "tf_add_rms_rows_bf16h",
+          "launches": 20512,
+          "summed_seconds": 0.038362902
+        },
+        {
+          "kernel": "tf_vit_pointwise",
+          "launches": 21422,
+          "summed_seconds": 0.035620187
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x96x64_3_64x24x64_tmaAB_bz_TNNN",
+          "launches": 224,
+          "summed_seconds": 0.033510528
+        },
+        {
+          "kernel": "tf_round_bf16_argmax",
+          "launches": 352,
+          "summed_seconds": 0.030031296
+        },
+        {
+          "kernel": "tf_swiglu_rows_round",
+          "launches": 10080,
+          "summed_seconds": 0.024730398
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 206,
+          "summed_seconds": 0.020523296
+        }
+      ]
+    },
+    {
+      "range": "asr-after-real600",
+      "range_wall_seconds": 35.94573264,
+      "cuda_activity_union_seconds": 34.616870036,
+      "kernel_union_seconds": 34.60977202,
+      "copy_union_seconds": 0.007098016,
+      "memset_union_seconds": 0.0,
+      "kernel_launches": 294452,
+      "copy_operations": 6549,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 94263,
+          "summed_seconds": 32.545942016
+        },
+        {
+          "kernel": "tf_window_decode_tc",
+          "launches": 23352,
+          "summed_seconds": 0.402104064
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x160x64_2_64x40x64_tmaAB_bz_TNNN",
+          "launches": 2296,
+          "summed_seconds": 0.344442912
+        },
+        {
+          "kernel": "tf_asr_audio_attention",
+          "launches": 504,
+          "summed_seconds": 0.200716475
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x64x64_4_32x64x64_tmaAB_bz_TNNN",
+          "launches": 1764,
+          "summed_seconds": 0.137625536
+        },
+        {
+          "kernel": "tf_qk_rows_w",
+          "launches": 24500,
+          "summed_seconds": 0.117436512
+        },
+        {
+          "kernel": "tf_add_rms_rows_bf16h",
+          "launches": 49855,
+          "summed_seconds": 0.09596659
+        },
+        {
+          "kernel": "tf_vit_pointwise",
+          "launches": 52965,
+          "summed_seconds": 0.09172694
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x96x64_3_64x24x64_tmaAB_bz_TNNN",
+          "launches": 560,
+          "summed_seconds": 0.086750016
+        },
+        {
+          "kernel": "tf_round_bf16_argmax",
+          "launches": 855,
+          "summed_seconds": 0.073975744
+        },
+        {
+          "kernel": "tf_swiglu_rows_round",
+          "launches": 24500,
+          "summed_seconds": 0.062288947
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 608,
+          "summed_seconds": 0.060044032
+        }
+      ]
+    },
+    {
+      "range": "asr-after-parent-lifecycle",
+      "range_wall_seconds": 41.512726128,
+      "cuda_activity_union_seconds": 40.350045678,
+      "kernel_union_seconds": 40.343321902,
+      "copy_union_seconds": 0.00660192,
+      "memset_union_seconds": 0.000121856,
+      "kernel_launches": 216721,
+      "copy_operations": 5617,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 63871,
+          "summed_seconds": 38.186921408
+        },
+        {
+          "kernel": "tf_window_decode_tc",
+          "launches": 15820,
+          "summed_seconds": 0.401455968
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x160x64_2_64x40x64_tmaAB_bz_TNNN",
+          "launches": 2464,
+          "summed_seconds": 0.3709776
+        },
+        {
+          "kernel": "tf_asr_audio_attention",
+          "launches": 624,
+          "summed_seconds": 0.229043865
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x64x64_4_32x64x64_tmaAB_bz_TNNN",
+          "launches": 1512,
+          "summed_seconds": 0.119510752
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x96x64_3_64x24x64_tmaAB_bz_TNNN",
+          "launches": 616,
+          "summed_seconds": 0.093937728
+        },
+        {
+          "kernel": "tf_qk_rows_w",
+          "launches": 17164,
+          "summed_seconds": 0.087555872
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 1560,
+          "summed_seconds": 0.083022107
+        },
+        {
+          "kernel": "tf_vit_pointwise",
+          "launches": 39010,
+          "summed_seconds": 0.07920697
+        },
+        {
+          "kernel": "tf_add_rms_rows_bf16h",
+          "launches": 34919,
+          "summed_seconds": 0.070339339
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 696,
+          "summed_seconds": 0.069734048
+        },
+        {
+          "kernel": "tf_asr_im2col",
+          "launches": 2088,
+          "summed_seconds": 0.052375673
+        }
+      ]
+    }
+  ],
+  "captured_allocation_peak_bytes_by_kind": {
+    "Device": 12910123520,
+    "Device Static": 136,
+    "Pinned": 11571200
+  },
+  "duplicate_allocation_events": 0,
+  "unknown_free_events": 0,
+  "limitations": [
+    "Profiling overhead and workload-range client preparation are included; use separate unprofiled cells for speed claims.",
+    "Activity is the union of captured kernels, copies and memsets, not SM occupancy or total-system GPU utilization.",
+    "Activity subcategories can overlap; do not add their union durations.",
+    "Allocation peaks cover the full traced process lifetime including startup and warmups; allocation bytes are not physical-memory residency."
+  ],
+  "runtime": {
+    "engine": "TensorFold",
+    "source_commit": "f8066cdaa",
+    "cache_condition": "disabled",
+    "profiling": "Nsight Systems 2025.3.2 plus optional ASR CUDA events",
+    "binary_sha256": "9f89d9b89d5d70aa4d0c11ac49d3717dc47506fbe4d71c7881565f52ad07301b"
+  }
+}
