@@ -1,4 +1,4 @@
-//! A fixed physical batch keeps each logical row's arithmetic independent of scheduler composition.
+//! Shared-weight CUDA row projections and retained fixed-batch vendor-policy diagnostics.
 const std = @import("std");
 const cuda = @import("root.zig");
 const blas = @import("cublaslt.zig");

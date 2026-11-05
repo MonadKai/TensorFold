@@ -19,12 +19,7 @@ pub const load_ledger = @import("load_ledger.zig");
 /// One image of a request (``Request.images``): the tower's input and the placeholder rows its output replaces.
 pub const Image = lanes.stream.Image;
 pub const Audio = lanes.stream.Audio;
-pub const AudioInfo = struct {
-    sample_rate: u32 = 16000,
-    token: u32 = 151676,
-    max_seconds: u32 = 600,
-    decode_batches: ?*const fn () Audio.DecodeBatches = null,
-};
+pub const AudioInfo = struct { sample_rate: u32 = 16000, token: u32 = 151676, max_seconds: u32 = 600, decode_batches: ?*const fn () Audio.DecodeBatches = null };
 /// A prompt's reproducible seed (``seed_for``), for requests that name none.
 pub const seedFor = lanes.sampling.seedFor;
 
