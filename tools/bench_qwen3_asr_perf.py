@@ -29,7 +29,7 @@ def metrics(url):
         with urllib.request.urlopen(url.rstrip("/") + "/metrics", timeout=10) as response:
             lines = response.read().decode().splitlines()
         return {line.split()[0]: float(line.split()[-1]) for line in lines
-                if not line.startswith("#") and re.search(r"(?:(?:prefix_cache|mm_cache|encoder_cache).*?(?:hits|queries|requests).*_total|generation_tokens_total|device_memory_peak_bytes|pinned_memory(?:_peak)?_bytes|asr_decode_.*|time_to_first_token_seconds_.*)(?:\{| )", line)}
+                if not line.startswith("#") and re.search(r"(?:(?:prefix_cache|mm_cache|encoder_cache).*?(?:hits|queries|requests).*_total|request_success_total|generation_tokens_total|device_memory_peak_bytes|pinned_memory(?:_peak)?_bytes|asr_decode_.*|time_to_first_token_seconds_.*)(?:\{| )", line)}
     except (OSError, ValueError):
         return {}
 
@@ -237,6 +237,7 @@ def main():
         "warmup_work_matches": warmup_work, "sustained_goal_met": sustained_goal,
         "unique_pool_exhausted": exhausted,
         "natural_stop_observations": stops,
+        "finished_request_metric_deltas": {key: after[key] - before[key] for key in after if key in before and "request_success_total" in key},
         "equal_token_work_matches": work_matches if args.workload == "equal_tokens" else None,
         "decode_batch_metric_deltas": {key: after[key] - before[key] for key in after if key in before and "asr_decode_" in key},
         "ttft_metric_deltas": {key: after[key] - before[key] for key in after if key in before and "time_to_first_token_seconds_" in key},
