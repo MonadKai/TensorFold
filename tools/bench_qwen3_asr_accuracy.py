@@ -72,12 +72,22 @@ def main():
     valid = all(r["valid"] for r in records)
     words = sum(r["reference_words"] for r in records)
     characters = sum(r["reference_characters"] for r in records)
+    by_language = {}
+    for language in sorted({r["language"] for r in records}):
+        rows = [r for r in records if r["language"] == language]
+        complete = all(r["valid"] for r in rows)
+        word_count = sum(r["reference_words"] for r in rows)
+        char_count = sum(r["reference_characters"] for r in rows)
+        by_language[language] = dict(utterances=len(rows), complete=complete,
+                                    wer=sum(r["word_edits"] for r in rows) / word_count if complete and word_count else None,
+                                    cer=sum(r["character_edits"] for r in rows) / char_count if complete and char_count else None,
+                                    primary="wer" if language == "en" else "cer")
     result = {"manifest": manifest, "model": args.model, "concurrency": args.concurrency,
               "manifest_sha256": hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
               "seed": args.seed, "temperature": 0, "max_completion_tokens": 1024,
               "requires_observed_natural_stop": args.require_natural_stop,
               "normalization": r"NFKC, casefold, re.sub(r'[^\w\s]', '', text), collapse whitespace; CER excludes spaces",
-              "records": records, "complete": valid,
+              "records": records, "complete": valid, "by_language": by_language,
               "wer": sum(r["word_edits"] for r in records) / words if valid and words else None,
               "cer": sum(r["character_edits"] for r in records) / characters if valid and characters else None}
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")

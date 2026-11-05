@@ -68,7 +68,7 @@ pub fn room(comptime F: type, ptr: *anyopaque, local: u64) !u64 {
 
 pub fn read(_: ?*anyopaque, reset_peak: bool) ?api.Memory {
     const u = cuda.usage(reset_peak);
-    return .{ .active = u.device, .cache = 0, .peak = u.peak, .pinned = u.host };
+    return .{ .active = u.device, .cache = 0, .peak = u.peak, .pinned = u.host, .pinned_peak = u.host_peak };
 }
 
 pub fn learnBytes(loaded: anytype) u64 {

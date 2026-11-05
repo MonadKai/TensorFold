@@ -387,7 +387,7 @@ pub const Opened = struct {
     follow: ?*const fn (*anyopaque) anyerror!void = null,
 };
 
-pub const Memory = struct { active: u64 = 0, cache: u64 = 0, peak: u64 = 0, pinned: u64 = 0, limit: ?u64 = null };
+pub const Memory = struct { active: u64 = 0, cache: u64 = 0, peak: u64 = 0, pinned: u64 = 0, pinned_peak: ?u64 = null, limit: ?u64 = null };
 
 /// A backend's words for its own refusals (a request it cannot serve); null: the error's name.
 pub const Explain = struct {

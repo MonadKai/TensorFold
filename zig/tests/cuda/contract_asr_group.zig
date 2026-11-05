@@ -16,6 +16,9 @@ pub const Group = struct {
     dense_rows: ?cuda.row_gemm.Rows = null,
     dense_projection: ?blas.Projection = null,
     dense_accuracy: ?blas.Projection = null,
+    shared_rows: ?cuda.row_gemm.Shared = null,
+    shared_projection: ?blas.Projection = null,
+    shared_accuracy: ?blas.Projection = null,
 
     pub fn create(a: std.mem.Allocator, gpu: check.Gpu, s: cuda.Stream, kernels: *std.ArrayList(core.contract.gates.Kernel)) !*Group {
         const group = try a.create(Group);
@@ -29,10 +32,16 @@ pub const Group = struct {
         group.dense_rows = null;
         group.dense_projection = null;
         group.dense_accuracy = null;
+        group.shared_rows = null;
+        group.shared_projection = null;
+        group.shared_accuracy = null;
         if (try gpu.d.currentCapability() == 121 and group.gemms.lt.api.cublasLtGetVersion() == 130100) {
             group.dense_rows = try cuda.row_gemm.Rows.init(gpu.d, &group.gemms.lt);
             group.dense_projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .dense = &group.dense_rows.? };
             group.dense_accuracy = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .dense = &group.dense_rows.?, .compare_rows = false };
+            group.shared_rows = try cuda.row_gemm.Shared.init(gpu.d, &group.gemms.lt, group.mod);
+            group.shared_projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .shared = &group.shared_rows.? };
+            group.shared_accuracy = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .shared = &group.shared_rows.?, .compare_rows = false };
         }
         errdefer if (group.dense_rows) |*rows| rows.deinit();
         const im2col = try group.mod.function("tf_asr_im2col");
@@ -50,10 +59,12 @@ pub const Group = struct {
             .fault = i == 2,
             .qk_stress = i == 1,
         };
-        try kernels.ensureUnusedCapacity(a, 10);
+        try kernels.ensureUnusedCapacity(a, 12);
         kernels.appendAssumeCapacity(group.projection.kernel());
         if (group.dense_projection) |*projection| kernels.appendAssumeCapacity(projection.kernel());
         if (group.dense_accuracy) |*projection| kernels.appendAssumeCapacity(projection.kernel());
+        if (group.shared_projection) |*projection| kernels.appendAssumeCapacity(projection.kernel());
+        if (group.shared_accuracy) |*projection| kernels.appendAssumeCapacity(projection.kernel());
         for (&group.layouts) |*item| kernels.appendAssumeCapacity(item.kernel());
         for (&group.attentions) |*item| kernels.appendAssumeCapacity(item.kernel());
         return group;
@@ -65,6 +76,8 @@ pub const Group = struct {
         group.projection.deinit();
         if (group.dense_projection) |*projection| projection.deinit();
         if (group.dense_accuracy) |*projection| projection.deinit();
+        if (group.shared_projection) |*projection| projection.deinit();
+        if (group.shared_accuracy) |*projection| projection.deinit();
         if (group.dense_rows) |*rows| rows.deinit();
         group.gemms.deinit();
         group.mod.unload();

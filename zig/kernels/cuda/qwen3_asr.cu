@@ -10,11 +10,26 @@ extern "C" __global__ void __launch_bounds__(64) tf_asr_rows_gemm(const B *x, co
     const int column = blockIdx.x * 4 + column_lane;
     __shared__ float sums[8][4][16];
     float acc[8] = {};
-    for (int q = lane; q < k; q += 16) {
-        const float weight = column < n ? __bfloat162float(w[(long long)column * k + q]) : 0.f;
+    for (int base = lane; base < k; base += 128) {
+        float weights[8], inputs[8][8];
+        // Prefetch eight K positions; each accumulator still visits them in increasing order.
 #pragma unroll
-        for (int row = 0; row < 8; ++row)
-            if (row < rows) acc[row] = __fmaf_rn(__bfloat162float(x[(long long)row * k + q]), weight, acc[row]);
+        for (int part = 0; part < 8; ++part) {
+            const int q = base + part * 16;
+            if (q < k) {
+                weights[part] = column < n ? __bfloat162float(w[(long long)column * k + q]) : 0.f;
+#pragma unroll
+                for (int row = 0; row < 8; ++row)
+                    if (row < rows) inputs[row][part] = __bfloat162float(x[(long long)row * k + q]);
+            }
+        }
+#pragma unroll
+        for (int part = 0; part < 8; ++part)
+            if (base + part * 16 < k) {
+#pragma unroll
+                for (int row = 0; row < 8; ++row)
+                    if (row < rows) acc[row] = __fmaf_rn(inputs[row][part], weights[part], acc[row]);
+            }
     }
 #pragma unroll
     for (int row = 0; row < 8; ++row)
