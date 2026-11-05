@@ -77,19 +77,19 @@ def main():
     try:
         wait("initially_drained", drained)
         baseline = run_one(sampled, args.short, "transcription")
-        with parent(args.long[0]):
+        with parent(args.long[1]):
             first = wait("single_parent_four_children", lambda m: value(m, "audio_chunks_parents") == 1
                          and value(m, "audio_parent_active_max") == 4 and value(m, "num_requests_running") >= 4)
-            with parent(args.long[1]):
+            with parent(args.long[0]):
                 shrink = wait("two_parents_existing_leases_retained", lambda m: value(m, "audio_chunks_parents") == 2
-                              and value(m, "audio_parent_active_max") > 2 and value(m, "audio_chunks_waiting") > 0)
+                              and value(m, "audio_parent_active_max") == 4 and value(m, "audio_chunks_waiting") >= 4)
                 work = wait("four_distinct_slots_still_decode", lambda m: rows4(m) > rows4(shrink)
-                            and value(m, "audio_chunks_parents") == 2 and value(m, "audio_parent_active_max") > 2)
-                sibling = run_one(sampled, args.short, "transcription")
+                            and value(m, "audio_chunks_parents") == 2 and value(m, "audio_parent_active_max") == 4)
                 before_queued_cancel = metrics()
             cancelled = wait("queued_parent_cancelled", lambda m: value(m, "audio_chunks_parents") == 1
                              and value(m, "audio_parents_cancelled_total")
                              == value(before_queued_cancel, "audio_parents_cancelled_total") + 1)
+            sibling = run_one(sampled, args.short, "transcription")
         wait("all_children_released", lambda m: drained(m) and value(m, "audio_parents_cancelled_total")
              == value(cancelled, "audio_parents_cancelled_total") + 1)
         recovery = run_one(sampled, args.short, "transcription")
