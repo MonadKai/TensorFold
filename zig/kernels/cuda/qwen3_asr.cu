@@ -3,6 +3,40 @@
 
 using B = __nv_bfloat16;
 
+// Eight rows share each weight load; each dot retains sixteen ordered FP32 chains and the same reduction tree.
+extern "C" __global__ void __launch_bounds__(64) tf_asr_rows_gemm(const B *x, const B *w, B *out,
+                                                                int rows, int n, int k) {
+    const int lane = threadIdx.x, column_lane = threadIdx.y;
+    const int column = blockIdx.x * 4 + column_lane;
+    __shared__ float sums[8][4][16];
+    float acc[8] = {};
+    for (int q = lane; q < k; q += 16) {
+        const float weight = column < n ? __bfloat162float(w[(long long)column * k + q]) : 0.f;
+#pragma unroll
+        for (int row = 0; row < 8; ++row)
+            if (row < rows) acc[row] = __fmaf_rn(__bfloat162float(x[(long long)row * k + q]), weight, acc[row]);
+    }
+#pragma unroll
+    for (int row = 0; row < 8; ++row)
+        if (row < rows) sums[row][column_lane][lane] = acc[row];
+    __syncthreads();
+    for (int step = 8; step; step /= 2) {
+        if (lane < step) {
+#pragma unroll
+            for (int row = 0; row < 8; ++row)
+                if (row < rows)
+                    sums[row][column_lane][lane] =
+                        __fadd_rn(sums[row][column_lane][lane], sums[row][column_lane][lane + step]);
+        }
+        __syncthreads();
+    }
+    if (lane == 0 && column < n) {
+#pragma unroll
+        for (int row = 0; row < 8; ++row)
+            if (row < rows) out[(long long)row * n + column] = __float2bfloat16_rn(sums[row][column_lane][0]);
+    }
+}
+
 extern "C" __global__ void tf_asr_im2col(const void *input, B *out, int height, int width,
                                        int channels, int frames, int start, int mel) {
     const int oh = (height + 1) / 2, ow = (width + 1) / 2;

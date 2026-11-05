@@ -24,6 +24,7 @@ const Rig = struct {
     end: cuda.Event,
     stable: *cuda.vit.Gemms,
     staged: ?*cuda.row_gemm.Rows = null,
+    shared: ?*cuda.row_gemm.Shared = null,
 
     fn weight(r: *const Rig, shape: usize, layer: usize) u64 {
         const d = r.w.dec[layer % r.w.dec.len];
@@ -40,7 +41,9 @@ const Rig = struct {
     fn run(r: *Rig, shape: usize, rows: usize, plan: ?*const Linear, iteration: usize) !void {
         const f = shapes[shape];
         const w = r.weight(shape, iteration);
-        if (r.staged) |p| {
+        if (r.shared) |p| {
+            try p.run(r.s, r.x.ptr, w, r.y.ptr, rows, f.n, f.k);
+        } else if (r.staged) |p| {
             try p.run(r.s, r.x.ptr, w, r.y.ptr, rows, f.n, f.k);
         } else if (plan) |p| {
             try p.run(r.x.ptr, w, r.y.ptr, r.workspace.ptr, r.workspace.len, r.s.handle);
@@ -80,7 +83,7 @@ pub fn main(init: std.process.Init) !u8 {
     const a = std.heap.c_allocator;
     const args = try init.minimal.args.toSlice(init.arena.allocator());
     if (args.len != 2 and args.len != 3 and args.len != 8) {
-        std.debug.print("usage: tf-qwen3-asr-gemm-bench MODEL [--staged | --trace stable|dense|staged ROWS SHAPE CANDIDATE WORKSPACE_MIB]\n", .{});
+        std.debug.print("usage: tf-qwen3-asr-gemm-bench MODEL [--staged|--shared | --trace stable|dense|staged|shared ROWS SHAPE CANDIDATE WORKSPACE_MIB]\n", .{});
         return 2;
     }
     var d = try cuda.Driver.open();
@@ -114,6 +117,28 @@ pub fn main(init: std.process.Init) !u8 {
     var r: Rig = .{ .a = a, .s = s, .w = &w, .x = x, .y = y, .workspace = workspace, .begin = begin, .end = end, .stable = &stable };
     try r.emit(.{ .schema = 1, .cublaslt_version = stable.lt.api.cublasLtGetVersion(), .seed = 20261106, .layers_per_sample = 28, .samples = 7, .rotating_decoder_weights = true, .includes_staging = false });
     if (args.len == 3) {
+        if (std.mem.eql(u8, args[2], "--shared")) {
+            var mod = try cuda.Module.load(&d, cuda.kernels.qwen3_asr);
+            defer mod.unload();
+            var projection = try cuda.row_gemm.Shared.init(&d, &stable.lt, mod);
+            for (shapes, 0..) |f, shape| {
+                for ([_]usize{ 1, 2, 4, 8 }) |rows| {
+                    const times = try r.measure(shape, rows, null);
+                    try r.emit(.{ .shape = f.name, .rows = rows, .mode = "stable_before", .milliseconds = times, .median_ms = median(times) });
+                }
+                r.shared = &projection;
+                for ([_]usize{ 1, 2, 4, 8 }) |rows| {
+                    const times = try r.measure(shape, rows, null);
+                    try r.emit(.{ .shape = f.name, .rows = rows, .row_capacity = 8, .mode = "shared", .milliseconds = times, .median_ms = median(times) });
+                }
+                r.shared = null;
+                for ([_]usize{ 1, 2, 4, 8 }) |rows| {
+                    const times = try r.measure(shape, rows, null);
+                    try r.emit(.{ .shape = f.name, .rows = rows, .mode = "stable_after", .milliseconds = times, .median_ms = median(times) });
+                }
+            }
+            return 0;
+        }
         if (!std.mem.eql(u8, args[2], "--staged")) return 2;
         var staged = try cuda.row_gemm.Rows.init(&d, &stable.lt);
         defer staged.deinit();
@@ -134,6 +159,14 @@ pub fn main(init: std.process.Init) !u8 {
         if (std.mem.eql(u8, args[3], "stable")) {
             if (rows > 8) return 2;
             try r.run(shape, rows, null, 0);
+        } else if (std.mem.eql(u8, args[3], "shared")) {
+            if (rows > 8) return 2;
+            var mod = try cuda.Module.load(&d, cuda.kernels.qwen3_asr);
+            defer mod.unload();
+            var projection = try cuda.row_gemm.Shared.init(&d, &stable.lt, mod);
+            r.shared = &projection;
+            try r.run(shape, rows, null, 0);
+            try s.synchronize();
         } else if (std.mem.eql(u8, args[3], "staged")) {
             if (rows > 8) return 2;
             var staged = try cuda.row_gemm.Rows.init(&d, &stable.lt);

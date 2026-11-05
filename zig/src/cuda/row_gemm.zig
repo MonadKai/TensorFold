@@ -3,6 +3,32 @@ const std = @import("std");
 const cuda = @import("root.zig");
 const blas = @import("cublaslt.zig");
 
+pub const shared_rows = 8;
+pub const shared_policy_version = "asr-sm121-fp32-chain16-shared8-v1";
+
+/// Borrowed module code and caller buffers; shared memory belongs to each CUDA block, with no persistent scratch.
+pub const Shared = struct {
+    f: cuda.Function,
+
+    pub fn init(d: *const cuda.Driver, lt: *const blas.Library, mod: cuda.Module) !Shared {
+        if (lt.api.cublasLtGetVersion() != 130100 or try d.currentCapability() != 121) return error.UnqualifiedRowGemmRuntime;
+        return .{ .f = try mod.function("tf_asr_rows_gemm") };
+    }
+
+    pub fn deinit(self: *Shared) void {
+        self.* = undefined;
+    }
+
+    pub fn run(self: *const Shared, s: cuda.Stream, x: u64, w: u64, y: u64, rows: usize, n: usize, k: usize) !void {
+        if (rows == 0 or rows > shared_rows or x == 0 or w == 0 or y == 0) return error.BadRows;
+        if (shapeIndex(n, k) == null) return error.UnsupportedRowGemmShape;
+        var args: cuda.launch.Args = .{};
+        for ([_]u64{ x, w, y }) |pointer| args.add(pointer);
+        for ([_]usize{ rows, n, k }) |value| args.add(@as(i32, @intCast(value)));
+        try cuda.launch.launch(self.f, .{ .grid = .{ .x = @intCast((n + 3) / 4) }, .block = .{ .x = 16, .y = 4 } }, s, &args);
+    }
+};
+
 pub const physical_rows = 32;
 pub const logical_rows = 8;
 pub const workspace_bytes = 32 * 1024 * 1024;

@@ -9,7 +9,7 @@ var decode_batches: [2][8]Counter = @splat(@splat(.init(0)));
 /// Process-lifetime counters remain safe to read after a served model is parked or closed.
 pub fn decodeBatches() @import("lanes").stream.Audio.DecodeBatches {
     var result: @import("lanes").stream.Audio.DecodeBatches = undefined;
-    result.physical_rows = cuda.row_gemm.physical_rows;
+    result.physical_rows = cuda.row_gemm.shared_rows;
     for (&result.stable, &result.throughput, 0..) |*stable, *throughput, i| {
         stable.* = decode_batches[0][i].load(.monotonic);
         throughput.* = decode_batches[1][i].load(.monotonic);
@@ -31,7 +31,7 @@ pub const Model = struct {
     slots: usize,
     probe: ?Probe = null,
     joined_projections: bool = true,
-    projections: ?cuda.row_gemm.Rows = null,
+    projections: ?cuda.row_gemm.Shared = null,
     timing: ?timing.Timing = null,
     buffers: std.ArrayList(cuda.DeviceBuffer) = .empty,
     kc: [28]u64 = undefined,
@@ -81,8 +81,8 @@ pub const Model = struct {
         m.timing = try timing.Timing.init(d);
         const mode = if (std.c.getenv("TENSORFOLD_QWEN3_ASR_MATH")) |value| std.mem.span(value) else "stable";
         if (std.mem.eql(u8, mode, "throughput")) {
-            m.projections = try cuda.row_gemm.Rows.init(d, &k.gemms.lt);
-            std.log.info("ASR arithmetic: throughput ({s}), physical rows {d}", .{ cuda.row_gemm.policy_version, cuda.row_gemm.physical_rows });
+            m.projections = try cuda.row_gemm.Shared.init(d, &k.gemms.lt, k.mod);
+            std.log.info("ASR arithmetic: throughput ({s}), row capacity {d}", .{ cuda.row_gemm.shared_policy_version, cuda.row_gemm.shared_rows });
         } else if (!std.mem.eql(u8, mode, "stable")) return error.InvalidAsrArithmeticMode;
         return m;
     }
