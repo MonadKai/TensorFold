@@ -1,4 +1,4 @@
-//! FIFO admission for long-audio children reserves half the lanes for ordinary requests.
+//! FIFO child admission reserves half the lanes for ordinary requests when at least two lanes exist.
 const std = @import("std");
 
 pub const Gate = struct {

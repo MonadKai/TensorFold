@@ -41,9 +41,13 @@ const State = struct {
     }
 
     fn one(state: *State, index: usize) chat.Failure!void {
+        const profile = std.c.getenv("TF_ASR_PROFILE") != null;
+        const clock = @import("clock.zig");
+        const queued = if (profile) clock.nowNs(state.srv.io) else 0;
         const gate = &state.srv.audio_children;
         try gate.wait(state.srv.io, @import("audio_quota.zig").Gate.limit(state.srv.info.lanes), state);
         defer gate.release(state.srv.io);
+        const admission_seconds = if (profile) clock.seconds(clock.nowNs(state.srv.io) - queued) else 0;
         var arena = std.heap.ArenaAllocator.init(state.srv.gpa);
         defer arena.deinit();
         var cx: errors.Cx = .{ .a = arena.allocator() };
@@ -57,7 +61,10 @@ const State = struct {
         const input: chat.Input = .{ .prompt = .{ .ids = rendered.ids }, .audios = rendered.audios, .fields = state.fields, .max_tokens = state.max_tokens, .temperature = state.temperature };
         const reply = try chat.run(state.srv, &cx, input, null, state);
         result.text = try state.srv.gpa.dupe(u8, reply.content);
-        if (std.c.getenv("TF_ASR_PROFILE") != null) result.runtime = try state.srv.gpa.dupe(u8, try json.stringify(cx.a, reply.runtime, .{}));
+        if (profile) {
+            try reply.runtime.object.put(cx.a, "audio_admission_seconds", .{ .float = admission_seconds });
+            result.runtime = try state.srv.gpa.dupe(u8, try json.stringify(cx.a, reply.runtime, .{}));
+        }
     }
 };
 
