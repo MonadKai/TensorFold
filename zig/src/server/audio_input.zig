@@ -186,3 +186,8 @@ pub fn decode(cx: *Cx, bytes: []const u8) errors.Refused!Decoded {
     result.samples = core.audio_decode.decodeTimed(cx.a, bytes, if (profile) &result.timing else null) catch |e| return cx.fail(.request, "audio decode failed: {s}", .{@errorName(e)});
     return result;
 }
+
+pub fn clean(text: []const u8) []const u8 {
+    const marker = "<asr_text>";
+    return if (std.mem.lastIndexOf(u8, text, marker)) |at| text[at + marker.len ..] else text;
+}

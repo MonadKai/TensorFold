@@ -12,6 +12,7 @@ pub const CudaRecord = struct {
     optional_shared: bool = false,
     /// Keep the independent later compiler selection when adding a late 13.0 receipt.
     later_pending: bool = false,
+    later_base: ?[limits.sms.len]U = null,
 };
 const target = @import("registry_target.zig");
 pub const TargetDecision = target.TargetDecision;
@@ -320,9 +321,7 @@ pub const cuda_sets = [_]CudaSet{
         .{ .name = "flashnext_batch fn_qsa_select", .usage = .{ .{ .regs = 32, .static = 1168, .bound = 1024 }, .{ .regs = 52, .static = 1168, .bound = 1024 }, .{ .regs = 52, .static = 1168, .bound = 1024 }, .{ .regs = 63, .static = 1168, .bound = 1024 }, .{ .regs = 63, .static = 1168, .bound = 1024 } } },
     } ++ @import("flashnext_tile_records.zig").cuda_133 ++ @import("glm_cuda_records.zig").cuda_133 ++ @import("nvcc_133_records.zig").cuda_133 ++ @import("minimax_cuda_records.zig").cuda_133) },
 };
-pub fn newer(x: limits.Nvcc, y: limits.Nvcc) bool {
-    return x.major > y.major or (x.major == y.major and x.minor > y.minor);
-}
+pub const newer = target.newer;
 /// The release whose records a compiler's images are checked against: the newest set at or below it, else cuda's.
 pub fn setFor(release: ?limits.Nvcc) limits.Nvcc {
     var at = cuda_release;
@@ -335,8 +334,8 @@ pub fn setFor(release: ?limits.Nvcc) limits.Nvcc {
 }
 /// A record's usage on every SM for images built by `release` (null: an image that names no compiler, cuda's).
 pub fn usageFor(r: CudaRecord, release: ?limits.Nvcc) [limits.sms.len]U {
-    var u = r.usage;
-    const rel = release orelse return u;
+    const rel = release orelse return r.usage;
+    var u = if (!newer(.{ .major = 13, .minor = 2 }, rel)) r.later_base orelse r.usage else r.usage;
     if (r.later_pending and !newer(.{ .major = 13, .minor = 2 }, rel)) u = none;
     if (for (u) |v| {
         if (v.regs > 0) break false;
@@ -588,6 +587,7 @@ test {
     _ = @import("minimax_cuda_records.zig");
     _ = @import("glm_f32w_pending.zig");
     _ = @import("registry_pending_test.zig");
+    try @import("measurements/cuda_130_refresh.zig").checkLater(declared_cuda, all_cuda, usageFor);
     _ = @import("flashnext_pages_pending.zig");
     _ = @import("flashnext_attn_lanes_pending.zig");
 }

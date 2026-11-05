@@ -5,6 +5,7 @@ import argparse
 import base64
 import concurrent.futures
 import hashlib
+import http.client
 import json
 import time
 import urllib.error
@@ -25,6 +26,9 @@ def request(base_url, route, body, content_type):
             media = response.headers.get("Content-Type")
     except urllib.error.HTTPError as exc:
         status, data, media = exc.code, exc.read(), exc.headers.get("Content-Type")
+    except (OSError, TimeoutError, urllib.error.URLError, http.client.HTTPException) as exc:
+        return {"status": 0, "content_type": None, "seconds": time.monotonic() - start,
+                "response": {"transport_error": type(exc).__name__, "detail": str(exc)}}
     elapsed = time.monotonic() - start
     try:
         value = json.loads(data)

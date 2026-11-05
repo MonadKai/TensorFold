@@ -410,8 +410,16 @@ pub fn apply(records: anytype) @TypeOf(records) {
         const absent = for (record.usage) |old| {
             if (old.regs != 0) break false;
         } else true;
-        if (absent) record.later_pending = true;
+        if (absent) record.later_pending = true else record.later_base = record.usage;
         record.usage = usage;
     };
     return result;
+}
+
+/// Refreshing 13.0 must leave every SM's independently selected later usage unchanged.
+pub fn checkLater(before: anytype, after: @TypeOf(before), lookup: anytype) !void {
+    const Nvcc = @import("../limits.zig").Nvcc;
+    for (before, after) |old, updated| for ([_]Nvcc{ .{ .major = 13, .minor = 2 }, .{ .major = 13, .minor = 3 } }) |release| {
+        try std.testing.expectEqualDeep(lookup(old, release), lookup(updated, release));
+    };
 }

@@ -131,10 +131,7 @@ pub fn split(samples: []const f32, start: usize) usize {
     return selected;
 }
 
-pub fn clean(text: []const u8) []const u8 {
-    const marker = "<asr_text>";
-    return if (std.mem.lastIndexOf(u8, text, marker)) |at| text[at + marker.len ..] else text;
-}
+pub const clean = audio.clean;
 
 pub fn sanitize(a: std.mem.Allocator, text: []const u8) ![]const u8 {
     var out: []const u8 = try a.dupe(u8, text);
