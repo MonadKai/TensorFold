@@ -1,6 +1,7 @@
 //! Counters reported by an engine when one reply ends.
 
 pub const Stats = struct {
+    audio_time: ?@import("lanes").Stream.AudioTime = null,
     rounds: u64 = 0,
     grammar: ?@import("lanes").grammar_time.Sum = null,
     drafted: u64 = 0,

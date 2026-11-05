@@ -149,6 +149,8 @@ pub const Spec = struct {
 };
 
 pub const Stream = struct {
+    pub const AudioTime = @import("audio_time.zig").Sum;
+    audio_time: ?AudioTime = null,
     embedding: ?@import("embedding.zig").Batch = null,
     id: []const u8,
     prompt_len: usize,

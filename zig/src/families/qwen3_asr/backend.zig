@@ -66,8 +66,10 @@ pub const Backend = struct {
         const au = s.audios[0];
         if (au.tokens != @import("config.zig").tokens(au.frames) or au.at > s.prompt_len or au.tokens > s.prompt_len - au.at)
             return error.BadAudioPosition;
+        try b.m.begin(.encoder);
         const encoded = try b.enc.run(b.m, au.features, au.frames);
         try b.m.copy(b.audio_buffers[slot], encoded, @as(usize, au.tokens) * 4096);
+        try b.m.end(.encoder);
         const got = try b.active.getOrPut(b.m.a, s);
         b.free[slot] = false;
         got.value_ptr.* = .{ .slot = slot, .audio = b.audio_buffers[slot], .audio_at = au.at, .audio_rows = au.tokens, .last = b.lasts[slot] };
@@ -85,6 +87,7 @@ pub const Backend = struct {
         l.len = end;
         if (done) try b.m.copy(l.last, b.m.x.logits, b.m.w.c.vocab * 2);
         try b.m.s.synchronize();
+        try b.m.charge(&.{s});
         s.fill_at.store(@intCast(end), .monotonic);
         return done;
     }
@@ -95,17 +98,22 @@ pub const Backend = struct {
 
     fn draw(b: *Backend, s: *Stream, logits: u64, position: u64) !u64 {
         var token: u32 = undefined;
+        try b.m.begin(.sample);
         if (s.sampling) |sp| {
             var rule = cuda.sample.Rule.from(lanes.gpu_rule.rule(sp));
             var meta = [_]u64{ position - 1, 0 };
             try b.m.upload(b.rule, std.mem.asBytes(&rule));
             try b.m.upload(b.meta, std.mem.sliceAsBytes(&meta));
             try b.m.k.draws.draw(b.m.s, logits, b.m.w.c.vocab, b.rule, b.meta, 0, b.result, 1, null, null);
+            try b.m.end(.sample);
             try b.m.s.synchronize();
+            try b.m.charge(&.{s});
             try b.m.d.check(b.m.d.api.cuMemcpyDtoH_v2(@ptrCast(&token), b.result, 4), "draw token");
         } else {
             try b.m.k.round.argmax(b.m.s, logits, b.result, 1, b.m.w.c.vocab, b.m.w.c.vocab);
+            try b.m.end(.sample);
             try b.m.s.synchronize();
+            try b.m.charge(&.{s});
             var pick: cuda.tree_round.Pick = undefined;
             try b.m.d.check(b.m.d.api.cuMemcpyDtoH_v2(@ptrCast(&pick), b.result, @sizeOf(@TypeOf(pick))), "argmax token");
             if (pick.nonfinite != 0) return error.NonFiniteLogits;

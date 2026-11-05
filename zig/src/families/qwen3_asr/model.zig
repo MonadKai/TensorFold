@@ -1,5 +1,6 @@
 const std = @import("std");
 const cuda = @import("cuda");
+const timing = @import("timing.zig");
 const weights = @import("weights.zig");
 const Kernels = @import("kernels.zig").Kernels;
 
@@ -16,6 +17,7 @@ pub const Model = struct {
     context: usize,
     slots: usize,
     probe: ?Probe = null,
+    timing: ?timing.Timing = null,
     buffers: std.ArrayList(cuda.DeviceBuffer) = .empty,
     kc: [28]u64 = undefined,
     vc: [28]u64 = undefined,
@@ -61,14 +63,36 @@ pub const Model = struct {
         try m.upload(m.inv, std.mem.sliceAsBytes(&inv));
         m.x = .{ .ids = try m.alloc(rows * 4), .pos = try m.alloc(rows * 4), .x = try m.alloc(rows * 2048 * 2), .norm = try m.alloc(rows * 2048 * 2), .q = try m.alloc(rows * 2048 * 2), .k = try m.alloc(rows * 1024 * 2), .v = try m.alloc(rows * 1024 * 2), .qr = try m.alloc(rows * 2048 * 2), .kr = try m.alloc(rows * 1024 * 2), .vr = try m.alloc(rows * 1024 * 2), .att = try m.alloc(rows * 2048 * 2), .tmp = try m.alloc(rows * 2048 * 2), .gate = try m.alloc(rows * 6144 * 2), .up = try m.alloc(rows * 6144 * 2), .act = try m.alloc(rows * 6144 * 2), .logits = try m.alloc(w.c.vocab * 4) };
         try s.synchronize();
+        m.timing = try timing.Timing.init(d);
         return m;
     }
 
     pub fn deinit(m: *Model) void {
         m.s.synchronize() catch {};
+        if (m.timing) |*t| t.deinit();
         for (m.buffers.items) |*b| b.free();
         m.buffers.deinit(m.a);
     }
+
+    pub fn begin(m: *Model, stage: timing.Stage) !void {
+        if (m.timing) |*t| try t.start(m.s, stage);
+    }
+
+    pub fn end(m: *Model, stage: timing.Stage) !void {
+        if (m.timing) |*t| try t.end(m.s, stage);
+    }
+
+    pub fn charge(m: *Model, streams: []const *StreamType) !void {
+        if (m.timing) |*t| {
+            const sum = try t.resolve();
+            for (streams) |stream| {
+                if (stream.audio_time == null) stream.audio_time = .{};
+                stream.audio_time.?.add(sum);
+            }
+        }
+    }
+
+    const StreamType = @import("lanes").Stream;
 
     pub fn forward(m: *Model, slot: usize, start: usize, ids: []const u32, audio: u64, audio_at: usize, audio_rows: usize, head: bool) !void {
         const n = ids.len;
@@ -80,6 +104,8 @@ pub const Model = struct {
         var pos: [rows]i32 = undefined;
         for (pos[0..n], 0..) |*v, i| v.* = @intCast(start + i);
         try m.upload(x.pos, std.mem.sliceAsBytes(pos[0..n]));
+        if (m.timing) |*t| t.rows = n;
+        try m.begin(if (n == 1) .decode else .prefill);
         try k.embed.bf16(s, x.ids, m.w.embed, x.x, n, 2048);
         const lo = @max(start, audio_at);
         const hi = @min(start + n, audio_at + audio_rows);
@@ -108,11 +134,14 @@ pub const Model = struct {
                 try m.tap(try std.fmt.bufPrint(&label, "decoder.layer{d}", .{i}), x.x, n, 2048, true);
             }
         }
+        try m.end(if (n == 1) .decode else .prefill);
         if (head) {
+            try m.begin(.head);
             const last = x.x + (n - 1) * 4096;
             try k.norms.addRmsH(s, last, null, m.w.norm, .bf16, last, x.norm, null, 1, 2048, 1e-6);
             try k.gemms.run(s, x.norm, m.w.head, x.logits, 1, m.w.c.vocab, 2048, .bf16);
             try m.tap("decoder.logits", x.logits, 1, m.w.c.vocab, true);
+            try m.end(.head);
         }
     }
 };
