@@ -1,6 +1,7 @@
 const std = @import("std");
 
 pub const Audio = struct {
+    pub const DecodeBatches = struct { stable: [8]u64, throughput: [8]u64 };
     pub const Cpu = struct { decode_seconds: f64 = 0, resample_seconds: f64 = 0, log_mel_seconds: f64 = 0 };
     cpu: ?Cpu = null,
     features: []const f32,

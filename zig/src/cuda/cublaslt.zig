@@ -57,6 +57,8 @@ pub const Api = struct {
     cublasLtMatmulPreferenceSetAttribute: *const fn (Preference, c_int, CPtr, usize) callconv(.c) S,
     cublasLtMatmulAlgoGetHeuristic: *const fn (Handle, MatmulDesc, Layout, Layout, Layout, Layout, Preference, c_int, [*]Heuristic, *c_int) callconv(.c) S,
     cublasLtMatmulAlgoCheck: *const fn (Handle, MatmulDesc, Layout, Layout, Layout, Layout, *const Algo, *Heuristic) callconv(.c) S,
+    cublasLtMatmulAlgoConfigGetAttribute: *const fn (*const Algo, c_int, ?*anyopaque, usize, *usize) callconv(.c) S,
+    cublasLtMatmulAlgoCapGetAttribute: *const fn (*const Algo, c_int, ?*anyopaque, usize, *usize) callconv(.c) S,
     cublasLtMatmul: *const fn (Handle, MatmulDesc, CPtr, abi.DevicePtr, Layout, abi.DevicePtr, Layout, CPtr, abi.DevicePtr, Layout, abi.DevicePtr, Layout, ?*const Algo, abi.DevicePtr, usize, abi.Stream) callconv(.c) S,
 };
 
@@ -177,6 +179,35 @@ pub const Linear = struct {
         if (measured.state != 0 or measured.workspace_size > workspace_limit) return error.NoAlgorithm;
         self.algo = algorithm;
         self.workspace_need = measured.workspace_size;
+    }
+
+    pub fn candidates(self: *const Linear, found: []Heuristic) Error![]Heuristic {
+        var count: c_int = 0;
+        try self.lt.check(self.lt.api.cublasLtMatmulAlgoGetHeuristic(self.handle, self.desc, self.a, self.b, self.c, self.c, self.pref, @intCast(found.len), found.ptr, &count), "cuBLASLt candidates");
+        if (count < 0 or count > found.len) return error.Invalid;
+        return found[0..@intCast(count)];
+    }
+
+    pub fn algorithmConfig(self: *const Linear, attribute: c_int) Error!i32 {
+        var value: i32 = 0;
+        var size: usize = 0;
+        try self.lt.check(self.lt.api.cublasLtMatmulAlgoConfigGetAttribute(&self.algo, attribute, &value, @sizeOf(i32), &size), "cuBLASLt algorithm config");
+        if (size != @sizeOf(i32)) return error.Invalid;
+        return value;
+    }
+
+    pub fn numericalFlags(self: *const Linear) Error!u64 {
+        var value: u64 = 0;
+        var size: usize = 0;
+        try self.lt.check(self.lt.api.cublasLtMatmulAlgoCapGetAttribute(&self.algo, 15, &value, @sizeOf(u64), &size), "cuBLASLt numerical flags");
+        if (size != @sizeOf(u64)) return error.Invalid;
+        return value;
+    }
+
+    pub fn configuration(self: *const Linear) Error![7]i32 {
+        var values: [7]i32 = undefined;
+        for (&values, 0..) |*value, attribute| value.* = try self.algorithmConfig(@intCast(attribute));
+        return values;
     }
 
     pub fn deinit(self: *Linear) void {

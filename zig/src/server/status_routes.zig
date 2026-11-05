@@ -150,7 +150,16 @@ pub fn metrics(srv: *Server, conn: *Conn, a: Allocator) void {
     }
     @import("load_metrics.zig").render(&out.writer, snap, .{ .model = srv.config.served_name, .backend = srv.config.identity.backend, .version = srv.config.identity.version }) catch return;
     if (srv.config.admission.enabled()) @import("metrics.zig").renderAdmission(&out.writer, srv.admission.snapshot(srv.io)) catch return;
-    if (srv.info.audio != null) srv.audio_children.render(srv.io, &out.writer, srv.info.lanes) catch return;
+    if (srv.info.audio) |audio| {
+        srv.audio_children.render(srv.io, &out.writer, srv.info.lanes) catch return;
+        if (audio.decode_batches) |read| {
+            const batches = read();
+            out.writer.writeAll("# TYPE tensorfold:asr_decode_batches_total counter\n") catch return;
+            inline for (.{ "stable", "throughput" }) |mode| for (@field(batches, mode), 1..) |count, rows| {
+                out.writer.print("tensorfold:asr_decode_batches_total{{mode=\"{s}\",rows=\"{d}\",physical_rows=\"{d}\"}} {d}\n", .{ mode, rows, if (comptime std.mem.eql(u8, mode, "throughput")) 8 else rows, count }) catch return;
+            };
+        }
+    }
     const body = out.written();
     conn.startResponse(200, null) catch return;
     conn.addHeader("Content-Type", "text/plain; version=0.0.4; charset=utf-8") catch return;

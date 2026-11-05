@@ -76,7 +76,7 @@ pub fn main(init: std.process.Init) !u8 {
         try m.forward(0, at, ids[at..end], audio, audio_at, audio_rows, end == ids.len);
         at = end;
     }
-    for (history, 0..) |token, i| try m.forward(0, ids.len + i, &.{token}, 0, 0, 0, true);
+    for (history, 0..) |token, i| try m.decode(&.{token}, &.{@intCast(ids.len + i)}, &.{0});
     const manifest = try std.json.Stringify.valueAlloc(a, .{ .records = probe.records.items, .prompt_ids = ids, .teacher_tokens = history }, .{ .whitespace = .indent_2 });
     try std.Io.Dir.cwd().writeFile(io, .{ .sub_path = try std.fs.path.join(a, &.{ argv[4], "manifest.json" }), .data = manifest });
     return 0;
@@ -133,7 +133,7 @@ fn batchProbe(a: std.mem.Allocator, io: std.Io, m: *model.Model, ids: []const u3
     var failures: usize = 0;
     for (history, 0..) |token, step| {
         const pos = @as(i32, @intCast(ids.len + step));
-        m.joined_projections = false;
+        m.joined_projections = m.projections != null;
         try m.decode(&.{token}, &.{pos}, &.{0});
         try m.s.synchronize();
         try (cuda.DeviceBuffer{ .d = m.d, .ptr = m.x.logits, .len = solo.len * 2 }).download(0, std.mem.sliceAsBytes(solo));

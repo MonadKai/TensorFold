@@ -13,6 +13,7 @@ pub const max_segments: u32 = 1;
 pub const prompt_rows = @import("model.zig").rows;
 pub const explains_open = true;
 pub const audio_input = true;
+pub const decodeBatches = @import("model.zig").decodeBatches;
 pub const takes_drafter = false;
 pub const drafter_refusal = "Qwen3-ASR has no draft head in this CUDA slice";
 
@@ -74,6 +75,8 @@ pub fn explain(_: ?*anyopaque, e: anyerror) ?[]const u8 {
         error.ParallelLimit => "Qwen3-ASR CUDA admits 1 to 8 streams",
         error.NoStreamFits, error.ParallelMemory => "Qwen3-ASR weights, audio scratch and stream caches exceed the CUDA budget",
         error.CapturedKernels => "Qwen3-ASR uses native CUDA kernels; unset TENSORFOLD_CUDA_KERNELS",
+        error.InvalidAsrArithmeticMode => "TENSORFOLD_QWEN3_ASR_MATH must be stable or throughput",
+        error.UnqualifiedRowGemmRuntime, error.UnqualifiedRowGemmAlgorithm => "ASR throughput requires its qualified SM 121 and cuBLASLt 130100 policy; select stable explicitly on another runtime",
         error.BadContext => "Qwen3-ASR context must be between 1 and 65536 tokens",
         error.UnsupportedCheckpointSchema => "this Qwen3-ASR slice loads the original checkpoint with thinker_config",
         error.AudioLibraryUnavailable => "Qwen3-ASR requires libtfaudio.so; run zig build audio with FFmpeg development libraries",

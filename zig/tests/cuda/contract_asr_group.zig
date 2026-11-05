@@ -13,6 +13,8 @@ pub const Group = struct {
     attentions: [3]attention.Attention,
     gemms: cuda.vit.Gemms,
     projection: blas.Projection,
+    dense_rows: ?cuda.row_gemm.Rows = null,
+    dense_projection: ?blas.Projection = null,
 
     pub fn create(a: std.mem.Allocator, gpu: check.Gpu, s: cuda.Stream, kernels: *std.ArrayList(core.contract.gates.Kernel)) !*Group {
         const group = try a.create(Group);
@@ -23,6 +25,13 @@ pub const Group = struct {
         group.gemms = try cuda.vit.Gemms.init(a, gpu.d);
         errdefer group.gemms.deinit();
         group.projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms };
+        group.dense_rows = null;
+        group.dense_projection = null;
+        if (try gpu.d.currentCapability() == 121 and group.gemms.lt.api.cublasLtGetVersion() == 130100) {
+            group.dense_rows = try cuda.row_gemm.Rows.init(gpu.d, &group.gemms.lt);
+            group.dense_projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .dense = &group.dense_rows.? };
+        }
+        errdefer if (group.dense_rows) |*rows| rows.deinit();
         const im2col = try group.mod.function("tf_asr_im2col");
         const pack = try group.mod.function("tf_asr_conv_pack");
         const attn = try group.mod.function("tf_asr_audio_attention");
@@ -38,8 +47,9 @@ pub const Group = struct {
             .fault = i == 2,
             .qk_stress = i == 1,
         };
-        try kernels.ensureUnusedCapacity(a, 8);
+        try kernels.ensureUnusedCapacity(a, 9);
         kernels.appendAssumeCapacity(group.projection.kernel());
+        if (group.dense_projection) |*projection| kernels.appendAssumeCapacity(projection.kernel());
         for (&group.layouts) |*item| kernels.appendAssumeCapacity(item.kernel());
         for (&group.attentions) |*item| kernels.appendAssumeCapacity(item.kernel());
         return group;
@@ -49,6 +59,8 @@ pub const Group = struct {
         for (&group.layouts) |*item| item.deinit();
         for (&group.attentions) |*item| item.deinit();
         group.projection.deinit();
+        if (group.dense_projection) |*projection| projection.deinit();
+        if (group.dense_rows) |*rows| rows.deinit();
         group.gemms.deinit();
         group.mod.unload();
         group.a.destroy(group);

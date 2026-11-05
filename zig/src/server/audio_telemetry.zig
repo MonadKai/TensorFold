@@ -2,6 +2,12 @@
 const std = @import("std");
 const json = @import("json");
 
+pub fn terminal(a: std.mem.Allocator, runtime: json.Value, reason: []const u8, tokens: usize) !json.Value {
+    try runtime.object.put(a, "finish_reason", .{ .string = reason });
+    try runtime.object.put(a, "completion_tokens", try json.intValue(a, tokens));
+    return runtime;
+}
+
 pub fn copy(a: std.mem.Allocator, bytes: []const u8) std.mem.Allocator.Error!json.Value {
     const owned = try a.dupe(u8, bytes);
     return (try json.parse(a, owned)).ok;

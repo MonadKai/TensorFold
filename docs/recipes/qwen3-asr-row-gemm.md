@@ -72,8 +72,9 @@ hashes, duration, selection rule, text/label hashes and manifest SHA. Freeze the
 baseline or candidate recognition; do not replace utterances after inspecting results.
 
 Requests are greedy, seed 0, context 8192, output cap 1024 per chunk, explicit en/zh, empty context prompt,
-with the unchanged transcription splitter/joiner. English scoring is NFKC, casefold, Unicode punctuation
-removal and whitespace collapse; Mandarin CER additionally removes whitespace, with no number rewriting,
+with the unchanged transcription splitter/joiner. Scoring uses the existing exact normalization: NFKC,
+casefold, `re.sub(r"[^\w\s]", "", text)` and whitespace collapse (punctuation and symbols are removed).
+Mandarin CER additionally removes whitespace, with no number rewriting,
 script conversion or lexicon fixes. Report normalized and raw text differences; keep complete raw attempts
 local. Failed requests or output truncation invalidate a scored cell, rather than being dropped.
 

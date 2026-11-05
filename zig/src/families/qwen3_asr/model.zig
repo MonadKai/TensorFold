@@ -3,6 +3,18 @@ const cuda = @import("cuda");
 const timing = @import("timing.zig");
 const weights = @import("weights.zig");
 const Kernels = @import("kernels.zig").Kernels;
+const Counter = std.atomic.Value(u64);
+var decode_batches: [2][8]Counter = @splat(@splat(.init(0)));
+
+/// Process-lifetime counters remain safe to read after a served model is parked or closed.
+pub fn decodeBatches() @import("lanes").stream.Audio.DecodeBatches {
+    var result: @import("lanes").stream.Audio.DecodeBatches = undefined;
+    for (&result.stable, &result.throughput, 0..) |*stable, *throughput, i| {
+        stable.* = decode_batches[0][i].load(.monotonic);
+        throughput.* = decode_batches[1][i].load(.monotonic);
+    }
+    return result;
+}
 
 pub const rows = 256;
 pub const Probe = struct { ctx: *anyopaque, take: *const fn (*anyopaque, []const u8, u64, usize, usize, bool) anyerror!void };
@@ -18,6 +30,7 @@ pub const Model = struct {
     slots: usize,
     probe: ?Probe = null,
     joined_projections: bool = true,
+    projections: ?cuda.row_gemm.Rows = null,
     timing: ?timing.Timing = null,
     buffers: std.ArrayList(cuda.DeviceBuffer) = .empty,
     kc: [28]u64 = undefined,
@@ -65,11 +78,17 @@ pub const Model = struct {
         m.x = .{ .ids = try m.alloc(rows * 4), .pos = try m.alloc(rows * 4), .slots = try m.alloc(rows * 4), .x = try m.alloc(rows * 2048 * 2), .norm = try m.alloc(rows * 2048 * 2), .q = try m.alloc(rows * 4096 * 2), .k = try m.alloc(rows * 1024 * 2), .v = try m.alloc(rows * 1024 * 2), .qr = try m.alloc(rows * 2048 * 2), .kr = try m.alloc(rows * 1024 * 2), .vr = try m.alloc(rows * 1024 * 2), .att = try m.alloc(rows * 2048 * 2), .tmp = try m.alloc(rows * 2048 * 2), .gate = try m.alloc(rows * 12288 * 2), .up = try m.alloc(rows * 6144 * 2), .act = try m.alloc(rows * 6144 * 2), .logits = try m.alloc(slots * w.c.vocab * 2) };
         try s.synchronize();
         m.timing = try timing.Timing.init(d);
+        const mode = if (std.c.getenv("TENSORFOLD_QWEN3_ASR_MATH")) |value| std.mem.span(value) else "stable";
+        if (std.mem.eql(u8, mode, "throughput")) {
+            m.projections = try cuda.row_gemm.Rows.init(d, &k.gemms.lt);
+            std.log.info("ASR arithmetic: throughput ({s}), physical rows {d}", .{ cuda.row_gemm.policy_version, cuda.row_gemm.physical_rows });
+        } else if (!std.mem.eql(u8, mode, "stable")) return error.InvalidAsrArithmeticMode;
         return m;
     }
 
     pub fn deinit(m: *Model) void {
         m.s.synchronize() catch {};
+        if (m.projections) |*projection| projection.deinit();
         if (m.timing) |*t| t.deinit();
         for (m.buffers.items) |*b| b.free();
         m.buffers.deinit(m.a);
@@ -138,9 +157,11 @@ pub const Model = struct {
         if (m.timing) |*t| t.rows = n;
         try m.begin(.decode);
         try m.k.embed.bf16(m.s, x.ids, m.w.embed, x.x, n, 2048);
+        try m.tap("decoder.embeddings", x.x, n, 2048, true);
         try m.decoder(n, 0, 0, true);
         try m.end(.decode);
         try m.projectHead(x.x, n, true);
+        _ = decode_batches[@intFromBool(m.projections != null)][n - 1].fetchAdd(1, .monotonic);
     }
 
     fn decoder(m: *Model, n: usize, slot: usize, start: usize, batch: bool) !void {
@@ -183,6 +204,7 @@ pub const Model = struct {
     }
 
     fn linear(m: *Model, input: u64, weight: u64, output: u64, n: usize, width: usize, k: usize, batch: bool) !void {
+        if (batch) if (m.projections) |*projection| return projection.run(m.s, input, weight, output, n, width, k);
         if (batch) return m.k.gemms.runRowStable(m.s, input, weight, output, n, width, k, .bf16);
         return m.k.gemms.run(m.s, input, weight, output, n, width, k, .bf16);
     }
@@ -190,7 +212,9 @@ pub const Model = struct {
     fn projectHead(m: *Model, input: u64, n: usize, batch: bool) !void {
         try m.begin(.head);
         try m.k.norms.addRmsH(m.s, input, null, m.w.norm, .bf16, input, m.x.norm, null, n, 2048, 1e-6);
-        try m.linear(m.x.norm, m.w.head, m.x.logits, n, m.w.c.vocab, 2048, batch);
+        if (m.projections) |*projection| {
+            try projection.run(m.s, m.x.norm, m.w.head, m.x.logits, n, m.w.c.vocab, 2048);
+        } else try m.linear(m.x.norm, m.w.head, m.x.logits, n, m.w.c.vocab, 2048, batch);
         try m.tap("decoder.logits", m.x.logits, n, m.w.c.vocab, true);
         try m.end(.head);
     }

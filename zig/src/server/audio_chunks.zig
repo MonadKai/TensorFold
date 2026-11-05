@@ -62,6 +62,7 @@ const State = struct {
         const reply = try chat.run(state.srv, &cx, input, null, state);
         result.text = try state.srv.gpa.dupe(u8, reply.content);
         if (profile) {
+            _ = try @import("audio_telemetry.zig").terminal(cx.a, reply.runtime, reply.finish_reason, reply.completion_tokens);
             try reply.runtime.object.put(cx.a, "audio_admission_seconds", .{ .float = admission_seconds });
             result.runtime = try state.srv.gpa.dupe(u8, try json.stringify(cx.a, reply.runtime, .{}));
         }

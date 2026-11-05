@@ -43,7 +43,12 @@ def run_one(args, path, mode, index=0):
     common = {"model": args.model, "temperature": args.temperature, "max_completion_tokens": args.tokens}
     if args.seed is not None:
         common["seed"] = args.seed
+    for key in ("top_k", "top_p", "min_p"):
+        if getattr(args, key, None) is not None:
+            common[key] = getattr(args, key)
     if mode == "chat":
+        if getattr(args, "ignore_eos", False):
+            common["ignore_eos"] = True
         common.update(
             stream=False,
             return_token_ids=True,

@@ -1,6 +1,7 @@
 //! TensorFold's CUDA runtime: the driver, cuBLASLt and NCCL through dlopen, our kernels and Triton's, no Python.
 
 pub const abi = @import("abi.zig");
+pub const row_gemm = @import("row_gemm.zig");
 pub const Driver = @import("driver.zig").Driver;
 pub const copy_source = @import("copy_source.zig");
 pub const completion = @import("completion.zig");

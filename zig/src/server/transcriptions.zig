@@ -91,7 +91,7 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
         const reply = try chat.run(srv, cx, input, null, gone);
         if (std.c.getenv("TF_ASR_PROFILE") != null) {
             telemetry = try a.alloc(json.Value, 1);
-            telemetry[0] = reply.runtime;
+            telemetry[0] = try @import("audio_telemetry.zig").terminal(a, reply.runtime, reply.finish_reason, reply.completion_tokens);
         }
         break :blk clean(reply.content);
     };

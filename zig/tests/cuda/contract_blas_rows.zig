@@ -14,6 +14,7 @@ fn depth(s: c.Shape) usize {
 pub const Projection = struct {
     rig: Rig,
     gemms: *cuda.vit.Gemms,
+    dense: ?*cuda.row_gemm.Rows = null,
     arena: ?std.heap.ArenaAllocator = null,
     shape: c.Shape = undefined,
     x: []u16 = &.{},
@@ -31,18 +32,19 @@ pub const Projection = struct {
     const vt = g.hooks(Projection);
     pub fn kernel(p: *Projection) g.Kernel {
         return .{ .spec = .{
-            .name = "cuda ASR strided-batch cuBLASLt projection",
-            .replaces = "single-row cuBLASLt projections",
+            .name = if (p.dense != null) "cuda ASR fixed-eight dense cuBLASLt projection" else "cuda ASR strided-batch cuBLASLt projection",
+            .replaces = if (p.dense != null) "same fixed-eight projection with one logical row" else "single-row cuBLASLt projections",
             .accum = .f32,
             .depth = depth,
             .out = .bf16,
             .tiles = .{ .{ .size = 4 }, .{ .size = 32 }, .{ .size = 2048, .step = 8, .min = 8 } },
-            .served = &.{ .{ .rows = 3, .n = 1024, .k = 2048 }, .{ .rows = 8, .n = 2048, .k = 2048 }, .{ .rows = 2, .n = 6144, .k = 2048 }, .{ .rows = 5, .n = 2048, .k = 6144 }, .{ .rows = 7, .n = 4096, .k = 2048 }, .{ .rows = 8, .n = 12288, .k = 2048 }, .{ .rows = 2, .n = 151936, .k = 2048 } },
+            .served = if (p.dense != null) &.{ .{ .rows = 1, .n = 4096, .k = 2048 }, .{ .rows = 2, .n = 2048, .k = 2048 }, .{ .rows = 4, .n = 12288, .k = 2048 }, .{ .rows = 7, .n = 2048, .k = 6144 }, .{ .rows = 8, .n = 151936, .k = 2048 } } else &.{ .{ .rows = 3, .n = 1024, .k = 2048 }, .{ .rows = 8, .n = 2048, .k = 2048 }, .{ .rows = 2, .n = 6144, .k = 2048 }, .{ .rows = 5, .n = 2048, .k = 6144 }, .{ .rows = 7, .n = 4096, .k = 2048 }, .{ .rows = 8, .n = 12288, .k = 2048 }, .{ .rows = 2, .n = 151936, .k = 2048 } },
         }, .ctx = p, .vt = &vt };
     }
 
     pub fn prepare(p: *Projection, s: c.Shape, fill: g.Fill, seed: u64) !bool {
         if (s.rows == 0 or s.rows > 8 or s.n == 0 or s.k == 0 or s.n % 8 != 0 or s.k % 8 != 0) return false;
+        if (p.dense != null and cuda.row_gemm.shapeIndex(s.n, s.k) == null) return false;
         p.rig.reset();
         if (p.arena) |*a| a.deinit();
         p.arena = std.heap.ArenaAllocator.init(p.rig.gpu.gpa);
@@ -74,13 +76,19 @@ pub const Projection = struct {
 
     pub fn run(p: *Projection) !void {
         const s = p.shape;
-        try p.gemms.runRowStable(p.rig.s, p.xd, p.wd, p.out, s.rows, s.n, s.k, .bf16);
+        if (p.dense) |dense| {
+            try dense.run(p.rig.s, p.xd, p.wd, p.out, s.rows, s.n, s.k);
+        } else try p.gemms.runRowStable(p.rig.s, p.xd, p.wd, p.out, s.rows, s.n, s.k, .bf16);
         try p.rig.s.synchronize();
     }
 
     pub fn replaced(p: *Projection) ![]const u8 {
         const s = p.shape;
-        for (0..s.rows) |row| try p.gemms.run(p.rig.s, p.xd + row * s.k * 2, p.wd, p.baseline + row * s.n * 2, 1, s.n, s.k, .bf16);
+        for (0..s.rows) |row| {
+            if (p.dense) |dense| {
+                try dense.run(p.rig.s, p.xd + row * s.k * 2, p.wd, p.baseline + row * s.n * 2, 1, s.n, s.k);
+            } else try p.gemms.run(p.rig.s, p.xd + row * s.k * 2, p.wd, p.baseline + row * s.n * 2, 1, s.n, s.k, .bf16);
+        }
         return p.rig.bytes(p.baseline, s.rows * s.n * 2);
     }
 

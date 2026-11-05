@@ -2,6 +2,7 @@
 """Score a pinned, locally supplied labelled ASR manifest; retain each raw response and edit counts."""
 import argparse
 import concurrent.futures
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -33,24 +34,33 @@ def main():
     parser.add_argument("manifest", type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--concurrency", type=int, default=1)
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--require-natural-stop", action="store_true")
     args = parser.parse_args()
     if args.concurrency < 1:
         parser.error("concurrency must be positive")
     manifest = json.loads(args.manifest.read_text())
-    options = SimpleNamespace(model=args.model, base_url=args.base_url, temperature=0, seed=None, tokens=1024, language="en")
     clips = manifest["clips"]
 
     def one(clip):
         path = args.manifest.parent / clip["file"]
+        language = clip.get("language", manifest.get("language", "en"))
+        options = SimpleNamespace(model=args.model, base_url=args.base_url, temperature=0,
+                                  seed=args.seed, tokens=1024, language=language)
         result = run_one(options, path, "transcription")
-        if result["sha256"] != clip["sha256"]:
-            raise ValueError("audio identity differs from manifest")
+        identity_matches = result["sha256"] == clip["sha256"]
         response = result["response"]
         text = response.get("text") if isinstance(response, dict) else None
-        valid = result["status"] == 200 and isinstance(text, str)
+        chunks = response.get("tensorfold", {}).get("chunks", []) if isinstance(response, dict) else []
+        stopped = all(chunk.get("finish_reason") == "stop" for chunk in chunks) if chunks else None
+        valid = result["status"] == 200 and isinstance(text, str) and identity_matches and stopped is not False
+        if args.require_natural_stop and stopped is not True:
+            valid = False
         reference = normalize(clip["reference"])
         hypothesis = normalize(text) if valid else None
-        return {"id": clip["id"], "reference": clip["reference"], "normalized_reference": reference,
+        return {"id": clip["id"], "language": language, "identity_matches": identity_matches,
+                "natural_stop_observed": stopped,
+                "reference": clip["reference"], "normalized_reference": reference,
                 "normalized_hypothesis": hypothesis, "valid": valid, "raw": result,
                 "word_edits": distance(reference.split(), hypothesis.split()) if valid else None,
                 "reference_words": len(reference.split()),
@@ -63,7 +73,10 @@ def main():
     words = sum(r["reference_words"] for r in records)
     characters = sum(r["reference_characters"] for r in records)
     result = {"manifest": manifest, "model": args.model, "concurrency": args.concurrency,
-              "normalization": "NFKC, casefold, remove punctuation, collapse whitespace; CER excludes spaces",
+              "manifest_sha256": hashlib.sha256(args.manifest.read_bytes()).hexdigest(),
+              "seed": args.seed, "temperature": 0, "max_completion_tokens": 1024,
+              "requires_observed_natural_stop": args.require_natural_stop,
+              "normalization": r"NFKC, casefold, re.sub(r'[^\w\s]', '', text), collapse whitespace; CER excludes spaces",
               "records": records, "complete": valid,
               "wer": sum(r["word_edits"] for r in records) / words if valid and words else None,
               "cer": sum(r["character_edits"] for r in records) / characters if valid and characters else None}
