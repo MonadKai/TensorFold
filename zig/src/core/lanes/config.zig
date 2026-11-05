@@ -209,10 +209,10 @@ test "setup derives widths like Python" {
 
 test "plain shared rounds are explicit and do not advertise draft width" {
     var serial = try Config.init(std.testing.allocator, .{ .exact_width = 1, .hidden_rows = true, .batch_rows = 8, .max_streams = 8 }, 8, 0);
-    defer serial.deinit();
+    defer serial.deinit(std.testing.allocator);
     try std.testing.expect(!serial.family_streams);
     var batch = try Config.init(std.testing.allocator, .{ .exact_width = 1, .hidden_rows = true, .plain_streams = true, .batch_rows = 8, .max_streams = 8 }, 8, 0);
-    defer batch.deinit();
+    defer batch.deinit(std.testing.allocator);
     try std.testing.expect(batch.family_streams);
     try std.testing.expect(!batch.family_mtp);
     try std.testing.expectEqual(@as(u32, 1), batch.family_width);
