@@ -61,6 +61,7 @@ def main():
     parser.add_argument("--tokens", type=int, default=1024)
     parser.add_argument("--mode", choices=("chat", "transcription"), default="chat")
     parser.add_argument("--pid", type=int)
+    parser.add_argument("--extra-pid", type=int, action="append", default=[])
     args = parser.parse_args()
     if min(args.concurrency, args.reps, args.tokens) < 1:
         parser.error("concurrency, reps and tokens must be positive")
@@ -96,7 +97,13 @@ def main():
             stop.wait(.1)
 
     monitor = threading.Thread(target=sample)
-    initial = proc(args.pid)
+    cpu_pids = list(dict.fromkeys(([args.pid] if args.pid is not None else []) + args.extra_pid))
+
+    def cpu_total():
+        readings = [proc(pid) for pid in cpu_pids]
+        return sum(r["cpu_seconds"] for r in readings) if readings and all(r is not None for r in readings) else None
+
+    initial_cpu = cpu_total()
     monitor.start()
     start = time.monotonic()
     results = []
@@ -109,7 +116,7 @@ def main():
         elapsed = time.monotonic() - start
         stop.set()
         monitor.join()
-    final = proc(args.pid)
+    final_cpu = cpu_total()
     after = metrics(args.base_url)
 
     successful = [r for r in results if valid(r)]
@@ -118,7 +125,7 @@ def main():
     audio = sum(durations[r["sha256"]] for r in successful)
     token_counters = [after[key] - before[key] for key in after if key in before and "generation_tokens_total" in key]
     tokens = sum(r["response"].get("usage", {}).get("completion_tokens", 0) for r in successful) if args.mode == "chat" else (sum(token_counters) if token_counters and len(successful) == len(results) else None)
-    cpu = final["cpu_seconds"] - initial["cpu_seconds"] if initial and final else None
+    cpu = final_cpu - initial_cpu if initial_cpu is not None and final_cpu is not None else None
     intervals = [r["response"].get("tensorfold", {}).get("audio_gpu_event_intervals") for r in successful]
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
@@ -137,10 +144,11 @@ def main():
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
         "complete": len(successful) == len(results) and all(valid(r) for r in warmup_results),
+        "cpu_processes": cpu_pids,
         "generation_token_source": "response usage" if args.mode == "chat" else "isolated server counter delta, includes chunk control tokens",
         "limitations": ["CUDA event intervals are elapsed stream intervals, not device active time.",
                         "Shared-batch GPU intervals are charged whole to each participating request; do not sum them.",
-                        "Process CPU/RSS exclude child processes unless the selected PID is the inference process.",
+                        "CPU includes explicitly selected PIDs only; RSS is the primary PID alone, not aggregate physical memory.",
                         "Missing resource counters remain null; zeros are not substituted.",
                         "Transcription token counters require an isolated server with no unrelated requests.",
                         "Device allocation peak, when exported, is the server lifetime peak including startup and warmup."]}
