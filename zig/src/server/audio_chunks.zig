@@ -109,7 +109,7 @@ pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Sp
     var telemetry: std.ArrayList(json.Value) = .empty;
     for (results, 0..) |result, i| {
         const raw = result.text orelse return error.Cancelled;
-        if (result.runtime) |runtime| try telemetry.append(cx.a, (try json.parse(cx.a, runtime)).ok);
+        if (result.runtime) |runtime| try telemetry.append(cx.a, try @import("audio_telemetry.zig").copy(cx.a, runtime));
         const clean = audio.clean(raw);
         if (i != 0 and !no_space) try text.append(cx.a, ' ');
         try text.appendSlice(cx.a, clean);
