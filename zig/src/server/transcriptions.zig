@@ -26,12 +26,17 @@ pub fn post(srv: *Server, conn: *Conn, a: std.mem.Allocator) void {
 
 fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     const a = cx.a;
+    const clock = @import("clock.zig");
+    const profile = std.c.getenv("TF_ASR_PROFILE") != null;
+    const received = if (profile) clock.nowNs(srv.io) else 0;
     const body = switch (try http_body.read(conn, a, (25 << 20) + (128 << 10))) {
         .ok => |b| b,
         .refused => |message| return cx.refuse(message),
     };
+    const uploaded = if (profile) clock.nowNs(srv.io) else 0;
     if (srv.info.audio == null) return routes.unknown(conn, a);
     const form = try @import("audio_form.zig").parse(cx, conn.header("Content-Type") orelse "", body);
+    const parsed = if (profile) clock.nowNs(srv.io) else 0;
     var keys = form.fields.keyIterator();
     while (keys.next()) |key_ptr| {
         const key = key_ptr.*;
@@ -46,7 +51,8 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     if (!std.mem.eql(u8, format, "json") and !std.mem.eql(u8, format, "text")) return cx.refuse("Qwen3-ASR supports json and text without timestamps");
     const lang = if (form.fields.get("language")) |code| try audio.language(cx, code) else null;
     const context = try sanitize(a, form.fields.get("prompt") orelse "");
-    const samples = core.audio_decode.decode(a, form.file) catch |e| return cx.fail(.request, "audio decode failed: {s}", .{@errorName(e)});
+    const decoded = try audio.decode(cx, form.file);
+    const samples = decoded.samples;
     const fields = try json.newObject(a);
     var temperature: f64 = 0;
     try fields.put(a, "temperature", .{ .float = 0 });
@@ -73,11 +79,20 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
         start = end;
     }
     const gone: openai.Gone = .{ .conn = conn };
-    const text = if (spans.items.len > 1) try chunks.run(srv, cx, samples, spans.items, context, lang, .{ .object = fields }, max_tokens, temperature, no_space, gone) else blk: {
+    var telemetry: []json.Value = &.{};
+    const text = if (spans.items.len > 1) blk: {
+        const collected = try chunks.run(srv, cx, samples, spans.items, context, lang, .{ .object = fields }, max_tokens, temperature, no_space, gone);
+        telemetry = collected.chunks;
+        break :blk collected.text;
+    } else blk: {
         if (gone.check()) return error.Cancelled;
         const rendered = try audio.prepare(srv, cx, samples, context, lang, false);
         const input: chat.Input = .{ .prompt = .{ .ids = rendered.ids }, .audios = rendered.audios, .fields = .{ .object = fields }, .max_tokens = max_tokens, .temperature = temperature };
         const reply = try chat.run(srv, cx, input, null, gone);
+        if (std.c.getenv("TF_ASR_PROFILE") != null) {
+            telemetry = try a.alloc(json.Value, 1);
+            telemetry[0] = reply.runtime;
+        }
         break :blk clean(reply.content);
     };
     const result = try json.newObject(a);
@@ -86,6 +101,15 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     try usage.put(a, "type", .{ .string = "duration" });
     try usage.put(a, "seconds", try json.intValue(a, @as(i64, @intCast((samples.len + 15999) / 16000))));
     try result.put(a, "usage", .{ .object = usage });
+    if (std.c.getenv("TF_ASR_PROFILE") != null) {
+        const timing = try json.newObject(a);
+        try timing.put(a, "body_read_seconds", .{ .float = clock.seconds(uploaded - received) });
+        try timing.put(a, "multipart_parse_seconds", .{ .float = clock.seconds(parsed - uploaded) });
+        try timing.put(a, "decode_seconds", .{ .float = decoded.timing[0] });
+        try timing.put(a, "resample_seconds", .{ .float = decoded.timing[1] });
+        try timing.put(a, "chunks", .{ .array = telemetry });
+        try result.put(a, "tensorfold", .{ .object = timing });
+    }
     routes.sendValue(conn, a, 200, .{ .object = result });
 }
 

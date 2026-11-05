@@ -76,8 +76,10 @@ fn encode(srv: *Server, cx: *Cx, text: []const u8) errors.Refused![]u32 {
 }
 
 pub fn prepare(srv: *Server, cx: *Cx, samples: []const f32, context: []const u8, lang: ?[]const u8, chat_system: bool) errors.Refused!Rendered {
+    const before = @import("clock.zig").nowNs(srv.io);
     const plan = core.audio_features.Plan.init();
     const features = plan.extract(cx.a, samples) catch |e| return cx.fail(.request, "audio preprocessing failed: {s}", .{@errorName(e)});
+    const mel_seconds = @import("clock.zig").seconds(@import("clock.zig").nowNs(srv.io) - before);
     const frames = samples.len / 160;
     const tail = frames % 100;
     const count = frames / 100 * 13 + (tail + 7) / 8;
@@ -96,7 +98,7 @@ pub fn prepare(srv: *Server, cx: *Cx, samples: []const f32, context: []const u8,
     const audios = try cx.a.alloc(api.Audio, 1);
     var hash: [32]u8 = undefined;
     std.crypto.hash.sha2.Sha256.hash(std.mem.sliceAsBytes(features), &hash, .{});
-    audios[0] = .{ .features = features, .frames = @intCast(frames), .at = @intCast(at), .tokens = @intCast(count), .hash = hash };
+    audios[0] = .{ .cpu = if (std.c.getenv("TF_ASR_PROFILE") != null) .{ .log_mel_seconds = mel_seconds } else null, .features = features, .frames = @intCast(frames), .at = @intCast(at), .tokens = @intCast(count), .hash = hash };
     const key = try cx.a.dupe(u32, ids.items);
     for (0..count) |i| key[at + i] = 0x80000000 | @as(u32, @truncate(std.hash.Wyhash.hash(i, &hash) & 0x7fffffff));
     return .{ .ids = ids.items, .audios = audios, .cache_key = key };
@@ -166,6 +168,21 @@ pub fn render(srv: *Server, cx: *Cx, messages: json.Value) errors.Refused!Render
         }
     }
     const bytes = audio orelse return cx.refuse("Qwen3-ASR requires one audio part");
-    const samples = core.audio_decode.decode(cx.a, bytes) catch |e| return cx.fail(.request, "audio decode failed: {s}", .{@errorName(e)});
-    return prepare(srv, cx, samples, context.items, null, true);
+    const decoded = try decode(cx, bytes);
+    var rendered = try prepare(srv, cx, decoded.samples, context.items, null, true);
+    const metadata = try cx.a.dupe(api.Audio, rendered.audios);
+    rendered.audios = metadata;
+    if (metadata[0].cpu) |*cpu| {
+        cpu.decode_seconds = decoded.timing[0];
+        cpu.resample_seconds = decoded.timing[1];
+    }
+    return rendered;
+}
+
+pub const Decoded = struct { samples: []f32, timing: [2]f64 };
+pub fn decode(cx: *Cx, bytes: []const u8) errors.Refused!Decoded {
+    var result: Decoded = .{ .samples = undefined, .timing = @splat(0) };
+    const profile = std.c.getenv("TF_ASR_PROFILE") != null;
+    result.samples = core.audio_decode.decodeTimed(cx.a, bytes, if (profile) &result.timing else null) catch |e| return cx.fail(.request, "audio decode failed: {s}", .{@errorName(e)});
+    return result;
 }

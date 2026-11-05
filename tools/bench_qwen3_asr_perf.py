@@ -29,7 +29,7 @@ def metrics(url):
         with urllib.request.urlopen(url.rstrip("/") + "/metrics", timeout=10) as response:
             lines = response.read().decode().splitlines()
         return {line.split()[0]: float(line.split()[-1]) for line in lines
-                if not line.startswith("#") and re.search(r"(prefix_cache|mm_cache|encoder_cache).*(hits|queries|requests).*", line)}
+                if not line.startswith("#") and re.search(r"(?:(?:prefix_cache|mm_cache|encoder_cache).*?(?:hits|queries|requests).*_total|generation_tokens_total|device_memory_peak_bytes|pinned_memory_bytes)(?:\{| )", line)}
     except (OSError, ValueError):
         return {}
 
@@ -103,9 +103,21 @@ def main():
         monitor.join()
     final = proc(args.pid)
     after = metrics(args.base_url)
-    successful = [r for r in results if r["status"] == 200]
-    audio = sum(f["audio_seconds"] for f in fixtures) * args.reps
-    tokens = sum(r["response"].get("usage", {}).get("completion_tokens", 0) for r in successful)
+    def valid(r):
+        value = r["response"]
+        if r["status"] != 200 or not isinstance(value, dict):
+            return False
+        if args.mode == "transcription":
+            return isinstance(value.get("text"), str)
+        choices = value.get("choices")
+        return isinstance(choices, list) and bool(choices) and isinstance(choices[0].get("message", {}).get("content"), str)
+
+    successful = [r for r in results if valid(r)]
+    attempted_audio = sum(f["audio_seconds"] for f in fixtures) * args.reps
+    durations = {f["sha256"]: f["audio_seconds"] for f in fixtures}
+    audio = sum(durations[r["sha256"]] for r in successful)
+    token_counters = [after[key] - before[key] for key in after if key in before and "generation_tokens_total" in key]
+    tokens = sum(r["response"].get("usage", {}).get("completion_tokens", 0) for r in successful) if args.mode == "chat" else (sum(token_counters) if token_counters and len(successful) == len(results) else None)
     cpu = final["cpu_seconds"] - initial["cpu_seconds"] if initial and final else None
     intervals = [r["response"].get("tensorfold", {}).get("audio_gpu_event_intervals") for r in successful]
     result = {
@@ -115,18 +127,22 @@ def main():
         "measurements": {"batch_wall_seconds": elapsed, "requests": len(results), "successful": len(successful),
                          "latency_p50_seconds": percentile([r["seconds"] for r in successful], .5),
                          "latency_p95_seconds": percentile([r["seconds"] for r in successful], .95),
-                         "audio_seconds": audio, "audio_seconds_per_wall_second": audio / elapsed,
+                         "attempted_audio_seconds": attempted_audio, "successful_audio_seconds": audio, "audio_seconds_per_wall_second": audio / elapsed,
                          "successful_requests_per_second": len(successful) / elapsed, "generated_tokens": tokens,
-                         "generated_tokens_per_wall_second": tokens / elapsed if args.mode == "chat" else None,
+                         "generated_tokens_per_wall_second": tokens / elapsed if tokens is not None else None,
                          "cpu_seconds": cpu, "cpu_core_equivalents": cpu / elapsed if cpu is not None else None,
                          "sampled_peak_process_rss_bytes": max((x["rss_bytes"] for x in resources), default=None),
-                         "device_allocation_peak_bytes": None, "gpu_active_seconds": None},
-        "cache_metric_deltas": {key: after[key] - before.get(key, 0) for key in after},
+                         "device_allocation_peak_bytes": next((after[key] for key in after if "device_memory_peak_bytes" in key), None),
+                         "pinned_allocation_bytes_after": next((after[key] for key in after if "pinned_memory_bytes" in key), None), "gpu_active_seconds": None},
+        "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results,
+        "generation_token_source": "response usage" if args.mode == "chat" else "isolated server counter delta, includes chunk control tokens",
         "limitations": ["CUDA event intervals are elapsed stream intervals, not device active time.",
                         "Shared-batch GPU intervals are charged whole to each participating request; do not sum them.",
                         "Process CPU/RSS exclude child processes unless the selected PID is the inference process.",
-                        "Missing resource counters remain null; zeros are not substituted."]}
+                        "Missing resource counters remain null; zeros are not substituted.",
+                        "Transcription token counters require an isolated server with no unrelated requests.",
+                        "Device allocation peak, when exported, is the server lifetime peak including startup and warmup."]}
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(result["measurements"]))
     return int(len(successful) != len(results))

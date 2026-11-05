@@ -1,6 +1,8 @@
 const std = @import("std");
 
 pub const Audio = struct {
+    pub const Cpu = struct { decode_seconds: f64 = 0, resample_seconds: f64 = 0, log_mel_seconds: f64 = 0 };
+    cpu: ?Cpu = null,
     features: []const f32,
     frames: u32,
     at: u32,

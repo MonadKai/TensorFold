@@ -35,6 +35,7 @@ pub const Model = struct {
     streams_exact: bool = true, // shared forwards keep each stream's bits
     hidden_rows: bool = false, // the backend runs several streams' windows in one forward
     batch_rows: u32 = 0, // a shared forward's rows at most (0: 32)
+    plain_streams: bool = false, // explicitly batch width-one streams without advertising drafts
     max_streams: u32 = 0, // a shared forward's streams at most (0: 32)
     shared_costs: []const Cost = &.{}, // shared forwards' ms by total rows (timed at load)
     draft_probabilities: bool = false, // the head gives each drafted node's chance of landing
@@ -114,7 +115,7 @@ pub const Config = struct {
         const first_rows: i64 = if (m.first_copy_rows != 0) m.first_copy_rows else width;
         const first_copy: u32 = @intCast(@max(1, @min(@as(i64, max_copy), first_rows - 1)));
         const prior = if (m.draft_prior.len > 0) m.draft_prior else &default_prior;
-        const streams = width >= 2 and m.streams_exact and m.hidden_rows;
+        const streams = (width >= 2 or m.plain_streams) and m.streams_exact and m.hidden_rows;
         const batch_rows: u32 = if (m.batch_rows != 0) m.batch_rows else 32;
         var family_costs: Table = .{};
         errdefer family_costs.deinit(gpa);
@@ -204,4 +205,16 @@ test "setup derives widths like Python" {
     var steady = try Config.init(gpa, .{ .exact_width = 16, .mtp = true, .speculate = true, .drafts = 4, .depth_rate = 0.08 }, 16, 15);
     defer steady.deinit(gpa);
     try std.testing.expectEqual(@as(f64, 0.08), steady.k.depth_rate);
+}
+
+test "plain shared rounds are explicit and do not advertise draft width" {
+    var serial = try Config.init(std.testing.allocator, .{ .exact_width = 1, .hidden_rows = true, .batch_rows = 8, .max_streams = 8 }, 8, 0);
+    defer serial.deinit();
+    try std.testing.expect(!serial.family_streams);
+    var batch = try Config.init(std.testing.allocator, .{ .exact_width = 1, .hidden_rows = true, .plain_streams = true, .batch_rows = 8, .max_streams = 8 }, 8, 0);
+    defer batch.deinit();
+    try std.testing.expect(batch.family_streams);
+    try std.testing.expect(!batch.family_mtp);
+    try std.testing.expectEqual(@as(u32, 1), batch.family_width);
+    try std.testing.expectEqual(@as(u32, 8), batch.batch_streams);
 }

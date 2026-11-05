@@ -126,3 +126,9 @@ pub fn cuda(b: *std.Build, runner: *std.Build.Step.Compile, controls: ?std.Build
     b.step("qmm-prefill-many-bench", "Same-process A-B-A screening for the GB10 prompt launch fusion").dependOn(&prefill_many_bench.step);
     return install;
 }
+
+pub fn records(b: *std.Build, target: std.Build.ResolvedTarget, optimize: std.builtin.OptimizeMode, core: *std.Build.Module, cuda_mod: *std.Build.Module) void {
+    const root = b.createModule(.{ .root_source_file = b.path("zig/tests/cuda/records_main.zig"), .target = target, .optimize = optimize, .link_libc = true, .imports = &.{ .{ .name = "core", .module = core }, .{ .name = "cuda", .module = cuda_mod } } });
+    const exe = b.addExecutable(.{ .name = "tf-cuda-records", .root_module = root });
+    b.step("tf-cuda-records", "Read every CUDA compile receipt without initializing a GPU").dependOn(&b.addInstallArtifact(exe, .{}).step);
+}

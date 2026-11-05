@@ -69,7 +69,6 @@ pub const Reply = struct {
 };
 
 pub const Failure = error{ Refused, Cancelled, Failed, OutOfMemory };
-
 const nowNs = clock.nowNs;
 const seconds = clock.seconds;
 
@@ -244,7 +243,7 @@ pub fn generate(srv: *Server, cx: *Cx, prepared: Prepared, sink: ?Sink, gone: an
     };
     srv.release(preparing, null); // a background request waits only while a foreground one prepares
     preparing = false;
-    var gen: Generation = .{ .srv = srv, .a = a, .box = &box, .id = id, .reply_id = input.id, .seed = if (request.sampling) |v| v.seed else null, .sink = sink, .thinking = prepared.reasoning or (srv.info.reasoning and reply_text.isChannel(srv.markers)), .stops = .{ .strings = stops_opt.strings }, .ignore_eos = stops_opt.ignore_eos, .max_tokens = request.max_tokens, .tools = input.tools, .token_ids = prepared.token_ids, .lp = if (request.logprobs != null) .{} else null, .loop_stop = request.loop_stop };
+    var gen: Generation = .{ .audio_cpu = if (input.audios.len == 1) input.audios[0].cpu else null, .srv = srv, .a = a, .box = &box, .id = id, .reply_id = input.id, .seed = if (request.sampling) |v| v.seed else null, .sink = sink, .thinking = prepared.reasoning or (srv.info.reasoning and reply_text.isChannel(srv.markers)), .stops = .{ .strings = stops_opt.strings }, .ignore_eos = stops_opt.ignore_eos, .max_tokens = request.max_tokens, .tools = input.tools, .token_ids = prepared.token_ids, .lp = if (request.logprobs != null) .{} else null, .loop_stop = request.loop_stop };
     defer srv.noteRequest(prepared.prompt_len, box.cached orelse 0, gen.collected.items.len, box.stats.drafted, box.stats.accepted, box.stats.rounds, received, gen.first_ns, gen.last_ns, box.stats.prefill_seconds);
     errdefer if (!gen.engine_done) gen.cancel(); // the engine writes to the mailbox until it says finished
     const result: Failure!Reply = blk: {
@@ -276,6 +275,7 @@ pub fn run(srv: *Server, cx: *Cx, input: Input, sink: ?Sink, gone: anytype) Fail
 
 /// The token loop and the text it streams.
 const Generation = struct {
+    audio_cpu: ?api.Audio.Cpu = null,
     srv: *Server,
     a: Allocator,
     box: *Mailbox,
@@ -521,15 +521,7 @@ const Generation = struct {
         try runtime.put(a, "seconds", .{ .float = @max(0, decode_s) }); // the reply's decode seconds, as tokens_per_second divides them
         try @import("grammar_metrics.zig").put(a, runtime, m.stats.grammar);
         if (m.stats.gpu_seconds) |gpu| try runtime.put(a, "gpu_seconds", .{ .float = gpu }); // TF_Q27_PROFILE only
-        if (g.srv.info.audio != null) try runtime.put(a, "queued_seconds", .{ .float = m.stats.queued_seconds });
-        if (m.stats.audio_time) |timing| {
-            const stages = try json.newObject(a);
-            inline for (@typeInfo(@TypeOf(timing)).@"struct".field_names) |name| {
-                const value = @field(timing, name);
-                try stages.put(a, name, if (@TypeOf(value) == f64) .{ .float = value } else try json.intValue(a, value));
-            }
-            try runtime.put(a, "audio_gpu_event_intervals", .{ .object = stages });
-        }
+        if (g.srv.info.audio != null) try @import("audio_metrics.zig").put(a, runtime, m.stats, g.audio_cpu, @max(0, seconds(nowNs(g.srv.io) - finished_ns)));
         try runtime.put(a, "prefill_seconds", if (m.stats.prefill_seconds) |p| .{ .float = p } else .null);
         const widths = try a.alloc(Value, m.widths.len);
         for (m.widths, widths) |w, *slot| slot.* = try json.intValue(a, w);

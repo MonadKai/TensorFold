@@ -17,6 +17,7 @@ pub const Model = struct {
     context: usize,
     slots: usize,
     probe: ?Probe = null,
+    joined_projections: bool = true,
     timing: ?timing.Timing = null,
     buffers: std.ArrayList(cuda.DeviceBuffer) = .empty,
     kc: [28]u64 = undefined,
@@ -61,7 +62,7 @@ pub const Model = struct {
         var inv: [64]f32 = undefined;
         for (&inv, 0..) |*v, i| v.* = 1 / std.math.pow(f32, 1000000, @as(f32, @floatFromInt(2 * i)) / 128);
         try m.upload(m.inv, std.mem.sliceAsBytes(&inv));
-        m.x = .{ .ids = try m.alloc(rows * 4), .pos = try m.alloc(rows * 4), .slots = try m.alloc(rows * 4), .x = try m.alloc(rows * 2048 * 2), .norm = try m.alloc(rows * 2048 * 2), .q = try m.alloc(rows * 2048 * 2), .k = try m.alloc(rows * 1024 * 2), .v = try m.alloc(rows * 1024 * 2), .qr = try m.alloc(rows * 2048 * 2), .kr = try m.alloc(rows * 1024 * 2), .vr = try m.alloc(rows * 1024 * 2), .att = try m.alloc(rows * 2048 * 2), .tmp = try m.alloc(rows * 2048 * 2), .gate = try m.alloc(rows * 6144 * 2), .up = try m.alloc(rows * 6144 * 2), .act = try m.alloc(rows * 6144 * 2), .logits = try m.alloc(slots * w.c.vocab * 2) };
+        m.x = .{ .ids = try m.alloc(rows * 4), .pos = try m.alloc(rows * 4), .slots = try m.alloc(rows * 4), .x = try m.alloc(rows * 2048 * 2), .norm = try m.alloc(rows * 2048 * 2), .q = try m.alloc(rows * 4096 * 2), .k = try m.alloc(rows * 1024 * 2), .v = try m.alloc(rows * 1024 * 2), .qr = try m.alloc(rows * 2048 * 2), .kr = try m.alloc(rows * 1024 * 2), .vr = try m.alloc(rows * 1024 * 2), .att = try m.alloc(rows * 2048 * 2), .tmp = try m.alloc(rows * 2048 * 2), .gate = try m.alloc(rows * 12288 * 2), .up = try m.alloc(rows * 6144 * 2), .act = try m.alloc(rows * 6144 * 2), .logits = try m.alloc(slots * w.c.vocab * 2) };
         try s.synchronize();
         m.timing = try timing.Timing.init(d);
         return m;
@@ -80,6 +81,12 @@ pub const Model = struct {
 
     pub fn end(m: *Model, stage: timing.Stage) !void {
         if (m.timing) |*t| try t.end(m.s, stage);
+    }
+
+    pub fn discardTiming(m: *Model) void {
+        if (m.timing) |*t| for (&t.pairs) |*pair| {
+            pair.used = false;
+        };
     }
 
     pub fn charge(m: *Model, streams: []const *StreamType) !void {
@@ -112,7 +119,7 @@ pub const Model = struct {
         try m.tap("decoder.embeddings", x.x, n, 2048, true);
         try m.decoder(n, slot, start, false);
         try m.end(.prefill);
-        if (head) try m.projectHead(x.x + (n - 1) * 4096, 1);
+        if (head) try m.projectHead(x.x + (n - 1) * 4096, 1, false);
     }
 
     pub fn decode(m: *Model, ids: []const u32, positions: []const i32, slots: []const i32) !void {
@@ -133,7 +140,7 @@ pub const Model = struct {
         try m.k.embed.bf16(m.s, x.ids, m.w.embed, x.x, n, 2048);
         try m.decoder(n, 0, 0, true);
         try m.end(.decode);
-        try m.projectHead(x.x, n);
+        try m.projectHead(x.x, n, true);
     }
 
     fn decoder(m: *Model, n: usize, slot: usize, start: usize, batch: bool) !void {
@@ -143,20 +150,29 @@ pub const Model = struct {
         const window: cuda.window_attention.Window = .{ .h = 16, .hk = 8, .d = 128, .win = m.context, .ring = m.context, .scale = 1 / @sqrt(@as(f32, 128)) };
         for (&m.w.dec, 0..) |*l, i| {
             try k.norms.addRmsH(s, x.x, null, l.norm, .bf16, x.x, x.norm, null, n, 2048, 1e-6);
-            try k.gemms.run(s, x.norm, l.q, x.q, n, 2048, 2048, .bf16);
-            try k.gemms.run(s, x.norm, l.k, x.k, n, 1024, 2048, .bf16);
-            try k.gemms.run(s, x.norm, l.v, x.v, n, 1024, 2048, .bf16);
+            if (m.joined_projections) {
+                try m.linear(x.norm, l.qkv, x.q, n, 4096, 2048, batch);
+            } else {
+                try m.linear(x.norm, l.q, x.q, n, 2048, 2048, batch);
+                try m.linear(x.norm, l.k, x.k, n, 1024, 2048, batch);
+                try m.linear(x.norm, l.v, x.v, n, 1024, 2048, batch);
+            }
             const kc = m.kc[i] + (if (batch) 0 else slot * m.context * 2048);
             const vc = m.vc[i] + (if (batch) 0 else slot * m.context * 2048);
-            try k.qk.rowsFrom(s, .{ .q = x.q, .q_ld = 2048, .q_hs = 128, .k = x.k, .k_ld = 1024, .k_hs = 128, .v = x.v, .v_ld = 1024, .v_hs = 128 }, .{ .h = 16, .hk = 8, .dim = 128 }, .{ .norms = l.qnorm, .norm_k = l.knorm, .norms_bf16 = true, .inv = m.inv, .rot = 128 }, x.pos, if (batch) x.slots else null, .{ .q = x.qr, .k = x.kr, .v = x.vr, .kc = kc, .vc = vc, .len = m.context }, n);
+            try k.qk.rowsFrom(s, .{ .q = x.q, .q_ld = if (m.joined_projections) 4096 else 2048, .q_hs = 128, .k = if (m.joined_projections) x.q + 2048 * 2 else x.k, .k_ld = if (m.joined_projections) 4096 else 1024, .k_hs = 128, .v = if (m.joined_projections) x.q + 3072 * 2 else x.v, .v_ld = if (m.joined_projections) 4096 else 1024, .v_hs = 128 }, .{ .h = 16, .hk = 8, .dim = 128 }, .{ .norms = l.qnorm, .norm_k = l.knorm, .norms_bf16 = true, .inv = m.inv, .rot = 128 }, x.pos, if (batch) x.slots else null, .{ .q = x.qr, .k = x.kr, .v = x.vr, .kc = kc, .vc = vc, .len = m.context }, n);
             if (batch or n == 1) try k.attn.decode(s, x.qr, kc, vc, x.att, x.pos, if (batch) x.slots else null, window, 0, n) else try k.attn.prompt(s, x.qr, kc, vc, x.att, start, n, window);
-            try k.gemms.run(s, x.att, l.o, x.tmp, n, 2048, 2048, .bf16);
+            try m.linear(x.att, l.o, x.tmp, n, 2048, 2048, batch);
             try k.vit.pointwise(s, x.tmp, x.x, x.x, n * 2048, .none);
             try k.norms.addRmsH(s, x.x, null, l.post, .bf16, x.x, x.norm, null, n, 2048, 1e-6);
-            try k.gemms.run(s, x.norm, l.gate, x.gate, n, 6144, 2048, .bf16);
-            try k.gemms.run(s, x.norm, l.up, x.up, n, 6144, 2048, .bf16);
-            try k.act.swigluRound(s, x.gate, 6144, x.up, 6144, x.act, null, n, 6144);
-            try k.gemms.run(s, x.act, l.down, x.tmp, n, 2048, 6144, .bf16);
+            if (m.joined_projections) {
+                try m.linear(x.norm, l.gate_up, x.gate, n, 12288, 2048, batch);
+                try k.act.swigluRound(s, x.gate, 12288, x.gate + 6144 * 2, 12288, x.act, null, n, 6144);
+            } else {
+                try m.linear(x.norm, l.gate, x.gate, n, 6144, 2048, batch);
+                try m.linear(x.norm, l.up, x.up, n, 6144, 2048, batch);
+                try k.act.swigluRound(s, x.gate, 6144, x.up, 6144, x.act, null, n, 6144);
+            }
+            try m.linear(x.act, l.down, x.tmp, n, 2048, 6144, batch);
             try k.vit.pointwise(s, x.tmp, x.x, x.x, n * 2048, .none);
             if (i == 0 or i == 27) {
                 var label: [64]u8 = undefined;
@@ -165,10 +181,15 @@ pub const Model = struct {
         }
     }
 
-    fn projectHead(m: *Model, input: u64, n: usize) !void {
+    fn linear(m: *Model, input: u64, weight: u64, output: u64, n: usize, width: usize, k: usize, batch: bool) !void {
+        if (batch) return m.k.gemms.runRowStable(m.s, input, weight, output, n, width, k, .bf16);
+        return m.k.gemms.run(m.s, input, weight, output, n, width, k, .bf16);
+    }
+
+    fn projectHead(m: *Model, input: u64, n: usize, batch: bool) !void {
         try m.begin(.head);
         try m.k.norms.addRmsH(m.s, input, null, m.w.norm, .bf16, input, m.x.norm, null, n, 2048, 1e-6);
-        try m.k.gemms.run(m.s, m.x.norm, m.w.head, m.x.logits, n, m.w.c.vocab, 2048, .bf16);
+        try m.linear(m.x.norm, m.w.head, m.x.logits, n, m.w.c.vocab, 2048, batch);
         try m.tap("decoder.logits", m.x.logits, n, m.w.c.vocab, true);
         try m.end(.head);
     }

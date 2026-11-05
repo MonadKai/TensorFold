@@ -214,6 +214,31 @@ pub const Gemms = struct {
         try (try g.plan(rows, n, k, out, .none)).run(x, w, y, g.workspace.ptr, workspace_bytes, s.handle);
     }
 
+    /// Up to eight aligned decode rows keep the single-row algorithm; n and k must be multiples of eight.
+    pub fn runRowStable(g: *Gemms, s: Stream, x: u64, w: u64, y: u64, rows: usize, n: usize, k: usize, out: cublaslt.DataType) !void {
+        if (rows == 0 or rows > 8 or n == 0 or k == 0 or n % 8 != 0 or k % 8 != 0) return error.BadRows;
+        const oracle = (try g.plan(1, n, k, out, .none)).algo;
+        const key = [3]u64{ rows, n, k | @as(u64, @intCast(@backingInt(out))) << 40 | @as(u64, 1) << 63 };
+        const got = try g.plans.getOrPut(g.gpa, key);
+        if (!got.found_existing) {
+            got.value_ptr.* = Linear.init(&g.lt, 1, n, k, out, workspace_bytes) catch |e| {
+                g.plans.removeByPtr(got.key_ptr);
+                return e;
+            };
+            got.value_ptr.stridedBatch(rows, k, n) catch |e| {
+                got.value_ptr.deinit();
+                g.plans.removeByPtr(got.key_ptr);
+                return e;
+            };
+            got.value_ptr.useAlgorithm(oracle, workspace_bytes) catch |e| {
+                got.value_ptr.deinit();
+                g.plans.removeByPtr(got.key_ptr);
+                return e;
+            };
+        }
+        try got.value_ptr.run(x, w, y, g.workspace.ptr, workspace_bytes, s.handle);
+    }
+
     /// Whether the shape's own algorithm carries the bias in cuBLASLt's epilogue; else `linear` sums through f32.
     pub fn fused(g: *Gemms, rows: usize, n: usize, k: usize) !bool {
         return (try g.plan(rows, n, k, .bf16, .bias)).epilogue == .bias;

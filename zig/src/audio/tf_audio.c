@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809L
 #include <libavcodec/avcodec.h>
 #include <libavformat/avformat.h>
 #include <libswresample/swresample.h>
@@ -6,6 +7,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 typedef struct { const uint8_t *data; size_t size, at; } Memory;
 
@@ -33,7 +35,15 @@ static int64_t seek_memory(void *opaque, int64_t offset, int whence) {
 void tf_audio_free(float *data) { av_free(data); }
 const char *tf_audio_version(void) { return av_version_info(); }
 
-int tf_audio_decode(const uint8_t *data, size_t size, float **out, size_t *length) {
+static double seconds(void) {
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    return (double)t.tv_sec + (double)t.tv_nsec * 1e-9;
+}
+
+static int decode_audio(const uint8_t *data, size_t size, float **out, size_t *length, double *timing) {
+    const double begin = timing ? seconds() : 0;
+    double resample = 0;
     const int capacity = 600 * 16000;
     *out = NULL;
     *length = 0;
@@ -94,7 +104,9 @@ int tf_audio_decode(const uint8_t *data, size_t size, float **out, size_t *lengt
         if (rc < 0 && rc != AVERROR_EOF) goto cleanup;
         while ((rc = avcodec_receive_frame(codec, frame)) >= 0) {
             uint8_t *dst = (uint8_t *)(samples + used);
+            double before = timing ? seconds() : 0;
             int n = swr_convert(swr, &dst, capacity + 1 - used, (const uint8_t **)frame->extended_data, frame->nb_samples);
+            if (timing) resample += seconds() - before;
             av_frame_unref(frame);
             if (n < 0 || used + n > capacity) { result = -2; goto cleanup; }
             used += n;
@@ -103,7 +115,9 @@ int tf_audio_decode(const uint8_t *data, size_t size, float **out, size_t *lengt
     }
     for (;;) {
         uint8_t *dst = (uint8_t *)(samples + used);
+        double before = timing ? seconds() : 0;
         int n = swr_convert(swr, &dst, capacity + 1 - used, NULL, 0);
+        if (timing) resample += seconds() - before;
         if (n < 0 || used + n > capacity) { result = -2; goto cleanup; }
         used += n;
         if (!n) break;
@@ -122,5 +136,14 @@ cleanup:
     avcodec_free_context(&codec);
     avformat_close_input(&fmt);
     if (io) { av_freep(&io->buffer); avio_context_free(&io); }
+    if (timing) { timing[0] = seconds() - begin - resample; timing[1] = resample; }
     return result;
+}
+
+int tf_audio_decode(const uint8_t *data, size_t size, float **out, size_t *length) {
+    return decode_audio(data, size, out, length, NULL);
+}
+
+int tf_audio_decode_timed(const uint8_t *data, size_t size, float **out, size_t *length, double timing[2]) {
+    return decode_audio(data, size, out, length, timing);
 }

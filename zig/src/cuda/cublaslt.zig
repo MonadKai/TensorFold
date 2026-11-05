@@ -162,6 +162,23 @@ pub const Linear = struct {
         return self;
     }
 
+    pub fn stridedBatch(self: *Linear, count: usize, k: usize, n: usize) Error!void {
+        const batch: i32 = @intCast(count);
+        const strides = [_]i64{ 0, @intCast(k), @intCast(n) };
+        for ([_]Layout{ self.a, self.b, self.c }, strides) |layout, stride| {
+            try self.lt.check(self.lt.api.cublasLtMatrixLayoutSetAttribute(layout, 5, &batch, @sizeOf(i32)), "set batch count");
+            try self.lt.check(self.lt.api.cublasLtMatrixLayoutSetAttribute(layout, 6, &stride, @sizeOf(i64)), "set batch stride");
+        }
+    }
+
+    pub fn useAlgorithm(self: *Linear, algorithm: Algo, workspace_limit: usize) Error!void {
+        var measured: Heuristic = undefined;
+        try self.lt.check(self.lt.api.cublasLtMatmulAlgoCheck(self.handle, self.desc, self.a, self.b, self.c, self.c, &algorithm, &measured), "cublasLtMatmulAlgoCheck");
+        if (measured.state != 0 or measured.workspace_size > workspace_limit) return error.NoAlgorithm;
+        self.algo = algorithm;
+        self.workspace_need = measured.workspace_size;
+    }
+
     pub fn deinit(self: *Linear) void {
         const api = self.lt.api;
         _ = api.cublasLtMatmulPreferenceDestroy(self.pref);

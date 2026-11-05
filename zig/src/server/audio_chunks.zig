@@ -7,7 +7,8 @@ const errors = @import("errors.zig");
 const Server = @import("server.zig").Server;
 
 pub const Span = struct { start: usize, end: usize };
-const Result = struct { text: ?[]u8 = null, failure: ?chat.Failure = null, kind: errors.Kind = .request, message: ?[]u8 = null };
+pub const Output = struct { text: []const u8, chunks: []json.Value };
+const Result = struct { runtime: ?[]u8 = null, text: ?[]u8 = null, failure: ?chat.Failure = null, kind: errors.Kind = .request, message: ?[]u8 = null };
 const State = struct {
     srv: *Server,
     samples: []const f32,
@@ -53,15 +54,17 @@ const State = struct {
         const input: chat.Input = .{ .prompt = .{ .ids = rendered.ids }, .audios = rendered.audios, .fields = state.fields, .max_tokens = state.max_tokens, .temperature = state.temperature };
         const reply = try chat.run(state.srv, &cx, input, null, state);
         result.text = try state.srv.gpa.dupe(u8, reply.content);
+        if (std.c.getenv("TF_ASR_PROFILE") != null) result.runtime = try state.srv.gpa.dupe(u8, try json.stringify(cx.a, reply.runtime, .{}));
     }
 };
 
-pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Span, context: []const u8, lang: ?[]const u8, fields: json.Value, max_tokens: i64, temperature: f64, no_space: bool, gone: anytype) chat.Failure![]const u8 {
+pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Span, context: []const u8, lang: ?[]const u8, fields: json.Value, max_tokens: i64, temperature: f64, no_space: bool, gone: anytype) chat.Failure!Output {
     const results = try srv.gpa.alloc(Result, spans.len);
     defer srv.gpa.free(results);
     @memset(results, .{});
     defer for (results) |result| {
         if (result.text) |text| srv.gpa.free(text);
+        if (result.runtime) |runtime| srv.gpa.free(runtime);
         if (result.message) |message| srv.gpa.free(message);
     };
     const count = @min(@max(srv.info.lanes / 2, 1), 2);
@@ -93,12 +96,14 @@ pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Sp
         return e;
     };
     var text: std.ArrayList(u8) = .empty;
+    var telemetry: std.ArrayList(json.Value) = .empty;
     for (results, 0..) |result, i| {
         const raw = result.text orelse return error.Cancelled;
+        if (result.runtime) |runtime| try telemetry.append(cx.a, (try json.parse(cx.a, runtime)).ok);
         const marker = std.mem.lastIndexOf(u8, raw, "<asr_text>");
         const clean = if (marker) |at| raw[at + 10 ..] else raw;
         if (i != 0 and !no_space) try text.append(cx.a, ' ');
         try text.appendSlice(cx.a, clean);
     }
-    return text.items;
+    return .{ .text = text.items, .chunks = telemetry.items };
 }

@@ -49,7 +49,7 @@ pub const Backend = struct {
     }
 
     pub fn facts(b: *Backend) lanes.Model {
-        return .{ .copy_drafts = false, .exact_width = 1, .gpu_tokens = false, .mtp = false, .speculate = false, .drafts = 0, .max_streams = @intCast(b.m.slots), .batch_rows = @intCast(b.m.slots) };
+        return .{ .copy_drafts = false, .exact_width = 1, .plain_streams = true, .hidden_rows = true, .gpu_tokens = false, .mtp = false, .speculate = false, .drafts = 0, .max_streams = @intCast(b.m.slots), .batch_rows = @intCast(b.m.slots) };
     }
 
     const vtable: be.Backend.VTable = .{ .prefill = prefill, .prefill_step = step, .first = first, .queue = queue, .read = read, .verify = verify, .keep = keep, .draft = draft, .release = release, .reports_fill = true };
@@ -60,6 +60,7 @@ pub const Backend = struct {
 
     fn open(b: *Backend, s: *Stream) !*Lane {
         if (b.active.getPtr(s)) |l| return l;
+        errdefer b.m.discardTiming();
         if (s.audios.len != 1) return error.OneAudioRequired;
         const slot = for (b.free, 0..) |f, i| {
             if (f) break i;
@@ -81,6 +82,7 @@ pub const Backend = struct {
 
     fn step(p: *anyopaque, s: *Stream, max_rows: u32) anyerror!bool {
         const b = self(p);
+        errdefer b.m.discardTiming();
         const l = try b.open(s);
         if (s.isCancelled()) return error.Cancelled;
         const budget = if (max_rows == 0) model.rows else @min(model.rows, max_rows);
@@ -101,6 +103,7 @@ pub const Backend = struct {
     }
 
     fn draw(b: *Backend, s: *Stream, logits: u64, position: u64) !u64 {
+        errdefer b.m.discardTiming();
         var token: u32 = undefined;
         try b.m.begin(.sample);
         if (s.sampling) |sp| {
@@ -158,6 +161,7 @@ pub const Backend = struct {
     }
 
     fn drawBatch(b: *Backend, streams: []const *Stream, positions: []const u64, logits: u64, out: []u32) !void {
+        errdefer b.m.discardTiming();
         const n = streams.len;
         var meta: [8]i32 = undefined;
         var sampled = false;
@@ -228,6 +232,7 @@ pub const Backend = struct {
 
     fn release(p: *anyopaque, s: *Stream) void {
         const b = self(p);
+        b.m.discardTiming();
         if (b.active.fetchRemove(s)) |entry| b.free[entry.value.slot] = true;
     }
 };

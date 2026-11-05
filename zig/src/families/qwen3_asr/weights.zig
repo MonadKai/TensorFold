@@ -6,7 +6,7 @@ const Config = @import("config.zig").Config;
 pub const Linear = struct { w: u64, b: u64 = 0 };
 pub const Norm = struct { w: u64, b: u64 = 0 };
 pub const EncoderLayer = struct { norm: Norm, q: Linear, k: Linear, v: Linear, o: Linear, post: Norm, up: Linear, down: Linear };
-pub const DecoderLayer = struct { norm: u64, q: u64, k: u64, v: u64, qnorm: u64, knorm: u64, o: u64, post: u64, gate: u64, up: u64, down: u64 };
+pub const DecoderLayer = struct { norm: u64, qkv: u64, q: u64, k: u64, v: u64, qnorm: u64, knorm: u64, o: u64, post: u64, gate_up: u64, gate: u64, up: u64, down: u64 };
 
 pub const Weights = struct {
     gpa: std.mem.Allocator,
@@ -39,6 +39,22 @@ const Loader = struct {
         var b = try cuda.DeviceBuffer.alloc(l.d, t.bytes.len);
         errdefer b.free();
         try b.upload(0, t.bytes);
+        try l.w.buffers.append(l.w.gpa, b);
+        return b.ptr;
+    }
+
+    fn joined(l: *Loader, prefix: []const u8, names: []const []const u8, widths: []const usize, k: usize) !u64 {
+        var total: usize = 0;
+        for (widths) |n| total += n * k * 2;
+        var b = try cuda.DeviceBuffer.alloc(l.d, total);
+        errdefer b.free();
+        var offset: usize = 0;
+        var name: [256]u8 = undefined;
+        for (names, widths) |part, n| {
+            const t = try l.ck.expect(try std.fmt.bufPrint(&name, "{s}.{s}.weight", .{ prefix, part }), .bf16, &.{ n, k });
+            try b.upload(offset, t.bytes);
+            offset += t.bytes.len;
+        }
         try l.w.buffers.append(l.w.gpa, b);
         return b.ptr;
     }
@@ -93,14 +109,16 @@ pub fn load(a: std.mem.Allocator, io: std.Io, d: *const cuda.Driver, dir: []cons
         const prefix = try std.fmt.allocPrint(arena.allocator(), "thinker.model.layers.{d}", .{i});
         e.norm = try l.one(try std.fmt.bufPrint(&buf, "{s}.input_layernorm.weight", .{prefix}), &.{2048});
         e.post = try l.one(try std.fmt.bufPrint(&buf, "{s}.post_attention_layernorm.weight", .{prefix}), &.{2048});
-        e.q = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.q_proj.weight", .{prefix}), &.{ 2048, 2048 });
-        e.k = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.k_proj.weight", .{prefix}), &.{ 1024, 2048 });
-        e.v = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.v_proj.weight", .{prefix}), &.{ 1024, 2048 });
+        e.qkv = try l.joined(try std.fmt.bufPrint(&buf, "{s}.self_attn", .{prefix}), &.{ "q_proj", "k_proj", "v_proj" }, &.{ 2048, 1024, 1024 }, 2048);
+        e.q = e.qkv;
+        e.k = e.q + 2048 * 2048 * 2;
+        e.v = e.k + 1024 * 2048 * 2;
         e.o = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.o_proj.weight", .{prefix}), &.{ 2048, 2048 });
         e.qnorm = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.q_norm.weight", .{prefix}), &.{128});
         e.knorm = try l.one(try std.fmt.bufPrint(&buf, "{s}.self_attn.k_norm.weight", .{prefix}), &.{128});
-        e.gate = try l.one(try std.fmt.bufPrint(&buf, "{s}.mlp.gate_proj.weight", .{prefix}), &.{ 6144, 2048 });
-        e.up = try l.one(try std.fmt.bufPrint(&buf, "{s}.mlp.up_proj.weight", .{prefix}), &.{ 6144, 2048 });
+        e.gate_up = try l.joined(try std.fmt.bufPrint(&buf, "{s}.mlp", .{prefix}), &.{ "gate_proj", "up_proj" }, &.{ 6144, 6144 }, 2048);
+        e.gate = e.gate_up;
+        e.up = e.gate + 6144 * 2048 * 2;
         e.down = try l.one(try std.fmt.bufPrint(&buf, "{s}.mlp.down_proj.weight", .{prefix}), &.{ 2048, 6144 });
     }
     if (ck.unused() != 0) return error.UnusedWeights;
