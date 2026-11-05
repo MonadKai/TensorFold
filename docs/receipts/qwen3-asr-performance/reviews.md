@@ -82,8 +82,8 @@ valid JSON, positive Log-Mel intervals, and three chunks with independent admiss
 
 Both independent reviewers explicitly acknowledged that the earlier lifetime assessment missed this parser
 borrowing behavior, inspected the fix, and closed it. Their review did not substitute for runtime validation.
-Current native/server checks pass 950 tests, and the default build passes 30 steps. Full backend acceptance is still running;
-performance traces are reported separately.
+Current native/server checks pass 950 tests, and the default build passes 30 steps. Full backend acceptance and
+performance traces are reported separately in [qualification.json](qualification.json).
 
 ## Final evidence consistency follow-up
 
@@ -93,3 +93,18 @@ reviewer additionally recomputed the native SQLite activity unions and allocatio
 endpoint sweep and context-aware allocation map; all match. No new privacy or numerical finding remained.
 Two documentation findings were repaired: pending qualification is not described as passed, and the
 concurrency receipt records equality outcomes plus raw-file hashes, while raw token arrays stay local.
+
+The later kernel-contract maintenance note documents the offline reader and preserves `later_base`
+precedence; Standards review matched the implementation. An exact-image cache audit follows request-unique
+UUIDs through standard chat/STT rendering to encoder identifiers when prefix and processor caching are
+both off. Only image-to-image aggregate identity is claimed, separate from the official Git reference.
+The final complete GPU run passes 560 kernels, all 361 controls and zero resource problems, retaining six
+known nonfinite findings. Reference Nsight initially failed before model startup on a bind-directory write
+permission; an explicit task-container user fixed it, and the successful retry is separate evidence.
+Infrastructure documentation/ABI/ownership checks found no new Standards or Spec issue; final current-source
+preflight and recovery records are checked independently after they land.
+
+Final Spec review corrected a resource-count unit: 1,480 is the number of registered launch records,
+including two controls, not launch/SM pairs. The offline output has 4,867 applicable SM checks, comprising
+4,857 noncontrol passes and 10 control reds. Independent recount and receipt text now agree; gate results
+and the 57/226 refreshed-record counts are unchanged. No open source Standards/Spec finding remains.

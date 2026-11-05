@@ -59,10 +59,18 @@ not an ablation assigning separate speedups to projection packing, batching and 
 | Repeated input, prefix + processor cache, eager | 7.656 / 551 | 4.111 | 5.085 / 1,562 |
 | Local deployment config: caches + default compile/graphs | 7.239 / 549 | 3.859 | 4.702 / 1,564 |
 
+Cache-off means cross-request audio, encoder embedding and prefix reuse are disabled; ordinary per-request
+KV and vendor plan/allocator caches remain. The pinned [renderer policy](https://github.com/vllm-project/vllm/blob/98dff2a81d747d1dba01a47f939f48c3526d4206/vllm/renderers/base.py)
+assigns request-unique multimodal identifiers when both prefix caching is off and processor cache is zero.
+The encoder manager therefore cannot reuse an earlier request's embeddings, even after identical warmups.
+An independent [exact-image source trace](cache-semantics.json) confirms the same policy in the actual
+reference image and follows UUIDs through chat/STT rendering, hashes and encoder-cache identifiers.
+The old 2,512-file comparison is between images; it is not a whole-Git-tree identity proof.
+
 The last two rows reuse warmed content; [startup configuration receipts](reference-configurations.json)
 confirm actual compile/graph settings. Cache-on is not
 an operator-only comparison: six-clip eager measurement records 2,720/2,746 prefix token hits and 6/6
-processor hits. [vLLM metric definitions](https://github.com/vllm-project/vllm/blob/98dff2a81d747d1dba01a47f939f48c3526d4206/vllm/v1/metrics/stats.py#L104)
+processor hits. [vLLM metric definitions](https://github.com/vllm-project/vllm/blob/98dff2a81d747d1dba01a47f939f48c3526d4206/vllm/v1/metrics/stats.py)
 count prefix queries in tokens and processor queries in multimodal items. Cache-off counters remain zero. Native lacks these caches, so its corresponding configuration
 is unchanged. The equal-token native cell remains 5.28x slower than cache-off/eager vLLM (6.25x against
 cached/compiled vLLM). Natural stopping produces different cross-engine output work; report those counts
@@ -85,8 +93,14 @@ Full-trace allocation peaks are 12,904,104,704 versus 12,910,123,520 device byte
 for both native versions, plus 136 device-static bytes. These cover startup/warmup and do not describe
 physical memory residency. The trace reports zero duplicate allocation and unknown-free events.
 Raw Nsight reports/SQLite stay local because they can contain private environment and paths.
-Reference cache-off GPU tracing is separate; other reference cache/graph configurations have no individual
-activity/allocation trace in this run, so absent ordinary-cell counters stay null.
+The [cache-off reference trace](profile-vllm-disabled.json) measures 7.456 CUDA-active seconds for six clips,
+4.784 for natural 600-second audio, and 1.329 for the fixed 1,024-token diagnostic (range walls
+7.983 / 5.578 / 4.599 seconds). Its captured full-trace peaks are 18,387,970,052 device bytes,
+9,704,087 pinned bytes and 720,599 device-static bytes, with zero duplicate/unknown-free events.
+Startup, autotuning and warmups are included in allocation peaks, but excluded from named hot workload
+ranges. Other reference cache/graph configurations have no individual activity/allocation trace in this run,
+so absent ordinary-cell counters stay null. These traced ranges are not substituted into the unprofiled
+speed table, and allocation peaks are not physical residency or a memory-efficiency ranking.
 
 [Phase timings](phase-timings.json) retain the final real chat/65-second transcription smoke, including CPU
 Log-Mel, body/multipart, admission, lane queue, encoder, prefill, decode, head, sampling and postprocessing.
@@ -127,8 +141,25 @@ active child/request counters drain to zero. This establishes bounded admission 
 SLO or complete isolation: active encoder/prefill work can still delay short requests.
 
 The [two-round review record](reviews.md) separates Standards/Spec findings and subsequent runtime fixes.
-Raw token arrays remain local; their files are pinned by hashes. Complete CUDA backend/resource and current
-host checks are still running and will be recorded separately.
+Raw token arrays remain local; their files are pinned by hashes.
+
+## Complete backend and host qualification
+
+[qualification.json](qualification.json) records the unfiltered `tf-cuda-test kernel-contract` result:
+**560/560** kernels pass gates 1–4, **361/361** controls turn red as planted, zero missed controls and **zero
+resource-limit problems**. Six pre-existing nonfinite findings remain explicit in the contract; this is not
+a claim that every backend behavior is defect-free. The former 190 mixed static/live record problems are
+closed by this fresh complete run. All five SM targets were recompiled with nvcc 13.0.88; 57 launches / 226
+static SM records were refreshed. The offline report contains 1,480 launch records (including two controls)
+and 4,867 applicable SM checks: 4,857 noncontrol passes and 10 control reds. These are different counts from
+that historical 190. Other SMs have compile/resource evidence only; device/model execution is GB10 sm_121.
+
+Nonempty old bases are retained for later compiler selections before independent 13.2/13.3 overrides;
+missing later receipts remain pending. No measurements for those later compilers are fabricated.
+Current production-source host suite exits zero, native/server checks pass 950/950 tests, default build
+passes 30/30 steps, and lean remains 424 inherited / zero new. The final metadata/receipt commit changes no
+production build inputs from the tested `f8066cdaa`. Current clean-source host-owned preflight and borrowed
+service recovery are recorded separately by the infrastructure owner.
 
 ## Corpus and attribution
 

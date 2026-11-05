@@ -83,6 +83,9 @@ On a CUDA machine, build with `-Dnvcc` (the controls are compiled only then), an
 -Dnvcc=/usr/local/cuda/bin/nvcc`. For the limits of every SM, `zig build fatbins kernel-contract-fatbins -Dnvcc=...
 -Dsm=80,86,89,120,121`, then `tf-cuda-test kernel-contract-limits zig-out/fatbin`. Its `RECORD` lines are the values
 `registry.zig` holds for that build's nvcc (see [CUDA records per nvcc release](#cuda-records-per-nvcc-release)).
+For the same compile receipts without initializing CUDA, build `zig build tf-cuda-records` and run
+`zig-out/bin/tf-cuda-records zig-out/fatbin`. This offline reader checks static resources; the live device
+resource gate and numerical backend gates remain separate requirements.
 
 On an AMD machine, run `zig build hip-kernel-contract -Dhip-arch=ARCH -Dhipcc=...` on a GPU of that chip (the
 controls are built with the kernels). For the limits of every served chip, `zig build hip-kernel-contract-limits
@@ -324,6 +327,12 @@ shared memory, the device's limits and the planted controls are checked the same
 A restored 13.0 receipt can arrive after the later compiler sets. Such records mark `later_pending` so 13.0 and
 13.1 use their base usage, while 13.2 and later keep their independently measured or pending selection.
 A missing later receipt remains pending; a 13.0 measurement never substitutes for it.
+If a refreshed 13.0 record previously had nonempty base usage, `later_base` preserves that previous usage
+for 13.2 and later before their independent overrides apply. The
+[13.0 refresh table](../zig/src/core/contract/measurements/cuda_130_refresh.zig) keeps this distinction and
+regression-checks every original/refreshed record across all five SMs for unchanged 13.2/13.3 selection.
+Its 57 launch / 226 SM-entry refresh is a static-record count, distinct from the historical 190 mixed
+static/live problems reported by the earlier full run.
 
 Gemma 4 CUDA tower QKV norms and nine-term pooling register FP32 sums and BF16 outputs.
 Their contract keeps the exact FP32 mirror and adds independent FP64 ranges at the BF16 nodes.

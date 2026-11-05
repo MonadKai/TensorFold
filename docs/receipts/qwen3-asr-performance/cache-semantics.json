@@ -1,0 +1,140 @@
+{
+  "schema": "tensorfold-vllm-reference-cache-semantics-v1",
+  "reference_image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+  "official_source_reference": "https://github.com/vllm-project/vllm/tree/98dff2a81d747d1dba01a47f939f48c3526d4206",
+  "official_reference_scope": "A separate official code reference; this receipt does not prove that all image Python files are byte-identical to that Git commit. Image snippet line numbers are image-owned.",
+  "prior_image_comparison_scope": "Old vllm-source-identity.json compared 2512 Python files in stock image 785fd756 and reference image 0d2734, aggregate SHA256 20e04348a1e817082b18cc5b04b78b401526ed95643231701ff432d1623dc727; it did not compare the Git commit tree.",
+  "condition": {
+    "enable_prefix_caching": false,
+    "mm_processor_cache_gb": 0,
+    "normal_renderer_path": true
+  },
+  "conclusion": "Both explicit flags cause the renderer to override every MM UUID with a renderer rank and monotonic request counter plus modality/item index. UUIDs propagate into MM hashes and encoder-cache identifiers. Thus the ordinary chat/STT renderer paths cannot reuse content-addressed encoder embeddings across distinct requests under this condition, although EncoderCacheManager and its allocation remain present and can retain/reuse entries within one request.",
+  "limits": [
+    "Static source-path evidence, not a measured encoder-hit counter or a new GPU run.",
+    "Only disabling one of the two cache settings does not trigger the request-unique UUID branch.",
+    "Direct/custom preprocessed EngineInput routes that bypass normal renderer MM processing are outside this conclusion."
+  ],
+  "raw_receipt_sha256": "7e53cd7bb4644e35447bc4a645cdbfd18d897a35a0677e72f2ec53645926ac4b",
+  "files": [
+    {
+      "path": "renderers/base.py",
+      "sha256": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+      "bytes": 39328,
+      "source_spans": [
+        {
+          "start_line": 699,
+          "end_line": 762
+        }
+      ]
+    },
+    {
+      "path": "multimodal/processing/inputs.py",
+      "sha256": "4167d04c1b471754ca2ad62cc67cf40d64a5a06ce430bc029887538e8874e552",
+      "bytes": 2954,
+      "source_spans": [
+        {
+          "start_line": 25,
+          "end_line": 77
+        }
+      ]
+    },
+    {
+      "path": "multimodal/processing/processor.py",
+      "sha256": "655dba3ac8207b2a71f0d796993e9f60a86625fa1bc60e25bcca609c7e70907b",
+      "bytes": 59874,
+      "source_spans": [
+        {
+          "start_line": 1353,
+          "end_line": 1405
+        },
+        {
+          "start_line": 1734,
+          "end_line": 1744
+        }
+      ]
+    },
+    {
+      "path": "multimodal/registry.py",
+      "sha256": "e3eea9b52dc6868791627bd90639c74e0381e1b26f7b6138acde4a8f0bf02330",
+      "bytes": 13473,
+      "source_spans": [
+        {
+          "start_line": 275,
+          "end_line": 308
+        }
+      ]
+    },
+    {
+      "path": "v1/engine/input_processor.py",
+      "sha256": "91dde56a548c09613ee9aaef8c43631481d12dc1bd439fddc12c6569f5e2e799",
+      "bytes": 23648,
+      "source_spans": [
+        {
+          "start_line": 204,
+          "end_line": 220
+        },
+        {
+          "start_line": 380,
+          "end_line": 415
+        }
+      ]
+    },
+    {
+      "path": "v1/core/encoder_cache_manager.py",
+      "sha256": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1",
+      "bytes": 17002,
+      "source_spans": [
+        {
+          "start_line": 102,
+          "end_line": 129
+        },
+        {
+          "start_line": 224,
+          "end_line": 233
+        },
+        {
+          "start_line": 256,
+          "end_line": 272
+        }
+      ]
+    },
+    {
+      "path": "entrypoints/speech_to_text/base/serving.py",
+      "sha256": "1f4e24493983bb3967e5ab3236881a594a4772ab7da6e69574d2034919e127a0",
+      "bytes": 33677,
+      "source_spans": [
+        {
+          "start_line": 288,
+          "end_line": 314
+        },
+        {
+          "start_line": 552,
+          "end_line": 567
+        }
+      ]
+    },
+    {
+      "path": "model_executor/models/qwen3_asr.py",
+      "sha256": "cf001ea36d74f37c664a859e7858e4bbe7832888fa5ff764484340c0ccc4ec20",
+      "bytes": 26339,
+      "source_spans": [
+        {
+          "start_line": 690,
+          "end_line": 698
+        }
+      ]
+    },
+    {
+      "path": "v1/core/sched/scheduler.py",
+      "sha256": "abca7134821e2fb5cc8572df5c4a0b570ecf702646254327bc786fc452074983",
+      "bytes": 145701,
+      "source_spans": [
+        {
+          "start_line": 1680,
+          "end_line": 1697
+        }
+      ]
+    }
+  ]
+}

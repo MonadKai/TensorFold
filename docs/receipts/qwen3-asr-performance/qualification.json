@@ -1,0 +1,93 @@
+{
+  "schema": "asr-cuda-followup-qualification-v1",
+  "status": "passed-with-six-existing-known-findings",
+  "tested_production_source": "f8066cdaa0f78b5c9a2e6948a698036f25b42ff7",
+  "baseline": "1267650489bc2dbe0d9c932c7c2fec8abcf74e5d",
+  "frozen_binaries_sha256": {
+    "zig-out/bin/tf-cuda-test": "ea895766ab4d752a3b735c23c039e42ebf62d89b1977e7bbe851425768c3410d",
+    "zig-out/native/bin/tensorfold-native": "9f89d9b89d5d70aa4d0c11ac49d3717dc47506fbe4d71c7881565f52ad07301b",
+    "zig-out/native/lib/libtfaudio.so": "643f645d464236bd6cdffebcb48bdb4d75d60ff2a324a1e86c2f0fe308b19c81"
+  },
+  "backend": {
+    "kernels": 560,
+    "passed": 560,
+    "failed": 0,
+    "known_findings": 6,
+    "controls": 361,
+    "controls_red": 361,
+    "controls_missed": 0,
+    "limit_problems": 0,
+    "exit_code": 0,
+    "command": "zig-out/bin/tf-cuda-test kernel-contract",
+    "selection": "complete backend, no --only, no --no-limits",
+    "known_findings_retained": [
+      "KNOWN nonfinite cuda qwen35 decode attention, bf16 cache (tf_q35_attn_partial, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+      "KNOWN nonfinite cuda qwen35 decode attention, fp8 cache (tf_q35_attn_partial8, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+      "KNOWN nonfinite cuda glm tf_glm_scores on pages out of order: relu is fmaxf(x, 0), as Triton's tl.maximum: a NaN dot scores 0 where float64 keeps the NaN",
+      "KNOWN nonfinite cuda glm tf_glm_index_scores on pages out of order: relu is fmaxf(x, 0), as Triton's tl.maximum: a NaN dot scores 0 where float64 keeps the NaN",
+      "KNOWN nonfinite cuda qwen35 contiguous attention, bf16 cache (tf_q35_attn_partial_legacy, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+      "KNOWN nonfinite cuda qwen35 contiguous attention, fp8 cache (tf_q35_attn_partial8_legacy, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk"
+    ],
+    "runner_reported_gates_ms": 2863791,
+    "runner_reported_limits_ms": 1980119,
+    "verification_timing_scope": "The runner limits field includes late auxiliary numerical suites as well as static/live resource checks. These are verification durations, not isolated resource-audit or model-request latency."
+  },
+  "additional_backend_summaries": [],
+  "compiler_resource_records": {
+    "compiler": "nvcc 13.0.88",
+    "targets": [
+      80,
+      86,
+      89,
+      120,
+      121
+    ],
+    "refreshed_launches": 57,
+    "refreshed_SM_records": 226,
+    "record_count_note": "226 refreshed static SM entries is a different accounting from the historical full-run 190 mixed static/live problems.",
+    "after": "all registered launch resources fit, all controls red",
+    "historical_full_backend_record_problems": 190,
+    "historical_before_this_followup_not_rewritten": true,
+    "later_compiler_selections": "13.2/13.3 selections preserved by an all-entry host regression; no new receipts for those compilers are claimed",
+    "offline_registered_launch_records": 1480,
+    "registered_control_records": 2,
+    "applicable_launch_SM_checks": 4867,
+    "applicable_noncontrol_SM_passes": 4857,
+    "applicable_control_SM_red": 10,
+    "offline_count_note": "RECORD lines count launch registrations (including 2 controls). PASS/RED lines count applicable SM checks; unsupported SM entries are not counted."
+  },
+  "host_checks": {
+    "full_suite_exit_code": 0,
+    "native_server_checks": "16/16 build steps, 950/950 tests",
+    "default_build": "30/30 steps",
+    "lean_base": 424,
+    "lean_head": 424,
+    "lean_new": 0
+  },
+  "focused_asr": {
+    "kernels": 12,
+    "failed": 0,
+    "controls_red": 2,
+    "scope": "diagnostic; complete backend result separately above"
+  },
+  "profile_ownership_smoke": "real chat and three-chunk 65s transcription valid JSON after parent-owned parse storage fix",
+  "raw_sha256": {
+    "full-cuda-backend-run.log": "c9919f642f4126c7eaa386e1ddacdc0d4857bf3ea8ae52b685e54fea89e1ff6b",
+    "all-sm-after-records.log": "f41ad657218fdc7ad3040d64bfb40ac090c97f0859cd5c1ee733c4b2c4af8a79",
+    "all-sm-measured-records.log": "f5e3af14dedeb356760497260960b910b8af58cd579b15272f801145eecf9b29",
+    "build-all-sm-records.log": "613bea0070c8ecab570456a45ec3bf0d3f55a043b5894cb04a4fccaa58954ec2",
+    "records-release-isolation.log": "2f4b35c05921b491d97980766daf7bf151af5330bf3ad97641d5f4efa7e60963",
+    "asr-focused-refined.log": "d49e87694ec52c4eb3e2f91bc6c2f34c3eb9ab77bb61bcae4db2e0f8a6ef3681",
+    "host-f806-full-final.log": "6fc2b5d0cfa73a5fc4a6a9a613163d84929fbd6bf4634cc3467caf95242690e1",
+    "host-f806-full-final.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "build-f806-server-final.log": "54c385727d829cbb107c8cb4c6f7b5be910e6e4c03e82397b83b881f4d45058f",
+    "plain-f806-final.log": "607971c706f46a58308d8bc2c88e20a14ecd648fb12fbe86c80dcceb20a418b1",
+    "profile-final-smoke.json": "5bdead87b28212f41c71e4df5bce7983876752ae51faef912de673cb55b3b94d",
+    "lean-head-final.txt": "4cf54c8b54780c3c6ec12df3c9adcfa4ff9d9cc1c87e36649780b74bf342c18b"
+  },
+  "limits": [
+    "Six known nonfinite findings are explicitly retained by the existing backend contract, not newly fixed.",
+    "Other SMs have compile/ELF resource evidence, not device/model runs.",
+    "No production release, all-language accuracy, upstream landing, or sustained-load capacity qualification."
+  ]
+}

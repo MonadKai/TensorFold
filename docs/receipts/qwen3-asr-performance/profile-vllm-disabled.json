@@ -1,0 +1,249 @@
+{
+  "schema": "asr-cuda-profile-v1",
+  "tool": "Nsight Systems2025.3.2",
+  "activity_devices": [
+    0
+  ],
+  "trace_sqlite_sha256": "9e49d50dd01fdce61b7a04618b1e42f32df46cc6ba4190893ca5d7e8355f38ab",
+  "workloads": [
+    {
+      "range": "asr-vllm-disabled-c8",
+      "range_wall_seconds": 7.983280176,
+      "cuda_activity_union_seconds": 7.455781914,
+      "kernel_union_seconds": 7.447202138,
+      "copy_union_seconds": 0.008654624,
+      "memset_union_seconds": 0.000206144,
+      "kernel_launches": 163377,
+      "copy_operations": 9480,
+      "top_kernels": [
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 30624,
+          "summed_seconds": 5.605781632
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 5300,
+          "summed_seconds": 0.768037664
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)0, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)1, (bool)0>(flash::Flash_fwd_params)",
+          "launches": 9324,
+          "summed_seconds": 0.364810048
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(T1::Params)",
+          "launches": 1822,
+          "summed_seconds": 0.221803296
+        },
+        {
+          "kernel": "std::enable_if<T2>(int)0&&vllm::_typeConvert<T1>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, (int)8, (bool)1>(T1 *, long, T1 *, const T1 *, float, int, int, long)",
+          "launches": 18928,
+          "summed_seconds": 0.048353437
+        },
+        {
+          "kernel": "void vllm::rms_norm_kernel<c10::BFloat16, (int)8, (int)3, (bool)1>(T1 *, const T1 *, long, long, long, long, long, const T1 *, long, float, int, int)",
+          "launches": 18928,
+          "summed_seconds": 0.039605888
+        },
+        {
+          "kernel": "void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void at::native::index_kernel_impl<at::native::OpaqueType<(int)2>>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>)::[lambda(char *, const char *, long) (instance 1)]>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>, const T1 &, bool)::[lambda(int) (instance 1)]>(long, T3)",
+          "launches": 9740,
+          "summed_seconds": 0.036544032
+        },
+        {
+          "kernel": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 12)]::operator ()() const::[lambda(c10::BFloat16) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "launches": 22614,
+          "summed_seconds": 0.034737664
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_combine_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (int)4, (int)3, (bool)1>(flash::Flash_fwd_params)",
+          "launches": 7616,
+          "summed_seconds": 0.031123232
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x208x64_2_32x104x64_tmaAB_bz_TNNN",
+          "launches": 28,
+          "summed_seconds": 0.024611424
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 182,
+          "summed_seconds": 0.022569984
+        },
+        {
+          "kernel": "void vllm::reshape_and_cache_flash_kernel<__nv_bfloat16, __nv_bfloat16, (vllm::Fp8KVCacheDataType)0>(const T1 *, const T1 *, T2 *, T2 *, const long *, long, long, long, long, long, int, int, int, const float *, const float *, int)",
+          "launches": 9464,
+          "summed_seconds": 0.0204264
+        }
+      ]
+    },
+    {
+      "range": "asr-vllm-disabled-real600",
+      "range_wall_seconds": 5.577511456,
+      "cuda_activity_union_seconds": 4.783576625,
+      "kernel_union_seconds": 4.780401201,
+      "copy_union_seconds": 0.002888032,
+      "memset_union_seconds": 0.000458912,
+      "kernel_launches": 125219,
+      "copy_operations": 2137,
+      "top_kernels": [
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(T1::Params)",
+          "launches": 10193,
+          "summed_seconds": 1.941540704
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 13100,
+          "summed_seconds": 1.352296
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)0, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)1, (bool)0>(flash::Flash_fwd_params)",
+          "launches": 6020,
+          "summed_seconds": 0.349277536
+        },
+        {
+          "kernel": "std::enable_if<!T7, void>::type internal::gemvx::kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, (bool)0, (bool)1, (bool)1, (bool)0, (int)6, (bool)0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "launches": 1018,
+          "summed_seconds": 0.189348416
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_192x144x64_2_48x72x64_tmaAB_bz_TNNN",
+          "launches": 392,
+          "summed_seconds": 0.113042848
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x176x64_2_32x88x64_tmaAB_bz_TNNN",
+          "launches": 392,
+          "summed_seconds": 0.079773056
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x144x64_2_32x72x64_tmaAB_bz_TNNN",
+          "launches": 730,
+          "summed_seconds": 0.063480576
+        },
+        {
+          "kernel": "void at::native::index_elementwise_kernel<(int)128, (int)4, void at::native::gpu_index_kernel<void at::native::index_kernel_impl<at::native::OpaqueType<(int)2>>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>)::[lambda(char *, const char *, long) (instance 1)]>(at::TensorIteratorBase &, c10::ArrayRef<long>, c10::ArrayRef<long>, const T1 &, bool)::[lambda(int) (instance 1)]>(long, T3)",
+          "launches": 6494,
+          "summed_seconds": 0.04970576
+        },
+        {
+          "kernel": "void at::native::elementwise_kernel<(int)128, (int)4, void at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase &)::[lambda() (instance 3)]::operator ()() const::[lambda() (instance 12)]::operator ()() const::[lambda(c10::BFloat16) (instance 1)]>(at::TensorIteratorBase &, const T1 &)::[lambda(int) (instance 1)]>(int, T3)",
+          "launches": 25112,
+          "summed_seconds": 0.049477984
+        },
+        {
+          "kernel": "std::enable_if<T2>(int)0&&vllm::_typeConvert<T1>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, (int)8, (bool)1>(T1 *, long, T1 *, const T1 *, float, int, int, long)",
+          "launches": 12936,
+          "summed_seconds": 0.046577015
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)1, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)0, (bool)0>(flash::Flash_fwd_params)",
+          "launches": 448,
+          "summed_seconds": 0.03624361
+        },
+        {
+          "kernel": "void vllm::rms_norm_kernel<c10::BFloat16, (int)8, (int)3, (bool)1>(T1 *, const T1 *, long, long, long, long, long, const T1 *, long, float, int, int)",
+          "launches": 12936,
+          "summed_seconds": 0.03467504
+        }
+      ]
+    },
+    {
+      "range": "asr-vllm-disabled-fixed128",
+      "range_wall_seconds": 4.599145392,
+      "cuda_activity_union_seconds": 1.328553017,
+      "kernel_union_seconds": 1.326282841,
+      "copy_union_seconds": 0.001543392,
+      "memset_union_seconds": 0.000738528,
+      "kernel_launches": 13757,
+      "copy_operations": 435,
+      "top_kernels": [
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x208x64_2_32x104x64_tmaAB_bz_TNNN",
+          "launches": 224,
+          "summed_seconds": 0.19890128
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x1_tn_align8>(T1::Params)",
+          "launches": 687,
+          "summed_seconds": 0.14587744
+        },
+        {
+          "kernel": "nvjet_sm121_tst_mma_128x176x64_2_32x88x64_tmaAB_bz_TNNN",
+          "launches": 336,
+          "summed_seconds": 0.110839872
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x128_64x3_tn_align8>(T1::Params)",
+          "launches": 424,
+          "summed_seconds": 0.086282976
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_wmma_tensorop_bf16_s161616gemm_bf16_16x16_128x2_tn_align8>(T1::Params)",
+          "launches": 784,
+          "summed_seconds": 0.079463008
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)0, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)1, (bool)0>(flash::Flash_fwd_params)",
+          "launches": 335,
+          "summed_seconds": 0.073611392
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_256x128_32x3_tn_align8>(T1::Params)",
+          "launches": 384,
+          "summed_seconds": 0.067582432
+        },
+        {
+          "kernel": "void flash::flash_fwd_splitkv_kernel<Flash_fwd_kernel_traits<(int)128, (int)64, (int)128, (int)4, (bool)0, (bool)0, cutlass::bfloat16_t, Flash_kernel_traits<(int)128, (int)64, (int)128, (int)4, cutlass::bfloat16_t>>, (bool)1, (bool)0, (bool)0, (bool)0, (bool)1, (bool)0, (bool)0, (bool)0>(flash::Flash_fwd_params)",
+          "launches": 252,
+          "summed_seconds": 0.064766265
+        },
+        {
+          "kernel": "void vllm::act_and_mul_kernel<c10::BFloat16, __nv_bfloat162, &vllm::silu_kernel<c10::BFloat16>, &vllm::packed_silu_kernel<__nv_bfloat162>, (bool)1, (bool)1, (bool)0, (bool)1>(T1 *, const T1 *, int, float, float, float)",
+          "launches": 224,
+          "summed_seconds": 0.056589888
+        },
+        {
+          "kernel": "void cutlass::Kernel2<cutlass_80_tensorop_bf16_s16816gemm_relu_bf16_128x256_32x3_tn_align8>(T1::Params)",
+          "launches": 200,
+          "summed_seconds": 0.050076384
+        },
+        {
+          "kernel": "void at::native::vectorized_elementwise_kernel<(int)4, at::native::GeluCUDAKernelImpl(at::TensorIteratorBase &, at::native::GeluType)::[lambda() (instance 2)]::operator ()() const::[lambda() (instance 4)]::operator ()() const::[lambda(c10::BFloat16) (instance 1)], std::array<char *, (unsigned long)2>>(int, T2, T3)",
+          "launches": 224,
+          "summed_seconds": 0.046552096
+        },
+        {
+          "kernel": "std::enable_if<T2>(int)0&&vllm::_typeConvert<T1>::exists, void>::type vllm::fused_add_rms_norm_kernel<c10::BFloat16, (int)8, (bool)1>(T1 *, long, T1 *, const T1 *, float, int, int, long)",
+          "launches": 1173,
+          "summed_seconds": 0.038173856
+        }
+      ]
+    }
+  ],
+  "captured_allocation_peak_bytes_by_kind": {
+    "Pinned": 9704087,
+    "Device": 18387970052,
+    "Device Static": 720599
+  },
+  "duplicate_allocation_events": 0,
+  "unknown_free_events": 0,
+  "limitations": [
+    "Profiling overhead and workload-range client preparation are included; use separate unprofiled cells for speed claims.",
+    "Activity is the union of captured kernels, copies and memsets, not SM occupancy or total-system GPU utilization.",
+    "Activity subcategories can overlap; do not add their union durations.",
+    "Allocation peaks cover the full traced process lifetime including startup and warmups; allocation bytes are not physical-memory residency."
+  ],
+  "runtime": {
+    "engine": "vLLM",
+    "version": "0.29.0",
+    "cache_condition": "disabled",
+    "prefix_cache": false,
+    "mm_processor_cache_gb": 0,
+    "compile": false,
+    "cuda_graphs": false,
+    "profiling": true
+  }
+}
