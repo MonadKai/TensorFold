@@ -64,23 +64,24 @@ fn run(srv: *Server, conn: *Conn, cx: *Cx) !void {
     if (max_tokens < 1) return cx.refuse("max_completion_tokens must be positive");
     try audio.sampling(cx, .{ .object = fields });
     const no_space = if (form.fields.get("language")) |code| std.ascii.eqlIgnoreCase(code, "zh") or std.ascii.eqlIgnoreCase(code, "ja") else false;
-    var text: std.ArrayList(u8) = .empty;
+    const chunks = @import("audio_chunks.zig");
+    var spans: std.ArrayList(chunks.Span) = .empty;
     var start: usize = 0;
-    var chunk: usize = 0;
-    const gone: openai.Gone = .{ .conn = conn };
     while (start < samples.len) {
-        if (gone.check()) return error.Cancelled;
         const end = split(samples, start);
-        const rendered = try audio.prepare(srv, cx, samples[start..end], context, lang, false);
+        try spans.append(a, .{ .start = start, .end = end });
+        start = end;
+    }
+    const gone: openai.Gone = .{ .conn = conn };
+    const text = if (spans.items.len > 1) try chunks.run(srv, cx, samples, spans.items, context, lang, .{ .object = fields }, max_tokens, temperature, no_space, gone) else blk: {
+        if (gone.check()) return error.Cancelled;
+        const rendered = try audio.prepare(srv, cx, samples, context, lang, false);
         const input: chat.Input = .{ .prompt = .{ .ids = rendered.ids }, .audios = rendered.audios, .fields = .{ .object = fields }, .max_tokens = max_tokens, .temperature = temperature };
         const reply = try chat.run(srv, cx, input, null, gone);
-        if (chunk != 0 and !no_space) try text.append(a, ' ');
-        try text.appendSlice(a, clean(reply.content));
-        start = end;
-        chunk += 1;
-    }
+        break :blk clean(reply.content);
+    };
     const result = try json.newObject(a);
-    try result.put(a, "text", .{ .string = text.items });
+    try result.put(a, "text", .{ .string = text });
     const usage = try json.newObject(a);
     try usage.put(a, "type", .{ .string = "duration" });
     try usage.put(a, "seconds", try json.intValue(a, @as(i64, @intCast((samples.len + 15999) / 16000))));

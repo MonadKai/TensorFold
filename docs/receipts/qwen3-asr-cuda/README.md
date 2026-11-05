@@ -5,6 +5,12 @@ one NVIDIA GB10 (`sm_121`), CUDA 13.0.2 / nvcc 13.0.88 / driver 580.95.05. The b
 BF16, eager execution, context 8192, four admitted sequences and identical public audio signals.
 This downstream fork's [recipe](../../recipes/qwen3-asr-cuda.md) defines the supported API and explicit limits.
 
+The historical vLLM process enabled prefix caching and used the default multimodal processor cache, while
+`enforce_eager=True` disabled torch.compile and CUDA Graphs. These fixtures repeat audio. The timings below
+are therefore a mixed-cache end-to-end observation, not an attribution of a fourfold difference to kernels
+or batching. Cache-disabled unique-content, warm repeated-content and production-default comparisons must
+be reported separately before assigning an optimization's benefit.
+
 ## Correctness evidence
 
 - [Tokenizer parity](tokenizer-parity.json): 1,588 encode and 4,087 decode cases agree with the original

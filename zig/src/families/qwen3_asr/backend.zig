@@ -17,6 +17,7 @@ pub const Backend = struct {
     audio_buffers: []u64,
     result: u64,
     rule: u64,
+    resident_rules: u64,
     meta: u64,
     ring: [1024]u32 = undefined,
     next: u64 = 0,
@@ -33,7 +34,7 @@ pub const Backend = struct {
             last.* = try m.alloc(m.w.c.vocab * 2);
             au.* = try m.alloc(@import("encoder.zig").max_rows * 2048 * 2);
         }
-        return .{ .m = m, .enc = try Encoder.init(m), .free = free, .lasts = lasts, .audio_buffers = audio, .result = try m.alloc(256), .rule = try m.alloc(256), .meta = try m.alloc(256) };
+        return .{ .m = m, .enc = try Encoder.init(m), .free = free, .lasts = lasts, .audio_buffers = audio, .result = try m.alloc(256), .rule = try m.alloc(256), .resident_rules = try m.alloc(m.slots * 32), .meta = try m.alloc(256) };
     }
 
     pub fn deinit(b: *Backend) void {
@@ -70,17 +71,20 @@ pub const Backend = struct {
         const encoded = try b.enc.run(b.m, au.features, au.frames);
         try b.m.copy(b.audio_buffers[slot], encoded, @as(usize, au.tokens) * 4096);
         try b.m.end(.encoder);
+        var rule = cuda.sample.Rule.from(lanes.gpu_rule.rule(s.sampling orelse .{ .seed = 0, .top_k = 1, .top_p = 1 }));
+        try b.m.upload(b.resident_rules + slot * 32, std.mem.asBytes(&rule));
         const got = try b.active.getOrPut(b.m.a, s);
         b.free[slot] = false;
         got.value_ptr.* = .{ .slot = slot, .audio = b.audio_buffers[slot], .audio_at = au.at, .audio_rows = au.tokens, .last = b.lasts[slot] };
         return got.value_ptr;
     }
 
-    fn step(p: *anyopaque, s: *Stream, _: u32) anyerror!bool {
+    fn step(p: *anyopaque, s: *Stream, max_rows: u32) anyerror!bool {
         const b = self(p);
         const l = try b.open(s);
         if (s.isCancelled()) return error.Cancelled;
-        const end = @min(s.prompt_len, l.at + model.rows);
+        const budget = if (max_rows == 0) model.rows else @min(model.rows, max_rows);
+        const end = @min(s.prompt_len, l.at + budget);
         const done = end == s.prompt_len;
         try b.m.forward(l.slot, l.at, s.prompt()[l.at..end], l.audio, l.audio_at, l.audio_rows, done);
         l.at = end;
@@ -141,9 +145,42 @@ pub const Backend = struct {
             .value => |v| v,
             .handle => |h| try read(p, h),
         };
-        try b.m.forward(l.slot, l.len, &.{token}, 0, 0, 0, true);
+        const pos = [_]i32{@intCast(l.len)};
+        const slots = [_]i32{@intCast(l.slot)};
+        try b.m.decode(&.{token}, &pos, &slots);
         l.len += 1;
-        return b.draw(s, b.m.x.logits, position);
+        var picked: [1]u32 = undefined;
+        try b.drawBatch(&.{s}, &.{position}, b.m.x.logits, &picked);
+        const handle = b.next;
+        b.next += 1;
+        b.ring[handle % b.ring.len] = picked[0];
+        return handle;
+    }
+
+    fn drawBatch(b: *Backend, streams: []const *Stream, positions: []const u64, logits: u64, out: []u32) !void {
+        const n = streams.len;
+        var meta: [8]i32 = undefined;
+        var sampled = false;
+        for (streams, positions, 0..) |s, position, i| {
+            const l = b.active.getPtr(s) orelse return error.UnknownStream;
+            meta[i] = @intCast(position - 1);
+            sampled = sampled or s.sampling != null;
+            try b.m.copy(b.rule + i * 32, b.resident_rules + l.slot * 32, 32);
+        }
+        try b.m.upload(b.meta, std.mem.sliceAsBytes(meta[0..n]));
+        try b.m.begin(.sample);
+        try b.m.k.round.argmax(b.m.s, logits, b.result, n, b.m.w.c.vocab, b.m.w.c.vocab);
+        if (sampled) try b.m.k.draws.drawRows(b.m.s, logits, b.m.w.c.vocab, b.rule, b.meta, b.result + n * 8, n, null);
+        try b.m.end(.sample);
+        try b.m.s.synchronize();
+        try b.m.charge(streams);
+        var result: [24]u32 = undefined;
+        try b.m.d.check(b.m.d.api.cuMemcpyDtoH_v2(@ptrCast(&result), b.result, n * (if (sampled) @as(usize, 12) else 8)), "batch picks");
+        for (streams, out, 0..) |s, *value, i| {
+            if (s.sampling == null and result[i * 2 + 1] != 0) return error.NonFiniteLogits;
+            value.* = if (s.sampling == null) result[i * 2] else result[2 * n + i];
+            if (value.* >= b.m.w.c.vocab) return error.BadToken;
+        }
     }
 
     fn read(p: *anyopaque, handle: u64) anyerror!u32 {
@@ -153,9 +190,31 @@ pub const Backend = struct {
     }
 
     fn verify(p: *anyopaque, windows: []const be.Window, out: []be.Verified) anyerror!void {
-        for (windows, out) |w, o| {
-            if (w.rows() != 1 or w.masks.len != 0) return error.DraftsUnsupported;
-            o.sampled[0] = try read(p, try queue(p, w.stream, .{ .value = w.pending }, w.positions[0]));
+        const b = self(p);
+        const n = windows.len;
+        if (n == 0) return;
+        if (n > b.m.slots or out.len != n) return error.BadRows;
+        var streams: [8]*Stream = undefined;
+        var ids: [8]u32 = undefined;
+        var slots: [8]i32 = undefined;
+        var positions: [8]i32 = undefined;
+        var draws: [8]u64 = undefined;
+        var picked: [8]u32 = undefined;
+        for (windows, 0..) |w, i| {
+            if (w.rows() != 1 or w.masks.len != 0 or out[i].sampled.len == 0) return error.DraftsUnsupported;
+            const l = b.active.getPtr(w.stream) orelse return error.UnknownStream;
+            if (w.positions[0] != l.len + 1) return error.PositionMismatch;
+            streams[i] = w.stream;
+            ids[i] = w.pending;
+            slots[i] = @intCast(l.slot);
+            positions[i] = @intCast(l.len);
+            draws[i] = w.positions[0];
+        }
+        try b.m.decode(ids[0..n], positions[0..n], slots[0..n]);
+        try b.drawBatch(streams[0..n], draws[0..n], b.m.x.logits, picked[0..n]);
+        for (streams[0..n], out, picked[0..n]) |stream, o, token| {
+            b.active.getPtr(stream).?.len += 1;
+            o.sampled[0] = token;
         }
     }
 

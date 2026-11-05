@@ -521,7 +521,7 @@ const Generation = struct {
         try runtime.put(a, "seconds", .{ .float = @max(0, decode_s) }); // the reply's decode seconds, as tokens_per_second divides them
         try @import("grammar_metrics.zig").put(a, runtime, m.stats.grammar);
         if (m.stats.gpu_seconds) |gpu| try runtime.put(a, "gpu_seconds", .{ .float = gpu }); // TF_Q27_PROFILE only
-        try runtime.put(a, "queued_seconds", .{ .float = m.stats.queued_seconds });
+        if (g.srv.info.audio != null) try runtime.put(a, "queued_seconds", .{ .float = m.stats.queued_seconds });
         if (m.stats.audio_time) |timing| {
             const stages = try json.newObject(a);
             inline for (@typeInfo(@TypeOf(timing)).@"struct".field_names) |name| {
