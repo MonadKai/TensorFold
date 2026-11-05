@@ -147,10 +147,11 @@ pub const Model = struct {
         const k = m.k;
         const s = m.s;
         const x = m.x;
+        const joined = m.joined_projections and batch;
         const window: cuda.window_attention.Window = .{ .h = 16, .hk = 8, .d = 128, .win = m.context, .ring = m.context, .scale = 1 / @sqrt(@as(f32, 128)) };
         for (&m.w.dec, 0..) |*l, i| {
             try k.norms.addRmsH(s, x.x, null, l.norm, .bf16, x.x, x.norm, null, n, 2048, 1e-6);
-            if (m.joined_projections) {
+            if (joined) {
                 try m.linear(x.norm, l.qkv, x.q, n, 4096, 2048, batch);
             } else {
                 try m.linear(x.norm, l.q, x.q, n, 2048, 2048, batch);
@@ -159,12 +160,12 @@ pub const Model = struct {
             }
             const kc = m.kc[i] + (if (batch) 0 else slot * m.context * 2048);
             const vc = m.vc[i] + (if (batch) 0 else slot * m.context * 2048);
-            try k.qk.rowsFrom(s, .{ .q = x.q, .q_ld = if (m.joined_projections) 4096 else 2048, .q_hs = 128, .k = if (m.joined_projections) x.q + 2048 * 2 else x.k, .k_ld = if (m.joined_projections) 4096 else 1024, .k_hs = 128, .v = if (m.joined_projections) x.q + 3072 * 2 else x.v, .v_ld = if (m.joined_projections) 4096 else 1024, .v_hs = 128 }, .{ .h = 16, .hk = 8, .dim = 128 }, .{ .norms = l.qnorm, .norm_k = l.knorm, .norms_bf16 = true, .inv = m.inv, .rot = 128 }, x.pos, if (batch) x.slots else null, .{ .q = x.qr, .k = x.kr, .v = x.vr, .kc = kc, .vc = vc, .len = m.context }, n);
+            try k.qk.rowsFrom(s, .{ .q = x.q, .q_ld = if (joined) 4096 else 2048, .q_hs = 128, .k = if (joined) x.q + 2048 * 2 else x.k, .k_ld = if (joined) 4096 else 1024, .k_hs = 128, .v = if (joined) x.q + 3072 * 2 else x.v, .v_ld = if (joined) 4096 else 1024, .v_hs = 128 }, .{ .h = 16, .hk = 8, .dim = 128 }, .{ .norms = l.qnorm, .norm_k = l.knorm, .norms_bf16 = true, .inv = m.inv, .rot = 128 }, x.pos, if (batch) x.slots else null, .{ .q = x.qr, .k = x.kr, .v = x.vr, .kc = kc, .vc = vc, .len = m.context }, n);
             if (batch or n == 1) try k.attn.decode(s, x.qr, kc, vc, x.att, x.pos, if (batch) x.slots else null, window, 0, n) else try k.attn.prompt(s, x.qr, kc, vc, x.att, start, n, window);
             try m.linear(x.att, l.o, x.tmp, n, 2048, 2048, batch);
             try k.vit.pointwise(s, x.tmp, x.x, x.x, n * 2048, .none);
             try k.norms.addRmsH(s, x.x, null, l.post, .bf16, x.x, x.norm, null, n, 2048, 1e-6);
-            if (m.joined_projections) {
+            if (joined) {
                 try m.linear(x.norm, l.gate_up, x.gate, n, 12288, 2048, batch);
                 try k.act.swigluRound(s, x.gate, 12288, x.gate + 6144 * 2, 12288, x.act, null, n, 6144);
             } else {
