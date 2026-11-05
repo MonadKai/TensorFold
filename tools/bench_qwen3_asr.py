@@ -21,11 +21,12 @@ def request(base_url, route, body, content_type):
     )
     start = time.monotonic()
     try:
-        with urllib.request.urlopen(req, timeout=600) as response:
-            status, data = response.status, response.read()
-            media = response.headers.get("Content-Type")
-    except urllib.error.HTTPError as exc:
-        status, data, media = exc.code, exc.read(), exc.headers.get("Content-Type")
+        try:
+            with urllib.request.urlopen(req, timeout=600) as response:
+                status, data = response.status, response.read()
+                media = response.headers.get("Content-Type")
+        except urllib.error.HTTPError as exc:
+            status, data, media = exc.code, exc.read(), exc.headers.get("Content-Type")
     except (OSError, TimeoutError, urllib.error.URLError, http.client.HTTPException) as exc:
         return {"status": 0, "content_type": None, "seconds": time.monotonic() - start,
                 "response": {"transport_error": type(exc).__name__, "detail": str(exc)}}
