@@ -198,7 +198,7 @@ zig build native audio tf-qwen3-asr-check tf-qwen3-asr-gemm-bench tf-qwen3-asr-c
   -Dnvcc=/usr/local/cuda/bin/nvcc -Dsm=121 -j4
 zig-out/bin/tf-qwen3-asr-gemm-bench "$MODEL" --shared
 zig-out/bin/tf-qwen3-asr-contract
-zig-out/bin/tf-cuda-test kernel-contract
+zig build kernel-contract -Dnvcc=/usr/local/cuda/bin/nvcc -Dsm=121 -j4
 TENSORFOLD_QWEN3_ASR_MATH=throughput zig-out/native/bin/tensorfold-native serve "$MODEL" \
   --name Qwen/Qwen3-ASR-1.7B --parallel 8 --context 8192 --prompt-cache-gib 0 --no-thinking
 ```
