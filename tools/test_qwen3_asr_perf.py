@@ -10,6 +10,26 @@ import threading
 import unittest
 import wave
 
+from bench_qwen3_asr_mixed import complete_response, overlap_observed
+
+
+class MixedLoadEvidence(unittest.TestCase):
+    def test_capped_or_unobserved_long_audio_is_incomplete(self):
+        raw = dict(status=200, mode="transcription", response=dict(text="partial"))
+        self.assertFalse(complete_response(raw))
+        raw["response"]["tensorfold"] = dict(chunks=[dict(finish_reason="length")])
+        self.assertFalse(complete_response(raw))
+        raw["response"]["tensorfold"]["chunks"][0]["finish_reason"] = "stop"
+        self.assertTrue(complete_response(raw))
+
+    def test_long_work_alone_does_not_establish_mixed_execution(self):
+        self.assertFalse(overlap_observed([dict(values={"tensorfold:audio_chunks_active": 4,
+                                                       "tensorfold:num_requests_running": 4})]))
+        self.assertFalse(overlap_observed([dict(values={"tensorfold:audio_chunks_active": 0,
+                                                       "tensorfold:num_requests_running": 4})]))
+        self.assertTrue(overlap_observed([dict(values={"tensorfold:audio_chunks_active": 4,
+                                                      "tensorfold:num_requests_running": 5})]))
+
 
 @contextlib.contextmanager
 def server(fail_first=False, omit_usage=False):

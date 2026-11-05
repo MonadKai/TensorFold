@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Measure fixed long/short ASR arrivals, preserving warmups, results and live admission observations."""
+"""Measure fixed native long/short ASR arrivals with observed natural stopping and live admission."""
 import argparse
 import concurrent.futures
 import json
@@ -11,6 +11,22 @@ import urllib.request
 
 from bench_qwen3_asr import run_one
 from bench_qwen3_asr_perf import percentile
+
+
+def complete_response(raw):
+    if raw["status"] != 200 or not isinstance(raw["response"], dict):
+        return False
+    if raw["mode"] == "transcription":
+        chunks = raw["response"].get("tensorfold", {}).get("chunks", [])
+        return isinstance(raw["response"].get("text"), str) and bool(chunks) and all(
+            chunk.get("finish_reason") == "stop" for chunk in chunks)
+    choices = raw["response"].get("choices", [])
+    return bool(choices) and choices[0].get("finish_reason") == "stop"
+
+
+def overlap_observed(snapshots):
+    return any(0 < snap.get("values", {}).get("tensorfold:audio_chunks_active", 0)
+               < snap["values"].get("tensorfold:num_requests_running", 0) for snap in snapshots)
 
 
 def main():
@@ -66,29 +82,23 @@ def main():
         stop.set()
         thread.join()
 
-    def valid(raw):
-        if raw["status"] != 200 or not isinstance(raw["response"], dict):
-            return False
-        if raw["mode"] == "transcription":
-            return isinstance(raw["response"].get("text"), str)
-        choices = raw["response"].get("choices", [])
-        return bool(choices) and choices[0].get("finish_reason") == "stop"
-
     def identity(raw):
         value = raw["response"]
         return dict(text=value["choices"][0]["message"]["content"], tokens=value.get("tensorfold", {}).get("token_ids"))
 
-    warmup_ok = all(valid(row) for row in warmup)
-    success = all(valid(row["raw"]) for row in short + long)
-    equal = warmup_ok and all(valid(row["raw"]) and identity(row["raw"]) == identity(warmup[i % len(warmup)])
+    warmup_ok = all(complete_response(row) for row in warmup)
+    success = all(complete_response(row["raw"]) for row in short + long)
+    equal = warmup_ok and all(complete_response(row["raw"]) and identity(row["raw"]) == identity(warmup[i % len(warmup)])
                              for i, row in enumerate(short))
     end_long = max(row["completed_seconds"] for row in long)
     overlapped = [row for row in short if row["submitted_seconds"] < end_long]
-    latencies = [row["raw"]["seconds"] for row in short if valid(row["raw"])]
-    overlap_latencies = [row["raw"]["seconds"] for row in overlapped if valid(row["raw"])]
-    queued = [row["raw"]["response"].get("tensorfold", {}).get("queued_seconds") for row in short if valid(row["raw"])]
+    latencies = [row["raw"]["seconds"] for row in short if complete_response(row["raw"])]
+    overlap_latencies = [row["raw"]["seconds"] for row in overlapped if complete_response(row["raw"])]
+    queued = [row["raw"]["response"].get("tensorfold", {}).get("queued_seconds") for row in short if complete_response(row["raw"])]
     queued = [n for n in queued if isinstance(n, (int, float))]
-    result = dict(schema=1, complete=warmup_ok and success and equal, warmup=warmup, short=short, long=long,
+    overlap = overlap_observed(snapshots)
+    result = dict(schema=1, complete=warmup_ok and success and equal and overlap, warmup=warmup, short=short, long=long,
+                  live_overlap_observed=overlap,
                   short_identity_equal=equal, observations=snapshots,
                   settings=dict(short_requests=args.short_requests, short_concurrency=args.short_concurrency,
                                 long_arrivals_seconds=[0, 0.5], short_start_seconds=0.25, context=8192,
@@ -100,7 +110,7 @@ def main():
                                     long_completion_seconds=[row["completed_seconds"] for row in long]),
                   limitations=["Makespan includes the fixed arrival delays; short latency begins at HTTP submission.",
                                "Observed queue maximum is not an unbounded-load waiting-time guarantee.",
-                               "Long STT stopping evidence is available only when server telemetry exposes it."])
+                               "Native chunk stopping and admission telemetry are required for this mixed-load gate."])
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(dict(complete=result["complete"], **result["measurements"])))
     return not result["complete"]
