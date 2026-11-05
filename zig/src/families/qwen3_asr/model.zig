@@ -9,6 +9,7 @@ var decode_batches: [2][8]Counter = @splat(@splat(.init(0)));
 /// Process-lifetime counters remain safe to read after a served model is parked or closed.
 pub fn decodeBatches() @import("lanes").stream.Audio.DecodeBatches {
     var result: @import("lanes").stream.Audio.DecodeBatches = undefined;
+    result.physical_rows = cuda.row_gemm.physical_rows;
     for (&result.stable, &result.throughput, 0..) |*stable, *throughput, i| {
         stable.* = decode_batches[0][i].load(.monotonic);
         throughput.* = decode_batches[1][i].load(.monotonic);

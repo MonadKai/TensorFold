@@ -3,16 +3,17 @@ const std = @import("std");
 const cuda = @import("root.zig");
 const blas = @import("cublaslt.zig");
 
-pub const physical_rows = 8;
-pub const workspace_bytes = 8 * 1024 * 1024;
-pub const policy_version = "asr-sm121-cublaslt130100-p8-v1";
-pub const Shape = struct { n: usize, k: usize, workspace_limit: usize, configuration: [7]i32 };
+pub const physical_rows = 32;
+pub const logical_rows = 8;
+pub const workspace_bytes = 32 * 1024 * 1024;
+pub const policy_version = "asr-sm121-cublaslt130100-p32-v2";
+pub const Shape = struct { n: usize, k: usize, workspace_limit: usize, numerical_flags: u64, configuration: [7]i32 };
 pub const shapes = [_]Shape{
-    .{ .n = 4096, .k = 2048, .workspace_limit = workspace_bytes, .configuration = .{ 21, 5, 1, 0, 0, 0, 19 } },
-    .{ .n = 2048, .k = 2048, .workspace_limit = 0, .configuration = .{ 21, 11, 1, 0, 0, 0, 20 } },
-    .{ .n = 12288, .k = 2048, .workspace_limit = workspace_bytes, .configuration = .{ 21, 5, 1, 0, 0, 0, 19 } },
-    .{ .n = 2048, .k = 6144, .workspace_limit = 0, .configuration = .{ 21, 11, 1, 0, 0, 0, 20 } },
-    .{ .n = 151936, .k = 2048, .workspace_limit = workspace_bytes, .configuration = .{ 21, 5, 1, 0, 0, 0, 20 } },
+    .{ .n = 4096, .k = 2048, .workspace_limit = 8 * 1024 * 1024, .numerical_flags = 0x30202, .configuration = .{ 67, 13, 1, 0, 0, 28, 35 } },
+    .{ .n = 2048, .k = 2048, .workspace_limit = 0, .numerical_flags = 0x30202, .configuration = .{ 67, 13, 1, 0, 0, 28, 35 } },
+    .{ .n = 12288, .k = 2048, .workspace_limit = 0, .numerical_flags = 0x20202, .configuration = .{ 21, 11, 1, 0, 0, 0, 19 } },
+    .{ .n = 2048, .k = 6144, .workspace_limit = workspace_bytes, .numerical_flags = 0x30202, .configuration = .{ 67, 13, 1, 0, 0, 19, 35 } },
+    .{ .n = 151936, .k = 2048, .workspace_limit = 0, .numerical_flags = 0x20202, .configuration = .{ 21, 11, 1, 0, 0, 0, 19 } },
 };
 
 pub fn shapeIndex(n: usize, k: usize) ?usize {
@@ -48,7 +49,7 @@ pub const Rows = struct {
                 if (candidate.state != 0) continue;
                 try plan.useAlgorithm(candidate.algo, shape.workspace_limit);
                 if (std.mem.eql(i32, &(try plan.configuration()), &shape.configuration)) {
-                    if (try plan.numericalFlags() != 0x20202) return error.UnqualifiedRowGemmRuntime;
+                    if (try plan.numericalFlags() != shape.numerical_flags) return error.UnqualifiedRowGemmRuntime;
                     matched = true;
                     break;
                 }
@@ -71,7 +72,7 @@ pub const Rows = struct {
 
     /// Only logical rows leave staging; inactive rows never acquire slots, positions, KV or sampler state.
     pub fn run(self: *Rows, s: cuda.Stream, x: u64, w: u64, y: u64, rows: usize, n: usize, k: usize) !void {
-        if (rows == 0 or rows > physical_rows or x == 0 or w == 0 or y == 0) return error.BadRows;
+        if (rows == 0 or rows > logical_rows or x == 0 or w == 0 or y == 0) return error.BadRows;
         const index = shapeIndex(n, k) orelse return error.UnsupportedRowGemmShape;
         const bytes = rows * k * 2;
         const padding: cuda.DeviceBuffer = .{ .d = self.x.d, .ptr = self.x.ptr + bytes, .len = (physical_rows - rows) * k * 2, .borrowed = true };

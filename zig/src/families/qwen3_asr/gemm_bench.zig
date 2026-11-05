@@ -120,7 +120,7 @@ pub fn main(init: std.process.Init) !u8 {
         r.staged = &staged;
         for (shapes, 0..) |f, shape| for ([_]usize{ 1, 2, 4, 8 }) |rows| {
             const times = try r.measure(shape, rows, null);
-            try r.emit(.{ .shape = f.name, .n = f.n, .k = f.k, .rows = rows, .physical_rows = 8, .mode = "staged", .milliseconds = times, .median_ms = median(times), .configuration = try staged.plans[shape].configuration() });
+            try r.emit(.{ .shape = f.name, .n = f.n, .k = f.k, .rows = rows, .physical_rows = cuda.row_gemm.physical_rows, .mode = "staged", .milliseconds = times, .median_ms = median(times), .configuration = try staged.plans[shape].configuration() });
         };
         return 0;
     }

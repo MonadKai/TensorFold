@@ -156,7 +156,7 @@ pub fn metrics(srv: *Server, conn: *Conn, a: Allocator) void {
             const batches = read();
             out.writer.writeAll("# TYPE tensorfold:asr_decode_batches_total counter\n") catch return;
             inline for (.{ "stable", "throughput" }) |mode| for (@field(batches, mode), 1..) |count, rows| {
-                out.writer.print("tensorfold:asr_decode_batches_total{{mode=\"{s}\",rows=\"{d}\",physical_rows=\"{d}\"}} {d}\n", .{ mode, rows, if (comptime std.mem.eql(u8, mode, "throughput")) 8 else rows, count }) catch return;
+                out.writer.print("tensorfold:asr_decode_batches_total{{mode=\"{s}\",rows=\"{d}\",physical_rows=\"{d}\"}} {d}\n", .{ mode, rows, if (comptime std.mem.eql(u8, mode, "throughput")) batches.physical_rows else rows, count }) catch return;
             };
         }
     }
