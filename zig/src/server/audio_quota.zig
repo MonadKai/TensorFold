@@ -19,6 +19,13 @@ pub const Gate = struct {
     peak: u32 = 0,
     parents: u32 = 0,
     turn: u64 = 0,
+    cancelled_parents: u64 = 0,
+
+    pub fn cancelParent(g: *Gate, io: std.Io) void {
+        g.mutex.lockUncancelable(io);
+        defer g.mutex.unlock(io);
+        g.cancelled_parents += 1;
+    }
 
     pub fn limit(lanes: u32) u32 {
         return @max(lanes / 2, 1);
@@ -125,6 +132,7 @@ pub const Gate = struct {
             maximum = @max(maximum, parent.active);
         }
         try w.print("# TYPE tensorfold:audio_parent_active_max gauge\ntensorfold:audio_parent_active_max {d}\n", .{maximum});
+        try w.print("# TYPE tensorfold:audio_parents_cancelled_total counter\ntensorfold:audio_parents_cancelled_total {d}\n", .{g.cancelled_parents});
     }
 };
 

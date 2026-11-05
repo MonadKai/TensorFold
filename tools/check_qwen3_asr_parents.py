@@ -83,16 +83,20 @@ def main():
             with parent(args.long[1]):
                 shrink = wait("two_parents_existing_leases_retained", lambda m: value(m, "audio_chunks_parents") == 2
                               and value(m, "audio_parent_active_max") > 2 and value(m, "audio_chunks_waiting") > 0)
-                work = wait("four_distinct_slots_still_decode", lambda m: rows4(m) > rows4(first)
+                work = wait("four_distinct_slots_still_decode", lambda m: rows4(m) > rows4(shrink)
                             and value(m, "audio_chunks_parents") == 2 and value(m, "audio_parent_active_max") > 2)
                 sibling = run_one(sampled, args.short, "transcription")
-            wait("queued_parent_cancelled", lambda m: value(m, "audio_chunks_parents") == 1)
-        wait("all_children_released", drained)
+                before_queued_cancel = metrics()
+            cancelled = wait("queued_parent_cancelled", lambda m: value(m, "audio_chunks_parents") == 1
+                             and value(m, "audio_parents_cancelled_total")
+                             == value(before_queued_cancel, "audio_parents_cancelled_total") + 1)
+        wait("all_children_released", lambda m: drained(m) and value(m, "audio_parents_cancelled_total")
+             == value(cancelled, "audio_parents_cancelled_total") + 1)
         recovery = run_one(sampled, args.short, "transcription")
         result.update(short_baseline=baseline, short_sibling=sibling, short_recovery=recovery,
                       cancellation_seed_equal=fingerprint(baseline) is not None
                       and fingerprint(baseline) == fingerprint(sibling) == fingerprint(recovery),
-                      occupied_after_shrink=dict(before_rows4=rows4(first), after_rows4=rows4(work),
+                      occupied_after_shrink=dict(before_rows4=rows4(shrink), after_rows4=rows4(work),
                                                  observed_max_parent_active=value(shrink, "audio_parent_active_max")))
         solo = [run_one(options, path, "transcription") for path in args.long]
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:

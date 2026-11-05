@@ -104,7 +104,10 @@ pub fn run(srv: *Server, cx: *errors.Cx, samples: []const f32, spans: []const Sp
     }
     for (threads[0..started]) |thread| thread.join();
     started = 0;
-    if (disconnected) return error.Cancelled;
+    if (disconnected) {
+        srv.audio_children.cancelParent(srv.io);
+        return error.Cancelled;
+    }
     for (results) |result| if (result.failure) |e| if (e != error.Cancelled) {
         cx.kind = result.kind;
         cx.message = try cx.a.dupe(u8, result.message orelse "transcription child failed");

@@ -46,7 +46,7 @@ def main():
         while True:
             raw = metrics()
             counts = {name: int(re.search(r"^tensorfold:" + name + r" (\d+)$", raw, re.M).group(1))
-                      for name in ("num_requests_running", "num_requests_waiting")}
+                      for name in ("num_requests_running", "num_requests_waiting", "client_disconnections_total")}
             if predicate(counts):
                 observations.append(dict(label=label, counts=counts, metrics=raw))
                 return counts
@@ -64,8 +64,11 @@ def main():
     short, long = payload("asr_en_16k.wav"), payload("en_65s.wav", hold=True)
     before = metrics()
     baseline_short, baseline_long = run(short), run(long)
+    active_before = wait_for("before_active_cancel", lambda counts: counts["num_requests_running"] == 0
+                             and counts["num_requests_waiting"] == 0)
     aborted(long, "active_abort", lambda counts: counts["num_requests_running"] >= 1)
-    wait_for("active_drained", lambda counts: not any(counts.values()))
+    wait_for("active_drained", lambda counts: counts["num_requests_running"] == counts["num_requests_waiting"] == 0
+             and counts["client_disconnections_total"] == active_before["client_disconnections_total"] + 1)
     recovered = run(short)
     with concurrent.futures.ThreadPoolExecutor(max_workers=2 * args.lanes) as pool:
         pending = [pool.submit(run, long) for _ in range(2 * args.lanes)]
@@ -74,8 +77,10 @@ def main():
         during = metrics()
         aborted(short, "queued_abort", lambda current: current["num_requests_running"] == args.lanes
                 and current["num_requests_waiting"] > counts["num_requests_waiting"])
+        wait_for("queued_cancelled", lambda current: current["client_disconnections_total"]
+                 == counts["client_disconnections_total"] + 1)
         siblings = [item.result() for item in pending]
-    wait_for("queue_drained", lambda counts: not any(counts.values()))
+    wait_for("queue_drained", lambda counts: counts["num_requests_running"] == counts["num_requests_waiting"] == 0)
     final = run(short)
 
     def ids(item):

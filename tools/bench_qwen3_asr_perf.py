@@ -65,6 +65,7 @@ def main():
     parser.add_argument("--min-requests", type=int, default=0)
     parser.add_argument("--seed", type=int, default=0)
     parser.add_argument("--workload", choices=("natural", "equal_tokens"), default="natural")
+    parser.add_argument("--require-natural-stop", action="store_true")
     parser.add_argument("--tokens", type=int, default=1024)
     parser.add_argument("--mode", choices=("chat", "transcription"), default="chat")
     parser.add_argument("--pid", type=int)
@@ -87,6 +88,8 @@ def main():
         parser.error("seconds, min-requests and warmup cannot be negative")
     if args.workload == "equal_tokens" and args.mode != "chat":
         parser.error("equal token diagnostics require chat ignore_eos")
+    if args.require_natural_stop and args.workload != "natural":
+        parser.error("--require-natural-stop requires a natural workload")
     identity = json.loads(args.identity.read_text())
     if identity.get("cache_condition") != args.cache_condition:
         parser.error("runtime identity must explicitly agree with the cache condition")
@@ -201,12 +204,16 @@ def main():
         warmup_work = warmup_work and all(r["response"].get("usage", {}).get("completion_tokens") == args.tokens for r in warmup_results)
     else:
         warmup_work = warmup_work and not any(natural_stop(r) is False for r in warmup_results if valid(r))
+        if args.require_natural_stop:
+            warmup_work = warmup_work and all(natural_stop(r) is True for r in warmup_results if valid(r))
+    stopping_evidence = not args.require_natural_stop or bool(stops) and all(x is True for x in stops)
     sustained_goal = elapsed >= args.seconds and len(successful) >= args.min_requests
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
         "workload": {"fixtures": fixtures, "concurrency": args.concurrency, "reps": args.reps, "warmup_excluded": args.warmup,
                      "mode": args.mode, "temperature": 0, "seed": args.seed, "output_cap": args.tokens,
                      "kind": args.workload, "minimum_seconds": args.seconds, "minimum_requests": args.min_requests,
+                     "require_natural_stop": args.require_natural_stop,
                      "clip_manifest_sha256": manifest_sha, "unique_requests": args.unique_requests,
                      "warmup_requests": len(warmup_results),
                      "arrival_model": "closed loop; request latency begins at each HTTP submission"},
@@ -226,7 +233,7 @@ def main():
                          "pinned_allocation_peak_bytes": next((after[key] for key in after if "pinned_memory_peak_bytes" in key), None), "gpu_active_seconds": None},
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
-        "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops),
+        "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops) and stopping_evidence,
         "warmup_work_matches": warmup_work, "sustained_goal_met": sustained_goal,
         "unique_pool_exhausted": exhausted,
         "natural_stop_observations": stops,

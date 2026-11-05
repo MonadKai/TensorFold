@@ -32,7 +32,7 @@ class MixedLoadEvidence(unittest.TestCase):
 
 
 @contextlib.contextmanager
-def server(fail_first=False, omit_usage=False):
+def server(fail_first=False, omit_usage=False, transcription=False):
     class Handler(BaseHTTPRequestHandler):
         requests = 0
 
@@ -53,6 +53,8 @@ def server(fail_first=False, omit_usage=False):
             }
             if omit_usage:
                 response.pop("usage", None)
+            if transcription and not failed:
+                response = {"text": "unproven stopping"}
             body = json.dumps(response).encode()
             self.send_response(503 if failed else 200)
             self.send_header("Content-Type", "application/json")
@@ -125,6 +127,15 @@ class BenchmarkAccounting(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertIsNone(result["measurements"]["generated_tokens"])
         self.assertIsNone(result["measurements"]["generated_tokens_per_wall_second"])
+
+    def test_native_stopping_gate_rejects_missing_chunk_proof(self):
+        with server(transcription=True) as url:
+            status, result = self.run_cell(url, "--mode", "transcription", "--require-natural-stop", "--warmup-requests", "1")
+        self.assertEqual(status, 1)
+        self.assertFalse(result["complete"])
+        self.assertFalse(result["warmup_work_matches"])
+        self.assertEqual(result["natural_stop_observations"], [None, None])
+        self.assertIsNone(result["measurements"]["audio_seconds_per_wall_second"])
 
 
 if __name__ == "__main__":
