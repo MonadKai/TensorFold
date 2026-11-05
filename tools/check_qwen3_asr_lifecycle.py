@@ -5,6 +5,7 @@ import argparse
 import base64
 import concurrent.futures
 import json
+import re
 import socket
 import time
 import urllib.parse
@@ -20,12 +21,14 @@ def main():
     parser.add_argument("model")
     parser.add_argument("fixtures", type=Path)
     parser.add_argument("output", type=Path)
+    parser.add_argument("--lanes", type=int, default=8)
     args = parser.parse_args()
     address = urllib.parse.urlsplit(args.base_url)
 
-    def payload(filename):
+    def payload(filename, hold=False):
         data = base64.b64encode((args.fixtures / filename).read_bytes()).decode()
-        value = {"model": args.model, "temperature": 0, "max_tokens": 1024, "return_token_ids": True,
+        value = {"model": args.model, "temperature": 0, "max_tokens": 256 if hold else 1024,
+                 "ignore_eos": hold, "return_token_ids": True,
                  "messages": [{"role": "user", "content": [{"type": "input_audio", "input_audio": {"data": data, "format": "wav"}}]}]}
         return json.dumps(value).encode()
 
@@ -36,24 +39,43 @@ def main():
     def run(body):
         return request(args.base_url, "/v1/chat/completions", body, "application/json")
 
-    def aborted(body, delay):
+    observations = []
+
+    def wait_for(label, predicate):
+        deadline = time.monotonic() + 120
+        while True:
+            raw = metrics()
+            counts = {name: int(re.search(r"^tensorfold:" + name + r" (\d+)$", raw, re.M).group(1))
+                      for name in ("num_requests_running", "num_requests_waiting")}
+            if predicate(counts):
+                observations.append(dict(label=label, counts=counts, metrics=raw))
+                return counts
+            if time.monotonic() >= deadline:
+                raise TimeoutError(f"{label}: scheduler state not observed: {counts}")
+            time.sleep(0.01)
+
+    def aborted(body, label, predicate):
         with socket.create_connection((address.hostname, address.port), timeout=30) as client:
             header = (f"POST /v1/chat/completions HTTP/1.1\r\nHost: {address.netloc}\r\n"
                       f"Content-Type: application/json\r\nContent-Length: {len(body)}\r\nConnection: close\r\n\r\n").encode()
             client.sendall(header + body)
-            time.sleep(delay)
+            wait_for(label, predicate)
 
-    short, long = payload("asr_en_16k.wav"), payload("en_65s.wav")
+    short, long = payload("asr_en_16k.wav"), payload("en_65s.wav", hold=True)
     before = metrics()
     baseline_short, baseline_long = run(short), run(long)
-    aborted(long, 0.3)
+    aborted(long, "active_abort", lambda counts: counts["num_requests_running"] >= 1)
+    wait_for("active_drained", lambda counts: not any(counts.values()))
     recovered = run(short)
-    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
-        pending = [pool.submit(run, long) for _ in range(4)]
-        time.sleep(0.5)
+    with concurrent.futures.ThreadPoolExecutor(max_workers=2 * args.lanes) as pool:
+        pending = [pool.submit(run, long) for _ in range(2 * args.lanes)]
+        counts = wait_for("saturated", lambda counts: counts["num_requests_running"] == args.lanes
+                          and counts["num_requests_waiting"] >= args.lanes)
         during = metrics()
-        aborted(short, 0.05)
+        aborted(short, "queued_abort", lambda current: current["num_requests_running"] == args.lanes
+                and current["num_requests_waiting"] > counts["num_requests_waiting"])
         siblings = [item.result() for item in pending]
+    wait_for("queue_drained", lambda counts: not any(counts.values()))
     final = run(short)
 
     def ids(item):
@@ -63,12 +85,16 @@ def main():
         "baseline_short": baseline_short, "baseline_long": baseline_long,
         "after_active_abort": recovered, "siblings": siblings, "after_queued_abort": final,
         "metrics_before": before, "metrics_during": during, "metrics_after": metrics(),
+        "observations": observations, "lanes": args.lanes,
+        "hold_work_matches": baseline_long.get("response", {}).get("usage", {}).get("completion_tokens") == 256,
+        "limitation": "Capped ignore_eos lifecycle diagnostics; not complete ASR or throughput measurements.",
         "recovery_equal": ids(baseline_short) == ids(recovered) == ids(final) and ids(final) is not None,
         "siblings_equal": all(ids(v) == ids(baseline_long) and ids(v) is not None for v in siblings),
     }
+    result["passed"] = all(result[k] for k in ("recovery_equal", "siblings_equal", "hold_work_matches"))
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
-    print(json.dumps({k: result[k] for k in ("recovery_equal", "siblings_equal")}))
-    return not (result["recovery_equal"] and result["siblings_equal"])
+    print(json.dumps({k: result[k] for k in ("passed", "recovery_equal", "siblings_equal", "hold_work_matches")}))
+    return not result["passed"]
 
 
 if __name__ == "__main__":

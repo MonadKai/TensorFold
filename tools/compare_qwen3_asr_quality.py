@@ -6,8 +6,58 @@ import json
 from pathlib import Path
 import random
 
+from bench_qwen3_asr_accuracy import distance, normalize
+
+FROZEN_MANIFEST_SHA256 = "0d8a427d232e76df2dbfa0d6bdc314799db47d4006050b1d0fe7bbf75f5a552a"
+
+
+def validate_report(report):
+    manifest = report["manifest"]
+    canonical = (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode()
+    if report.get("manifest_sha256") != FROZEN_MANIFEST_SHA256 or hashlib.sha256(canonical).hexdigest() != FROZEN_MANIFEST_SHA256:
+        raise ValueError("report does not bind the frozen manifest bytes")
+    if not report.get("complete") or not report.get("requires_observed_natural_stop"):
+        raise ValueError("incomplete reports cannot pass native qualification")
+    clips = manifest["clips"]
+    if manifest.get("schema") != "qwen3-asr-bilingual-eval-v1" or len(clips) != 256:
+        raise ValueError("qualification requires the frozen bilingual 256-utterance manifest")
+    if manifest["mandarin"]["revision"] != "2a509ef3a7a88d3234205eaeecba39fdd9d50518":
+        raise ValueError("dataset revision differs from the preregistered contract")
+    by_id = {clip["id"]: clip for clip in clips}
+    records = report["records"]
+    ids = [r["id"] for r in records]
+    if len(by_id) != 256 or len(ids) != 256 or len(set(ids)) != 256 or set(ids) != by_id.keys():
+        raise ValueError("records must uniquely and exactly cover all 256 frozen utterances")
+    for language in ("en", "zh"):
+        rows = [r for r in clips if r["language"] == language]
+        speakers = {r["speaker"] for r in rows}
+        if len(rows) != 128 or len(speakers) != 16 or any(sum(r["speaker"] == s for r in rows) != 8 for s in speakers):
+            raise ValueError("language/speaker coverage differs from the preregistered contract")
+    for row in records:
+        clip = by_id[row["id"]]
+        raw = row["raw"]
+        response = raw["response"]
+        if row["language"] != clip["language"] or row["reference"] != clip["reference"]:
+            raise ValueError("record language or label differs from the frozen utterance")
+        if not row["valid"] or not row["identity_matches"] or raw["sha256"] != clip["sha256"] or raw["status"] != 200:
+            raise ValueError("failed request or waveform identity mismatch")
+        chunks = response.get("tensorfold", {}).get("chunks", [])
+        if row.get("natural_stop_observed") is not True or not chunks or any(c.get("finish_reason") != "stop" for c in chunks):
+            raise ValueError("natural stopping lacks per-request evidence")
+        expected = normalize(clip["reference"])
+        actual = normalize(response["text"])
+        if row["normalized_reference"] != expected or row["normalized_hypothesis"] != actual:
+            raise ValueError("normalized text differs from the frozen label or raw response")
+        counts = dict(reference_words=len(expected.split()), reference_characters=len(expected.replace(" ", "")),
+                      word_edits=distance(expected.split(), actual.split()),
+                      character_edits=distance(expected.replace(" ", ""), actual.replace(" ", "")))
+        if any(row[name] != value for name, value in counts.items()):
+            raise ValueError("edit counts or reference denominators differ from raw text")
+
 
 def paired_gate(reference, candidate, language, iterations=10000):
+    validate_report(reference)
+    validate_report(candidate)
     left = {r["id"]: r for r in reference["records"] if r["language"] == language}
     right = {r["id"]: r for r in candidate["records"] if r["language"] == language}
     if not left or left.keys() != right.keys():
@@ -60,18 +110,6 @@ def main():
     args = parser.parse_args()
     reference = json.loads(args.reference.read_text())
     candidate = json.loads(args.candidate.read_text())
-    manifest = reference["manifest"]
-    if manifest.get("schema") != "qwen3-asr-bilingual-eval-v1" or len(manifest["clips"]) != 256:
-        raise ValueError("qualification requires the frozen bilingual 256-utterance manifest")
-    if manifest["mandarin"]["revision"] != "2a509ef3a7a88d3234205eaeecba39fdd9d50518":
-        raise ValueError("dataset revision differs from the preregistered contract")
-    for language in ("en", "zh"):
-        clips = [r for r in manifest["clips"] if r["language"] == language]
-        speakers = {r["speaker"] for r in clips}
-        if len(clips) != 128 or len(speakers) != 16 or any(sum(r["speaker"] == s for r in clips) != 8 for s in speakers):
-            raise ValueError("language/speaker coverage differs from the preregistered contract")
-    if not all(r.get("requires_observed_natural_stop") for r in (reference, candidate)):
-        raise ValueError("native qualification requires observed natural stops for both paths")
     results = [paired_gate(reference, candidate, language) for language in ("en", "zh")]
     result = dict(schema=1, reference_sha256=hashlib.sha256(args.reference.read_bytes()).hexdigest(),
                   candidate_sha256=hashlib.sha256(args.candidate.read_bytes()).hexdigest(), languages=results,

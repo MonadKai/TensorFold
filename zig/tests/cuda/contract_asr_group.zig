@@ -35,6 +35,7 @@ pub const Group = struct {
         group.shared_rows = null;
         group.shared_projection = null;
         group.shared_accuracy = null;
+        errdefer if (group.dense_rows) |*rows| rows.deinit();
         if (try gpu.d.currentCapability() == 121 and group.gemms.lt.api.cublasLtGetVersion() == 130100) {
             group.dense_rows = try cuda.row_gemm.Rows.init(gpu.d, &group.gemms.lt);
             group.dense_projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .dense = &group.dense_rows.? };
@@ -43,7 +44,6 @@ pub const Group = struct {
             group.shared_projection = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .shared = &group.shared_rows.? };
             group.shared_accuracy = .{ .rig = .{ .gpu = gpu, .s = s }, .gemms = &group.gemms, .shared = &group.shared_rows.?, .compare_rows = false };
         }
-        errdefer if (group.dense_rows) |*rows| rows.deinit();
         const im2col = try group.mod.function("tf_asr_im2col");
         const pack = try group.mod.function("tf_asr_conv_pack");
         const attn = try group.mod.function("tf_asr_audio_attention");
