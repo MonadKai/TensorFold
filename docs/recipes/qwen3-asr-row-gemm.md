@@ -244,3 +244,5 @@ quality. `bench_qwen3_asr_mixed.py` requires both natural chunk stopping and obs
 `compare_qwen3_asr_schedule.py` additionally pairs all long, short and warmup request ordinals, input
 hashes, ordered chunk/token work and text before attributing scheduler or mixed-workload gains.
 `summarize_qwen3_asr_ncu.py` and `summarize_qwen3_asr_trace.py` export the public subsets of private traces.
+
+The repeated-content reference control pairs the same four waveforms with caches disabled and enabled, under eager execution in both cases. `tools/compare_qwen3_asr_cache.py` verifies all 64 measured requests and 32 warmups, model/image identity, ordered inputs, natural completion, and actual token work. It withholds a cache timing ratio if output counts differ and retains text/token differences. This measures the joint cache configuration rather than attributing savings to one cache layer. Reference quality completion counters are isolated aggregate engine observations; they do not add per-chunk finish fields to the transcription API.
