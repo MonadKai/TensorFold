@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "fixed_before_reading_finish_counter_values": "2026-11-06T03:32:53.417217+00:00",
+  "scope": "Post-capture long-audio completion verification; preserves the original HTTP benchmark and its null full-audio rate.",
+  "rules": [
+    "Only complete natural transcription reports with one successful measured request and one successful warmup are eligible.",
+    "Pinned image owner config is 30s chunks, 1s search, 1600-sample windows, 16kHz PCM. Qwen3-ASR does not issue a separate language-detection request.",
+    "Cut lengths are between 464000 and 476800 frames; count bounds must agree. Both fixed 600s inputs require exactly 21 model requests.",
+    "Require exactly five stop/length/abort/error/repetition series for the single engine, nonnegative integer deltas, total exactly 21 and all 21 stop.",
+    "Otherwise keep complete-ASR rate and admitted actual token rate null. Missing counters are not substituted with zeros.",
+    "Verified audio rate uses original measured HTTP makespan, excluding warmup; token count remains an isolated engine counter including control tokens."
+  ]
+}

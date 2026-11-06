@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "label": "perf-native-background-after-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:21:10.097026+00:00",
+      "finished": "2026-11-06T04:21:28.737139+00:00",
+      "sha256": "7268a4c591d4c7eb2ad25b467f4f04bed8a42dfed3b3e207cb1b204c408d551f"
+    },
+    {
+      "label": "perf-native-background-after-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:21:28.759504+00:00",
+      "finished": "2026-11-06T04:22:50.227608+00:00",
+      "sha256": "b55e215c5331463881c04d6d50d5690249dd742af1a0f1194e9a067dbcb2ecb4"
+    },
+    {
+      "label": "perf-native-background-after-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:22:50.249557+00:00",
+      "finished": "2026-11-06T04:23:03.111902+00:00",
+      "sha256": "fd42095440cca651b4049c279dfb9418f2b1374b703bb8794ec7d755ea70acfd"
+    },
+    {
+      "label": "perf-native-background-after-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:23:03.131517+00:00",
+      "finished": "2026-11-06T04:23:52.936345+00:00",
+      "sha256": "0d98219c7a9d23e1be9f0f6ab667271c76bcda861709ddd720c195ecc9d5c261"
+    }
+  ],
+  "compiler_observations": {
+    "before": [],
+    "after": []
+  }
+}

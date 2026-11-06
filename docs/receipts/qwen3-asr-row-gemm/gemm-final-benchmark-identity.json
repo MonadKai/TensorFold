@@ -1,0 +1,6 @@
+{
+  "source_input_commit": "937a8e58e",
+  "binary": "tf-qwen3-asr-gemm-bench-937a8e58e",
+  "sha256": "1b8de6a87970751b3f555d00d0687268ea5c45c9ae317eb7a06f183ad160366f",
+  "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971"
+}

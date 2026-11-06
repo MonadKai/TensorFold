@@ -1,0 +1,667 @@
+{
+  "schema": 1,
+  "reference": "NumPy FP64 matmul; exact promotion of BF16 operands",
+  "numpy": "2.5.2",
+  "seed": 20261106,
+  "decoder_weight_layer": 0,
+  "input_artifact_sha256": {
+    "down-b1-shared.bf16": "b12789ffcdaeeb3c55fe84db6d027d5124d9870c88ab3b3d006a68ead02e44e9",
+    "gate_up-b2-shared.bf16": "73fca0d14ae3ef15bcb0da2c14fe5400dbc527e666bff450c977a77fb0f76f35",
+    "down-b8-stable.bf16": "e085fb5f3f80e2a5855e4725aa93223c305dfd5d11852b8b01f260ddaae18559",
+    "qkv-b2-shared.bf16": "e461f93214499d7dd43403875b287428ada1ffb5f05b45d74c3cf5260a49ca68",
+    "gate_up-weight.bf16": "8b06c8c17a3ab9a8e7f3c84bd5d0823b4ac6d237fdc0e56275114a3c7ba6ed47",
+    "lm_head-b4-stable.bf16": "0cab71f8f6a504c296293b016e7732f8dc6a5707afec7d8d7077fe3a7904074c",
+    "down-b2-stable.bf16": "94f1faa3c54a5b141b80a7f689a49b93fd6cccf025de555a557a6442ebb5f8fc",
+    "qkv-b8-stable.bf16": "b44466d7fb5e416f9e63c5930068e945fe39237bc609c9253ced4194f362cf62",
+    "gate_up-b8-stable.bf16": "375f22dc989e96e117480448cf782c0ab10b3b6590b5de56927d12f7a47234e8",
+    "attention_output-b8-shared.bf16": "c8480766765ee76550c78b8ea438d704deb4cd495a98a7f0ef730e2358a2776a",
+    "down-b1-stable.bf16": "b12789ffcdaeeb3c55fe84db6d027d5124d9870c88ab3b3d006a68ead02e44e9",
+    "attention_output-b2-stable.bf16": "1a2c20c06db4065705bf79d36853b998f44652e68635167a4434f1be6adc1dab",
+    "qkv-b2-stable.bf16": "e461f93214499d7dd43403875b287428ada1ffb5f05b45d74c3cf5260a49ca68",
+    "gate_up-b4-stable.bf16": "eead916634dbd7fdc7ece776f3cfe75760c1549eb1827dd253df596b2ae137a4",
+    "down-b4-stable.bf16": "55fc983dd049160a5940e085f94b5ab6706674b077b6d3d29416e3574f61bbbf",
+    "input.bf16": "ff53c67d216f9c6f9f469737de3ef9d1f74d8ab03fa177bd211ab1c95f644e00",
+    "qkv-b4-shared.bf16": "4a70a5c791004637cb5cbb4cbee757b0add3457452a67d3d1ce7bc5bfe03e155",
+    "attention_output-b2-shared.bf16": "1a2c20c06db4065705bf79d36853b998f44652e68635167a4434f1be6adc1dab",
+    "down-b2-shared.bf16": "94f1faa3c54a5b141b80a7f689a49b93fd6cccf025de555a557a6442ebb5f8fc",
+    "lm_head-b8-stable.bf16": "1a5ef6b1407f2760b708e7b6d0469d5812aa4166e037238f152e471e3221196b",
+    "qkv-b1-stable.bf16": "0a34ac7bf4dcd6ce2373396af4515b828a1cc1d36556f3bf7636bf6e0f586dbd",
+    "down-b8-shared.bf16": "e085fb5f3f80e2a5855e4725aa93223c305dfd5d11852b8b01f260ddaae18559",
+    "attention_output-b1-shared.bf16": "8ffa45507311a9a146e1e47bf782e2d6c06d3123f2cc38d9206b7ff25bec394d",
+    "gate_up-b2-stable.bf16": "73fca0d14ae3ef15bcb0da2c14fe5400dbc527e666bff450c977a77fb0f76f35",
+    "qkv-weight.bf16": "21d7f42b05a70630c06d14e452568874005bc7c3d8fc76ee4f630f354f9a9708",
+    "gate_up-b4-shared.bf16": "eead916634dbd7fdc7ece776f3cfe75760c1549eb1827dd253df596b2ae137a4",
+    "lm_head-b4-shared.bf16": "0cab71f8f6a504c296293b016e7732f8dc6a5707afec7d8d7077fe3a7904074c",
+    "lm_head-b2-stable.bf16": "6fe39b049e425458d79549f2c891fe150ffe90fe06417b16f3f066466f4288ff",
+    "attention_output-b4-shared.bf16": "4afaa486ecf0ea14391d508d98c44aef1c9021154ec46d28f26f105c42c08d75",
+    "attention_output-b4-stable.bf16": "4afaa486ecf0ea14391d508d98c44aef1c9021154ec46d28f26f105c42c08d75",
+    "gate_up-b1-shared.bf16": "4c2aee35d10376ba035f0eb54cab0ee1c8dfbf6cda4decac308ebe7c92435d81",
+    "down-weight.bf16": "d4a869d77034e192d92edd91498b85c08a871f407b5c8a53ab61ce794bac3982",
+    "gate_up-b1-stable.bf16": "4c2aee35d10376ba035f0eb54cab0ee1c8dfbf6cda4decac308ebe7c92435d81",
+    "lm_head-weight.bf16": "d7d2c2a8e14c215fe1516431e9fca596a2ef521b15e9dde09fc8ec8b8d1e17f9",
+    "qkv-b1-shared.bf16": "0a34ac7bf4dcd6ce2373396af4515b828a1cc1d36556f3bf7636bf6e0f586dbd",
+    "gate_up-b8-shared.bf16": "375f22dc989e96e117480448cf782c0ab10b3b6590b5de56927d12f7a47234e8",
+    "down-b4-shared.bf16": "55fc983dd049160a5940e085f94b5ab6706674b077b6d3d29416e3574f61bbbf",
+    "attention_output-b8-stable.bf16": "c8480766765ee76550c78b8ea438d704deb4cd495a98a7f0ef730e2358a2776a",
+    "lm_head-b8-shared.bf16": "1a5ef6b1407f2760b708e7b6d0469d5812aa4166e037238f152e471e3221196b",
+    "attention_output-b1-stable.bf16": "8ffa45507311a9a146e1e47bf782e2d6c06d3123f2cc38d9206b7ff25bec394d",
+    "lm_head-b1-shared.bf16": "2c74d16fd8281bff24485eb1a50bd27bd59884901ba6e21861ebb47c54b1308f",
+    "lm_head-b1-stable.bf16": "2c74d16fd8281bff24485eb1a50bd27bd59884901ba6e21861ebb47c54b1308f",
+    "attention_output-weight.bf16": "766c045aae297c05ec1af12127c864cdf0cec23cc23ad615536280d479bec63b",
+    "lm_head-b2-shared.bf16": "6fe39b049e425458d79549f2c891fe150ffe90fe06417b16f3f066466f4288ff",
+    "qkv-b8-shared.bf16": "b44466d7fb5e416f9e63c5930068e945fe39237bc609c9253ced4194f362cf62",
+    "qkv-b4-stable.bf16": "4a70a5c791004637cb5cbb4cbee757b0add3457452a67d3d1ce7bc5bfe03e155"
+  },
+  "fixtures": [
+    {
+      "shape": "qkv",
+      "rows": 1,
+      "n": 4096,
+      "k": 2048,
+      "output_elements": 4096,
+      "stable_max_abs": 0.0077870627283118665,
+      "shared_max_abs": 0.0077870627283118665,
+      "stable_max_normalized": 0.7024803282195877,
+      "shared_max_normalized": 0.7024803282195877,
+      "existing_envelope_max_normalized": [
+        0.6239632248675039,
+        0.6239632248675039
+      ],
+      "relative_l2": [
+        0.0016808329683955499,
+        0.0016808329683955499
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8576216159400592e-09,
+      "passed": true
+    },
+    {
+      "shape": "qkv",
+      "rows": 2,
+      "n": 4096,
+      "k": 2048,
+      "output_elements": 8192,
+      "stable_max_abs": 0.0077870627283118665,
+      "shared_max_abs": 0.0077870627283118665,
+      "stable_max_normalized": 0.7094872413619931,
+      "shared_max_normalized": 0.7094872413619931,
+      "existing_envelope_max_normalized": [
+        0.7027509187814929,
+        0.7027509187814929
+      ],
+      "relative_l2": [
+        0.0016508913855605056,
+        0.0016508913855605056
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.857970876569386e-09,
+      "passed": true
+    },
+    {
+      "shape": "qkv",
+      "rows": 4,
+      "n": 4096,
+      "k": 2048,
+      "output_elements": 16384,
+      "stable_max_abs": 0.0077870627283118665,
+      "shared_max_abs": 0.0077870627283118665,
+      "stable_max_normalized": 0.7365809871666521,
+      "shared_max_normalized": 0.7365809871666521,
+      "existing_envelope_max_normalized": [
+        0.7336158653978425,
+        0.7336158653978425
+      ],
+      "relative_l2": [
+        0.0016611498459362772,
+        0.0016611498459362772
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8580903462883064e-09,
+      "passed": true
+    },
+    {
+      "shape": "qkv",
+      "rows": 8,
+      "n": 4096,
+      "k": 2048,
+      "output_elements": 32768,
+      "stable_max_abs": 0.014857477857731283,
+      "shared_max_abs": 0.014857477857731283,
+      "stable_max_normalized": 0.7365809871666521,
+      "shared_max_normalized": 0.7365809871666521,
+      "existing_envelope_max_normalized": [
+        0.7336158653978425,
+        0.7336158653978425
+      ],
+      "relative_l2": [
+        0.001675845265032245,
+        0.001675845265032245
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8582113207691872e-09,
+      "passed": true
+    },
+    {
+      "shape": "attention_output",
+      "rows": 1,
+      "n": 2048,
+      "k": 2048,
+      "output_elements": 2048,
+      "stable_max_abs": 0.007770980475470424,
+      "shared_max_abs": 0.007770980475470424,
+      "stable_max_normalized": 0.7724035495483913,
+      "shared_max_normalized": 0.7724035495483913,
+      "existing_envelope_max_normalized": [
+        0.7346844021039549,
+        0.7346844021039549
+      ],
+      "relative_l2": [
+        0.0016633810512663894,
+        0.0016633810512663894
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8572548871276693e-09,
+      "passed": true
+    },
+    {
+      "shape": "attention_output",
+      "rows": 2,
+      "n": 2048,
+      "k": 2048,
+      "output_elements": 4096,
+      "stable_max_abs": 0.007770980475470424,
+      "shared_max_abs": 0.007770980475470424,
+      "stable_max_normalized": 0.7724035495483913,
+      "shared_max_normalized": 0.7724035495483913,
+      "existing_envelope_max_normalized": [
+        0.7346844021039549,
+        0.7346844021039549
+      ],
+      "relative_l2": [
+        0.0016667648218357256,
+        0.0016667648218357256
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8573085388109851e-09,
+      "passed": true
+    },
+    {
+      "shape": "attention_output",
+      "rows": 4,
+      "n": 2048,
+      "k": 2048,
+      "output_elements": 8192,
+      "stable_max_abs": 0.007770980475470424,
+      "shared_max_abs": 0.007770980475470424,
+      "stable_max_normalized": 0.7724035495483913,
+      "shared_max_normalized": 0.7724035495483913,
+      "existing_envelope_max_normalized": [
+        0.7346844021039549,
+        0.7346844021039549
+      ],
+      "relative_l2": [
+        0.0016435463457976389,
+        0.0016435463457976389
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8573085388109851e-09,
+      "passed": true
+    },
+    {
+      "shape": "attention_output",
+      "rows": 8,
+      "n": 2048,
+      "k": 2048,
+      "output_elements": 16384,
+      "stable_max_abs": 0.007770980475470424,
+      "shared_max_abs": 0.007770980475470424,
+      "stable_max_normalized": 0.7724035495483913,
+      "shared_max_normalized": 0.7724035495483913,
+      "existing_envelope_max_normalized": [
+        0.7346844021039549,
+        0.7346844021039549
+      ],
+      "relative_l2": [
+        0.0016571171004201417,
+        0.0016571171004201417
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8573085388109851e-09,
+      "passed": true
+    },
+    {
+      "shape": "gate_up",
+      "rows": 1,
+      "n": 12288,
+      "k": 2048,
+      "output_elements": 12288,
+      "stable_max_abs": 0.007792232441715896,
+      "shared_max_abs": 0.007792232441715896,
+      "stable_max_normalized": 0.729954420287256,
+      "shared_max_normalized": 0.729954420287256,
+      "existing_envelope_max_normalized": [
+        0.6876071981630689,
+        0.6876071981630689
+      ],
+      "relative_l2": [
+        0.0016543580354880562,
+        0.0016543580354880562
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8578646680717729e-09,
+      "passed": true
+    },
+    {
+      "shape": "gate_up",
+      "rows": 2,
+      "n": 12288,
+      "k": 2048,
+      "output_elements": 24576,
+      "stable_max_abs": 0.012988326139748096,
+      "shared_max_abs": 0.012988326139748096,
+      "stable_max_normalized": 0.73593604494293,
+      "shared_max_normalized": 0.73593604494293,
+      "existing_envelope_max_normalized": [
+        0.7042684449748577,
+        0.7042684449748577
+      ],
+      "relative_l2": [
+        0.001657919653803753,
+        0.001657919653803753
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8580190710674662e-09,
+      "passed": true
+    },
+    {
+      "shape": "gate_up",
+      "rows": 4,
+      "n": 12288,
+      "k": 2048,
+      "output_elements": 49152,
+      "stable_max_abs": 0.012988326139748096,
+      "shared_max_abs": 0.012988326139748096,
+      "stable_max_normalized": 0.73593604494293,
+      "shared_max_normalized": 0.73593604494293,
+      "existing_envelope_max_normalized": [
+        0.7042684449748577,
+        0.7042684449748577
+      ],
+      "relative_l2": [
+        0.001651599602719618,
+        0.001651599602719618
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.858190694080845e-09,
+      "passed": true
+    },
+    {
+      "shape": "gate_up",
+      "rows": 8,
+      "n": 12288,
+      "k": 2048,
+      "output_elements": 98304,
+      "stable_max_abs": 0.012988326139748096,
+      "shared_max_abs": 0.012988326139748096,
+      "stable_max_normalized": 0.73593604494293,
+      "shared_max_normalized": 0.73593604494293,
+      "existing_envelope_max_normalized": [
+        0.7042684449748577,
+        0.7042684449748577
+      ],
+      "relative_l2": [
+        0.001653202789184365,
+        0.001653202789184365
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.858190694080845e-09,
+      "passed": true
+    },
+    {
+      "shape": "down",
+      "rows": 1,
+      "n": 2048,
+      "k": 6144,
+      "output_elements": 2048,
+      "stable_max_abs": 0.01113308040658012,
+      "shared_max_abs": 0.01113308040658012,
+      "stable_max_normalized": 0.28678878806448393,
+      "shared_max_normalized": 0.28678878806448393,
+      "existing_envelope_max_normalized": [
+        0.2850061577378208,
+        0.2850061577378208
+      ],
+      "relative_l2": [
+        0.0016591774922529636,
+        0.0016591774922529636
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.857660770905258e-09,
+      "passed": true
+    },
+    {
+      "shape": "down",
+      "rows": 2,
+      "n": 2048,
+      "k": 6144,
+      "output_elements": 4096,
+      "stable_max_abs": 0.014964364119805396,
+      "shared_max_abs": 0.014964364119805396,
+      "stable_max_normalized": 0.3578101046792376,
+      "shared_max_normalized": 0.3578101046792376,
+      "existing_envelope_max_normalized": [
+        0.3563959418139893,
+        0.3563959418139893
+      ],
+      "relative_l2": [
+        0.0016740736878704712,
+        0.0016740736878704712
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8578636132884336e-09,
+      "passed": true
+    },
+    {
+      "shape": "down",
+      "rows": 4,
+      "n": 2048,
+      "k": 6144,
+      "output_elements": 8192,
+      "stable_max_abs": 0.014964364119805396,
+      "shared_max_abs": 0.014964364119805396,
+      "stable_max_normalized": 0.3578101046792376,
+      "shared_max_normalized": 0.3578101046792376,
+      "existing_envelope_max_normalized": [
+        0.3563959418139893,
+        0.3563959418139893
+      ],
+      "relative_l2": [
+        0.0016412924107925269,
+        0.0016412924107925269
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8579858871690149e-09,
+      "passed": true
+    },
+    {
+      "shape": "down",
+      "rows": 8,
+      "n": 2048,
+      "k": 6144,
+      "output_elements": 16384,
+      "stable_max_abs": 0.014964364119805396,
+      "shared_max_abs": 0.014964364119805396,
+      "stable_max_normalized": 0.3621186882261284,
+      "shared_max_normalized": 0.3621186882261284,
+      "existing_envelope_max_normalized": [
+        0.360733634720485,
+        0.360733634720485
+      ],
+      "relative_l2": [
+        0.0016520023672367981,
+        0.0016520023672367981
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8579858871690149e-09,
+      "passed": true
+    },
+    {
+      "shape": "lm_head",
+      "rows": 1,
+      "n": 151936,
+      "k": 2048,
+      "output_elements": 151936,
+      "stable_max_abs": 0.00780933431815356,
+      "shared_max_abs": 0.00780933431815356,
+      "stable_max_normalized": 0.7372738525966888,
+      "shared_max_normalized": 0.7372738525966888,
+      "existing_envelope_max_normalized": [
+        0.6985256782972613,
+        0.6985256782972613
+      ],
+      "relative_l2": [
+        0.0016521499513956343,
+        0.0016521499513956343
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8585700047821893e-09,
+      "passed": true
+    },
+    {
+      "shape": "lm_head",
+      "rows": 2,
+      "n": 151936,
+      "k": 2048,
+      "output_elements": 303872,
+      "stable_max_abs": 0.007810459705069661,
+      "shared_max_abs": 0.007810459705069661,
+      "stable_max_normalized": 0.7456088207820608,
+      "shared_max_normalized": 0.7456088207820608,
+      "existing_envelope_max_normalized": [
+        0.7164148472493532,
+        0.7164148472493532
+      ],
+      "relative_l2": [
+        0.0016475391015695695,
+        0.0016475391015695695
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8585700047821893e-09,
+      "passed": true
+    },
+    {
+      "shape": "lm_head",
+      "rows": 4,
+      "n": 151936,
+      "k": 2048,
+      "output_elements": 607744,
+      "stable_max_abs": 0.007811339208274148,
+      "shared_max_abs": 0.007811339208274148,
+      "stable_max_normalized": 0.7456088207820608,
+      "shared_max_normalized": 0.7456088207820608,
+      "existing_envelope_max_normalized": [
+        0.7164148472493532,
+        0.7164148472493532
+      ],
+      "relative_l2": [
+        0.0016539050522790082,
+        0.0016539050522790082
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8586283013427487e-09,
+      "passed": true
+    },
+    {
+      "shape": "lm_head",
+      "rows": 8,
+      "n": 151936,
+      "k": 2048,
+      "output_elements": 1215488,
+      "stable_max_abs": 0.008362448701518588,
+      "shared_max_abs": 0.008362448701518588,
+      "stable_max_normalized": 0.7610192338352443,
+      "shared_max_normalized": 0.7610192338352443,
+      "existing_envelope_max_normalized": [
+        0.7207928104107174,
+        0.7207928104107174
+      ],
+      "relative_l2": [
+        0.001655343452842993,
+        0.001655343452842993
+      ],
+      "candidate_farther_columns": 0,
+      "candidate_farther_elements": 0,
+      "bit_equal": true,
+      "nonfinite_classes": {
+        "stable_nan": 0,
+        "shared_nan": 0,
+        "stable_infinite": 0,
+        "shared_infinite": 0
+      },
+      "reference_error_max_bound_fraction": 1.8586283013427487e-09,
+      "passed": true
+    }
+  ],
+  "bound": "gamma32(K+1)*sumabs_upper + BF16 half-ulp over the accumulation-error interval",
+  "existing_bound": "core.contract.spec.bound, ops=0,mids=0,depth=K+1,accum=f32,out=bf16",
+  "reference_error": "gamma64(K+1)*sumabs_upper is added to observed absolute error before admission",
+  "columns_file": "gemm-independent-columns.csv.gz",
+  "columns_sha256": "23f82941d4d2710cd91bf81dbd9cb4b6f415f61aa8b3c148562e8e5cfbf75a7a",
+  "passed": true,
+  "limitations": [
+    "Seeded synthetic BF16 activations, actual first-layer and LM head weights; model/nonfinite gates are separate.",
+    "Raw BF16 checkpoint weights and inputs are not distributed with this error report."
+  ]
+}

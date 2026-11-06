@@ -1,0 +1,36 @@
+{
+  "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+  "files": {
+    "renderers/deepseek_v4.py": "b989ea4b4240df0f5eeb832942d1aaa8e72e56743b45186b1b6145d7e7bbbd3a",
+    "renderers/online_derenderer.py": "0057e508a2a11c622e75840866a8c171ff9350aa65c60e31a20f463c99fb9923",
+    "renderers/hf.py": "2b24612a7163f176f205f9a976ebabafc2ac7840ed5516574b0776272c02ed26",
+    "renderers/cohere.py": "3d44087f1748bf34ecc60780e4dab022415d5f79683d7438d7559e3153c78052",
+    "renderers/deepseek_v32.py": "538f6b2b2db0e0e013318e7ebca7b46c084b865cc7658c76fd499f9bf5ecd85c",
+    "renderers/mistral.py": "586b99a78050d99172b742fa81be535eea91b82967f2837f8c43a8ed6f5434d8",
+    "renderers/__init__.py": "4530bc00333f03bbdc58ee56bd78626eb4c171327f2734acfec41df3ed1a06a0",
+    "renderers/base.py": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+    "renderers/online_renderer.py": "643e974eae3b48a711ed55b9178922222b4a8ffa0d5f761c1406ba248af71afe",
+    "renderers/params.py": "30104415b818465eb1114852104a9b52b9792a4eed9bc3f32a355d8cf33dd8e0",
+    "renderers/embed_utils.py": "68549f0722401900d2633e67a4ee7846ee07070db5e1494550f615f377df6d7d",
+    "renderers/registry.py": "a08f893773e22d4b249726f2cec930ea70eb508f32a4903bacffba37b07fdf5b",
+    "renderers/inkling.py": "f213d6959a3dd8125ab2ec5be18a82b7c196d714fde79c45a3e36acfee080ae5",
+    "renderers/terratorch.py": "9b0cfefcd707d89964b97abc21b638d347c3e44e5ecc66a499652db6d20656ca",
+    "renderers/inkling_encoding.py": "51996565bdadc5311bcd17519e463fcefdd73210640752da9eeae3ee0989a521",
+    "renderers/kimi_k3.py": "1b51e2bc6af29466d1f15c2f8211990903a947da5995e95e9bc68ed1104ecdb4",
+    "multimodal/cache.py": "4e115f755e8b90817e8d5b94d729daf32acd6c13ce06db7590bc42f191c4b7ea",
+    "renderers/inputs/preprocess.py": "d3ec875c43f81208444c111da53bea5854bb9ff0cc0c793eeec6c693a4bdd25c",
+    "renderers/inputs/__init__.py": "2d7ea91cbfa17ecc73abe425d7a73a77a568f064f09d026989bc5fa8f601a379",
+    "renderers/inputs/tokenize.py": "e69f7e09047186ba9702ee33a2e960729f85837aadf06dd49431ec2badfc571c",
+    "v1/core/encoder_cache_manager.py": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1",
+    "multimodal/processing/context.py": "29abda6ef64c1feb339bbce2e7d0bceda8fbfc59388f0703198f8d7307733875",
+    "multimodal/processing/processor.py": "655dba3ac8207b2a71f0d796993e9f60a86625fa1bc60e25bcca609c7e70907b",
+    "multimodal/processing/__init__.py": "70a331273d0d9858fcf4b0447dac1063d7fe59e80e04663f54f1818f1d385c39",
+    "multimodal/processing/inputs.py": "4167d04c1b471754ca2ad62cc67cf40d64a5a06ce430bc029887538e8874e552",
+    "multimodal/processing/dummy_inputs.py": "47597b1c2db7fac79b72594c8cd0759a99ccfecdb83dd120a9ef4622c3ee509c"
+  },
+  "previously_compared_git_files": [
+    "renderers/base.py",
+    "v1/core/encoder_cache_manager.py"
+  ],
+  "scope": "Actual running image owner sources; only the listed previously compared files have Git-match evidence."
+}

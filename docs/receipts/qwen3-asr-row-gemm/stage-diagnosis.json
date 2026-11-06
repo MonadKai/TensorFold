@@ -1,0 +1,333 @@
+{
+  "schema": 1,
+  "source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "source": "Eight dedicated Nsight Systems ranges; matching request reports asr-{mode}-b{1,2,4,8}.json",
+  "rows": [
+    {
+      "mode": "stable",
+      "client_concurrency": 1,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "b2d32cd2560f04926feb5bd374173d5c673a0a4e074fffadb8c9f513f8680199",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.0053384347120299935,
+        "resample_seconds": 0.00019363255705684423,
+        "log_mel_seconds": 0.016704769
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009841599941253661,
+        "prefill_seconds": 0.017407135963439943,
+        "decode_seconds": 1.151832158088684,
+        "head_seconds": 0.23387611198425295,
+        "sample_seconds": 0.005969503976404668
+      },
+      "median_lane_queue_seconds": 2.0280000000000002e-05,
+      "median_postprocess_seconds": 2.41525e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 504.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "stable",
+      "client_concurrency": 2,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "d6bbe83a403f7d29cb1eda3971aa37712a455844c6ae7da66bac52cf6cd793bc",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.003954226733185351,
+        "resample_seconds": 0.00018252857262268662,
+        "log_mel_seconds": 0.0176090155
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009743167877197267,
+        "prefill_seconds": 0.017593311309814452,
+        "decode_seconds": 2.2337132072448735,
+        "head_seconds": 0.4725401437282562,
+        "sample_seconds": 0.0059750559777021406
+      },
+      "median_lane_queue_seconds": 0.004575566,
+      "median_postprocess_seconds": 2.1160500000000002e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 252.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "stable",
+      "client_concurrency": 4,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "869d17055e191c3d618a92a783cceb9ca087cfd99590d727728942ca22cb01dc",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.0038588353781960905,
+        "resample_seconds": 0.00017021637177094817,
+        "log_mel_seconds": 0.0175973605
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009594687938690186,
+        "prefill_seconds": 0.01704436779022217,
+        "decode_seconds": 4.295833732604981,
+        "head_seconds": 0.9220316653251649,
+        "sample_seconds": 0.005960847992449999
+      },
+      "median_lane_queue_seconds": 0.015224797,
+      "median_postprocess_seconds": 1.85685e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 126.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "stable",
+      "client_concurrency": 8,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "4aa0ba546e8780c165defc9ae3d0349d99f7c32fd16b25087855a4ab91b69892",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.003943716059438884,
+        "resample_seconds": 0.00018132844706997275,
+        "log_mel_seconds": 0.016101219
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009425968170166017,
+        "prefill_seconds": 0.0165446720123291,
+        "decode_seconds": 8.491363845825196,
+        "head_seconds": 1.838006046295166,
+        "sample_seconds": 0.006059471998363734
+      },
+      "median_lane_queue_seconds": 0.0155267115,
+      "median_postprocess_seconds": 1.73125e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 63.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "throughput",
+      "client_concurrency": 1,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "cf6c77ba652803c3af2530f5a48c1f344041264799dbbd0335d71cc23f81f9d3",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.003986756899394095,
+        "resample_seconds": 0.00016874470748007298,
+        "log_mel_seconds": 0.0165953195
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.00956915235519409,
+        "prefill_seconds": 0.0177008638381958,
+        "decode_seconds": 1.1847743349075315,
+        "head_seconds": 0.22229460823535924,
+        "sample_seconds": 0.012711215950548648
+      },
+      "median_lane_queue_seconds": 2.1488e-05,
+      "median_postprocess_seconds": 2.2304e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 504.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "throughput",
+      "client_concurrency": 2,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "628bfd3747efa36bc93af3b79f98e54b49f03885976540f79bc04ac5c92989ea",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.006738307827617973,
+        "resample_seconds": 0.0001967296120710671,
+        "log_mel_seconds": 0.0225226975
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009819391727447509,
+        "prefill_seconds": 0.017443488121032715,
+        "decode_seconds": 1.2286669931411742,
+        "head_seconds": 0.22957707154750812,
+        "sample_seconds": 0.012856511969119312
+      },
+      "median_lane_queue_seconds": 0.0037951485,
+      "median_postprocess_seconds": 1.6224e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 252.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "throughput",
+      "client_concurrency": 4,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "55f152968f2b1064962a12d22e38e378ab8fa9825b0c30881865c2a3b30c6b92",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.003934974316507578,
+        "resample_seconds": 0.00016535219037905335,
+        "log_mel_seconds": 0.015690645
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009839104175567628,
+        "prefill_seconds": 0.01722319984436035,
+        "decode_seconds": 1.3447047328948978,
+        "head_seconds": 0.24168100726604458,
+        "sample_seconds": 0.012844688005745411
+      },
+      "median_lane_queue_seconds": 0.0263973355,
+      "median_postprocess_seconds": 2.0623999999999998e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 126.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0
+      }
+    },
+    {
+      "mode": "throughput",
+      "client_concurrency": 8,
+      "requests": 8,
+      "tokens": 512,
+      "raw_sha256": "5527ec0017d8dc602d9dd37f2741dd3e77b8e48b6a14ba54903c47334a74b724",
+      "profile_enabled": true,
+      "median_per_request_cpu_audio_seconds": {
+        "decode_seconds": 0.006612723576836288,
+        "resample_seconds": 0.00018672941951081157,
+        "log_mel_seconds": 0.017902794
+      },
+      "median_per_request_gpu_elapsed_seconds": {
+        "encoder_seconds": 0.009620560169219972,
+        "prefill_seconds": 0.017204144477844237,
+        "decode_seconds": 1.6053214130401612,
+        "head_seconds": 0.27294174301624297,
+        "sample_seconds": 0.013047632019966839
+      },
+      "median_lane_queue_seconds": 0.020804026,
+      "median_postprocess_seconds": 2.5296e-05,
+      "batch_distribution": {
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"1\",physical_rows=\"1\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"2\",physical_rows=\"2\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"3\",physical_rows=\"3\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"4\",physical_rows=\"4\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"5\",physical_rows=\"5\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"6\",physical_rows=\"6\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"7\",physical_rows=\"7\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"stable\",rows=\"8\",physical_rows=\"8\",row_capacity=\"1\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"1\",physical_rows=\"1\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"2\",physical_rows=\"2\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"3\",physical_rows=\"3\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"4\",physical_rows=\"4\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"5\",physical_rows=\"5\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"6\",physical_rows=\"6\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"7\",physical_rows=\"7\",row_capacity=\"8\",padded_rows=\"0\"}": 0.0,
+        "tensorfold:asr_decode_batches_total{mode=\"throughput\",rows=\"8\",physical_rows=\"8\",row_capacity=\"8\",padded_rows=\"0\"}": 63.0
+      }
+    }
+  ],
+  "limitations": [
+    "Profile overhead is present; speed claims use unprofiled cells.",
+    "Per-request shared-batch GPU event charges are not additive GPU busy time.",
+    "Medians describe eight capped 64-token diagnostics, not complete-ASR rate or a population latency estimate.",
+    "Queue time is the engine lane interval; chat has no transcription-parent quota wait."
+  ]
+}

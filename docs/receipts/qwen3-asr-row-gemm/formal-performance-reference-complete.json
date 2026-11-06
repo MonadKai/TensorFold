@@ -1,0 +1,451 @@
+{
+  "records": [
+    {
+      "label": "perf-reference-disabled-ami600",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-disabled-en_600s",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-disabled-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:04:44.284789+00:00",
+      "finished": "2026-11-06T03:05:40.779241+00:00",
+      "sha256": "09dea95f555fd005784d73dc414ee23f5eca2ccb308993367ad81c9e105abe7f"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:05:46.042507+00:00",
+      "finished": "2026-11-06T03:10:31.848190+00:00",
+      "sha256": "c1d3ec991d7ebcea6b6b19926943385992b67d5b6b555efdfa695d4467f6919f"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:10:37.106609+00:00",
+      "finished": "2026-11-06T03:11:06.657933+00:00",
+      "sha256": "88b280bb32e6741183571d473bafc51357461cc3eca0febf1fca92bfe6d58777"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:11:11.922605+00:00",
+      "finished": "2026-11-06T03:13:11.473571+00:00",
+      "sha256": "fad8581f638c8a3d4eb2b280c3a25b0e366016e9b9cbc607352b0b9a381e29f5"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:13:16.729679+00:00",
+      "finished": "2026-11-06T03:13:35.478039+00:00",
+      "sha256": "49ce6c16800b6ba4985de4e548ce25add23155f24f211ca9ddfeead28896c6f8"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:13:40.733835+00:00",
+      "finished": "2026-11-06T03:13:54.544163+00:00",
+      "sha256": "325fddd87af6e01da5f9cfd2a8e5e6261b4cbf8bfa48a36f69ffd385376509a2"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:13:59.796699+00:00",
+      "finished": "2026-11-06T03:14:50.577521+00:00",
+      "sha256": "35e141c574ac78281a6c7c385dc203d7bdf66caf7abeabfd1597071478d52753"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:14:55.825607+00:00",
+      "finished": "2026-11-06T03:15:23.100819+00:00",
+      "sha256": "9a3418b4662402f454a8fa53d75daf4b00948c519c61934b6e08d758d15056b8"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:15:28.373323+00:00",
+      "finished": "2026-11-06T03:15:45.690509+00:00",
+      "sha256": "ddbb88d863ed85aa6f0c8014f8a7466e37c022e9ebb045bd3d926000acabe0f5"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:15:50.963908+00:00",
+      "finished": "2026-11-06T03:16:03.317743+00:00",
+      "sha256": "a75fe30fe05bd5ed77f84ebe4013f4c1d15eabf282342799a4111e1db0eb2d2d"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:16:08.597982+00:00",
+      "finished": "2026-11-06T03:18:21.570814+00:00",
+      "sha256": "ce0f5009cf950a5133d2c15c954e672f3a26d543c2bcf0ee07fed3eea02f9804"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-equal-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:18:26.835437+00:00",
+      "finished": "2026-11-06T03:20:54.748894+00:00",
+      "sha256": "28d83ac50eba7fe93d120b8e1c84676726763d0ec900371bb005f0cd3dfed486"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:20:59.989477+00:00",
+      "finished": "2026-11-06T03:22:04.394928+00:00",
+      "sha256": "db3f0388ab2773f7ff1e0151cc52de18fd7835ecce78f21efeb59e86b6d87282"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:22:09.654039+00:00",
+      "finished": "2026-11-06T03:24:19.064143+00:00",
+      "sha256": "cf44af8bb463007b2f5bba21615845608557ff5009fc8753e3501f5da874433d"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-equal-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:24:24.334499+00:00",
+      "finished": "2026-11-06T03:26:41.331683+00:00",
+      "sha256": "879aa9c10e7ce96b1a1abd4dbee875f7b3c62bd3f23464e40eeeff0d0c9863eb"
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:26:46.581901+00:00",
+      "finished": "2026-11-06T03:27:22.780669+00:00",
+      "sha256": "e56a4db2228b65c245c98b124c042b429f13de37506a42e478635f669d9d501d"
+    },
+    {
+      "label": "perf-reference-enabled-ami600",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-enabled-en_600s",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-enabled-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:30:29.385931+00:00",
+      "finished": "2026-11-06T03:31:19.138473+00:00",
+      "sha256": "0239b5665b2e1aa528316563f364fd893dbcadaf502bcd9f837e96a7194d6c15"
+    },
+    {
+      "label": "perf-reference-enabled-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:31:24.421531+00:00",
+      "finished": "2026-11-06T03:31:49.033115+00:00",
+      "sha256": "e8c2c435ba5eced9f861d64592f4fa75d67200538a79d09a5bf7fcb8a79511ba"
+    },
+    {
+      "label": "perf-reference-enabled-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:31:54.291266+00:00",
+      "finished": "2026-11-06T03:32:09.953419+00:00",
+      "sha256": "bd8b04fdd9485375f712aa71008b98ec2558f23102b854b3b9f8541d730cba61"
+    },
+    {
+      "label": "perf-reference-enabled-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:32:15.211641+00:00",
+      "finished": "2026-11-06T03:32:26.294166+00:00",
+      "sha256": "95255bf2cfb6f90ec73d610c7666ea29e9382878d5532a03d78d2e09dd2053b3"
+    },
+    {
+      "label": "perf-reference-enabled-r0-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:32:31.566431+00:00",
+      "finished": "2026-11-06T03:34:39.754764+00:00",
+      "sha256": "22561c83d942c13d8302e0a33d11925b03c05413832a36ecd667be25119d33d2"
+    },
+    {
+      "label": "perf-reference-production-ami600",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-production-en_600s",
+      "status": 0,
+      "complete": true
+    },
+    {
+      "label": "perf-reference-production-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:38:01.549122+00:00",
+      "finished": "2026-11-06T03:38:48.952190+00:00",
+      "sha256": "e230ccc48a8c84fbefe111668389aa10880ec5d1a7abbfc7c5664cebf62f40c5"
+    },
+    {
+      "label": "perf-reference-production-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:38:54.226101+00:00",
+      "finished": "2026-11-06T03:39:17.894935+00:00",
+      "sha256": "0b60aad39b81dde4f3f7998a03404577779a41ee94edcc42ccb08118e559fff3"
+    },
+    {
+      "label": "perf-reference-production-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:39:23.171941+00:00",
+      "finished": "2026-11-06T03:39:38.193019+00:00",
+      "sha256": "ed266bb2ac4bf9d637712e55f15aa4766eb2a11cf126c452364cc95106944f09"
+    },
+    {
+      "label": "perf-reference-production-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:39:43.457017+00:00",
+      "finished": "2026-11-06T03:39:54.158237+00:00",
+      "sha256": "98502e22e58a7c591638b7322d98f48c50778a609c0bbcdb77709b259a3bb7cb"
+    },
+    {
+      "label": "perf-reference-production-r0-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:39:59.402204+00:00",
+      "finished": "2026-11-06T03:42:07.405947+00:00",
+      "sha256": "2ac546701160b26e245e50e178b029255cb6832e45f85f757f66be09617ce2f6"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:44:09.835312+00:00",
+      "finished": "2026-11-06T03:45:42.018265+00:00",
+      "sha256": "c6f140365809c07c5ac8da14dc418e5fb0ffda8da98102426a774e44d2c8ac66"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:45:47.288778+00:00",
+      "finished": "2026-11-06T03:50:33.284921+00:00",
+      "sha256": "ca7d46b04b9ab625397753133869ee3dfbebd05c33dd74f9d6cd67127203efa7"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:50:38.544030+00:00",
+      "finished": "2026-11-06T03:51:08.135835+00:00",
+      "sha256": "e5aab47aabadf7f278b6e150cbe45bf76b0dcaee6e19b89d6e815d243114a30d"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:51:13.393223+00:00",
+      "finished": "2026-11-06T03:53:13.902904+00:00",
+      "sha256": "1548fbc2a6512130007e05ff93de305f21f2f2cae34c7b0d6aa008787513a513"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:53:19.164510+00:00",
+      "finished": "2026-11-06T03:53:38.110268+00:00",
+      "sha256": "f47f1ac69d752e5eb271a19e399278b578135ba445c00d946474f7c63bc5841d"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:53:43.375424+00:00",
+      "finished": "2026-11-06T03:53:57.226803+00:00",
+      "sha256": "d70500b3c66c40d64c502f22cee526c005c8d3ea3ac0a7b9826e963f7d0ba6ff"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:54:02.500035+00:00",
+      "finished": "2026-11-06T03:54:54.346093+00:00",
+      "sha256": "c7792325e43ab9cd41e983ea81c320acbb81754dcdb56512fa6cfcd4151b7638"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:54:59.601330+00:00",
+      "finished": "2026-11-06T03:55:26.375945+00:00",
+      "sha256": "1c342565a3b2bfc7bb5e0104fbd47fc094cfd86657aa87daa0f5b8c65d06f9a6"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:55:31.621685+00:00",
+      "finished": "2026-11-06T03:55:48.775629+00:00",
+      "sha256": "3fc5af1d3856db97b24924260ac8f0e1ffe0d72d17ab69d7ce3c38730dce300b"
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:55:54.025975+00:00",
+      "finished": "2026-11-06T03:56:06.338502+00:00",
+      "sha256": "adf0ecb9da715cf53b3f1300c447d239dd92d6ead6b8f7f4b9926bfc96821ba4"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:56:11.601076+00:00",
+      "finished": "2026-11-06T03:58:23.688978+00:00",
+      "sha256": "882453100ad9c57d3af6fd7f726eb7ebca9669f71e23829dc4fbd938d3d69643"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-equal-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:58:28.964902+00:00",
+      "finished": "2026-11-06T04:00:55.091769+00:00",
+      "sha256": "09084e3ce46c8196a925480401fcce52bc5918ec3790eb155a908ee4672d57a0"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:01:00.370127+00:00",
+      "finished": "2026-11-06T04:02:04.712609+00:00",
+      "sha256": "c224c90d9403872da2edf2b9f5ad960064fef023ca917a28d17d731b8140ab4e"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:02:09.972391+00:00",
+      "finished": "2026-11-06T04:04:19.508277+00:00",
+      "sha256": "7fcd495f41934bb52a4b1c8661681df432d4627d3b80c8f54160f0db5afce59e"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-equal-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:04:24.787532+00:00",
+      "finished": "2026-11-06T04:06:42.221464+00:00",
+      "sha256": "51d94aca8d0901fd34bda9c2a86a998f5b4058b0e5cc18ee79c105397f00d658"
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:06:47.472634+00:00",
+      "finished": "2026-11-06T04:07:23.282186+00:00",
+      "sha256": "c505f3d75281a1de1e2f05ff387b7a2334ab02b13c4da348a804adb90e76a5dd"
+    },
+    {
+      "label": "perf-reference-enabled-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:09:25.634684+00:00",
+      "finished": "2026-11-06T04:10:48.200369+00:00",
+      "sha256": "474ee1791cc5d0da6a55ac4d4af241fbc8dea126478e9fd9bbb2e4263fd180be"
+    },
+    {
+      "label": "perf-reference-enabled-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:10:53.447860+00:00",
+      "finished": "2026-11-06T04:11:17.895725+00:00",
+      "sha256": "8df77d1e023be73d4e22b0261429aa45096134b228218fda7417be61b5ddd971"
+    },
+    {
+      "label": "perf-reference-enabled-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:11:23.136237+00:00",
+      "finished": "2026-11-06T04:11:38.757546+00:00",
+      "sha256": "349324e0d3ef9f3bfbd9909699a286654b905e38813b4e37a4c96802fb476482"
+    },
+    {
+      "label": "perf-reference-enabled-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:11:44.016080+00:00",
+      "finished": "2026-11-06T04:11:55.151371+00:00",
+      "sha256": "df09b121e4acb606b2b2cbb0cf91e937a9e05e9b34d9275c5d50a3e334350345"
+    },
+    {
+      "label": "perf-reference-enabled-r1-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:12:00.409837+00:00",
+      "finished": "2026-11-06T04:14:08.665698+00:00",
+      "sha256": "9941c520c7faea6d5f15f21a70ac0d2e8e072a33a12fdf3767a58f2c3bdd67ac"
+    },
+    {
+      "label": "perf-reference-production-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:16:58.196751+00:00",
+      "finished": "2026-11-06T04:17:46.490327+00:00",
+      "sha256": "05f7858b3b817ee380c12cee6aa516fa3889332bfd2a6bc1f813fd516f56e246"
+    },
+    {
+      "label": "perf-reference-production-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:17:51.755725+00:00",
+      "finished": "2026-11-06T04:18:15.429596+00:00",
+      "sha256": "ad6a240218102cd41d856587c865922b1f8e349e5668ea866cbb68baea9b9c0b"
+    },
+    {
+      "label": "perf-reference-production-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:18:20.713245+00:00",
+      "finished": "2026-11-06T04:18:35.661241+00:00",
+      "sha256": "eafd60571313a65849bf8e29dad3742d012433a816b187a38cddf28f011be8fd"
+    },
+    {
+      "label": "perf-reference-production-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:18:40.904579+00:00",
+      "finished": "2026-11-06T04:18:51.630862+00:00",
+      "sha256": "023adff750626e093ceeaf60c42f56170a15d04665748b0664eeea58ae2d0315"
+    },
+    {
+      "label": "perf-reference-production-r1-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T04:18:56.891373+00:00",
+      "finished": "2026-11-06T04:21:04.982394+00:00",
+      "sha256": "e3d70c8f47c7149581b1e411649ea16771c5a9fd557ac0b33fc820e45cf7795e"
+    }
+  ],
+  "passed": true
+}

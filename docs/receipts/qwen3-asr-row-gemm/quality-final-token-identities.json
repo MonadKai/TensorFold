@@ -1,0 +1,24 @@
+{
+  "schema": 1,
+  "source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "raw_sha256": {
+    "quality-final-stable-c8.json": "b246d5e1d2d3cf524622fe7414855b9d96786c21c675a2f7dbdd0ebdcb1bfcbf",
+    "quality-final-throughput-c1.json": "29523ebfb6876ee8791a34089e475ac17390c8222e4fe7c9bc4d70f7d175b8f5",
+    "quality-final-throughput-c8.json": "8b19f344c78cd900dd7b3946ee916332270314d5429f5329daac4b55fd159657"
+  },
+  "comparisons": [
+    {
+      "candidate": "throughput-c1",
+      "utterances": 256,
+      "different_ids": [],
+      "passed": true
+    },
+    {
+      "candidate": "throughput-c8",
+      "utterances": 256,
+      "different_ids": [],
+      "passed": true
+    }
+  ],
+  "passed": true
+}

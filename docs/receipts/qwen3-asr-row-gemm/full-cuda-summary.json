@@ -1,0 +1,28 @@
+{
+  "kernels": 564,
+  "passed": 564,
+  "failed": 0,
+  "known_findings": 6,
+  "controls": 361,
+  "controls_red": 361,
+  "controls_missed": 0,
+  "limit_problems": 0,
+  "gates_ms": 2904798,
+  "limits_ms": 1995967,
+  "schema": 1,
+  "filtered": false,
+  "runner_source_input_commit": "86dd7cbb922d09dee1a4066fabf6206b9529b2e9",
+  "runner_sha256": "83a9b7e267028fb66e60c0945384a767cca461b458b3601488b1a3e9dbeccb2b",
+  "asr_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
+  "raw_log_sha256": "74f95eed59ad8fe3d1b92b1f2807bd5168e97d8408b91180cc0c60a3ee797e72",
+  "known": [
+    "KNOWN nonfinite cuda qwen35 decode attention, bf16 cache (tf_q35_attn_partial, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+    "KNOWN nonfinite cuda qwen35 decode attention, fp8 cache (tf_q35_attn_partial8, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+    "KNOWN nonfinite cuda glm tf_glm_scores on pages out of order: relu is fmaxf(x, 0), as Triton's tl.maximum: a NaN dot scores 0 where float64 keeps the NaN",
+    "KNOWN nonfinite cuda glm tf_glm_index_scores on pages out of order: relu is fmaxf(x, 0), as Triton's tl.maximum: a NaN dot scores 0 where float64 keeps the NaN",
+    "KNOWN nonfinite cuda qwen35 contiguous attention, bf16 cache (tf_q35_attn_partial_legacy, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk",
+    "KNOWN nonfinite cuda qwen35 contiguous attention, fp8 cache (tf_q35_attn_partial8_legacy, tf_q35_attn_merge): a NaN key in one of a row's several chunks leaves the row finite: tf_q35_attn_merge skips that chunk"
+  ],
+  "passed_backend": true,
+  "note": "All registered kernels exercised. Existing known findings remain separate; source-input changes afterwards are diagnostics, metadata and documentation, with unchanged CUDA fatbins."
+}

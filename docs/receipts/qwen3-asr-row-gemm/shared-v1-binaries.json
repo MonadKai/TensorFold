@@ -1,0 +1,9 @@
+{
+  "source_head": "6b84dad5be2982b631334fbb2d2795262c15f917",
+  "files": {
+    "zig-out/native/bin/tf-qwen3-asr-check": "b7246248b59cc1c28656d9d17632d4bb8fe56301776c3532d7c08a790f60bd59",
+    "zig-out/bin/tf-qwen3-asr-gemm-bench": "b5202cf598acefb0fba15e9456e5017c0710d6969d41d48091f4a22dfa7497ad",
+    "zig-out/fatbin/qwen3_asr.fatbin": "c8bf255667cdc550e4ad56af6bf8df8323199cb35c501d954a7e50a2f7eb6b3b"
+  },
+  "qualified": false
+}

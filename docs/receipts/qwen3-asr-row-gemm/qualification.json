@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "in_progress",
+  "status": "gpu_checks_complete_review_pending",
   "qualification_pass": false,
   "default_math": "stable",
   "candidate_math": "throughput",
@@ -8,12 +8,20 @@
   "canonical_native_sha256": "3070578687c397ee37f3e61427679647e98d65dd8479f88df3ffb0df99b2eff5",
   "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
   "pending": [
-    "canonical service quality, determinism, API and strengthened lifecycle",
-    "unfiltered CUDA backend completion",
-    "uncontended microbenchmark, counter and whole-service performance",
-    "fresh reference service and model-stage checks",
-    "matched-input performance pairing and scheduler ablations",
-    "two complete independent Standards/Spec review rounds",
-    "final clean source preflight and independent resource restoration audit"
-  ]
+    "two final complete independent Standards/Spec review rounds",
+    "final clean-source preflight and delivery artifact binding",
+    "fresh final resource audit after the next coordinated GPU lease"
+  ],
+  "completed": [
+    "all five genuine shared-row projection classes including initial/decode LM head",
+    "stable/shared native exactness and independent FP64 admission",
+    "fixed bilingual quality and fresh original-Qwen diagnostics with retained numerical differences",
+    "two-process actual-row determinism and cancellation/lifecycle",
+    "current full CUDA backend receipt and compiler/SM resource records",
+    "168 admitted performance cells with separate failures and matched-work ablations",
+    "post-capture stricter token-evidence replay",
+    "final native rebuild byte-identical to GPU-tested binary/fatbin"
+  ],
+  "default_decision": "Retain stable compatibility default; throughput remains explicit and limited to the measured runtime.",
+  "original_qwen_numerical_equivalence": false
 }

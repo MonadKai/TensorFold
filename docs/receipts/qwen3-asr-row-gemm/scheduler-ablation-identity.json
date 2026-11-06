@@ -1,13 +1,13 @@
 {
   "current_source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
   "legacy_worktree_commit": "a01e312b56ab4821ac6cfc4140266679dc900882",
-  "production_files_compared": 5482,
+  "production_files_compared": 5484,
   "production_different_files": [
     "zig/src/server/audio_chunks.zig",
     "zig/src/server/audio_quota.zig"
   ],
-  "patch_sha256": "df790560317530d950894bb4d4189d0a88b441f21f0586489892d8ae55b30a26",
-  "legacy_binary_sha256": "22dcf732298508adeaeda39e27e22ba4fb27781cc15367f9799fd4b542c85000",
+  "patch_sha256": "7457324240e52dc6a875cb2cb517c9da73c2dc1f7f6341f8cc8ca30c841ec0e4",
+  "legacy_binary_sha256": "b6cc7d17d685a267aff833cc13d73ea9ca553002bec8b6d0adc47b9b2b8e30c4",
   "math_mode": "throughput",
-  "note": "Only scheduler and its diagnostic metrics differ; all other tracked production/build files match byte-for-byte."
+  "note": "Only old scheduler/policy files differ; the child terminal telemetry is identical. All other production/build inputs, including toolchain-version locks, match byte-for-byte."
 }

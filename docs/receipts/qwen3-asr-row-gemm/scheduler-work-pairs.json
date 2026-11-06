@@ -1,0 +1,480 @@
+{
+  "schema": 1,
+  "pairs": [
+    {
+      "label": "scheduler-pair-r0-ami600",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "fd1bf3ad0acaf3259a7515cc47954b1266c1105a52603d106a28553bb88b4298",
+          "candidate": "8a6cf4cde45276bcfcd9cc220a25c5be523d8d610e28ea9d926a9d4fe4359242"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r0-en_600s",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "24f63145954947d2df4371fa17192b042b4cd9ee949852d5559529855e0275b8",
+          "candidate": "b5fbd5dd0e8ef24fda726d8945b0ae1f5fdc9b1cb2d3a671be541910fdffcb31"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r0-policy-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "9d48174545c5e45580fcec76e880d902128e1f3774b2940913ed895b53b56312",
+          "candidate": "2b358b337e1f45d7b823dcec6713c378e68ecbbebc762bacf674cab7127cef8d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r0-gemm-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "667c582d7f36712d687edbec763e6aa290458cb35dacb836046930d462b23e82",
+          "candidate": "9d48174545c5e45580fcec76e880d902128e1f3774b2940913ed895b53b56312"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r0-overall-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "667c582d7f36712d687edbec763e6aa290458cb35dacb836046930d462b23e82",
+          "candidate": "2b358b337e1f45d7b823dcec6713c378e68ecbbebc762bacf674cab7127cef8d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r1-ami600",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "b14f8c74b3950aaae72f21442e1ce6bc122bf1c6e0f1d179ac266bed44cfbee4",
+          "candidate": "252cdc3b205dd2c423b4cffa602b6c76738206f7d5bbf7140a4de45e8721a149"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r1-en_600s",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "7a1537c7f56bfd506c7219ff732b3f6075bf4e72f564edce6b2d789035131917",
+          "candidate": "eebe3d716450a5c1c2788dca9937cdfef2220813b968fcee2d8f1501b20b1dbc"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r1-policy-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "4c1597a63771ad256cbaa84842ad7799e81f3df8bc934e53a3e8696f7212b708",
+          "candidate": "14fb1f70ebbea1d429cdd0c568cafb7de01dac38dd103cbe72a2d321c0744a7d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r1-gemm-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "1e201879f7f02392e0a0d9fb9770374a9742e65900b6f40f2fdbbe0ca39a4640",
+          "candidate": "4c1597a63771ad256cbaa84842ad7799e81f3df8bc934e53a3e8696f7212b708"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r1-overall-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "1e201879f7f02392e0a0d9fb9770374a9742e65900b6f40f2fdbbe0ca39a4640",
+          "candidate": "14fb1f70ebbea1d429cdd0c568cafb7de01dac38dd103cbe72a2d321c0744a7d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r2-ami600",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1564,
+            "candidate_tokens": 1564
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "f8098ad196fdb00cc25553a23d6a6a3cdfec48a980c9ef57b7c6e2925df0bd2e",
+          "candidate": "ff8b215e3e487aeaaa67764538fdc8929adf22d9e5ed0be0067920c52a6ff623"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r2-en_600s",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "measured",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          },
+          {
+            "phase": "warmup",
+            "requests": 1,
+            "reference_tokens": 1724,
+            "candidate_tokens": 1724
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "f8b2ced38c06de0a0ceac1f01375d5f5f2d67a069955624b6302ed4fd16913d7",
+          "candidate": "810dc8c0d4d4326be2f4de2c128d4574698cefbdce5f225bc90832b1e507133d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r2-policy-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "a7c2b5e009b114083472e249970f349fa2bbee32d9ef04f231709842b5eeff0f",
+          "candidate": "e77123e79d05831d13eb27ad00ea1c41cc364d3206ea7a32628dce5a70eeda4d"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r2-gemm-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "ead7f76122781ce265de0a958d718bacf69af7619160e9a16ff77c89c2dcc178",
+          "candidate": "a7c2b5e009b114083472e249970f349fa2bbee32d9ef04f231709842b5eeff0f"
+        }
+      }
+    },
+    {
+      "label": "scheduler-pair-r2-overall-mixed",
+      "report": {
+        "schema": 1,
+        "passed": true,
+        "equal_output_work": true,
+        "groups": [
+          {
+            "phase": "long",
+            "requests": 2,
+            "reference_tokens": 3163,
+            "candidate_tokens": 3163
+          },
+          {
+            "phase": "short",
+            "requests": 64,
+            "reference_tokens": 2496,
+            "candidate_tokens": 2496
+          },
+          {
+            "phase": "warmup",
+            "requests": 2,
+            "reference_tokens": 78,
+            "candidate_tokens": 78
+          }
+        ],
+        "differences": [],
+        "note": "Pairs request ordinals, waveform SHA, ordered chunk/token fingerprints, text and stopping; duplicate short inputs are intentional.",
+        "input_sha256": {
+          "reference": "ead7f76122781ce265de0a958d718bacf69af7619160e9a16ff77c89c2dcc178",
+          "candidate": "e77123e79d05831d13eb27ad00ea1c41cc364d3206ea7a32628dce5a70eeda4d"
+        }
+      }
+    }
+  ],
+  "passed": true
+}

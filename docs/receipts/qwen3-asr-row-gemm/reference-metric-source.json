@@ -1,0 +1,28 @@
+{
+  "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+  "files": {
+    "v1/engine/__init__.py": "4e59828787634123026a6b424f48c21d691913dd338b59dd13f25fa260f2284b",
+    "v1/engine/async_llm.py": "46b1df9cb7466552e9ebd52f896eecc7e9e81bbf966077171f320366b7fcbbad",
+    "v1/engine/coordinator.py": "b2a9a2f32e84b5ce7b4979b41ab4749deb1fb20f157086a6a9e9185a03ad78d9",
+    "v1/engine/core.py": "f990e260cebf0826d08cfd30955c0c7a85b9af00504841b91759ca5bc7b036f6",
+    "v1/engine/core_client.py": "969832582303057621f5c3ced4561a6bcc2ecc73d4d79b4dd97da0e84cb43e6c",
+    "v1/engine/detokenizer.py": "213d71cf6eefcea061b28b656cf8a08af60c9f3513403e724b16876995f3de93",
+    "v1/engine/exceptions.py": "87b2557fdc63c63d964729b92f2cf01359e956ddf0b37f8185fbf21e389242da",
+    "v1/engine/input_processor.py": "91dde56a548c09613ee9aaef8c43631481d12dc1bd439fddc12c6569f5e2e799",
+    "v1/engine/llm_engine.py": "19d345bfcc05497e0751cc64976d984ecfa25942ba5cc460dc60d7815dc25cb5",
+    "v1/engine/logprobs.py": "14bbe78d92a2c451d79b3d9dd9d5268bc57e16bad5079e44ce9ed2cd805e873e",
+    "v1/engine/output_processor.py": "80a01067f4b3b351239506a3a1754dafdfc83cd162352d95545ba8ebed44c447",
+    "v1/engine/parallel_sampling.py": "bf3f0a3c6640aaf706d1b6f7ec3a8e09a970f3dd9e7e96fa6a901779ea84f61d",
+    "v1/engine/tensor_ipc.py": "954b0b9d37ada6d9d92ddc9a6744eda13dad14cd9f50142aab73cbd0f2297c43",
+    "v1/engine/utils.py": "d09f86b107b3c63b62f40a6590036be5b711778ea997fc5a6af6de94fdd2ccd3",
+    "v1/metrics/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v1/metrics/loggers.py": "d5a91626cf79118f98ae6438c842cb30fc44ca14463c7e2af5871e3da8e51bcf",
+    "v1/metrics/perf.py": "5cfb09830bc50296a6ac3de9f3d8ff4fa5ed038ce91091d0c98bb57b0ecef32d",
+    "v1/metrics/prometheus.py": "a835583311820f2e374a9e42ae229de1195081b288abc40ccc08eb368d6dc228",
+    "v1/metrics/ray_wrappers.py": "fc5b5eeeb5ca480da86b5600682808cd19a4aa011880b7daae3bbe4f3f2ba19d",
+    "v1/metrics/reader.py": "76bc2d10a267e203a768216f95a6048e26e6431edc40722c0e24228b807d524e",
+    "v1/metrics/stats.py": "e8c3cbcfb880e7a2a496a1e499d4e4efccf70ba1eef56f4a1a6ee44cc0bf49bc",
+    "v1/metrics/utils.py": "3146bb1215074a18067fda14df7664e341fffb073aaaaee735cd4f81ed3b1cf2"
+  },
+  "scope": "Owner metric/engine code copied from the actual immutable image; no separate Git-equivalence claim."
+}

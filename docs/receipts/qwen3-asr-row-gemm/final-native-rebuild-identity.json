@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "passed": true,
+  "source_input_commit": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+  "source_clean_at_build": false,
+  "source_note": "Only pending publication receipts and documentation were dirty. Runtime input differences are a test-only import/file and the standalone GEMM benchmark.",
+  "canonical_serving_input": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "native_sha256": "3070578687c397ee37f3e61427679647e98d65dd8479f88df3ffb0df99b2eff5",
+  "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
+  "native_rebuild_log_sha256": "7ac1865dcc4725bdd243a3faf8d3a7e4be8edb6779e1ad936ae1a31d71c9289b",
+  "native_byte_identical_to_gpu_tested": true
+}

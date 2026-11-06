@@ -1,0 +1,361 @@
+{
+  "schema": 1,
+  "traces": [
+    {
+      "artifact": "ncu-final-stable-0-raw.csv",
+      "sha256": "7a9564992eca1b97324c603093fefe3149640c48b78d7ad6e97aff97055844c6",
+      "kernels": [
+        {
+          "name": "enable_if<!T7, void>::type kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 0, 1, 1, 0, 6, 0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 238.368,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 136.511456,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 4249588.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 49.059947,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 32.533356,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-stable-1-raw.csv",
+      "sha256": "4f57792c48fe6c12f14a0552fc1a0993cff8f4747b4338a853a481bc2ad4a46a",
+      "kernels": [
+        {
+          "name": "enable_if<!T7, void>::type kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 0, 1, 1, 0, 6, 0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 126.944,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 68.970528,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 2146815.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 97.02876,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 30.176025,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-stable-2-raw.csv",
+      "sha256": "1c9e5c0a35d2fa1fc4542b74b6003bb5a9e562f2576161d9fd45de0152b878ba",
+      "kernels": [
+        {
+          "name": "enable_if<!T7, void>::type kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 0, 1, 1, 0, 6, 0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 2.386432,
+              "unit": "ms"
+            },
+            "lts__t_bytes.sum": {
+              "value": 407.191392,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 12687196.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 1.055213,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 9.500373,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-stable-3-raw.csv",
+      "sha256": "55d87cd727e06d4e51c6604d7057f875c91c17c943e368b298263b0143584ee2",
+      "kernels": [
+        {
+          "name": "enable_if<!T7, void>::type kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 0, 1, 1, 0, 6, 0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 811.04,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 209.005632,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 6522198.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 22.52505,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 13.276907,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-stable-4-raw.csv",
+      "sha256": "a06367d851ae7f75a09f4820f4a5ac8d0ae9fa5029af9ede5fb27e60ac1cb549",
+      "kernels": [
+        {
+          "name": "enable_if<!T7, void>::type kernel<int, int, __nv_bfloat16, __nv_bfloat16, __nv_bfloat16, float, 0, 1, 1, 0, 6, 0, cublasGemvParamsEx<int, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<const __nv_bfloat16>, cublasGemvTensorStridedBatched<__nv_bfloat16>, float>>(T13)",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 29.7544,
+              "unit": "ms"
+            },
+            "lts__t_bytes.sum": {
+              "value": 5.021583,
+              "unit": "Gbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 156470539.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 0.742885,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 9.42115,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-shared-0-raw.csv",
+      "sha256": "0a55e496779663b8bbd39f1e373c4a3e4fbb30ac19031d79cac343308c8d5269",
+      "kernels": [
+        {
+          "name": "tf_asr_rows_gemm",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 385.312,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 18.921408,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 577308.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 59.965432,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 11.23454,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-shared-1-raw.csv",
+      "sha256": "778fdb92d3bec3668b8e53f6346f7e1de68990b26bddae780840cdc46e607985",
+      "kernels": [
+        {
+          "name": "tf_asr_rows_gemm",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 283.648,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 10.43632,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 318365.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 79.962592,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 7.631138,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-shared-2-raw.csv",
+      "sha256": "6ad143de9d9d93d6985e6c0723dc91a5cfdf812c39cc369cc7e04e4b8b97736e",
+      "kernels": [
+        {
+          "name": "tf_asr_rows_gemm",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 616.512,
+              "unit": "us"
+            },
+            "lts__t_bytes.sum": {
+              "value": 57.11952,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 1748140.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 13.810144,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 21.086417,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-shared-3-raw.csv",
+      "sha256": "1e13813d5f74df9c7a9f914ac8a1402fe7f5493aede32002a2dfc9211512e110",
+      "kernels": [
+        {
+          "name": "tf_asr_rows_gemm",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 1.00768,
+              "unit": "ms"
+            },
+            "lts__t_bytes.sum": {
+              "value": 31.2952,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 939759.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 21.997393,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 6.047011,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "artifact": "ncu-final-shared-4-raw.csv",
+      "sha256": "194e5164bf1bb9b758255d1442e8c4527910448ea34f1e872f80da6d2b89f29e",
+      "kernels": [
+        {
+          "name": "tf_asr_rows_gemm",
+          "counters": {
+            "gpu__time_duration.sum": {
+              "value": 4.591296,
+              "unit": "ms"
+            },
+            "lts__t_bytes.sum": {
+              "value": 786.507264,
+              "unit": "Mbyte"
+            },
+            "lts__t_sectors_op_read.sum": {
+              "value": 24142142.0,
+              "unit": "sector"
+            },
+            "lts__t_sector_hit_rate.pct": {
+              "value": 21.21464,
+              "unit": "%"
+            },
+            "sm__pipe_tensor_cycles_active.avg.pct_of_peak_sustained_elapsed": {
+              "value": 0.0,
+              "unit": "%"
+            },
+            "sm__throughput.avg.pct_of_peak_sustained_elapsed": {
+              "value": 34.943342,
+              "unit": "%"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "These are counter traces of individual operations, separate from timing samples.",
+    "Caches and clocks were uncontrolled; retain each profiler warning in raw evidence.",
+    "L2 request bytes are not measured DRAM bytes or physical memory allocations.",
+    "A nonzero tensor-pipe counter establishes activity, not high tensor-core utilization."
+  ]
+}

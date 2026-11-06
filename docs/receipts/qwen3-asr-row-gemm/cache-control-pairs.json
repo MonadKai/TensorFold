@@ -1,0 +1,253 @@
+{
+  "records": [
+    {
+      "label": "cache-control-r0-b1",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.0226525350237623,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "35e141c574ac78281a6c7c385dc203d7bdf66caf7abeabfd1597071478d52753",
+      "enabled_sha256": "0239b5665b2e1aa528316563f364fd893dbcadaf502bcd9f837e96a7194d6c15"
+    },
+    {
+      "label": "cache-control-r0-b2",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.1446459771116617,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "9a3418b4662402f454a8fa53d75daf4b00948c519c61934b6e08d758d15056b8",
+      "enabled_sha256": "e8c2c435ba5eced9f861d64592f4fa75d67200538a79d09a5bf7fcb8a79511ba"
+    },
+    {
+      "label": "cache-control-r0-b4",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.1671451257812981,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "ddbb88d863ed85aa6f0c8014f8a7466e37c022e9ebb045bd3d926000acabe0f5",
+      "enabled_sha256": "bd8b04fdd9485375f712aa71008b98ec2558f23102b854b3b9f8541d730cba61"
+    },
+    {
+      "label": "cache-control-r0-b8",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.2220932153975808,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "a75fe30fe05bd5ed77f84ebe4013f4c1d15eabf282342799a4111e1db0eb2d2d",
+      "enabled_sha256": "95255bf2cfb6f90ec73d610c7666ea29e9382878d5532a03d78d2e09dd2053b3"
+    },
+    {
+      "label": "cache-control-r1-b1",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.044202655768406,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "c7792325e43ab9cd41e983ea81c320acbb81754dcdb56512fa6cfcd4151b7638",
+      "enabled_sha256": "474ee1791cc5d0da6a55ac4d4af241fbc8dea126478e9fd9bbb2e4263fd180be"
+    },
+    {
+      "label": "cache-control-r1-b2",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.1084232842317978,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "1c342565a3b2bfc7bb5e0104fbd47fc094cfd86657aa87daa0f5b8c65d06f9a6",
+      "enabled_sha256": "8df77d1e023be73d4e22b0261429aa45096134b228218fda7417be61b5ddd971"
+    },
+    {
+      "label": "cache-control-r1-b4",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.1541220677310164,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "3fc5af1d3856db97b24924260ac8f0e1ffe0d72d17ab69d7ce3c38730dce300b",
+      "enabled_sha256": "349324e0d3ef9f3bfbd9909699a286654b905e38813b4e37a4c96802fb476482"
+    },
+    {
+      "label": "cache-control-r1-b8",
+      "schema": 1,
+      "measured_requests": 64,
+      "warmup_requests": 32,
+      "unique_waveforms": 4,
+      "equal_output_work": true,
+      "output_differences": [],
+      "disabled_over_enabled_makespan": 1.2239535659336156,
+      "cache_metrics": {
+        "disabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+        },
+        "enabled": {
+          "vllm:prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6512.0,
+          "vllm:prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 6144.0,
+          "vllm:external_prefix_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:external_prefix_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+          "vllm:mm_cache_queries_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0,
+          "vllm:mm_cache_hits_total{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 64.0
+        }
+      },
+      "limitation": "Joint observed cache configuration; this does not isolate prefix, processor, or encoder cache savings or establish recognition quality.",
+      "disabled_sha256": "adf0ecb9da715cf53b3f1300c447d239dd92d6ead6b8f7f4b9926bfc96821ba4",
+      "enabled_sha256": "df09b121e4acb606b2b2cbb0cf91e937a9e05e9b34d9275c5d50a3e334350345"
+    }
+  ],
+  "complete": true
+}

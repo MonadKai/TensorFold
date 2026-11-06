@@ -1,0 +1,75 @@
+{
+  "scope": "Isolated quality-job aggregate engine counters, not per-parent/chunk API fields.",
+  "baseline_utc": 1793940928.9043558,
+  "completed_parent_requests": 256,
+  "expected_engine_requests": 261,
+  "completion_observations": 261.0,
+  "idle_and_stable": true,
+  "all_observed_finished_reason_stop": true,
+  "snapshots": [
+    {
+      "utc": 1793940991.0043766,
+      "before_series": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "after_series": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 261.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "finished_request_deltas": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 261.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "observations": 261.0,
+      "idle_gauges": {
+        "vllm:num_requests_running{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:num_requests_waiting{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "idle": true,
+      "negative_deltas": {},
+      "unexpected_finished_reasons": {}
+    },
+    {
+      "utc": 1793941002.0120907,
+      "before_series": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "after_series": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 261.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "finished_request_deltas": {
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"stop\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 261.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"length\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"abort\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"error\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:request_success_total{engine=\"0\",finished_reason=\"repetition\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "observations": 261.0,
+      "idle_gauges": {
+        "vllm:num_requests_running{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0,
+        "vllm:num_requests_waiting{engine=\"0\",model_name=\"Qwen/Qwen3-ASR-1.7B\"}": 0.0
+      },
+      "idle": true,
+      "negative_deltas": {},
+      "unexpected_finished_reasons": {}
+    }
+  ]
+}

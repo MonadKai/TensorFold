@@ -1,0 +1,1104 @@
+{
+  "schema": 1,
+  "passed": true,
+  "runs": [
+    {
+      "label": "asr-stable-b1-warmup",
+      "raw_sha256": "2dbdd80e49c7b0923a987e814d07b501ea38313c8953373d756f7b6398c318d2",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-stable-b2-warmup",
+      "raw_sha256": "8a460440d0bc4015839a60354234dd814c558c778afef3c9d576de88c8a0cae9",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-stable-b4-warmup",
+      "raw_sha256": "dd595fc8967e16938b14d3ddd586636276e24ed6b080473aebbc2de8a41f9eed",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-stable-b8-warmup",
+      "raw_sha256": "d831c634a926e2b07708f393bc03a5073eb4fe4b23e488d5878e2e17965cd918",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-throughput-b1-warmup",
+      "raw_sha256": "400fb931aa0035a6402a9d599d2c11194fcb55d2321d8122f4d5a1e4e9a02997",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-throughput-b2-warmup",
+      "raw_sha256": "038964039a4de82d23c2848f6b01175bfe87cc59c151e725c2db54ba3a85d04c",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-throughput-b4-warmup",
+      "raw_sha256": "1e1d3194314a59a08600497ed846161781cfc8e996e453856e98aa792bf6ddf2",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "asr-throughput-b8-warmup",
+      "raw_sha256": "fdc5b00cd71b58c2e1958c28a0865de80542f388ce1be82b7cef9346903c96d7",
+      "tokens_cap": 32,
+      "requests": 8,
+      "passed": true,
+      "records": [
+        {
+          "status": 200,
+          "waveform_sha256": "8a4076f728bbb91113a7dde234f95aed7ee8f09c9c9dd71cd4fb30e31c2ea34b",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>更致命的是，中小房企在融资方面的短板。",
+            "token_sha256": [
+              "dc3d9e9a2c9542675f660c63587e3ad8aaa87a10ae9f24c28f90def7ea1f43a8"
+            ],
+            "completion_tokens": [
+              15
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f30a7e52dc861bfce4c7b78b3bc5867680028033ba3726376f3588af7c726617",
+          "fingerprint": {
+            "text": "language English<asr_text>To do so is to lose God altogether, because God becomes intolerable when we seek to measure and to comprehend His infinite majesty.",
+            "token_sha256": [
+              "d1d3e3c14b8b09103cac9fa207a3473ce01d7826b962d555e3b1c77490cff6c3"
+            ],
+            "completion_tokens": [
+              31
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "6ad48efe4f3ff9768d383c434644d2e107224dde9ac715d92283be1c15076aa2",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>将在本届美国电影学会影展中进行秘密放映。",
+            "token_sha256": [
+              "62f363ec64808115db1ae9a4371721cb7fc9df377624da734c91ddd2e97a7060"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f7f2500238b9de5656e42ed50516e9b58e7ca48169c858dd51afcdd1ec7b056f",
+          "fingerprint": {
+            "text": "language English<asr_text>Paul, an apostle, not of men, etc.",
+            "token_sha256": [
+              "7a52e176c042c115ad2ded30dafbb475e30cbb5393744b739188dcc13f812e04"
+            ],
+            "completion_tokens": [
+              16
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "f3687c0065177e36f56613f948fc2d6d29353b8f55228d7b4bd3aa8cb56c46ac",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>没有该认证的产品属于违法产品。",
+            "token_sha256": [
+              "6297c482fb143ed900022dd97f2b2ca25d4970b7d3f156cf86ede2229fa77ef1"
+            ],
+            "completion_tokens": [
+              12
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "ec563860444667b1412d37a68d9df3f6165f22a525ebfe2f7cf9b0814d0df436",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>港媒：东莞工地连续两次坍塌，路面似被吸入地底。",
+            "token_sha256": [
+              "4769953e3b8cf8833fb10b762e21e5bc2a59517749492945aa64ecdca9cf9cc0"
+            ],
+            "completion_tokens": [
+              21
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "5b569a4b749fb700ff7fc862e33c47d61e7ac7bafc8148b7833156934463afcc",
+          "fingerprint": {
+            "text": "language Chinese<asr_text>这也是他在本届世界杯上第二次获得全场最佳。",
+            "token_sha256": [
+              "c7c30d0840352068cd1a7d1861ec60cacfd80e08658eb000a8ab6b1141b9bbb4"
+            ],
+            "completion_tokens": [
+              14
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        },
+        {
+          "status": 200,
+          "waveform_sha256": "54f0102fc5fbbeb7ed36cd6ca12ed7f8453908ee29451b7839b9ea37c7d267a3",
+          "fingerprint": {
+            "text": "language English<asr_text>He knew it would take them to the house of the crooked magician, whom he had never seen, but who was their nearest neighbor.",
+            "token_sha256": [
+              "d4c1f8273088d6ab8941725189df0dfee64fd21bfc3344eee49d24cf5d079f8a"
+            ],
+            "completion_tokens": [
+              32
+            ],
+            "finish_reason": [
+              "stop"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "requests": 64,
+  "note": "Serial 32-token preload diagnostics for instrumented ranges; length stopping is allowed. Formal unprofiled cells separately retain all 32 warmup requests at their actual concurrency."
+}

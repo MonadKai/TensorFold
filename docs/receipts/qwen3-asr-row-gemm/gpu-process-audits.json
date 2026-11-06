@@ -1,0 +1,2566 @@
+{
+  "schema": 1,
+  "cells": [
+    {
+      "label": "perf-native-background-after-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "635d617b380a6e75dbeef5cfdcf5c7b61ca38ebc9eeaa88f9b79ac154a3774cf",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:21:28.759265+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:22:50.223509+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-after-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "be075a286636fc99663a541b39e1eec5e7c5d4c4b3bb7a67e5bc5756cbd1677f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:21:10.096779+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:21:28.735952+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-after-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "879d5c2dc192faf9b23ea20c3cb5f7e044f3a5d90e9d219ff40275c26cffb206",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:23:03.131367+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:23:52.932447+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-after-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "05af387ca926ea2f525971f83226b549e5b6f0a025c17d5d03280a43a15b7879",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:22:50.249398+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:23:03.110768+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-before-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "a92c797bdffa1d79d300556c74bd07aa2f092d63fbd1222b00e4f2193b664d7c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:59:12.341391+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:00:34.416050+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-before-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "51761bb00f8c4aef29be264a76053a8c54f2bc50a4c81b05f82ec8df34318c78",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:58:53.566189+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:59:12.314709+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-before-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "e22c31279f75addda95b80f404baa54324684718aa8518ab10a02cf6155acc2d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:00:47.454923+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:01:37.741480+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-background-before-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "1b91231571861229ed50dfaccfc1d71f9a25d5ae028d09f866203f3b64c024b9",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:00:34.443129+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:00:47.431843+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r0-b1-gpu-audit",
+      "raw_sha256": "9b3d995d63cd8fe2c69f65e1a7f6342226bf3f32ad58470ab93876af464f3507",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:01:11.634704+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:01:58.853660+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r0-b2-gpu-audit",
+      "raw_sha256": "ce21d7e60b8843870fcd57d36d42f40967d4b4cac8081b6b5b1720ea457db873",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:01:58.933694+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:02:24.732163+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r0-b4-gpu-audit",
+      "raw_sha256": "84df914e073a3a79e504d7b8bf3c4866c616b8510feb8be3bcf1aa4fb2261672",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:02:24.810985+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:02:40.591461+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r0-b8-gpu-audit",
+      "raw_sha256": "614294b30c3596220465b2db958668da0fb981a17638985a7b6a379bf10b5b04",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:02:40.660414+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:02:51.513595+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r0-b8-sustained-gpu-audit",
+      "raw_sha256": "33de4b5bf0e138c829ef978ec12b44298ad235d2baa6ba1ae5c0b7277342d7f1",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:02:51.578990+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:04:56.413786+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r1-b1-gpu-audit",
+      "raw_sha256": "4025ce325c8f3ddaa680e7878b8e67d1ffe72764d7c67d8c12829297372540b2",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:04:56.512478+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:05:43.001232+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r1-b2-gpu-audit",
+      "raw_sha256": "2ba2accbd2de4efe8a50cb04324bc3f4d58fb7089e4963e60937987f57f504d5",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:05:43.080955+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:06:08.820352+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r1-b4-gpu-audit",
+      "raw_sha256": "4ac9342118c7c97ada76539429b33be1f8f448823ff2268cc57b68c83df5d267",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:06:08.880932+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:06:24.671237+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r1-b8-gpu-audit",
+      "raw_sha256": "4213a335b7e78f48db0443760c9624476b859e8c23357d3232ba8cf6ee440402",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:06:24.748945+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:06:35.531411+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-enabled-r1-b8-sustained-gpu-audit",
+      "raw_sha256": "80a62c4547b0e132a419fe6b0585d9faac7117a042693515b5d4abeb4c95e7ca",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:06:35.595340+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:08:40.038114+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r0-b1-gpu-audit",
+      "raw_sha256": "7e5c4417b161e45c1506296ac925e58dea2892748f5351b3456eedd3b0ed41d0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:08:44.094878+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:09:30.921601+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r0-b2-gpu-audit",
+      "raw_sha256": "3d95c6ca573684dd48dddcef34e1baf176a57c8aa60147fd3ec7881f89d51c41",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:09:30.988934+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:09:56.550468+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r0-b4-gpu-audit",
+      "raw_sha256": "cecda55ddcb01122c5fda140a809a665ae759839c1eb95096e8895778aac2287",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:09:56.618652+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:10:12.410021+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r0-b8-gpu-audit",
+      "raw_sha256": "f5e2a408c5ac9d1d87d47cb01752555da4bde17d4ef58834da270a8dbd97040b",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:10:12.479673+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:10:23.271653+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r0-b8-sustained-gpu-audit",
+      "raw_sha256": "6f68cba2a5b298edb69de97b887ce4476ba2d976930543ef539a7d4b865ed23d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:10:23.351650+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:12:27.965878+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r1-b1-gpu-audit",
+      "raw_sha256": "99c73d05da77ed011559abae27910206241ce7c902b8f6f50405822d9c8ce99c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:12:28.057375+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:13:14.382604+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r1-b2-gpu-audit",
+      "raw_sha256": "a31a39b2adc1c193c40160e76625761ae89420f789c5151d043a153e89660564",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:13:14.449331+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:13:39.850819+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r1-b4-gpu-audit",
+      "raw_sha256": "c80f4ed5a30a9f744ec84a66f29a6f207ef7b240f28734f9db745d29d8af2af3",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:13:39.917396+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:13:55.717653+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r1-b8-gpu-audit",
+      "raw_sha256": "2a9e468db7b8a08f5693ac3dbe44b4c333a759ec6f96c3cf3a396e79ec2b6be7",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:13:55.785893+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:14:06.519810+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-r1-b8-sustained-gpu-audit",
+      "raw_sha256": "352b11ead758323c7430a148d99ca870ecb499cf7ae6b69054c7369cc99c1e24",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:14:06.583581+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:16:10.914804+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r0-b1-gpu-audit",
+      "raw_sha256": "6f032c1892832e60d33d4aa290b488bc06be7de43dc91cebc51b13c2729df66f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:16:14.985962+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:17:01.211255+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r0-b2-gpu-audit",
+      "raw_sha256": "166d5264b2ce41d02d2dc1b59d3d37af950662ec03bf2b408e3e8d2718cfe6f7",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:17:01.288178+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:17:43.072444+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r0-b4-gpu-audit",
+      "raw_sha256": "887cb8db092f2b5bcc8d70ce8dcfbbd3d907e7516f56d52bd69711a5e4f56d0a",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:17:43.150904+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:18:23.765266+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r0-b8-gpu-audit",
+      "raw_sha256": "dacbfaafc344ec7e803f92c0764481fcb5ff8f26518f401d4ff3b79f03ed4c4d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:18:23.831011+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:19:04.082519+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r0-b8-sustained-gpu-audit",
+      "raw_sha256": "f17ccfb69136c4d4fbb89de0844addeee9b8c64678c36bb3e87e84b5e84ab869",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:19:04.146039+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:21:20.395877+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r1-b1-gpu-audit",
+      "raw_sha256": "336b1b569eb6da564185c04c1e1a385fa4c613f3cb86a3f24c0c6b4a5752e47f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:21:20.477858+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:22:06.371659+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r1-b2-gpu-audit",
+      "raw_sha256": "1fe410c4087e1bded98d17469776b15e4b7dbfe67c5cf1ff0c04bd6e38108c5a",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:22:06.450946+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:22:48.204129+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r1-b4-gpu-audit",
+      "raw_sha256": "ced8853876a4792bf8d6daec44a491ddaf1836092a2ab04c493813525e1a57a5",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:22:48.266755+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:23:28.877209+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r1-b8-gpu-audit",
+      "raw_sha256": "1a29ee2b33953d247236fecf979295cefc8e095b8c3f74f97ed2d1227e4c22fc",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:23:28.943771+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:24:09.169657+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-production-stable-r1-b8-sustained-gpu-audit",
+      "raw_sha256": "5e60a2b7c8a13b672bec67fdc3b6099edcae0638312771455cccca16f16deb4f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:24:09.236084+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:26:25.694183+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "155768322dd6d7360f02a7dd3d9925997f873c24f8fbbc8a03184d7285d555b8",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:00:20.818720+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:05:06.507800+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b1-natural-gpu-audit",
+      "raw_sha256": "1d2d83c3d75a15d7d5562e5c282a044753b427ebfa5c7d26355725eabfeb677e",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:59:29.212329+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:00:20.752309+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "de9be0f150b91a193d36bcfeb7cf55697b8b35d5150c6d85f1d1fc61cd0e982f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:05:54.042121+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:10:21.161133+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b2-natural-gpu-audit",
+      "raw_sha256": "4d40caf71a1f79153580aae934d6e1b679c5cb76b383c61a676f90d686a0fb31",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:05:06.586411+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:05:53.978262+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "c55664146e6cbb2cc3edd76854f245703a86be64e010747572071d26ffc88bdb",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:43:41.965290+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:47:57.977383+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "6cdcc570d526dde97aa4451d2380ed00b1dae4a67fe6007ebfe4c08c3f04df1c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:38:38.915917+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:42:56.454793+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "27a7dbdcbe92cd8baeed20b397e019633e35a42525bb6580e5fe6d4b2cb1bfdc",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:42:56.525841+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:43:41.888311+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "e1831606dabb820bdd7c4650a438c11d72e4dbbd50d4f7775a221b113530bc0a",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:36:19.816900+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:38:38.817399+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "7e727477fb35d7d3e35094c71d90b1ed8c2b49814cdb5752ed12674449c6e1b4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:55:14.811693+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:59:29.144983+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "7ddea251e251002ef82f8a2ab9ffe40c91e5923356851c8f88ba3b8f4aac1837",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:50:16.174011+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:54:29.782102+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "1b11a2d752093bb56a0956f4c60aad1c47c0a302f4e0cb19f5143377cd46ec4d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:54:29.851299+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:55:14.730903+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r0-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "18479296628f7f663bcd5c8a635ef0eae5698cfe18d87c80bf9af1171241e176",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-05T23:47:58.053831+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-05T23:50:16.095509+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "f1f64d926c698ac449cea66d11a77ea3d4f1e2c061cd506f76ffd3beedc4d07c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:55:01.588095+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:59:42.822096+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b1-natural-gpu-audit",
+      "raw_sha256": "1a0bf496d66de36f72288ccfc867a4a4f5621a4f6708ce69c01267060f49e027",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:54:09.192612+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:55:01.519342+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "b1ab99dc95442522ca3b5a25d3d5c10a1ffe7bb3f79afdedf6231550cf5a033c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:00:30.602848+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:04:56.192843+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b2-natural-gpu-audit",
+      "raw_sha256": "db478cf94334eafc0291b13ad2ba16c8eb69de03eb68318f9288450298253f6b",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:59:42.891907+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:00:30.523013+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "a9738fee86dd2b6111210bf3d297070a67afa9da1553acfb921f90e425eb3dba",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:38:09.981992+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:42:27.609345+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "1afe1446876120dcf49150b59d0d66a8290c6e9c51f923883ec4229f91371ac4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:33:01.792841+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:37:24.183532+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "af2b888feff06061e366e425b4e49b609f957dd6c7b10a7606c88b9e129dd099",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:37:24.260723+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:38:09.896841+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "6a7586d67f107a27136f2c4591b62f6447bef6dd5b342d852fea35f8f64caf9c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:30:43.925065+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:33:01.683525+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "0dfedde7d9341a99532e13c2471d6a198ed0d0661b048b709f8fadea51b61626",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:49:50.889510+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:54:09.111334+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "406e2ba50a7a9f1d5778c786584026728cb97139b7a40ec84d25a845f2597cde",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:44:46.856820+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:49:05.065624+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "aa9e2cb9b6c826fecfb0427ead092cced0e85614c4601c9bd2281101fffdb4e0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:49:05.141337+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:49:50.807554+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r1-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "9fca251bc73dcefb35eb67eb89f5104fd42c43092d8fa8df7b96dc24b666ad00",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:42:27.689910+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:44:46.779779+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "c5efc45c7f289ff166a1d3eb639bc134d529591872abe4203c6b7a0f56f78589",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:32:54.951374+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:37:17.626098+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "f71424ad8dad7b82fc60d73efff588778e1d332d452a688c906b37a7492c4ba1",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:27:43.728700+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:32:08.158136+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "94299bd517da7362f6289231ea74162b51ab5b2d83627e81f5f4ac3e5a078f35",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:32:08.243963+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:32:54.871758+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "9b5e2522d45d1040d9a681ff82e70f37212c4b1a0dbf2e172e277c13f7c8ba38",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:25:25.604553+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:27:43.656423+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "ce68f585416cc18a502fbb058806bf098082a32aa7a68a4fd713de3941b6194a",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:44:48.644734+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:49:12.594822+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "ec76291db034fec7e74a5406d76ca1b3232c2e234ba69e1fe6aafabbb0092647",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:39:36.700317+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:44:02.217002+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "49b7069b14e99ef25ea9622c534182147323a18076c1050520026359ae880e53",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:44:02.300641+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:44:48.571598+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-stable-r2-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "bd833672d29170f9afb55acb00ca0713ccab4a33f2ff122ca5735b684a3f2906",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:37:17.707255+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:39:36.622804+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "856f5695d8d7ff06f65ff83588af21e4322ede3f030e2d2933eb808968d0f721",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:23:01.747509+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:27:43.534204+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b1-natural-gpu-audit",
+      "raw_sha256": "2ae95c65c6cc9068f2f81efe881a5063324cccf4ba5b886153d0b40c02ded1d4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:22:09.778329+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:23:01.680994+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "640b49dad06ba9b963935243367ee1239b0c2099f807ddba386e968cffa80130",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:28:12.707311+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:30:39.836002+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b2-natural-gpu-audit",
+      "raw_sha256": "0799c50250ecdc6eed8987ed2cbc37c1232bea78298e1d21bdbe0b1a5f31b1f5",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:27:43.605503+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:28:12.640714+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "6e0f3f837efb58867385c3efbf8467ada1ac79724418d4280945773a5ea40e0b",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:15:20.375503+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:16:41.525185+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "f8d660a2198a034af591dda8e051d75285ee8eac28bcc5fa33f166b044e43b39",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:12:32.863306+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:15:02.181546+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "b2abf557825a702cf8e21a3c3a3f71577df971061943973c34a75d43303e0386",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:15:02.254149+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:15:20.296226+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "446e066b96127d01861d3c0bdcc0ae0d63fb517832473d1fba5949cb38ec9a07",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:10:25.262803+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:12:32.761909+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "a09a083762e1716cfba90f64507a3f849b3f17bfe0b58f6ce14d89fd51e85829",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:21:20.405247+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:22:09.697039+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "f17bced63fe80a3043d2a4f204bbd88db04d7f7e47609c50e89a955ea6254568",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:18:47.716387+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:21:07.447557+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "56fded12c3dea851afc0d8b81a10350dd5d1ea0e8f82b657b14988ed84d342d6",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:21:07.538954+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:21:20.336793+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "50b1fa2d694c5d2552a4afbaf6887529def5aa99ed9fa72c78cd980f3904a7eb",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T00:16:41.591739+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T00:18:47.627950+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "32c39dacbc9ad2e2452387e2606b72e5a9347fed693a533f36586dc4b755b45c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:17:36.757027+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:22:21.895111+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b1-natural-gpu-audit",
+      "raw_sha256": "c1e50642307e7834695c35f84f9bfea8f7a001c2bdef50dfeb2f4b6ded6779e3",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:16:44.407324+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:17:36.677455+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "083b71f0592ddfe5dfe6e75b89c8594d70fa352d662d67c6c7fc4eca60965700",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:22:51.879005+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:25:21.501570+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b2-natural-gpu-audit",
+      "raw_sha256": "406d106c9ddab045135b41cd4f5a0ad42342ac0e6e5ff25745d36497036f81b2",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:22:21.963917+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:22:51.793267+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "1c71f82af27b6538d485f26075383a0a685cc0d3195222528617c0b09a39ac2b",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:09:55.224773+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:11:17.759018+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "a5792556ba04ef34919ebbd04f501c168afd182a89ed78de258da1b8a8023670",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:07:08.117966+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:09:36.626141+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "d14ca6e15471da80fbaf2f4a8f12e8347eb1fa47cd867575f954a1d9552a73dd",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:09:36.716081+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:09:55.143786+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "611a4d9f7cf22daa57550e7864df1789db5512ee702183d7f83a458600dab9f8",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:05:00.292803+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:07:08.027855+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "a395f91e4c21c57d2286d3038320c1c1285e0da4dd56071ca1f03ca571123c13",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:15:54.527752+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:16:44.328158+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "97a0e6ca798a24a318e5acda3a814074b49d1f8c80afce4aac0d80714ea9de42",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:13:24.117758+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:15:41.501740+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "150dd38f6f9933a87b71f9783efa696c4252b4847b6f142378f6388e947ed22c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:15:41.590012+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:15:54.459205+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "243a2a14aa7203c6c937b099d11c9f7ccdb522c016cf2ad65b98f7a6757dace0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:11:17.828004+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:13:23.998844+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "c4131cd45ed6fdc1f1d7af8005bd62cda97bd28c61be61721fb504ebed2f7ae7",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:54:15.446552+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:55:37.696757+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "05b5b8ca7f1389540cc270a85cb565e44f68dbeb9ab329a4078f986a84081901",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:51:24.919817+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:53:56.668022+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-natural-fixed64-gpu-audit",
+      "raw_sha256": "23ae72ad156950eeaca4127c3fb6ff3f1e1795fa3513037fe9b30a1f19a0d7f6",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:53:56.773248+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:54:15.362715+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "5c70212846051cfde9a9d97fb1972b4d71b5feeaad28206c263230c8f0b9dbe7",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:49:17.207823+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:51:24.828647+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "7df1f8fa3d55a2b3b37ab3fc74586aa95ce85028e1073792ec11110ad0dc9aeb",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:00:16.954568+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:01:07.544254+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-equal_tokens-sustained-gpu-audit",
+      "raw_sha256": "3beb7d3f5c1519059a559127a3e741f525160e30e0bf3566a6c133cdf495531e",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:57:43.627645+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:00:03.650867+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-natural-fixed64-gpu-audit",
+      "raw_sha256": "8ffc4792c8aebca7ebb5c9d3d6e1e485b904416be393b3544675433471d53077",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T02:00:03.735979+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T02:00:16.870038+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "66a258e2d3736a44a07c5fdbf54ed0270b2f6ea75b433260f3c245d49154b4ea",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T01:55:37.785324+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T01:57:43.520731+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-ami600-gpu-audit",
+      "raw_sha256": "2ac395134c196558c4e29edea53806e4d5b56b1761b9a50557a8c24836ae5f2d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:03:34.471497+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:04:21.597157+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-en_600s-gpu-audit",
+      "raw_sha256": "d2f9183daf7e1ed0230ef0ea2215bb371452053c8146b45eab46e74e092a19b4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:04:21.619007+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:04:39.024835+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "1ab3cd8bfbf1e6f15c630810925a18ba5e84f0fe0a07cb49d8c7b3fa1776afb0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:05:46.042254+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:10:31.845652+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b1-gpu-audit",
+      "raw_sha256": "dabb23c0d61f730188d12f43acab9222c0ce058926717db66e4b42033406ea51",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:04:44.284661+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:05:40.775971+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "f5186f583755faacc988d7f4e570b1003abca610adf47aae0d80346dbd48ad05",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:11:11.922349+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:13:11.468878+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b2-gpu-audit",
+      "raw_sha256": "f3c9994feab9082593afb4c7444f51c50a4e21c563947524bef3334694e63590",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:10:37.106142+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:11:06.656332+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "aed63587ebafcc81cf946bdb4ca223207ecefc62400816db1e11838c81c1e3a8",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:20:59.989191+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:22:04.390185+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-equal-sustained-gpu-audit",
+      "raw_sha256": "84ebeb1c855997e03879d22aba08f73d64132264986228e7dfe05d333ad2f806",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:18:26.835275+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:20:54.731971+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-gpu-audit",
+      "raw_sha256": "f58affeaf2e4b8e799e26e80343faa3666b75ef73e433f98ccb1ecdb7e53427c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:13:16.729390+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:13:35.476441+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "e67a01ac5f2df212c62941128ef5f0b28e96e60a7b6c88c5ed206a51baecc91d",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:16:08.597749+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:18:21.539668+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "a5f3152076bd1f50b87d4670d6f5d8c7b89db02e410cd56bb0f0855f2a84f3df",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:26:46.581715+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:27:22.778271+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-equal-sustained-gpu-audit",
+      "raw_sha256": "13ddcb786a254ef966aba033ff40914bc4e0b2bbc4af696b47013315ff748589",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:24:24.334203+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:26:41.319253+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-gpu-audit",
+      "raw_sha256": "b024b3829d290a1bdf718cdd36e2eb46a3ad9e6c88187568b896345884fe5300",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:13:40.733718+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:13:54.542587+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r0-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "64cad6ee4d4105f4205eba394da4e84edc9beae62cedeaf80d95e8154a97bcea",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:22:09.653781+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:24:19.018487+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b1-equal-fixed64-gpu-audit",
+      "raw_sha256": "83da9546b4555de3e1f0d004a8c026fa7c15f8c5a8af2f87c8dc8cad6fc52957",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:45:47.288432+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:50:33.280034+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b1-gpu-audit",
+      "raw_sha256": "9891117d2ddbf55895b32e4cac78a623bea937c8266f7c0e6868a91547841859",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:44:09.835112+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:45:42.016650+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b2-equal-fixed64-gpu-audit",
+      "raw_sha256": "f512218e8730ce8604e65218682c0982d5a64bcbf055d2fc181e81e5beaa9e17",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:51:13.392894+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:53:13.898098+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b2-gpu-audit",
+      "raw_sha256": "f80cbb75e6cb07e63e3a2351001c26e75d6929932bfc15a1fe8e7e7bb35878c5",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:50:38.543690+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:51:08.132645+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-equal-fixed64-gpu-audit",
+      "raw_sha256": "3297e9289381590bc5018b11e879488714d80e7c72e5bd66c0284cb25b9d7051",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:01:00.369793+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:02:04.707892+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-equal-sustained-gpu-audit",
+      "raw_sha256": "5e8ded5423ecd601c6d00478f38490808a137587b45f67b31ceb9b7514fd3949",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:58:28.964574+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:00:55.076412+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-gpu-audit",
+      "raw_sha256": "d69666d41c316fd84978804aff5567e4606d7f7143f2fee8a8d626cce8b76ea3",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:53:19.164226+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:53:38.107054+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b4-natural-sustained-gpu-audit",
+      "raw_sha256": "f0939f423cf5a50a7abc600bdbc52f67e5957ec0969dafcd2dcb88f037d2fae1",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:56:11.600762+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:58:23.653870+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-equal-fixed64-gpu-audit",
+      "raw_sha256": "e9fc468e9638e3196b0e70f7281fba9b61d31d1b0aa153798d297da67a52ab0f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:06:47.472268+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:07:23.279770+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-equal-sustained-gpu-audit",
+      "raw_sha256": "6968cdb9e47fd5fc42782b170a18bf81a603608eb55b0199c505425f400bdc15",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:04:24.787186+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:06:42.205147+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-gpu-audit",
+      "raw_sha256": "5d788c7ec05d93d17a4023e029d66b3fd447d14d0eb0d105ace5305d8eeb1b73",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:53:43.375062+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:53:57.225196+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-r1-b8-natural-sustained-gpu-audit",
+      "raw_sha256": "2f604de54684ad5d1f2dbb609793d154ee8910cd9a546dce7e22d47d3066ef10",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:02:09.972047+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:04:19.442455+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b1-gpu-audit",
+      "raw_sha256": "073604c59c1e6f0fc067e76f3525e95441f941169392b3fd00db180302a332c4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:13:59.796441+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:14:50.576090+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b2-gpu-audit",
+      "raw_sha256": "639274f54a9e81b1ae87322610434485fd5feee2936b73c272515547b64c6bd0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:14:55.825454+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:15:23.099342+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b4-gpu-audit",
+      "raw_sha256": "a0ef2456a48d00784a2f402481ac3412ce6df5ff54ee53a4ca65811da87b86b5",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:15:28.373170+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:15:45.689081+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r0-b8-gpu-audit",
+      "raw_sha256": "4559bf0234cb0267b36d28d6e0abb3092666f23944802ff65f5146b3b53093a1",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:15:50.963664+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:16:03.316318+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b1-gpu-audit",
+      "raw_sha256": "1c4364a6078c77685e5bb5029e6d03570208fd692b5e19db4e4cdf4bbff72204",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:54:02.499797+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:54:54.344672+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b2-gpu-audit",
+      "raw_sha256": "30e49b842ce3c317cf3919561bf05ec9b9e0dfc181d97af1b2b0e97279e16457",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:54:59.601104+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:55:26.373016+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b4-gpu-audit",
+      "raw_sha256": "22331a22b3a9f456a42ee58894a79d8070b95c493cd554b3ceb9413f2c9369ab",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:55:31.621445+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:55:48.772741+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-disabled-repeat-r1-b8-gpu-audit",
+      "raw_sha256": "9c34d9fbb0771efc7a8f55415e0c8b84bdcb1c51329d89d60e726ff214a7d4db",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:55:54.025760+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:56:06.335562+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-ami600-gpu-audit",
+      "raw_sha256": "f73c21bb8b84be3ce8ebade9e40a713784c2fcd35d01b79d0857eb7866ab2ea1",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:29:18.938067+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:30:07.047355+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-en_600s-gpu-audit",
+      "raw_sha256": "314096b44f3112f2e183750ae53e930582e760ded1ecbc4768241127e2711f29",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:30:07.067336+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:30:24.123087+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r0-b1-gpu-audit",
+      "raw_sha256": "84ac4f924f9923327b0339e5f6a53d5d7c35a161060a14906ea63a64508ffa6c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:30:29.385742+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:31:19.137067+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r0-b2-gpu-audit",
+      "raw_sha256": "ce0de8f389fbad8087496bc270337df94b127baa5ca66ef3b707e0ffd981dbb8",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:31:24.421349+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:31:49.030263+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r0-b4-gpu-audit",
+      "raw_sha256": "94fa987f72fa053e25c99815baecf68afae5c493596366c48e6d915017cccfd8",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:31:54.291087+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:32:09.952021+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r0-b8-gpu-audit",
+      "raw_sha256": "fdb5c532171230d9822ef6cd5127dcf2b5449ff7b41638351e6d761bc43a551f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:32:15.211471+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:32:26.292727+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r0-b8-sustained-gpu-audit",
+      "raw_sha256": "202022af72a9ad97d1b91e7723a35cecd80aa7a1febd43a9146030643ed79976",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:32:31.566223+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:34:39.712419+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r1-b1-gpu-audit",
+      "raw_sha256": "090da97089b810876556fc65e6b59ed3f714deac26d275ac0c224842e788d731",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:09:25.634311+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:10:48.197493+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r1-b2-gpu-audit",
+      "raw_sha256": "054ecf127881a966ca63e443e2dfcf84f5e1c666dd6f600c36818d32d7c3d07f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:10:53.447480+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:11:17.892867+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r1-b4-gpu-audit",
+      "raw_sha256": "d744a395011ac7e1b65965a84d3d02e8bb1963e3619a5b4b43689908756204f0",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:11:23.135985+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:11:38.756143+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r1-b8-gpu-audit",
+      "raw_sha256": "a9cca6e71eb66e2f6a913f3efc673e3256f6f041294165f373d4d2e288d52227",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:11:44.015752+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:11:55.149965+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-enabled-r1-b8-sustained-gpu-audit",
+      "raw_sha256": "d42e583ce8c078ea3cd95cf16c0fa1c30b9d45030a524a5bbac16e2c212daa25",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:12:00.409580+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:14:08.627950+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-ami600-gpu-audit",
+      "raw_sha256": "c73d6f505d068c10c1e1b19bac03e71cc2d5379cd52009223efa2bc7ccc55a8b",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:37:24.477968+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:37:40.076681+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-en_600s-gpu-audit",
+      "raw_sha256": "294ba113e4e5ec9e5346a287c77264e6abe7c7ccb4ca029939996a697a1a4470",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:37:40.097728+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:37:56.276048+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r0-b1-gpu-audit",
+      "raw_sha256": "acf3e68c93ad783fa0bbf8b3da69f496f7d003e02b804dadf148a6a1183bf92f",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:38:01.548823+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:38:48.949274+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r0-b2-gpu-audit",
+      "raw_sha256": "20b590ac2f4a15f9004fbbb3ac0cd63fb780d75100ad737d1f515ee37bbc0cd4",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:38:54.225804+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:39:17.893504+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r0-b4-gpu-audit",
+      "raw_sha256": "59b68c894aec9e248fa28fb8f48f38735243852588a195a649490cbd1ca7b165",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:39:23.171629+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:39:38.190110+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r0-b8-gpu-audit",
+      "raw_sha256": "735ee74259939818feaad56c3a2eb032714775c1331a2b44a1b035c21738ec5e",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:39:43.456697+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:39:54.156796+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r0-b8-sustained-gpu-audit",
+      "raw_sha256": "6a68fb52a854932efc66ee9d1a3f96180eea653852ea68cadf85490ec594ae30",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T03:39:59.401969+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T03:42:07.334393+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r1-b1-gpu-audit",
+      "raw_sha256": "38e0f494198a4599971187a0507e3298d98831b689b0104aad0540568c23ee89",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:16:58.196370+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:17:46.487459+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r1-b2-gpu-audit",
+      "raw_sha256": "344bb8750192fd48676844fa79a7ddc6678bd792d1ec387fad69dc8938a1a702",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:17:51.755335+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:18:15.426727+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r1-b4-gpu-audit",
+      "raw_sha256": "0139cf12df2e113576173355ec9093e33caaa3aaafb89c5c7232d6b6fad9a93c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:18:20.706889+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:18:35.658342+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r1-b8-gpu-audit",
+      "raw_sha256": "a7d2743e6507f554863c4475ad21605b5deb0a6110faff1e52a2a5e68dff6d8c",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:18:40.904300+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:18:51.629449+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    },
+    {
+      "label": "perf-reference-production-r1-b8-sustained-gpu-audit",
+      "raw_sha256": "ff708be66360b3ba7cc5d01c1feb28d9c8c77fdd29436c3844a0c42afd507ed2",
+      "passed": true,
+      "scope": "Compute process snapshots bracketing a cell; no continuous activity claim.",
+      "before": {
+        "utc": "2026-11-06T04:18:56.891106+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      },
+      "after": {
+        "utc": "2026-11-06T04:21:04.939423+00:00",
+        "unexpected": 0,
+        "retained_os_contexts": 1
+      }
+    }
+  ],
+  "limitation": "Bracketing process identity snapshots, not continuous GPU activity."
+}

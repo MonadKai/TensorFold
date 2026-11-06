@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "passed": true,
+  "observed_at": "2026-11-06T05:22:57.273647+00:00",
+  "source_snapshot_commit": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+  "tools_sha256": {
+    "qwen3_asr_tokens.py": "0fb37438c284f0ae68452684c0ef8d357ed93dd601ee77b517a87068d33d499f",
+    "compare_qwen3_asr_cache.py": "61d97ab190c15689089001f1913e30e163febe34d8d492f0f82d8b65ba670bf0",
+    "compare_qwen3_asr_perf.py": "b578d23abe006fcec2c3774d6298367b2d3f718fa67db0fb9e5fa07b1d5f7c0c",
+    "check_qwen3_asr_determinism.py": "9694f9566b2671d8d939780bc678f725b925a66c370524e80a51d716cc150b38",
+    "check_qwen3_asr_seed_cancellation.py": "0477086abb0306424c3cc77a1b02c6618bcf4e16b81923f2aaaaa1b95a855c07"
+  },
+  "chat": [
+    {
+      "label": "chat-determinism-final",
+      "requests": 1664,
+      "raw_sha256": "14229ed96db0ce7ec2ad48fad7ccbd205cdbbe3c7c82993ef73b470e1bfb267d"
+    },
+    {
+      "label": "chat-determinism-fresh-process",
+      "requests": 1664,
+      "raw_sha256": "8f502f207eaa37d0581c061acea24863c0017c635e149796e72bb33afcd4548e"
+    }
+  ],
+  "transcription_responses": 1664,
+  "cancellation_responses_including_baselines": 512,
+  "cache_control_pairs": [
+    "cache-control-r0-b1",
+    "cache-control-r0-b2",
+    "cache-control-r0-b4",
+    "cache-control-r0-b8",
+    "cache-control-r1-b1",
+    "cache-control-r1-b2",
+    "cache-control-r1-b4",
+    "cache-control-r1-b8"
+  ],
+  "formal_pairs": [
+    "pair-native-r0-b4-natural",
+    "pair-reference-r0-b4-natural",
+    "pair-native-r0-b4-equal",
+    "pair-reference-r0-b4-equal",
+    "pair-native-r0-b8-natural",
+    "pair-reference-r0-b8-natural",
+    "pair-native-r0-b8-equal",
+    "pair-reference-r0-b8-equal",
+    "pair-native-r0-b1-natural",
+    "pair-reference-r0-b1-natural",
+    "pair-native-r0-b1-equal",
+    "pair-reference-r0-b1-equal",
+    "pair-native-r0-b2-natural",
+    "pair-reference-r0-b2-natural",
+    "pair-native-r0-b2-equal",
+    "pair-reference-r0-b2-equal",
+    "pair-native-r1-b4-natural",
+    "pair-reference-r1-b4-natural",
+    "pair-native-r1-b4-equal",
+    "pair-reference-r1-b4-equal",
+    "pair-native-r1-b8-natural",
+    "pair-reference-r1-b8-natural",
+    "pair-native-r1-b8-equal",
+    "pair-reference-r1-b8-equal",
+    "pair-native-r1-b1-natural",
+    "pair-reference-r1-b1-natural",
+    "pair-native-r1-b1-equal",
+    "pair-reference-r1-b1-equal",
+    "pair-native-r1-b2-natural",
+    "pair-reference-r1-b2-natural",
+    "pair-native-r1-b2-equal",
+    "pair-reference-r1-b2-equal",
+    "pair-native-r2-b4-natural",
+    "pair-native-r2-b4-equal",
+    "pair-native-r2-b8-natural",
+    "pair-native-r2-b8-equal",
+    "pair-background-b4-natural",
+    "pair-background-b4-equal",
+    "pair-background-b8-natural",
+    "pair-background-b8-equal"
+  ],
+  "note": "Post-capture stricter admission replay. Original execution/tool identities and raw bytes are unchanged; this does not relabel capture-time validation."
+}

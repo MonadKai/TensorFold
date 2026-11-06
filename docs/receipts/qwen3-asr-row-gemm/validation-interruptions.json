@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "records": [
+    {
+      "schema": 1,
+      "complete": false,
+      "detected_utc": "2026-11-06T04:44:29.609254+00:00",
+      "phase": "scheduler-stable-legacy-r0-mixed",
+      "cause": "Server restart interrupted the active validation process tree.",
+      "completed_scheduler_cells_retained": 18,
+      "completed_reference_cells_retained": 58,
+      "warmup_outcomes_available": null,
+      "partial_request_outcomes_available": null,
+      "limitation": "This interrupted process did not flush its in-memory request outcomes. They are unavailable, not assumed successful. The cell is incomplete and excluded; an independent run is required.",
+      "captured_files": {
+        "reference-and-final-validation-attempt4.log": "d7000e601dd2742942dffa369c22deca04446b552d8ea0092a1ca01094811464",
+        "scheduler-stable-legacy-r0-mixed.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "scheduler-stable-legacy-r0-identity.json": "cf1a4f4b91745b0c3339b1268ffb8094b2b0a6912a1f79140ac89b44e49385c8",
+        "gpu-work-queue-status.json": "0004b3843d321b2edab4860835f81945adb973f3c89efccaec59eefcad637171",
+        "scheduler-stable-legacy-r0-server.log": "b62e655691defbf5ebb2cf428f8b272b9c4e414beeff9cf2c85de2cb533049d6",
+        "formal-scheduler-ablation.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "derived_settings": {
+        "model": "Qwen/Qwen3-ASR-1.7B",
+        "context": 8192,
+        "temperature": 0,
+        "seed": 0,
+        "max_completion_tokens": 1024,
+        "long_requests": 2,
+        "short_requests": 64,
+        "warmup_requests": 2,
+        "math": "stable",
+        "parent_policy": "legacy",
+        "profile": true
+      },
+      "settings_basis": "Bound benchmark command/tool and runtime identity; post-capture metadata, not recovered HTTP outcomes.",
+      "benchmark_sha256": "0754ad9e35baecbc89976e92a5f39694bc31373e0c8f42b8e0d1532e2dfc3ce2"
+    }
+  ]
+}

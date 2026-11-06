@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "records": [
+    {
+      "label": "perf-native-background-before-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:58:53.566416+00:00",
+      "finished": "2026-11-06T02:59:12.316963+00:00",
+      "sha256": "9fe66d6c0af0afd905bf3bf3162d6329a565a12a10211ea5d2996a9462830ffd"
+    },
+    {
+      "label": "perf-native-background-before-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:59:12.341641+00:00",
+      "finished": "2026-11-06T03:00:34.420118+00:00",
+      "sha256": "612a17db2d78eebacfce3dfcef96ecf0586876c7276c9ec28d31a7b66c518609"
+    },
+    {
+      "label": "perf-native-background-before-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:00:34.443279+00:00",
+      "finished": "2026-11-06T03:00:47.434026+00:00",
+      "sha256": "7082a3a56a8d50c731d9817eb929742525f8817459ce99058bc148ac29418c0d"
+    },
+    {
+      "label": "perf-native-background-before-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T03:00:47.455160+00:00",
+      "finished": "2026-11-06T03:01:37.745405+00:00",
+      "sha256": "0ac97905728cd7770442a2f81e30a75361236e999d6c41827f3d0d914b50e5a3"
+    }
+  ],
+  "compiler_observations": {
+    "before": [
+      {
+        "name": "nvcc",
+        "in_scope": false
+      },
+      {
+        "name": "ptxas",
+        "in_scope": false
+      },
+      {
+        "name": "nvcc",
+        "in_scope": false
+      },
+      {
+        "name": "cicc",
+        "in_scope": false
+      }
+    ],
+    "after": [
+      {
+        "name": "nvcc",
+        "in_scope": false
+      },
+      {
+        "name": "cicc",
+        "in_scope": false
+      },
+      {
+        "name": "nvcc",
+        "in_scope": false
+      },
+      {
+        "name": "cicc",
+        "in_scope": false
+      }
+    ]
+  }
+}

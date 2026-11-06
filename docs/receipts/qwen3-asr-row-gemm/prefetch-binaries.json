@@ -1,0 +1,21 @@
+{
+  "source_head": "2ff109c52e1a96581be70c1a22dbfaa192952bd7",
+  "files": {
+    "zig-out/native/bin/tensorfold-native": "ba31d229e726f60458084ee36618a9230098a6c518b28c8f6e534a270da378af",
+    "zig-out/native/bin/tf-qwen3-asr-check": "6d60b54424cad18b166785440a9e3a2e49cbc66a9d0d3458d3b7830a2e8f78c6",
+    "zig-out/bin/tf-qwen3-asr-gemm-bench": "f32880fa073221da97840879b9dcfce258f07d4377396528ab57d2be5750b982",
+    "zig-out/bin/tf-qwen3-asr-contract": "dcaade0032ae7705a24b181e390ce1bc6dca8ff5d0e68e26fd2c87f8c08126d8",
+    "zig-out/fatbin/qwen3_asr.fatbin": "3a4b5d37bc0301d0118d85cbe686802d8202c8d53dd848e9d66dcc7084bdddd0"
+  },
+  "nvcc_flags": [
+    "-O3",
+    "--fmad=false",
+    "--ftz=false",
+    "--prec-div=true",
+    "--prec-sqrt=true",
+    "--std=c++17",
+    "-arch=sm_121",
+    "-fatbin"
+  ],
+  "qualified": false
+}

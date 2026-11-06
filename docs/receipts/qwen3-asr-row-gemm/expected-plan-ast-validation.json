@@ -1,0 +1,37 @@
+{
+  "scope": "Only the iteration AST ran with stub contexts/cell functions; no model, benchmark, resource or file-writing code executed.",
+  "counts": {
+    "native": 94,
+    "reference": 58
+  },
+  "expected_unprofiled": 152,
+  "matches": true,
+  "labels_sha256": "1571a8fb14fa32151553d8310a887e8c7ce4d38331fb556d8fb461817b9b6c6f",
+  "driver_sha256": "784faa04492681a174d24fd3807f0fb3261f76dc9fb0fe687bfabf14ea0072b5",
+  "reference_context_order": [
+    [
+      "disabled",
+      "perf-reference-disabled-r0-attempt4"
+    ],
+    [
+      "enabled",
+      "perf-reference-enabled-r0-attempt4"
+    ],
+    [
+      "production",
+      "perf-reference-production-r0-attempt4"
+    ],
+    [
+      "disabled",
+      "perf-reference-disabled-r1-attempt4"
+    ],
+    [
+      "enabled",
+      "perf-reference-enabled-r1-attempt4"
+    ],
+    [
+      "production",
+      "perf-reference-production-r1-attempt4"
+    ]
+  ]
+}

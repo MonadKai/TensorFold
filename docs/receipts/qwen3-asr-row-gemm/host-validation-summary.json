@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "native_source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "host_suite": {
+    "passed": true,
+    "steps": 532,
+    "total_steps": 532,
+    "tests_passed": 1849,
+    "tests_total": 1862,
+    "tests_skipped": 13,
+    "raw_summary": "Build Summary: 532/532 steps succeeded; 1849/1862 tests passed (13 skipped)",
+    "raw_log_sha256": "57d88b2af659988578ec401bccf3b8415af3d735d39802ef05ba4fe71d11ceec",
+    "source_input_commit": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+    "captured_utc": "2026-11-06T05:29:14.696087+00:00",
+    "count_scope": "Reported executions in this invocation; other full-graph nodes are cached. Do not sum these counts with historical host or host-only subset counts."
+  },
+  "lean": {
+    "base_findings": 424,
+    "candidate_findings": 424,
+    "new_findings": 0,
+    "raw_log_sha256": "5888447052c5b895197882ca8b0233bb2ba973525d1ffd3c799e31b6bc89f5e5",
+    "scope": "Fresh extraction of the fixed Git baseline and current Zig/tools/zig input contents; 424 inherited findings, zero new.",
+    "comparison_log_sha256": "e539aa46c8753714c102193ebc820d980721d44908a09d7009d75ffd3220f83a",
+    "source_snapshot": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+    "captured_utc": "2026-11-06T05:29:14.698341+00:00",
+    "base_log_sha256": "4cf54c8b54780c3c6ec12df3c9adcfa4ff9d9cc1c87e36649780b74bf342c18b",
+    "base_source_commit": "8dfdade4a4cd80d24bc901547c51fc1a35a4de8b"
+  },
+  "limitations": [
+    "Later changes affect acceptance tools and documentation; each relevant tool also has fresh execution evidence.",
+    "Host acceptance does not substitute for CUDA, model-quality, API or deployment qualification."
+  ],
+  "acceptance_tool_units": [
+    {
+      "test": "test_qwen3_asr_determinism.py",
+      "passed": true,
+      "tests": 5,
+      "raw_log_sha256": "6273232de4d3ef7acd4ecafa5c86beeeb974f56586b21089a2990b3f72facbe6",
+      "test_sha256": "63843dc544ba3425aadd653fe57c81106d35e0fb782d72358cf2811ca6571a4e"
+    },
+    {
+      "test": "test_qwen3_asr_schedule_pairs.py",
+      "passed": true,
+      "tests": 6,
+      "raw_log_sha256": "065c7d15facfd20f14fb9182747be315f3349fa1d5e1a0e966047509f4bfa9b1",
+      "test_sha256": "41651d33f3c1d2bd0df86e1785aa731365da038247bfe1b7c029faab47fa4934"
+    },
+    {
+      "test": "test_qwen3_asr_cache_pairs.py",
+      "passed": true,
+      "tests": 6,
+      "raw_log_sha256": "1a74e9ec2dba70d7af64c27c068b4a4e4b1a4e860fe5beadc1a57ff5b99792d0",
+      "test_sha256": "06fceb21189eb791c7f13a9f96782b139042c11df599b544ec51c074c7396d2a"
+    },
+    {
+      "test": "test_qwen3_asr_compiler_guard.py",
+      "passed": true,
+      "tests": 9,
+      "raw_log_sha256": "9eb4cae0db1c3ecd074a0124af8ae0cea3e8b80ee00bbb15efa487edecb7b1b9",
+      "test_sha256": "d47733f1f6ecf04e1ffdae6916ee0e2d75a787e0368f8cc704f4926894ab5832"
+    },
+    {
+      "test": "test_qwen3_asr_perf_pairs.py",
+      "passed": true,
+      "tests": 4,
+      "raw_log_sha256": "2b2d33e70e8647a531e19f87dea38bd1aaabd624d4463d701a0893a582315bcf",
+      "test_sha256": "69c5537da22899f27c813dd3d58f1d8ccf2d876393bd525e5c478aa62a52fae3"
+    }
+  ],
+  "historical_host_suite": {
+    "passed": true,
+    "steps": 491,
+    "total_steps": 491,
+    "tests_passed": 5204,
+    "tests_total": 5220,
+    "tests_skipped": 16,
+    "raw_summary": "Build Summary: 491/491 steps succeeded; 5204/5220 tests passed (16 skipped)",
+    "raw_log_sha256": "f4a7f529825056b9466b747f8a7bee08c641cd21777a627c128155d547a7e105"
+  },
+  "final_acceptance_tool_units": {
+    "passed": true,
+    "tests": 54,
+    "raw_log_sha256": "2dcf597a7f01da5297b70102c101c90cfbaa60cae57f9d12bbce4e8b5f88ccc0",
+    "tool_inputs": {
+      "bench_qwen3_asr_accuracy.py": "0e14617d55fdc6bf7c0134008defd52660ef986edc85170c7fc654a5603037fc",
+      "test_qwen3_asr_determinism.py": "d772d73dac6e6232f5e8581377b942e160d80a9acf5391967e0f31ead8005b15",
+      "compare_qwen3_asr_native.py": "0317b8dc475c817cc882b49f13c4a02fe811c849a7dd526b81f377054a2ffa9c",
+      "compare_qwen3_asr_cache.py": "61d97ab190c15689089001f1913e30e163febe34d8d492f0f82d8b65ba670bf0",
+      "check_qwen3_asr_api.py": "2ebad93c5bc0b28fef5e5abdb605031e85a2c9d74c74cc3bf7c07a55924e9ce1",
+      "qwen3_asr_tokens.py": "0fb37438c284f0ae68452684c0ef8d357ed93dd601ee77b517a87068d33d499f",
+      "test_qwen3_asr_compiler_guard.py": "d47733f1f6ecf04e1ffdae6916ee0e2d75a787e0368f8cc704f4926894ab5832",
+      "check_qwen3_asr_seed_cancellation.py": "0477086abb0306424c3cc77a1b02c6618bcf4e16b81923f2aaaaa1b95a855c07",
+      "prepare_qwen3_asr_perf.py": "b049ff3b8c45aa1fd17676c154659e0c232df17bc1d1e01798c6a6e37bfd92c0",
+      "test_qwen3_asr_cache_pairs.py": "acef858635997b7a16884a647232bdb9558428e7514bd45ed16463e402381c47",
+      "compare_qwen3_asr_schedule.py": "cb600a83a77a5023635156219867409ed18df5a0b41799775dd94c5653be357b",
+      "test_qwen3_asr_pairs.py": "37da7f3946813df53cfdfb18774d4ed9574f061c5d046685ca3d58dafe6ff49d",
+      "check_qwen3_asr_parents.py": "2b7b3b0592c7f43552068624fa6abe77d2908cd6b1c399de28f2f7acf89a4235",
+      "reference_qwen3_asr.py": "4fd9e9186dca5f37aa14d275aadd88092e4864d727cae0b9a0c9254dc72b043a",
+      "test_qwen3_asr_seed_cancellation.py": "54ad3994aa848cf544ffee4d926e29294d8ddddb09986651c8f0104b90ef5f4b",
+      "test_qwen3_asr_perf.py": "e5107b7c3b69032addf793e70917c39eb38f9cdefdfb9f0421ce6269f620e53d",
+      "summarize_qwen3_asr_trace.py": "d99ed98ca3dbf55596b10f5a59212584225c9050a9cf474e1a098a3fcf303bb8",
+      "compare_qwen3_asr.py": "d069e196a81731c48489984f8f2ab91b0083ebb0add04089f88becd30720efd7",
+      "test_qwen3_asr_perf_pairs.py": "69c5537da22899f27c813dd3d58f1d8ccf2d876393bd525e5c478aa62a52fae3",
+      "qwen3_asr_compiler_guard.py": "09794b14b4e43bf1baefbeaa796d8c0df76a5eb18f8e5a1c9258b36cc4b6cd7d",
+      "test_qwen3_asr_schedule_pairs.py": "41651d33f3c1d2bd0df86e1785aa731365da038247bfe1b7c029faab47fa4934",
+      "summarize_qwen3_asr_ncu.py": "965eeba4482e7c5086a4b5881961219ca8f8fbdeeb3ee4afcd6aecb2b49e0d84",
+      "verify_qwen3_asr_gemm_accuracy.py": "fec532f462145c751f50cbcc36850a5dd4d4aa33179c330df8d2df7a0e767cf7",
+      "bench_qwen3_asr_perf.py": "65258e3922fdbe32be0d2e605d0aba7030337821797e67e0b73eaf3fac263ff8",
+      "check_qwen3_asr_lifecycle.py": "738acb015f2d185d234f8e0fa23b1053d28a006c6801e8143a1a780d3995576b",
+      "prepare_qwen3_asr_eval.py": "5073b598ac52215f745f347dcb3b4310ac42e4b0c79e3e3165ba9d6bf9ff91e6",
+      "bench_qwen3_asr_mixed.py": "0754ad9e35baecbc89976e92a5f39694bc31373e0c8f42b8e0d1532e2dfc3ce2",
+      "compare_qwen3_asr_quality.py": "56c57aba395b45183947de2ddba49fe74651923318e707af723d0c6d9df10dbc",
+      "compare_qwen3_asr_perf.py": "b578d23abe006fcec2c3774d6298367b2d3f718fa67db0fb9e5fa07b1d5f7c0c",
+      "test_qwen3_asr_quality.py": "e8b23de5cd41cd3d5de1c9312ede27a67389aa80c978a2d4d3d18ccf87b3a45c",
+      "bench_qwen3_asr.py": "42bc50ad83befaa990cd168e5ffeae4d3d7abe4a9155eb841ade85c15103b6c1",
+      "check_qwen3_asr_determinism.py": "9694f9566b2671d8d939780bc678f725b925a66c370524e80a51d716cc150b38",
+      "test_qwen3_asr_gemm_accuracy.py": "e41ba213d55d51f26154c2d44ae0a3773574a94c9b6002d4db8bfdbc43c9e41f"
+    },
+    "source_input_commit": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+    "scope": "All test_qwen3_asr*.py; supersedes the narrower historical tool-unit entries without summing overlapping tests."
+  },
+  "final_cuda_host_refusals": {
+    "passed": true,
+    "steps": 295,
+    "total_steps": 295,
+    "tests_passed": 2108,
+    "tests_total": 2117,
+    "tests_skipped": 9,
+    "new_refusal_tests": 3,
+    "raw_log_sha256": "d09c38d2c1d361a91ab90de0be4c9da059861960dcdc2d5a6813a36e7a43177d",
+    "note": "Started before the source commit; tested file contents match the final code commit. This is the host-only subset, not a GPU gate."
+  }
+}

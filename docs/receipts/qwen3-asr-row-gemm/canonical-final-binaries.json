@@ -1,0 +1,11 @@
+{
+  "source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
+  "source_tree_clean": true,
+  "files": {
+    "qwen3_asr.fatbin": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
+    "tf-qwen3-asr-contract": "abc023dcfac696bf95a9c44f2a4fafc28ff7ce2ebba38ff8e727f871a48b5b53",
+    "tf-qwen3-asr-check": "4cdbd662a224f90127e8a847798466d5c9b8b6917026a1ab8a9ad58d01f84767",
+    "tf-qwen3-asr-gemm-bench": "b3ab66cfe828c6b8ceb45de3a33b58e80312b828640b0f440ee51219fbb43348",
+    "tensorfold-native": "3070578687c397ee37f3e61427679647e98d65dd8479f88df3ffb0df99b2eff5"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+  "scope": "Static owner code from the actual image, separate from observed runtime configuration and metrics.",
+  "ttft": {
+    "formula": "IterationStats.iteration_timestamp - RequestStateStats.arrival_time on first output",
+    "clock": "time.time wall clock",
+    "arrival": "EngineCoreRequest.arrival_time; supplied rendered input arrival_time or initialized by InputProcessor.",
+    "owner_files": {
+      "v1/metrics/stats.py": "e8c3cbcfb880e7a2a496a1e499d4e4efccf70ba1eef56f4a1a6ee44cc0bf49bc",
+      "v1/engine/input_processor.py": "91dde56a548c09613ee9aaef8c43631481d12dc1bd439fddc12c6569f5e2e799"
+    },
+    "comparison_note": "Not HTTP first-byte time; native chat.prepare uses a different boundary and awake clock."
+  },
+  "cache_counters": {
+    "registered_families": [
+      "vllm:prefix_cache_queries",
+      "vllm:prefix_cache_hits",
+      "vllm:mm_cache_queries",
+      "vllm:mm_cache_hits"
+    ],
+    "prometheus_counter_suffix": "_total",
+    "collector_supports_these_families": true,
+    "owner_sha256": "d5a91626cf79118f98ae6438c842cb30fc44ca14463c7e2af5871e3da8e51bcf",
+    "note": "Registration and collection capability do not establish actual cache hits or enabled state."
+  }
+}

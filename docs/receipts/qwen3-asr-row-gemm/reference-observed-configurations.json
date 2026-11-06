@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "records": [
+    {
+      "startup_label": "perf-reference-disabled-r0-attempt4",
+      "condition": "disabled",
+      "trial": 0,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "d810c4079867fc015c6f7e2f657e16a255aef280a353b4a79aba93e9c6dfaf88",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": true,
+      "prefix_caching_observed": false,
+      "processor_cache_gb_observed": 0.0,
+      "processor_cache_gb_resolved": 0.0,
+      "processor_cache_value_basis": "explicit non-default startup argument",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "NONE"
+      ],
+      "cudagraph_modes_observed": [
+        "NONE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": true,
+      "configuration_matches": true
+    },
+    {
+      "startup_label": "perf-reference-disabled-r1-attempt4",
+      "condition": "disabled",
+      "trial": 1,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "3e9655d9165cd0a972d5c3dcbc28cb970b1633c4a87c757b8e2793b304d8125a",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": true,
+      "prefix_caching_observed": false,
+      "processor_cache_gb_observed": 0.0,
+      "processor_cache_gb_resolved": 0.0,
+      "processor_cache_value_basis": "explicit non-default startup argument",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "NONE"
+      ],
+      "cudagraph_modes_observed": [
+        "NONE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": true,
+      "configuration_matches": true
+    },
+    {
+      "startup_label": "perf-reference-enabled-r0-attempt4",
+      "condition": "enabled",
+      "trial": 0,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "20b35e21981ebff3eddae1fc48b0e7c0a2fdb79acad0ace20188d4ebdee0bab7",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": true,
+      "prefix_caching_observed": true,
+      "processor_cache_gb_observed": null,
+      "processor_cache_gb_resolved": 4,
+      "processor_cache_value_basis": "actual-image default and omitted non-default argument, with matching pinned CLI",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "NONE"
+      ],
+      "cudagraph_modes_observed": [
+        "NONE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": true,
+      "configuration_matches": true
+    },
+    {
+      "startup_label": "perf-reference-enabled-r1-attempt4",
+      "condition": "enabled",
+      "trial": 1,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "1975d8ef37a05ff66ebdf26ceb1d4d33b246da51910806d82831a107b139880c",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": true,
+      "prefix_caching_observed": true,
+      "processor_cache_gb_observed": null,
+      "processor_cache_gb_resolved": 4,
+      "processor_cache_value_basis": "actual-image default and omitted non-default argument, with matching pinned CLI",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "NONE"
+      ],
+      "cudagraph_modes_observed": [
+        "NONE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": true,
+      "configuration_matches": true
+    },
+    {
+      "startup_label": "perf-reference-production-r0-attempt4",
+      "condition": "production",
+      "trial": 0,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "ffeaeccd725e425ba6fcaa2745b88cb046568f498fd60b0ef9b859e1477cc7a7",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": false,
+      "prefix_caching_observed": true,
+      "processor_cache_gb_observed": null,
+      "processor_cache_gb_resolved": 4,
+      "processor_cache_value_basis": "actual-image default and omitted non-default argument, with matching pinned CLI",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "VLLM_COMPILE"
+      ],
+      "cudagraph_modes_observed": [
+        "FULL_AND_PIECEWISE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": false,
+      "configuration_matches": true
+    },
+    {
+      "startup_label": "perf-reference-production-r1-attempt4",
+      "condition": "production",
+      "trial": 1,
+      "runtime_identity_matches": true,
+      "model_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+      "dtype_bfloat16_observed": true,
+      "context8192_observed": true,
+      "startup_log_sha256": "f24fbb650b8f155ffca5307186445a5423643783f5ad5a65d203dfc0f9b89b96",
+      "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+      "eager_observed": false,
+      "prefix_caching_observed": true,
+      "processor_cache_gb_observed": null,
+      "processor_cache_gb_resolved": 4,
+      "processor_cache_value_basis": "actual-image default and omitted non-default argument, with matching pinned CLI",
+      "processor_default_source_sha256": "0975ecbb0cebd6dd3e7aa18af1459e4bd64be650cfa2a6ddda677a86668ba335",
+      "compilation_modes_observed": [
+        "VLLM_COMPILE"
+      ],
+      "cudagraph_modes_observed": [
+        "FULL_AND_PIECEWISE"
+      ],
+      "server_info_endpoint_status": 404,
+      "health_ready": true,
+      "requested_eager": false,
+      "configuration_matches": true
+    }
+  ],
+  "complete": true,
+  "scope": "Observed startup engine configuration and API endpoint status from the immutable running reference image. This is separate from CLI intent and selected Git-source comparisons.",
+  "passed": true
+}

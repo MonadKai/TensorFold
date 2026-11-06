@@ -1,0 +1,19 @@
+{
+  "source_head": "6b84dad5b",
+  "files": {
+    "zig-out/native/bin/tf-qwen3-asr-check": "34a2495be48006f4f5e01c84cd4ef30dbabc285a8d6b4fe6807926363326e623",
+    "zig-out/bin/tf-qwen3-asr-gemm-bench": "c2e99455b542334720fad27327c84f42c17d0a01d858127e318e974ca3d51ab8",
+    "zig-out/fatbin/qwen3_asr.fatbin": "a968e4153e07a010235eed9fb2d8778e96eb37b71770445dec448c4edc701b6d"
+  },
+  "nvcc_flags": [
+    "-O3",
+    "--fmad=false",
+    "--ftz=false",
+    "--prec-div=true",
+    "--prec-sqrt=true",
+    "--std=c++17",
+    "-arch=sm_121",
+    "-fatbin"
+  ],
+  "qualified": false
+}

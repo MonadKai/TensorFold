@@ -1,0 +1,757 @@
+{
+  "records": [
+    {
+      "label": "perf-native-stable-r0-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:36:19.816978+00:00",
+      "finished": "2026-11-05T23:38:38.835137+00:00",
+      "sha256": "50abb820997be168363833ea6ce88441b4d5cc0432f2155e56054c4894fd299e"
+    },
+    {
+      "label": "perf-native-stable-r0-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:38:38.916116+00:00",
+      "finished": "2026-11-05T23:42:56.460694+00:00",
+      "sha256": "f2d8f6230e59712a472ccd5a104f7f936ad6e3eab0151886925f4e182fc82a1a"
+    },
+    {
+      "label": "perf-native-stable-r0-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:42:56.526047+00:00",
+      "finished": "2026-11-05T23:43:41.889394+00:00",
+      "sha256": "46f63f3e0f6c0b7f50b643045bc4729c020c981f8794db43cddf75d9171269cc"
+    },
+    {
+      "label": "perf-native-stable-r0-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:43:41.965521+00:00",
+      "finished": "2026-11-05T23:47:57.979313+00:00",
+      "sha256": "a9239ea59f03f1e6cbfcd422ade5ccaec0d1f8c44cf8429416a84a74f28265b8"
+    },
+    {
+      "label": "perf-native-stable-r0-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:47:58.054055+00:00",
+      "finished": "2026-11-05T23:50:16.107347+00:00",
+      "sha256": "fb75bbcdd86f452a1d9e32f15638e3158f867766a2cb5b5918ec91b1057e5828"
+    },
+    {
+      "label": "perf-native-stable-r0-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:50:16.174148+00:00",
+      "finished": "2026-11-05T23:54:29.787973+00:00",
+      "sha256": "075fc8965475b496ac60364df299d2cf23a6352974ac8e21474a117f71f5ef93"
+    },
+    {
+      "label": "perf-native-stable-r0-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:54:29.851450+00:00",
+      "finished": "2026-11-05T23:55:14.733064+00:00",
+      "sha256": "95b2d979700f9f3f4c91a766094840f16a3b804d3e8f6156b08b7b460e0ccaf6"
+    },
+    {
+      "label": "perf-native-stable-r0-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:55:14.811940+00:00",
+      "finished": "2026-11-05T23:59:29.146968+00:00",
+      "sha256": "5fee7f2c3440428f1bd16e5b2896753f77f501d4de35b5d2084507058d358413"
+    },
+    {
+      "label": "perf-native-stable-r0-b1-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-05T23:59:29.212496+00:00",
+      "finished": "2026-11-06T00:00:20.753433+00:00",
+      "sha256": "ecef13cb34a2fcd2d3a767541cbb1687dcfca4e2c5ec48fadec1f22f64d2476d"
+    },
+    {
+      "label": "perf-native-stable-r0-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:00:20.818883+00:00",
+      "finished": "2026-11-06T00:05:06.509761+00:00",
+      "sha256": "1697df685749f88be1138c8f7ea813c7c37212d08bc5e462c3a3039b3f2f41f1"
+    },
+    {
+      "label": "perf-native-stable-r0-b2-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:05:06.586585+00:00",
+      "finished": "2026-11-06T00:05:53.979377+00:00",
+      "sha256": "0b51d7047fa74751e5635020d064368d35fdbecf8e8e19854bf7924205f0a09c"
+    },
+    {
+      "label": "perf-native-stable-r0-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:05:54.042273+00:00",
+      "finished": "2026-11-06T00:10:21.163125+00:00",
+      "sha256": "2f69bcbb6b795686a9e2daef005b8f0740d25f85ac5e87c59b5fe5b64b8a6517"
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:10:25.262967+00:00",
+      "finished": "2026-11-06T00:12:32.784526+00:00",
+      "sha256": "d6be6db9919833482b37567856dcdbe6d9e6bf2f4601ccac09725efb17988370"
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:12:32.863559+00:00",
+      "finished": "2026-11-06T00:15:02.187997+00:00",
+      "sha256": "3fd2818ef9f5cd946f357ad79c285d1700bac81839f0d7cbda8f1600e3635636"
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:15:02.254345+00:00",
+      "finished": "2026-11-06T00:15:20.297378+00:00",
+      "sha256": "53c85582f52a3deeceafb72155d8af4e7f2d0b7e6a9a2fc99e7ccbdf3fc12287"
+    },
+    {
+      "label": "perf-native-throughput-r0-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:15:20.375698+00:00",
+      "finished": "2026-11-06T00:16:41.527119+00:00",
+      "sha256": "c8f8b13e050f9a0c329fba30fa2fcdf1109b204bf4fdfb4c28d6e8ee4ae25913"
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:16:41.591928+00:00",
+      "finished": "2026-11-06T00:18:47.646030+00:00",
+      "sha256": "0353348eb0ed53552a7b7ce66f9cace20ad5c91b8850fb8fc2185131266ce180"
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:18:47.716558+00:00",
+      "finished": "2026-11-06T00:21:07.455623+00:00",
+      "sha256": "3f5dc8c1b4caf4a44248063c60ce37527732aafda283cfc15f3988946e15d78a"
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:21:07.539126+00:00",
+      "finished": "2026-11-06T00:21:20.337915+00:00",
+      "sha256": "e0c19020848c8fe6914c9b79d7e2ea81a5e1f0874e93205cef4d50d710f4a0d6"
+    },
+    {
+      "label": "perf-native-throughput-r0-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:21:20.405428+00:00",
+      "finished": "2026-11-06T00:22:09.698987+00:00",
+      "sha256": "49a69ea2bafd65a672a635cb18399ccf5b8f1db76bc3a7f37ae75a6459506da6"
+    },
+    {
+      "label": "perf-native-throughput-r0-b1-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:22:09.778519+00:00",
+      "finished": "2026-11-06T00:23:01.682138+00:00",
+      "sha256": "ce66deaf92006b4616457abacd2a8fdb9883efc102ef030088c2223f88fca7a9"
+    },
+    {
+      "label": "perf-native-throughput-r0-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:23:01.747818+00:00",
+      "finished": "2026-11-06T00:27:43.538139+00:00",
+      "sha256": "41f4be53da046626722ff10f74a5d7cec603b9616bc3581ef0c5ccfce0eb9123"
+    },
+    {
+      "label": "perf-native-throughput-r0-b2-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:27:43.605790+00:00",
+      "finished": "2026-11-06T00:28:12.642889+00:00",
+      "sha256": "b357800392472464dbeffb9d07efeef8cae002230ae773173c9d7010499a2839"
+    },
+    {
+      "label": "perf-native-throughput-r0-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:28:12.707487+00:00",
+      "finished": "2026-11-06T00:30:39.839836+00:00",
+      "sha256": "d9495ec766d42f30a3f5ac3900887b3fd638777b2e8ab96b088ba11577954377"
+    },
+    {
+      "label": "perf-native-stable-r1-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:30:43.925260+00:00",
+      "finished": "2026-11-06T00:33:01.694368+00:00",
+      "sha256": "b0f44d5c2b5e5552cf49d4e4ebca5aa6026d721d967b69d6cf8afcf4414e6e72"
+    },
+    {
+      "label": "perf-native-stable-r1-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:33:01.793130+00:00",
+      "finished": "2026-11-06T00:37:24.192085+00:00",
+      "sha256": "4bd6a657f849580f790584f64015ca0016702bc3f26e7a09b8bcf79fce639b80"
+    },
+    {
+      "label": "perf-native-stable-r1-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:37:24.261021+00:00",
+      "finished": "2026-11-06T00:38:09.899053+00:00",
+      "sha256": "d3ba440c8c9390e2bce3a5364e8fcb1ec56cee3bc198a880a1e14e5f2f33a125"
+    },
+    {
+      "label": "perf-native-stable-r1-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:38:09.982285+00:00",
+      "finished": "2026-11-06T00:42:27.613219+00:00",
+      "sha256": "f25f8486d8af91d6ff181dbfb00ae2cf58c59e8d82c15371dd51a940286e7b64"
+    },
+    {
+      "label": "perf-native-stable-r1-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:42:27.690217+00:00",
+      "finished": "2026-11-06T00:44:46.790610+00:00",
+      "sha256": "c55ac7892031afe01a12c2a3124ea0b19ce1788cba441d2b20d545f3acf95cf5"
+    },
+    {
+      "label": "perf-native-stable-r1-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:44:46.857127+00:00",
+      "finished": "2026-11-06T00:49:05.074385+00:00",
+      "sha256": "45af793241385c248e063236efb2e246d387dceed963ea32cf5057f4a120e8d7"
+    },
+    {
+      "label": "perf-native-stable-r1-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:49:05.141783+00:00",
+      "finished": "2026-11-06T00:49:50.809758+00:00",
+      "sha256": "725446137a5691b3ad3691075c275334e7aca941a491046a33fe722fd1e69f29"
+    },
+    {
+      "label": "perf-native-stable-r1-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:49:50.889850+00:00",
+      "finished": "2026-11-06T00:54:09.115215+00:00",
+      "sha256": "b2f5b65c33935c6920c3d8cf9f1515a03d53ef254d6ef7fb77f8a3942c75ba9c"
+    },
+    {
+      "label": "perf-native-stable-r1-b1-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:54:09.192803+00:00",
+      "finished": "2026-11-06T00:55:01.521932+00:00",
+      "sha256": "7c72e108de3ecd1b653f9481d53ed8686cdee1571db316c7fb8bd9b5b98c0c5f"
+    },
+    {
+      "label": "perf-native-stable-r1-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:55:01.588332+00:00",
+      "finished": "2026-11-06T00:59:42.826103+00:00",
+      "sha256": "ece12d5be2d8ce99f233a2a944918884863d303d861263221c743dc8707bb284"
+    },
+    {
+      "label": "perf-native-stable-r1-b2-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T00:59:42.892157+00:00",
+      "finished": "2026-11-06T01:00:30.524223+00:00",
+      "sha256": "edfbb15b8d10f8e42ef787234a43395c13ee3c366f001ebb25edb363676d4ac5"
+    },
+    {
+      "label": "perf-native-stable-r1-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:00:30.603178+00:00",
+      "finished": "2026-11-06T01:04:56.194868+00:00",
+      "sha256": "4d63e2afc3f5722986e927f1d544e06b0f45b77be92be6e25108d3e2392ee263"
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:05:00.293044+00:00",
+      "finished": "2026-11-06T01:07:08.040141+00:00",
+      "sha256": "ba999fad64fa66f6903e34d66e3092ae462b27367ff07ece70e9e098cd74265e"
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:07:08.118198+00:00",
+      "finished": "2026-11-06T01:09:36.633476+00:00",
+      "sha256": "5ea75f2b4002dfef771503c830419b32981f9f4e641eb9ca33e87544acb4d4a1"
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:09:36.716409+00:00",
+      "finished": "2026-11-06T01:09:55.145940+00:00",
+      "sha256": "e96cca0cc04defb8de2d20f09776be6d2eb9024eda0dd41c0ec18ee77b159bd6"
+    },
+    {
+      "label": "perf-native-throughput-r1-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:09:55.225120+00:00",
+      "finished": "2026-11-06T01:11:17.762906+00:00",
+      "sha256": "8f97912d1f6d2e19529de336f5e13a749088a935434a7cca78a44e2c76a4e651"
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:11:17.828331+00:00",
+      "finished": "2026-11-06T01:13:24.031246+00:00",
+      "sha256": "a895fc19407b83585b2cb7da4648b26fc6140e1d4edf59f7d06695fe629eeef8"
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:13:24.117950+00:00",
+      "finished": "2026-11-06T01:15:41.518688+00:00",
+      "sha256": "c9f61d23e58591b20f422f3564d195293cfdf70398231751ef6b00bafc899b28"
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:15:41.590230+00:00",
+      "finished": "2026-11-06T01:15:54.461351+00:00",
+      "sha256": "523e07d2cb5f988384680de6c1bee0686c85035ebaff11280496a0a491c15ee8"
+    },
+    {
+      "label": "perf-native-throughput-r1-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:15:54.528050+00:00",
+      "finished": "2026-11-06T01:16:44.330192+00:00",
+      "sha256": "944ba9594bc19884a0aca03728cefa7e61d0ace72ef07a645707de5f6fd9701b"
+    },
+    {
+      "label": "perf-native-throughput-r1-b1-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:16:44.407560+00:00",
+      "finished": "2026-11-06T01:17:36.678625+00:00",
+      "sha256": "0ec0e5fb68519edab7b6b07ee5c940164fecaadf36503dbe646bbb335c79cb63"
+    },
+    {
+      "label": "perf-native-throughput-r1-b1-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:17:36.757241+00:00",
+      "finished": "2026-11-06T01:22:21.897122+00:00",
+      "sha256": "b8838b67350efe4b75d88a9a2efb5c9448d8cb33cf8ddd2741296d0e1d1a9178"
+    },
+    {
+      "label": "perf-native-throughput-r1-b2-natural",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:22:21.964126+00:00",
+      "finished": "2026-11-06T01:22:51.795579+00:00",
+      "sha256": "0c582ddc42260c323928a6d68ab7e21941056a3ed902e0b1ea5a4fed3bef333a"
+    },
+    {
+      "label": "perf-native-throughput-r1-b2-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:22:51.879363+00:00",
+      "finished": "2026-11-06T01:25:21.505439+00:00",
+      "sha256": "fa59dc5314cc9013d5e706844a4b2cdf041ec3613a9c013160f87909f7a7e36d"
+    },
+    {
+      "label": "perf-native-stable-r2-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:25:25.604916+00:00",
+      "finished": "2026-11-06T01:27:43.667009+00:00",
+      "sha256": "f1c787efde1d54086a1db26434ad50f24f06b34257c5302508f616fc9af637d2"
+    },
+    {
+      "label": "perf-native-stable-r2-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:27:43.729046+00:00",
+      "finished": "2026-11-06T01:32:08.162640+00:00",
+      "sha256": "53bdd4021ad24a9b4da2588a8853d68354c7dc2269ef84d93a6a7ae2255a2eb9"
+    },
+    {
+      "label": "perf-native-stable-r2-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:32:08.244195+00:00",
+      "finished": "2026-11-06T01:32:54.873907+00:00",
+      "sha256": "775f1e6cd6ac70833e17baeba1106f2a6974c153a5a2bc0c88782cb80fdfe758"
+    },
+    {
+      "label": "perf-native-stable-r2-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:32:54.951744+00:00",
+      "finished": "2026-11-06T01:37:17.628111+00:00",
+      "sha256": "e1c9bdb8c2e8c784ffbf0f851163b41a4522d2b5a961438d5dde9c33e8ff28e6"
+    },
+    {
+      "label": "perf-native-stable-r2-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:37:17.707639+00:00",
+      "finished": "2026-11-06T01:39:36.628832+00:00",
+      "sha256": "acf363da10c4b0e6740f0e29a940496e28c98d927e2ed0ca448d2e64b7434c5c"
+    },
+    {
+      "label": "perf-native-stable-r2-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:39:36.700584+00:00",
+      "finished": "2026-11-06T01:44:02.222910+00:00",
+      "sha256": "523c3a585f782bc63e81bddd07158c9381c6580c35efb31eae130fe439d5b2bb"
+    },
+    {
+      "label": "perf-native-stable-r2-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:44:02.300918+00:00",
+      "finished": "2026-11-06T01:44:48.573745+00:00",
+      "sha256": "e6990c58848a0106cfdd29921d193c6997253722c1f8f73984c2028cc9c1ba9b"
+    },
+    {
+      "label": "perf-native-stable-r2-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:44:48.645001+00:00",
+      "finished": "2026-11-06T01:49:12.596723+00:00",
+      "sha256": "ac6f0cba5096a353dc8d0f48667a4c4e54bc38308d1855a610d44c5155f0d4b2"
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:49:17.208051+00:00",
+      "finished": "2026-11-06T01:51:24.840773+00:00",
+      "sha256": "455cd73f60241bfb398a172ad2a5e90e78239a266a33691a259d6b9fbe0d2b34"
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:51:24.920058+00:00",
+      "finished": "2026-11-06T01:53:56.676604+00:00",
+      "sha256": "e5ee0bb82250a1bca27d000e540d0dcd51abe88830a9ba48d4f12e14372e9b14"
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:53:56.773624+00:00",
+      "finished": "2026-11-06T01:54:15.363825+00:00",
+      "sha256": "9f0b785078d4b44f89642f99b7bdcaf84bce6792aff6eb93e0982a328c604b3e"
+    },
+    {
+      "label": "perf-native-throughput-r2-b4-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:54:15.446952+00:00",
+      "finished": "2026-11-06T01:55:37.698730+00:00",
+      "sha256": "0c05217560d8ed08ea4ad7e3828c0cae2b998369c04dfd6acb061f6d2809ab92"
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-natural-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:55:37.785736+00:00",
+      "finished": "2026-11-06T01:57:43.557734+00:00",
+      "sha256": "5f2ecc54b5eca0c34b66471ad57a53b9fff3710c3027f25c75ad777b79feda94"
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-equal_tokens-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T01:57:43.628034+00:00",
+      "finished": "2026-11-06T02:00:03.662429+00:00",
+      "sha256": "573525bca01c57c29ffb4e2bbf9126263557944e495fa50c3f71e3d9b37415b0"
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-natural-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:00:03.736214+00:00",
+      "finished": "2026-11-06T02:00:16.872223+00:00",
+      "sha256": "6d9aeab1147fa7c25660bea470d48e60a8cf6ed499b83b3afb79efeeffe18220"
+    },
+    {
+      "label": "perf-native-throughput-r2-b8-equal-fixed64",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:00:16.954934+00:00",
+      "finished": "2026-11-06T02:01:07.546199+00:00",
+      "sha256": "e43d0766aa6d47e3cdc58f6472282e85485dfee2de9efdd9fe4bc47cacced415"
+    },
+    {
+      "label": "perf-native-enabled-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:01:11.635074+00:00",
+      "finished": "2026-11-06T02:01:58.854700+00:00",
+      "sha256": "ad6c4a09191f2e056a0706a55864d9b2c5d23c839e1f3c40fcd479f524d6ef54"
+    },
+    {
+      "label": "perf-native-enabled-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:01:58.933978+00:00",
+      "finished": "2026-11-06T02:02:24.733177+00:00",
+      "sha256": "b808e5dc9cea79c112cf7bdbf1df33058d9d661dc85b2e0a6a206e71fdc950c9"
+    },
+    {
+      "label": "perf-native-enabled-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:02:24.811262+00:00",
+      "finished": "2026-11-06T02:02:40.592448+00:00",
+      "sha256": "f5371784307d34dc49d3d049b54c21f3a063eccafe2b0e5ec7eea5912b7b29b8"
+    },
+    {
+      "label": "perf-native-enabled-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:02:40.660819+00:00",
+      "finished": "2026-11-06T02:02:51.514589+00:00",
+      "sha256": "d2682c6f644c52c4a6559f76bdc8a576f6eced5a759157b358caaafe958fe900"
+    },
+    {
+      "label": "perf-native-enabled-r0-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:02:51.579224+00:00",
+      "finished": "2026-11-06T02:04:56.434749+00:00",
+      "sha256": "afd763ade18ed49c937750569f75256944d15aa339e3397211ab18e99812a053"
+    },
+    {
+      "label": "perf-native-enabled-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:04:56.512864+00:00",
+      "finished": "2026-11-06T02:05:43.003168+00:00",
+      "sha256": "9e4afc134c4f554cfa46ae655206d94d9f8d82aebc7e918328e9a238294b6e72"
+    },
+    {
+      "label": "perf-native-enabled-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:05:43.081220+00:00",
+      "finished": "2026-11-06T02:06:08.821348+00:00",
+      "sha256": "6768d097338867e439893936289e5ca0337ede36330f93edf483168289d9c98d"
+    },
+    {
+      "label": "perf-native-enabled-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:06:08.881312+00:00",
+      "finished": "2026-11-06T02:06:24.672238+00:00",
+      "sha256": "65eef8bae599076d768f180cf8ab3c7c0d9261c9d95d515b201ed40f9670a0c5"
+    },
+    {
+      "label": "perf-native-enabled-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:06:24.749245+00:00",
+      "finished": "2026-11-06T02:06:35.533347+00:00",
+      "sha256": "70a23d0433566d82f0e0e5f2d66c857190cbd052da9ee00958b4a9f3c1b2bde0"
+    },
+    {
+      "label": "perf-native-enabled-r1-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:06:35.595602+00:00",
+      "finished": "2026-11-06T02:08:40.058501+00:00",
+      "sha256": "5d4309bba44a6d42a79bcd75b6370c3dae1f9b22dae748f7288c5308e77611b8"
+    },
+    {
+      "label": "perf-native-production-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:08:44.095283+00:00",
+      "finished": "2026-11-06T02:09:30.923584+00:00",
+      "sha256": "4ba24be9c3176dbba54b7fc600e6a401c9049d89152082ae32872d4988a8a227"
+    },
+    {
+      "label": "perf-native-production-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:09:30.989337+00:00",
+      "finished": "2026-11-06T02:09:56.552429+00:00",
+      "sha256": "3453e0e42cd44d236269cbe7a0077e82b7629c31d645ca52f3d645d69e2dcb6f"
+    },
+    {
+      "label": "perf-native-production-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:09:56.618952+00:00",
+      "finished": "2026-11-06T02:10:12.411036+00:00",
+      "sha256": "16cfa8d37bd9bdeb5df8f20e6bf522b9e6a341854036b7d980dc41a012f09849"
+    },
+    {
+      "label": "perf-native-production-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:10:12.479999+00:00",
+      "finished": "2026-11-06T02:10:23.272681+00:00",
+      "sha256": "d875ce06ad27b69c5103fd3ba15acccaf11911de2ea66900dd3db902dbdcc22a"
+    },
+    {
+      "label": "perf-native-production-r0-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:10:23.351978+00:00",
+      "finished": "2026-11-06T02:12:27.975886+00:00",
+      "sha256": "e6a241ad234aa5f4499daba1e9e741bca1ec047429f853777d41b31fd2eed930"
+    },
+    {
+      "label": "perf-native-production-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:12:28.057697+00:00",
+      "finished": "2026-11-06T02:13:14.383604+00:00",
+      "sha256": "921e7e57145e98bdbbcebc35b6cbfe4ca095aba35467154e95c019fba3108a0d"
+    },
+    {
+      "label": "perf-native-production-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:13:14.449655+00:00",
+      "finished": "2026-11-06T02:13:39.851814+00:00",
+      "sha256": "a7a24de84ce7676a28d2c483aa8c6b4c59eef889f05598054a6be2699a90ba38"
+    },
+    {
+      "label": "perf-native-production-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:13:39.917664+00:00",
+      "finished": "2026-11-06T02:13:55.719639+00:00",
+      "sha256": "3d9f131d6cb2d0a36294ac048ac21cd9d2001f9dd5d4156cafd5693a3b819ab7"
+    },
+    {
+      "label": "perf-native-production-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:13:55.786240+00:00",
+      "finished": "2026-11-06T02:14:06.520813+00:00",
+      "sha256": "c1ececd32cffb5a70f168884f997271931eacb9e1384cde53db212f1a9319413"
+    },
+    {
+      "label": "perf-native-production-r1-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:14:06.583872+00:00",
+      "finished": "2026-11-06T02:16:10.935514+00:00",
+      "sha256": "e9915af3b4a5c5487cda0585462f9b753e801c44e18604086ac2692b0119f2cc"
+    },
+    {
+      "label": "perf-native-production-stable-r0-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:16:14.986363+00:00",
+      "finished": "2026-11-06T02:17:01.212238+00:00",
+      "sha256": "4fd7b438be765a13ce808148578fc04c8cca1da0db23c4424fd7e47c6e727c32"
+    },
+    {
+      "label": "perf-native-production-stable-r0-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:17:01.289876+00:00",
+      "finished": "2026-11-06T02:17:43.073493+00:00",
+      "sha256": "5f34779d1d38b74f91ea4a6b7bc434f7b4c42e0cc41bd34435d0e585bb973c32"
+    },
+    {
+      "label": "perf-native-production-stable-r0-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:17:43.151230+00:00",
+      "finished": "2026-11-06T02:18:23.766276+00:00",
+      "sha256": "deee10a1e58305b594a6bed4302f888a9b13c3dac16e738ad00388fa46794b3b"
+    },
+    {
+      "label": "perf-native-production-stable-r0-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:18:23.831303+00:00",
+      "finished": "2026-11-06T02:19:04.083511+00:00",
+      "sha256": "b9f98ee1ceaaac5099e9414bda7f1311a3091b32d71ccaf6a531cb8ec6bdb49d"
+    },
+    {
+      "label": "perf-native-production-stable-r0-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:19:04.146317+00:00",
+      "finished": "2026-11-06T02:21:20.398849+00:00",
+      "sha256": "0ca91fda48fb671af7ff5d2ab408b06a3665231e2e114ccf863fa6f67058586e"
+    },
+    {
+      "label": "perf-native-production-stable-r1-b1",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:21:20.478164+00:00",
+      "finished": "2026-11-06T02:22:06.372662+00:00",
+      "sha256": "db9e21daba882c1dbd606b473f3007bdd09b6e1f7cc642b0e136bbbe19c68a79"
+    },
+    {
+      "label": "perf-native-production-stable-r1-b2",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:22:06.451266+00:00",
+      "finished": "2026-11-06T02:22:48.205105+00:00",
+      "sha256": "0a2bcf414e07c9eca0cb8a2ac9538c11f39383cbf4c9fbef219feba7aa92d136"
+    },
+    {
+      "label": "perf-native-production-stable-r1-b4",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:22:48.267014+00:00",
+      "finished": "2026-11-06T02:23:28.879157+00:00",
+      "sha256": "34559d5fcd6e98f85af4e5220e09510a17ae7495ccef13037fb4dfe8efa8b5b3"
+    },
+    {
+      "label": "perf-native-production-stable-r1-b8",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:23:28.944044+00:00",
+      "finished": "2026-11-06T02:24:09.170731+00:00",
+      "sha256": "08fe3b9faac0fd36c3275635077d734b821d2c49791ef331ef94817c6bf262dc"
+    },
+    {
+      "label": "perf-native-production-stable-r1-b8-sustained",
+      "status": 0,
+      "complete": true,
+      "started": "2026-11-06T02:24:09.236396+00:00",
+      "finished": "2026-11-06T02:26:25.697233+00:00",
+      "sha256": "31a50851902be49bf38493f542453cd1279553667583df26f2e6eb6a3494943a"
+    }
+  ],
+  "passed": true
+}

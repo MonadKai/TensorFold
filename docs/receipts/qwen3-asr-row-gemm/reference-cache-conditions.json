@@ -1,0 +1,24 @@
+{
+  "image_id": "sha256:0d2734ca87faf606fae8bc68992adb9143b2da1fa666fc897f4f7dcb624b93f6",
+  "owner_files": {
+    "renderers/base.py": "c3248fe16b7e499eab8a580a4c8581809d730681821990757ceeecf5148e33f4",
+    "v1/core/encoder_cache_manager.py": "45f167e4f5a8ae3448ef61ba8d13c21dbb13a90fc55ab49098b7aacedd52e0d1"
+  },
+  "disabled": {
+    "prefix_caching": false,
+    "processor_cache_gb": 0,
+    "cross_request_encoder_identity_reuse": false,
+    "implementation": "Renderer replaces multimodal identities with request-scoped UUIDs when both prefix and processor caching are off."
+  },
+  "enabled": {
+    "prefix_caching": true,
+    "processor_cache_gb": 4,
+    "cross_request_encoder_identity_reuse_eligible": true,
+    "implementation": "Content identities may be reused; encoder manager keys reference/LRU entries by multimodal identity."
+  },
+  "limitations": [
+    "Encoder cache storage remains available for per-request lifecycle even in the disabled cross-request condition.",
+    "Enabled identity eligibility does not measure separate encoder-cache hits or savings.",
+    "Only actual published cache counters are used; absent encoder-hit counters remain unavailable."
+  ]
+}

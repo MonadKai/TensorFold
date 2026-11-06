@@ -1,0 +1,27 @@
+{
+  "records": [
+    "scheduler-legacy-r0-ami600",
+    "scheduler-legacy-r0-en_600s",
+    "scheduler-legacy-r0-mixed",
+    "scheduler-fair-r0-ami600",
+    "scheduler-fair-r0-en_600s",
+    "scheduler-fair-r0-mixed",
+    "scheduler-legacy-r1-ami600",
+    "scheduler-legacy-r1-en_600s",
+    "scheduler-legacy-r1-mixed",
+    "scheduler-fair-r1-ami600",
+    "scheduler-fair-r1-en_600s",
+    "scheduler-fair-r1-mixed",
+    "scheduler-legacy-r2-ami600",
+    "scheduler-legacy-r2-en_600s",
+    "scheduler-legacy-r2-mixed",
+    "scheduler-fair-r2-ami600",
+    "scheduler-fair-r2-en_600s",
+    "scheduler-fair-r2-mixed",
+    "scheduler-stable-legacy-r0-mixed",
+    "scheduler-stable-legacy-r1-mixed",
+    "scheduler-stable-legacy-r2-mixed"
+  ],
+  "pair_comparisons": 15,
+  "passed": true
+}

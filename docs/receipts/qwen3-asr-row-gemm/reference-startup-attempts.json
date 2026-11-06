@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "attempts": [
+    {
+      "label": "reference-startup-attempt1",
+      "complete": false,
+      "measurement_started": false,
+      "phase": "vllm MemorySnapshot CUDA memory query before model loading",
+      "error": "torch.AcceleratorError: CUDA error: out of memory",
+      "server_log_sha256": "1da83ecb3d0448fb8f1838e0cbcbfd85e31668b6628f0876df4860917a0bce04",
+      "source_driver_sha256": "42808fb39be03c7ae9408e7a267812dac5730a56b1af772590b29365de50c950",
+      "restoration_passed": true
+    },
+    {
+      "label": "reference-attempt2",
+      "complete": false,
+      "startup_passed": true,
+      "measurement_admission_failed": true,
+      "reason": "Two long-audio diagnostics were captured before compiler quiescence was enforced; nvcc present at the next admission. Both timing cells excluded and retained.",
+      "raw_archive_manifest": {
+        "perf-reference-disabled-r0-attempt2-observed-server-config.json": "fc3f98e1df6c379ab8276b2611a2e29dcc7e74b4a2ff08d20e5c621b3070f553",
+        "perf-reference-disabled-ami600-identity.json": "1938910edc4d55292f75dda2e62d87241644ecb410422af9c2e56dc89ca3e98e",
+        "perf-reference-disabled-en_600s-gpu-audit.json": "655e71bebef6b7a1c7f76ea52394bc5155199400add3a73e68f2c8ed2d486d92",
+        "perf-reference-disabled-r0-attempt2-server.log": "65a1544f3b7be94513f6d13375552eed88cd999b250358be6b171ac60c67248e",
+        "perf-reference-disabled-en_600s.json": "91c33147dcbafdeb022e56012a2580fda3b3e17cbb24eaed265e3bb2bed220d5",
+        "perf-reference-disabled-en_600s-identity.json": "1938910edc4d55292f75dda2e62d87241644ecb410422af9c2e56dc89ca3e98e",
+        "perf-reference-disabled-en_600s.log": "cc074ca4e5d2dd14e29e0ea0e958f5d78432b814dbcd842209819d7b30bf2c81",
+        "reference-and-final-validation-attempt2.log": "f6deda993d3282bf2e1da4f7938841d3aa797975178ef9889ebba96b1f2ebe73",
+        "perf-reference-disabled-ami600.json": "7cfdcd73ac7f60f37f3f02f8ac06323e7e26fb2400b0ed91cde6d1c93c5af4b7",
+        "perf-reference-disabled-r0-attempt2-container-removed.json": "7590d332ccae1f0f93316c4a5e7e9717c896663c5d7eea5bf8de628ef0399500",
+        "perf-reference-disabled-ami600.log": "e148c11fce987c39209a571e4aff94b3254012e467bd0ca981d40e37a0a2cb1c",
+        "perf-reference-disabled-r0-attempt2-container-created.json": "f3b70e062fc340bf84ad3464aefef58479fbbecc824bc66bef7133d931a7144e",
+        "formal-reference-performance-attempt2.log": "1b3d79e08dcef100796be49bce8dd818d03dcdabb6d6bf17b6a6f1dfda9f586a",
+        "perf-reference-disabled-ami600-gpu-audit.json": "bfa37f5561294f57df5492116588830e0d0c104d2c6c0a4eef8049974f12ea54",
+        "formal_performance.py": "b469c0cf2632bcb1a1cc0a4d384063add9b009f582eb35c4a56280efed845b0a"
+      }
+    },
+    {
+      "label": "reference-attempt3",
+      "complete": false,
+      "measurement_started": false,
+      "warmup_responses_preserved": 1,
+      "reason": "Global admission timed out on independently identified foreign CPU-only build; isolated warmup preserved before controlled stage interruption.",
+      "preserved_file": "perf-attempt3-reference-disabled-ami600.json",
+      "raw_sha256": "2d5f45776c203b1b669f56c88098efec4b85852643c6bf1a42872e5846e337cd"
+    }
+  ],
+  "diagnostics": {
+    "cuda_initialization_and_mem_query_passes": 2,
+    "actual_memory_snapshot_passes": 2
+  },
+  "cause": "Unconfirmed; no configuration change before separately identified retry.",
+  "retry": "Same image/CLI, attempt3 startup names; compiler quiet admission and 1Hz observations added outside server work."
+}

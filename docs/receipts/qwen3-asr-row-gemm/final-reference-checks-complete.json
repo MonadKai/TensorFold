@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "scope": "Execution complete; original-Qwen comparison reports all numerical/decision differences, without a new equivalence threshold.",
+  "native_reference_case_gate": "Exact stable versus throughput on each freshly exported original-source case."
+}
