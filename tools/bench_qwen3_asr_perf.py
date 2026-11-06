@@ -13,6 +13,7 @@ import wave
 from types import SimpleNamespace
 
 from bench_qwen3_asr import run_one
+from qwen3_asr_compiler_guard import snapshot as compiler_snapshot, wait_quiet
 
 
 def percentile(values, q):
@@ -70,6 +71,7 @@ def main():
     parser.add_argument("--mode", choices=("chat", "transcription"), default="chat")
     parser.add_argument("--pid", type=int)
     parser.add_argument("--extra-pid", type=int, action="append", default=[])
+    parser.add_argument("--compiler-quiet-seconds", type=float, default=0)
     args = parser.parse_args()
     manifest_sha = None
     manifest_clips = None
@@ -86,6 +88,8 @@ def main():
         parser.error("concurrency, reps and tokens must be positive")
     if args.seconds < 0 or args.min_requests < 0 or args.warmup < 0 or args.warmup_requests < 0:
         parser.error("seconds, min-requests and warmup cannot be negative")
+    if args.compiler_quiet_seconds < 0 or not math.isfinite(args.compiler_quiet_seconds):
+        parser.error("compiler quiet interval must be finite and nonnegative")
     if args.workload == "equal_tokens" and args.mode != "chat":
         parser.error("equal token diagnostics require chat ignore_eos")
     if args.require_natural_stop and args.workload != "natural":
@@ -118,15 +122,35 @@ def main():
     warmup_paths += [args.clips[-1 - (i % len(args.clips))] for i in range(args.warmup_requests)]
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
         warmup_results = list(pool.map(lambda path: run_one(options, path, args.mode), warmup_paths))
+    compiler_admission = []
+    if args.compiler_quiet_seconds:
+        try:
+            compiler_admission = wait_quiet(args.compiler_quiet_seconds, 600)
+        except Exception as error:
+            args.output.write_text(json.dumps(dict(schema="asr-performance-admission-v1", runtime=identity,
+                complete=False, warmup_requests=warmup_results,
+                compiler_admission=error.args[0] if isinstance(error, TimeoutError) else [],
+                reason="Compiler activity admission failed", observation_error=str(error)),
+                ensure_ascii=False, indent=2) + "\n")
+            return 1
     before = metrics(args.base_url)
     resources = []
+    compiler_observations = []
+    compiler_errors = []
     stop = threading.Event()
 
     def sample():
+        next_compiler_sample = 0
         while not stop.is_set():
             value = proc(args.pid)
             if value is not None:
                 resources.append(value)
+            if args.compiler_quiet_seconds and time.monotonic() >= next_compiler_sample:
+                try:
+                    compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_snapshot()))
+                except Exception as error:
+                    compiler_errors.append(str(error))
+                next_compiler_sample = time.monotonic() + 1
             stop.wait(.1)
 
     monitor = threading.Thread(target=sample)
@@ -207,6 +231,12 @@ def main():
         if args.require_natural_stop:
             warmup_work = warmup_work and all(natural_stop(r) is True for r in warmup_results if valid(r))
     stopping_evidence = not args.require_natural_stop or bool(stops) and all(x is True for x in stops)
+    if args.compiler_quiet_seconds:
+        try:
+            compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_snapshot()))
+        except Exception as error:
+            compiler_errors.append(str(error))
+    compiler_quiet = not compiler_errors and not any(row["processes"] for row in compiler_observations)
     sustained_goal = elapsed >= args.seconds and len(successful) >= args.min_requests
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
@@ -233,7 +263,11 @@ def main():
                          "pinned_allocation_peak_bytes": next((after[key] for key in after if "pinned_memory_peak_bytes" in key), None), "gpu_active_seconds": None},
         "cache_metric_deltas": {key: after[key] - before[key] for key in after if key in before and any(name in key for name in ("prefix_cache", "mm_cache", "encoder_cache"))},
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
-        "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops) and stopping_evidence,
+        "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops) and stopping_evidence and compiler_quiet,
+        "compiler_guard": dict(enabled=bool(args.compiler_quiet_seconds), quiet_seconds=args.compiler_quiet_seconds,
+                               admission=compiler_admission, measured_observations=compiler_observations,
+                               observation_errors=compiler_errors,
+                               no_compiler_observed=compiler_quiet if args.compiler_quiet_seconds else None),
         "warmup_work_matches": warmup_work, "sustained_goal_met": sustained_goal,
         "unique_pool_exhausted": exhausted,
         "natural_stop_observations": stops,
