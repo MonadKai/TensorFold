@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "frozen_at": "2026-11-06T02:54:56.357368+00:00",
+  "reason": "Independent CPU-only build began after the primary native trials. Add native fixed-work controls before and after the reference matrix without replacing the original 160-cell plan.",
+  "cells": {
+    "perf-native-background-before-b4-natural-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 4,
+      "workload": "natural",
+      "output_cap": 1024,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-before-b4-equal-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 4,
+      "workload": "equal_tokens",
+      "output_cap": 128,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-before-b8-natural-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 8,
+      "workload": "natural",
+      "output_cap": 1024,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-before-b8-equal-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 8,
+      "workload": "equal_tokens",
+      "output_cap": 128,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-after-b4-natural-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 4,
+      "workload": "natural",
+      "output_cap": 1024,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-after-b4-equal-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 4,
+      "workload": "equal_tokens",
+      "output_cap": 128,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-after-b8-natural-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 8,
+      "workload": "natural",
+      "output_cap": 1024,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    },
+    "perf-native-background-after-b8-equal-fixed64": {
+      "role": "supplemental background control",
+      "client_concurrency": 8,
+      "workload": "equal_tokens",
+      "output_cap": 128,
+      "cache_condition": "disabled",
+      "math": "throughput",
+      "input_rule": "first64",
+      "sustained": false
+    }
+  }
+}

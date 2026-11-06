@@ -72,6 +72,7 @@ def main():
     parser.add_argument("--pid", type=int)
     parser.add_argument("--extra-pid", type=int, action="append", default=[])
     parser.add_argument("--compiler-quiet-seconds", type=float, default=0)
+    parser.add_argument("--compiler-container-id")
     args = parser.parse_args()
     manifest_sha = None
     manifest_clips = None
@@ -90,6 +91,8 @@ def main():
         parser.error("seconds, min-requests and warmup cannot be negative")
     if args.compiler_quiet_seconds < 0 or not math.isfinite(args.compiler_quiet_seconds):
         parser.error("compiler quiet interval must be finite and nonnegative")
+    if args.compiler_container_id and not re.fullmatch(r"[0-9a-f]{64}", args.compiler_container_id):
+        parser.error("compiler container identity must be a complete immutable container ID")
     if args.workload == "equal_tokens" and args.mode != "chat":
         parser.error("equal token diagnostics require chat ignore_eos")
     if args.require_natural_stop and args.workload != "natural":
@@ -123,13 +126,15 @@ def main():
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
         warmup_results = list(pool.map(lambda path: run_one(options, path, args.mode), warmup_paths))
     compiler_admission = []
+    def compiler_probe():
+        return compiler_snapshot(args.compiler_container_id)
     if args.compiler_quiet_seconds:
         try:
-            compiler_admission = wait_quiet(args.compiler_quiet_seconds, 600)
+            compiler_admission = wait_quiet(args.compiler_quiet_seconds, 600, probe=compiler_probe)
         except Exception as error:
             args.output.write_text(json.dumps(dict(schema="asr-performance-admission-v1", runtime=identity,
                 complete=False, warmup_requests=warmup_results,
-                compiler_admission=error.args[0] if isinstance(error, TimeoutError) else [],
+                compiler_admission=error.args[0] if isinstance(error, TimeoutError) else getattr(error, "observations", []),
                 reason="Compiler activity admission failed", observation_error=str(error)),
                 ensure_ascii=False, indent=2) + "\n")
             return 1
@@ -147,7 +152,7 @@ def main():
                 resources.append(value)
             if args.compiler_quiet_seconds and time.monotonic() >= next_compiler_sample:
                 try:
-                    compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_snapshot()))
+                    compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_probe()))
                 except Exception as error:
                     compiler_errors.append(str(error))
                 next_compiler_sample = time.monotonic() + 1
@@ -233,10 +238,11 @@ def main():
     stopping_evidence = not args.require_natural_stop or bool(stops) and all(x is True for x in stops)
     if args.compiler_quiet_seconds:
         try:
-            compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_snapshot()))
+            compiler_observations.append(dict(monotonic_seconds=time.monotonic(), processes=compiler_probe()))
         except Exception as error:
             compiler_errors.append(str(error))
-    compiler_quiet = not compiler_errors and not any(row["processes"] for row in compiler_observations)
+    compiler_quiet = not compiler_errors and not any(
+        process.get("in_scope", True) for row in compiler_observations for process in row["processes"])
     sustained_goal = elapsed >= args.seconds and len(successful) >= args.min_requests
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
@@ -265,6 +271,7 @@ def main():
         "gpu_intervals": intervals, "requests": results, "warmup_requests": warmup_results,
         "complete": bool(results) and len(successful) == len(results) and warmup_work and work_matches and unique_work and sustained_goal and not exhausted and not any(x is False for x in stops) and stopping_evidence and compiler_quiet,
         "compiler_guard": dict(enabled=bool(args.compiler_quiet_seconds), quiet_seconds=args.compiler_quiet_seconds,
+                               scope="reference container" if args.compiler_container_id else "system",
                                admission=compiler_admission, measured_observations=compiler_observations,
                                observation_errors=compiler_errors,
                                no_compiler_observed=compiler_quiet if args.compiler_quiet_seconds else None),

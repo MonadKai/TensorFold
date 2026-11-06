@@ -7,7 +7,7 @@ from pathlib import Path
 import tempfile
 import wave
 
-from qwen3_asr_compiler_guard import wait_quiet
+from qwen3_asr_compiler_guard import wait_quiet, ObservationError, snapshot
 import bench_qwen3_asr_perf as benchmark
 
 
@@ -32,6 +32,30 @@ class Guard(unittest.TestCase):
         with self.assertRaises(TimeoutError) as error:
             self.run_guard(set(range(100)), 3)
         self.assertEqual(len(error.exception.args[0]), 4)
+
+    def test_probe_error_keeps_observations(self):
+        with mock.patch("time.sleep"), self.assertRaises(ObservationError) as error:
+            probe = mock.Mock(side_effect=[[dict(name="ptxas")], RuntimeError("ps unavailable")])
+            wait_quiet(2, 20, probe=probe, sleep=lambda seconds: None)
+        self.assertEqual(error.exception.observations[0]["processes"][0]["name"], "ptxas")
+
+    def test_foreign_cpu_compilers_are_observed_without_blocking(self):
+        clock = [0]
+        def sleep(seconds):
+            clock[0] += seconds
+        result = wait_quiet(2, 20, probe=lambda: [dict(name="nvcc", in_scope=False)],
+                            now=lambda: clock[0], sleep=sleep)
+        self.assertEqual(result[-1]["elapsed_seconds"], 2)
+        self.assertFalse(result[0]["processes"][0]["in_scope"])
+
+    def test_cuda_backends_and_scope(self):
+        fake = mock.Mock(returncode=0, stderr="", stdout="123 ptxas\n")
+        with mock.patch("qwen3_asr_compiler_guard.subprocess.run", return_value=fake) as run, \
+             mock.patch.object(Path, "read_text", return_value="docker-" + "a" * 64):
+            self.assertTrue(snapshot("a" * 64)[0]["in_scope"])
+            self.assertFalse(snapshot("b" * 64)[0]["in_scope"])
+        for name in ("ptxas", "cudafe++", "fatbinary", "nvlink"):
+            self.assertIn(name, run.call_args.args[0][2].split(","))
 
     def benchmark_fixture(self, folder):
         clip = Path(folder) / "clip.wav"
