@@ -40,7 +40,8 @@ def paired(reference, candidate, cross_engine=False):
             ids = choice.get("token_ids")
             if ids is None:
                 ids = value.get("tensorfold", {}).get("token_ids")
-            if not isinstance(ids, list) or not isinstance(count, int) or len(ids) != count:
+            if (not isinstance(ids, list) or type(count) is not int or count <= 0 or len(ids) != count
+                    or any(type(token) is not int or token < 0 for token in ids)):
                 raise ValueError("token identities or actual work are missing")
             if reference["workload"]["kind"] == "natural" and choice["finish_reason"] != "stop":
                 raise ValueError("natural workload was truncated")
