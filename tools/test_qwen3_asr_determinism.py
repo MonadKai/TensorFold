@@ -19,6 +19,8 @@ class DeterminismEvidence(unittest.TestCase):
         self.assertEqual(fingerprint(native), fingerprint(reference))
         reference["response"]["tensorfold"] = dict(token_ids=[1, 3])
         self.assertIsNone(fingerprint(reference))
+        reference["response"]["tensorfold"] = dict(token_ids=[True, 2])
+        self.assertIsNone(fingerprint(reference))
 
     def test_physical_padding_does_not_prove_logical_batch(self):
         key = 'tensorfold:asr_decode_batches_total{mode="throughput",rows="1",physical_rows="8"}'
@@ -36,6 +38,12 @@ class DeterminismEvidence(unittest.TestCase):
         new = copy.deepcopy(old)
         new["response"]["tensorfold"]["token_ids"] = [1, 3]
         self.assertNotEqual(fingerprint(old), fingerprint(new))
+
+    def test_invalid_ids_cannot_pass(self):
+        for ids in ([False, False], [-1, -1], ["1", "2"]):
+            value = response()
+            value["response"]["tensorfold"]["token_ids"] = ids
+            self.assertIsNone(fingerprint(value))
 
     def test_missing_ids_work_or_response_cannot_pass(self):
         for change in ["ids", "usage", "count", "message", "choices"]:

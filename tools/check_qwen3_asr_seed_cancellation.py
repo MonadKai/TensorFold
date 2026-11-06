@@ -17,6 +17,22 @@ import urllib.request
 
 from bench_qwen3_asr import run_one
 from compare_qwen3_asr_quality import FROZEN_MANIFEST_SHA256
+from qwen3_asr_tokens import token_ids, valid_token_work
+
+
+def fingerprint(raw):
+    value = raw.get("response")
+    if raw.get("status") != 200 or not isinstance(value, dict):
+        return None
+    ids = token_ids(value)
+    usage = value.get("usage")
+    if not isinstance(usage, dict) or not valid_token_work(ids, usage.get("completion_tokens")) or len(ids) != 128:
+        return None
+    choice = value["choices"][0]
+    message = choice.get("message")
+    if not isinstance(message, dict) or not isinstance(message.get("content"), str) or choice.get("finish_reason") != "length":
+        return None
+    return dict(text=message["content"], token_ids=ids, finish_reason=choice["finish_reason"])
 
 
 def main():
@@ -80,16 +96,6 @@ def main():
                             f"Content-Type: application/json\r\nContent-Length: {len(body)}\r\n"
                             "Connection: close\r\n\r\n").encode() + body)
             yield client
-
-    def fingerprint(raw):
-        if raw["status"] != 200:
-            return None
-        value = raw["response"]
-        ids = value.get("tensorfold", {}).get("token_ids")
-        if not isinstance(ids, list) or len(ids) != 128 or value.get("usage", {}).get("completion_tokens") != 128:
-            return None
-        return dict(text=value["choices"][0]["message"]["content"], token_ids=ids,
-                    finish_reason=value["choices"][0]["finish_reason"])
 
     def one(clip, mode, barrier=None):
         if barrier is not None:

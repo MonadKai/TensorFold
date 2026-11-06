@@ -123,6 +123,7 @@ test {
     _ = @import("ck.zig");
     _ = @import("tp_watch.zig");
     _ = @import("shared_test.zig");
+    _ = @import("row_gemm_test.zig");
     _ = @import("tree_attention.zig");
     _ = @import("block_attention.zig");
     _ = @import("window_attention.zig");

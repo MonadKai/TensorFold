@@ -65,6 +65,18 @@ class CachePairs(unittest.TestCase):
         with self.assertRaises(ValueError):
             compare(self.old, self.new)
 
+    def test_common_invalid_ids_cannot_pass(self):
+        for ids in ([False, False], [-1, -1], ["1", "2"]):
+            for report in (self.old, self.new):
+                report["requests"][0]["response"]["choices"][0]["token_ids"] = ids
+            with self.assertRaises(ValueError):
+                compare(self.old, self.new)
+
+    def test_conflicting_token_layouts_cannot_pass(self):
+        self.new["requests"][0]["response"]["tensorfold"] = dict(token_ids=[1, 3])
+        with self.assertRaises(ValueError):
+            compare(self.old, self.new)
+
 
 if __name__ == "__main__":
     unittest.main()

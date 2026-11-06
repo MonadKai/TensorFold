@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from qwen3_asr_tokens import token_ids, valid_token_work
+
 
 def compare(disabled, enabled):
     for report in (disabled, enabled):
@@ -46,9 +48,9 @@ def compare(disabled, enabled):
                     raise ValueError("failed cache request")
                 response = row["response"]
                 choice = response["choices"][0]
-                tokens = choice.get("token_ids", response.get("tensorfold", {}).get("token_ids"))
+                tokens = token_ids(response)
                 actual = response["usage"]["completion_tokens"]
-                if type(actual) is not int or actual <= 0 or not isinstance(tokens, list) or len(tokens) != actual:
+                if not valid_token_work(tokens, actual):
                     raise ValueError("actual token work is missing")
                 if choice["finish_reason"] != "stop":
                     raise ValueError("natural cache request was truncated")

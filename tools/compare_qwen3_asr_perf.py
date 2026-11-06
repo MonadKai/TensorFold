@@ -5,6 +5,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from qwen3_asr_tokens import token_ids, valid_token_work
+
 
 def paired(reference, candidate, cross_engine=False):
     for report in (reference, candidate):
@@ -37,11 +39,8 @@ def paired(reference, candidate, cross_engine=False):
         for value in responses:
             choice = value["choices"][0]
             count = value.get("usage", {}).get("completion_tokens")
-            ids = choice.get("token_ids")
-            if ids is None:
-                ids = value.get("tensorfold", {}).get("token_ids")
-            if (not isinstance(ids, list) or type(count) is not int or count <= 0 or len(ids) != count
-                    or any(type(token) is not int or token < 0 for token in ids)):
+            ids = token_ids(value)
+            if not valid_token_work(ids, count):
                 raise ValueError("token identities or actual work are missing")
             if reference["workload"]["kind"] == "natural" and choice["finish_reason"] != "stop":
                 raise ValueError("natural workload was truncated")

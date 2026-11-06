@@ -11,6 +11,7 @@ from types import SimpleNamespace
 
 from bench_qwen3_asr import run_one
 from bench_qwen3_asr_perf import metrics
+from qwen3_asr_tokens import token_ids, valid_token_work
 
 
 def fingerprint(result):
@@ -24,19 +25,11 @@ def fingerprint(result):
         choice = choices[0]
         if not isinstance(choice, dict) or not isinstance(choice.get("message"), dict):
             return None
-        ids = choice.get("token_ids")
-        extension = response.get("tensorfold")
-        native_ids = extension.get("token_ids") if isinstance(extension, dict) else None
-        if ids is not None and native_ids is not None and ids != native_ids:
-            return None
-        if ids is None:
-            ids = native_ids
+        ids = token_ids(response)
         text = choice["message"].get("content")
         usage = response.get("usage")
-        if (not isinstance(text, str) or not isinstance(ids, list) or not ids
-                or not all(type(token) is int for token in ids)
-                or not isinstance(usage, dict) or type(usage.get("completion_tokens")) is not int
-                or usage["completion_tokens"] != len(ids)
+        if (not isinstance(text, str) or not isinstance(usage, dict)
+                or not valid_token_work(ids, usage.get("completion_tokens"))
                 or choice.get("finish_reason") not in ["stop", "length"]):
             return None
         digest = hashlib.sha256(json.dumps(ids, separators=(",", ":")).encode()).hexdigest()
