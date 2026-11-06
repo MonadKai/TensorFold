@@ -128,13 +128,18 @@ Checkpoint files are unchanged. Decoder QKV and gate/up pack in memory; prefill 
 geometry because combining its projections changed Chinese BF16 stage outputs. Do not enable unqualified
 prefill fusion or substitute that changed path as a new plain oracle.
 
-Transcription splits retain their original boundaries and order. Each parent has at most two child workers;
-a server-owned FIFO admission gate limits all long-audio children together to `max(lanes / 2, 1)`. At eight
-lanes, four remain available to ordinary requests. With one lane there is no reserved capacity. The quota
-covers preprocessing through completion; every inference still enters the existing LaneHost. Disconnects
+Transcription splits retain their original boundaries and order. A server-owned fair-parent admission
+gate limits all long-audio children together to `max(lanes / 2, 1)`. Each parent starts up to the smaller
+of that limit, its chunk count and eight workers. An idle parent can therefore fill four slots at eight
+lanes; multiple parents receive bounded shares and take turns as slots become available. Shrinking a
+share prevents new admissions and does not reclaim occupied KV slots. Four lanes remain available to
+ordinary requests; with one lane there is no reserved capacity. The quota covers preprocessing through
+completion; every inference still enters the existing LaneHost. Disconnects
 cancel both waiting and active children and join workers before releasing their shared input. `/metrics`
 exposes `tensorfold:audio_chunks_{active,waiting,peak,limit}`. Row prefill honors the scheduler's row budget;
 encoder work is still a complete first-stage operation, and multi-request prefill is a separate follow-up.
+The [cross-row GEMM contract](qwen3-asr-row-gemm.md) records the current arithmetic modes, scheduler
+ablation and qualification requirements.
 
 Set `TF_ASR_PROFILE=1` for diagnostic CPU and CUDA event intervals. Chat's `tensorfold` extension reports
 native decode/resampling/Log-Mel, lane queuing, encoder, prefill, decode, LM head, sampling and postprocessing.

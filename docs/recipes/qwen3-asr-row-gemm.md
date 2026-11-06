@@ -168,6 +168,10 @@ shuffle with seed 20261106. Its manifest SHA-256 is
 Principal sustained cells are cache-off, unique inputs, B=4/8, natural stopping and 128 output tokens,
 each at least 120 seconds and 64 completions. Native stable/throughput comparisons use interleaved
 repetitions; other cache and batch cells retain at least 64 completions and repeated measurements.
+These are two separate workloads: `natural` retains the existing 1024-token safety cap and requires an
+observed stop, while `equal_tokens` sets `ignore_eos` and generates exactly 128 tokens. The original run
+plan uses these same settings for both native modes and the reference engine. The cap does not replace
+actual output-token accounting, and a capped diagnostic is not a complete transcription.
 Equal-token diagnostics never report complete-ASR audio throughput. Whole-request latency includes HTTP
 transport; internal TTFT and CUDA-event stages retain their own clock boundaries.
 
@@ -205,8 +209,10 @@ TENSORFOLD_QWEN3_ASR_MATH=throughput zig-out/native/bin/tensorfold-native serve 
 
 `prepare_qwen3_asr_eval.py` and `prepare_qwen3_asr_perf.py` reconstruct the frozen workloads.
 `bench_qwen3_asr_accuracy.py --require-natural-stop` and `compare_qwen3_asr_quality.py` require exact
-coverage of all 256 quality utterances. `check_qwen3_asr_determinism.py` compares greedy and fixed-seed
-sampling across concurrency, order and reused slots; `--reference` checks another process's fingerprints.
+coverage of all 256 quality utterances. `check_qwen3_asr_determinism.py --api-mode chat` compares greedy
+and fixed-seed sampling across concurrency, order and reused slots, and requires the target actual decode
+row count in every schedule; `--reference` checks another process's fingerprints. The default transcription
+mode checks its separate API semantics, whose client concurrency eight is limited by the child quota.
 `check_qwen3_asr_lifecycle.py` requires observed active/queued work and actual cancellation-counter changes.
 `check_qwen3_asr_seed_cancellation.py` adds 64 fixed greedy/sampled Chat probes, capped at 128 tokens with
 `ignore_eos=true` and automatic language in both solo and disturbed runs. Three fixed schedules use
