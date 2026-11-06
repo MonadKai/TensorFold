@@ -84,6 +84,19 @@ class Guard(unittest.TestCase):
             self.assertEqual(report["warmup_requests"], [row])
             self.assertEqual(report["schema"], "asr-performance-admission-v1")
 
+    def test_stale_container_scope_rejected_before_warmup(self):
+        with tempfile.TemporaryDirectory() as folder:
+            argv, output, row = self.benchmark_fixture(folder)
+            (Path(folder) / "identity.json").write_text(json.dumps(dict(
+                cache_condition="disabled", engine="vllm", container_id="a" * 64)))
+            argv += ["--compiler-container-id", "b" * 64]
+            with mock.patch("sys.argv", argv), mock.patch.object(benchmark, "run_one") as run, \
+                 self.assertRaises(SystemExit) as error:
+                benchmark.main()
+            self.assertEqual(error.exception.code, 2)
+            run.assert_not_called()
+            self.assertFalse(output.exists())
+
     def test_observer_error_invalidates_measured_cell(self):
         with tempfile.TemporaryDirectory() as folder:
             argv, output, row = self.benchmark_fixture(folder)

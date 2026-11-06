@@ -100,6 +100,9 @@ def main():
     identity = json.loads(args.identity.read_text())
     if identity.get("cache_condition") != args.cache_condition:
         parser.error("runtime identity must explicitly agree with the cache condition")
+    if args.compiler_container_id and (not args.compiler_quiet_seconds or identity.get("engine") != "vllm"
+                                       or identity.get("container_id") != args.compiler_container_id):
+        parser.error("compiler scope must match the identified reference container and enable observation")
     fixtures = []
     for path in args.clips:
         with wave.open(str(path)) as clip:
