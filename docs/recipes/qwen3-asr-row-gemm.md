@@ -175,6 +175,17 @@ actual output-token accounting, and a capped diagnostic is not a complete transc
 Equal-token diagnostics never report complete-ASR audio throughput. Whole-request latency includes HTTP
 transport; internal TTFT and CUDA-event stages retain their own clock boundaries.
 
+The publication-completeness matrix is recorded in
+[`expected-performance-cells.json`](../receipts/qwen3-asr-row-gemm/expected-performance-cells.json):
+94 unprofiled native cells, 58 reference cells and eight instrumented native diagnostics. The native
+workloads and admission thresholds are unchanged. Before any formal reference performance execution,
+eight extra repeated-content/cache-off cells were added: two trials at each B1/2/4/8, using the same
+frozen first four inputs as the cache-enabled condition. They separate content composition from cache
+effects. Requested and observed cache/compile/graph settings remain independently recorded.
+Reference trials run two interleaved disabled/enabled/production cycles with independently started
+processes; the six long-reference diagnostics belong to the first cycle. This changes ordering, not
+the frozen cell inputs or admission thresholds.
+
 ## Runtime and diagnostic entry points
 
 The process selects `TENSORFOLD_QWEN3_ASR_MATH=stable|throughput` when loading the model. `stable` is the
@@ -212,7 +223,8 @@ TENSORFOLD_QWEN3_ASR_MATH=throughput zig-out/native/bin/tensorfold-native serve 
 coverage of all 256 quality utterances. `check_qwen3_asr_determinism.py --api-mode chat` compares greedy
 and fixed-seed sampling across concurrency, order and reused slots, and requires the target actual decode
 row count in every schedule; `--reference` checks another process's fingerprints. The default transcription
-mode checks its separate API semantics, whose client concurrency eight is limited by the child quota.
+mode checks its separate API semantics: split children use the child quota, while single chunks bypass
+it. A client concurrency label alone does not prove the actual decode row count.
 `check_qwen3_asr_lifecycle.py` requires observed active/queued work and actual cancellation-counter changes.
 `check_qwen3_asr_seed_cancellation.py` adds 64 fixed greedy/sampled Chat probes, capped at 128 tokens with
 `ignore_eos=true` and automatic language in both solo and disturbed runs. Three fixed schedules use
@@ -229,4 +241,6 @@ qualification additionally sets `--require-natural-stop`; absent reference stopp
 `compare_qwen3_asr_perf.py` binds 64 unique input SHAs, actual token IDs/counts, seed, context and cache
 condition. Native token disagreements fail; cross-engine disagreements are retained separately from ASR
 quality. `bench_qwen3_asr_mixed.py` requires both natural chunk stopping and observed execution overlap.
+`compare_qwen3_asr_schedule.py` additionally pairs all long, short and warmup request ordinals, input
+hashes, ordered chunk/token work and text before attributing scheduler or mixed-workload gains.
 `summarize_qwen3_asr_ncu.py` and `summarize_qwen3_asr_trace.py` export the public subsets of private traces.

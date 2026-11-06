@@ -35,7 +35,8 @@ def fingerprint(result):
         usage = response.get("usage")
         if (not isinstance(text, str) or not isinstance(ids, list) or not ids
                 or not all(type(token) is int for token in ids)
-                or not isinstance(usage, dict) or usage.get("completion_tokens") != len(ids)
+                or not isinstance(usage, dict) or type(usage.get("completion_tokens")) is not int
+                or usage["completion_tokens"] != len(ids)
                 or choice.get("finish_reason") not in ["stop", "length"]):
             return None
         digest = hashlib.sha256(json.dumps(ids, separators=(",", ":")).encode()).hexdigest()
@@ -44,7 +45,11 @@ def fingerprint(result):
     if not isinstance(response.get("text"), str):
         return None
     chunks = response.get("tensorfold", {}).get("chunks", [])
-    if not chunks or not all(isinstance(c.get("token_sha256"), str) and "completion_tokens" in c for c in chunks):
+    if not isinstance(chunks, list) or not chunks or not all(
+            isinstance(c, dict) and isinstance(c.get("token_sha256"), str)
+            and re.fullmatch(r"[0-9a-f]{64}", c["token_sha256"])
+            and type(c.get("completion_tokens")) is int and c["completion_tokens"] > 0
+            and c.get("finish_reason") in ["stop", "length"] for c in chunks):
         return None
     return dict(text=response["text"], token_sha256=[c["token_sha256"] for c in chunks],
                 completion_tokens=[c["completion_tokens"] for c in chunks],
@@ -149,7 +154,7 @@ def main():
                                 greedy_seed=0, sampled_temperature=0.7, sampled_seed=314159),
                   records=records, mismatches=mismatches, passed=not mismatches,
                   limitation="Capped identity diagnostics, separate from ASR quality/rate. Batch labels are client "
-                  "concurrency; chat requires observed target decode rows, transcription remains quota-limited.")
+                  "concurrency; chat requires observed target rows. Split transcription children have a separate quota.")
     args.output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n")
     print(json.dumps(dict(passed=result["passed"], utterances=len(selected),
                           requests=sum(len(r["responses"]) for r in records), mismatches=len(mismatches))))
