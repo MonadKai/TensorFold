@@ -126,6 +126,13 @@ def main():
 
     warmup_paths = [clip for _ in range(args.warmup) for clip in args.clips]
     warmup_paths += [args.clips[-1 - (i % len(args.clips))] for i in range(args.warmup_requests)]
+    workload = {"fixtures": fixtures, "concurrency": args.concurrency, "reps": args.reps, "warmup_excluded": args.warmup,
+                     "mode": args.mode, "temperature": 0, "seed": args.seed, "output_cap": args.tokens,
+                     "kind": args.workload, "minimum_seconds": args.seconds, "minimum_requests": args.min_requests,
+                     "require_natural_stop": args.require_natural_stop,
+                     "clip_manifest_sha256": manifest_sha, "unique_requests": args.unique_requests,
+                     "warmup_requests": len(warmup_paths),
+                     "arrival_model": "closed loop; request latency begins at each HTTP submission"}
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
         warmup_results = list(pool.map(lambda path: run_one(options, path, args.mode), warmup_paths))
     compiler_admission = []
@@ -135,7 +142,7 @@ def main():
         try:
             compiler_admission = wait_quiet(args.compiler_quiet_seconds, 600, probe=compiler_probe)
         except Exception as error:
-            args.output.write_text(json.dumps(dict(schema="asr-performance-admission-v1", runtime=identity,
+            args.output.write_text(json.dumps(dict(schema="asr-performance-admission-v1", runtime=identity, model=args.model, workload=workload,
                 complete=False, warmup_requests=warmup_results,
                 compiler_admission=error.args[0] if isinstance(error, TimeoutError) else getattr(error, "observations", []),
                 reason="Compiler activity admission failed", observation_error=str(error)),
@@ -249,13 +256,7 @@ def main():
     sustained_goal = elapsed >= args.seconds and len(successful) >= args.min_requests
     result = {
         "schema": "asr-performance-v1", "runtime": identity, "model": args.model,
-        "workload": {"fixtures": fixtures, "concurrency": args.concurrency, "reps": args.reps, "warmup_excluded": args.warmup,
-                     "mode": args.mode, "temperature": 0, "seed": args.seed, "output_cap": args.tokens,
-                     "kind": args.workload, "minimum_seconds": args.seconds, "minimum_requests": args.min_requests,
-                     "require_natural_stop": args.require_natural_stop,
-                     "clip_manifest_sha256": manifest_sha, "unique_requests": args.unique_requests,
-                     "warmup_requests": len(warmup_results),
-                     "arrival_model": "closed loop; request latency begins at each HTTP submission"},
+        "workload": workload,
         "measurements": {"batch_wall_seconds": elapsed, "requests": len(results), "successful": len(successful),
                          "latency_p50_seconds": percentile([r["seconds"] for r in successful], .5),
                          "latency_p95_seconds": percentile([r["seconds"] for r in successful], .95),

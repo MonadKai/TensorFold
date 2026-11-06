@@ -83,6 +83,11 @@ class Guard(unittest.TestCase):
             self.assertFalse(report["complete"])
             self.assertEqual(report["warmup_requests"], [row])
             self.assertEqual(report["schema"], "asr-performance-admission-v1")
+            self.assertEqual(report["model"], "model")
+            for key, expected in dict(mode="chat", seed=0, temperature=0, output_cap=1024,
+                                      concurrency=4, warmup_requests=1, kind="natural").items():
+                self.assertEqual(report["workload"][key], expected)
+            self.assertEqual(report["workload"]["fixtures"][0]["sha256"], row["sha256"])
 
     def test_stale_container_scope_rejected_before_warmup(self):
         with tempfile.TemporaryDirectory() as folder:
