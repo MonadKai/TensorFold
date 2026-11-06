@@ -1,16 +1,13 @@
 {
   "schema": 1,
-  "status": "validation_complete_review_pending",
-  "qualification_pass": false,
+  "status": "qualified_opt_in",
+  "qualification_pass": true,
   "default_math": "stable",
   "candidate_math": "throughput",
   "canonical_source_input_commit": "1755bba98157a35b4a572f2fc10fbb0faaee81cb",
   "canonical_native_sha256": "3070578687c397ee37f3e61427679647e98d65dd8479f88df3ffb0df99b2eff5",
   "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
-  "pending": [
-    "two final complete independent Standards/Spec review rounds",
-    "final documentation closure preflight and artifact binding"
-  ],
+  "pending": [],
   "completed": [
     "all five genuine shared-row projection classes including initial/decode LM head",
     "stable/shared native exactness and independent FP64 admission",
@@ -21,9 +18,27 @@
     "post-capture stricter token-evidence replay",
     "final native rebuild byte-identical to GPU-tested binary/fatbin",
     "43-check clean-source candidate preflight and full 170-cell/43113-record binding",
-    "three independent resource probes under the shared GPU lock, 26 original instances restored"
+    "three independent resource probes under the shared GPU lock, 26 original instances restored",
+    "two complete independent Standards/Spec rounds with all findings closed"
   ],
   "default_decision": "Retain stable compatibility default; throughput remains explicit and limited to the measured runtime.",
   "original_qwen_numerical_equivalence": false,
-  "restoration_summary": "restoration-summary.json"
+  "restoration_summary": "restoration-summary.json",
+  "reviewed_source_commit": "4f6facf6b70660f923803d437d061f60798ec3eb",
+  "reviews": "reviews.json",
+  "qualified_scope": {
+    "checkpoint_revision": "7278e1e70fe206f11671096ffdd38061171dd6e5",
+    "architecture": "aarch64",
+    "gpu_sm": 121,
+    "cublaslt_version": 130100,
+    "weight_activation_dtype": "bfloat16",
+    "accumulation": "fp32",
+    "max_logical_decode_rows": 8,
+    "api": "existing non-streaming contract"
+  },
+  "default_promotion_metrics": {
+    "b1_all_p95_regressions_le_5percent": true,
+    "b4_b8_equal_fixed_lower95_ge_10percent": true,
+    "mixed_all_p95_regressions_le_10percent": true
+  }
 }

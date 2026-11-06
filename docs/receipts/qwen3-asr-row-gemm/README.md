@@ -1,6 +1,6 @@
 # Qwen3-ASR shared-row CUDA evidence
 
-GPU validation, clean-source candidate binding and independent restoration are complete. Final review closure is pending.
+Qualified opt-in for the measured ARM64/SM121/cuBLASLt runtime. Two independent Standards/Spec rounds pass; stable remains the default.
 
 The validated candidate computes `X[B,K] × W[N,K]^T` in one shared-weight CUDA launch for QKV,
 attention output, gate/up, down and LM head, including the initial LM head. Up to eight active rows
@@ -167,7 +167,7 @@ Long-reference complete-audio throughput is an explicitly post-capture derivatio
 unchanged. Audio throughput is audio/wall; RTF is wall/audio. This is separate from recognition quality
 and preregistered acceptance gates. Input manifests retain freeze-time metadata, not live run status.
 
-Validation leases restore borrowed instances in finally handlers and an independent service post-stop fallback. Final restoration passes three independent probes under the shared GPU lock: all 26 original instance IDs, images, state, health and restart policies match, with zero task containers, listeners or GPU processes. A later coordinated borrowing window is preserved with its intermediate six-mismatch probe; final probes follow that owner's restoration. Host identities and full receipts belong in the infrastructure repository; clean-source preflight and both review rounds are recorded at closure. A tool-daemon interruption left one incomplete mixed-load attempt without recoverable in-memory partial request/warmup outcomes. Available logs/identity and this limitation are retained; that attempt is excluded and the missing canonical baseline was independently rerun.
+Validation leases restore borrowed instances in finally handlers and an independent service post-stop fallback. Final restoration passes three independent probes under the shared GPU lock: all 26 original instance IDs, images, state, health and restart policies match, with zero task containers, listeners or GPU processes. A later coordinated borrowing window is preserved with its intermediate six-mismatch probe; final probes follow that owner's restoration. Host identities and full receipts belong in the infrastructure repository; clean-source preflight and [both independent review rounds](reviews.md) are recorded separately. A tool-daemon interruption left one incomplete mixed-load attempt without recoverable in-memory partial request/warmup outcomes. Available logs/identity and this limitation are retained; that attempt is excluded and the missing canonical baseline was independently rerun.
 
 Raw trace databases, model-weight exports and host/service identities stay outside the public tree.
 [Methods](methods.md), the complete per-request gzip archive, fixed manifests, raw-receipt hashes and

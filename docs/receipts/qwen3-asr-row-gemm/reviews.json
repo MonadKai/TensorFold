@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "passed": true,
+  "rounds": [
+    {
+      "schema": 1,
+      "round": 1,
+      "reviewed_source_commit": "4f6facf6b70660f923803d437d061f60798ec3eb",
+      "source_base": "8dfdade4a4cd80d24bc901547c51fc1a35a4de8b",
+      "infrastructure_base": "b4e0b985015806af4de2de6ecb407c4b8765dded",
+      "recorded_at": "2026-11-06T05:48:11.847603+00:00",
+      "standards": {
+        "reviewer": "closure_r1_standards",
+        "status": "passed",
+        "open_findings": 0,
+        "closed_findings": [
+          "Strict token ID/work validation shared across four callers; 54 tests and 20 independent mutations rejected invalid/conflicting layouts.",
+          "Three CUDA-free refusal tests; raw host log hash and successful result verified."
+        ],
+        "independent_checks": [
+          "Full delivery binder:97 files,170 timing receipts,43113 archive records,admission,warmup,scheduler,3 restoration probes",
+          "Strict captured-evidence replay",
+          "29 focused binder checks",
+          "60 infrastructure inventory hashes",
+          "Outgoing privacy/identity scan",
+          "43-check clean-source preflight and byte-identical native/fatbin",
+          "Lean logs audited:424 inherited,0 new"
+        ]
+      },
+      "spec": {
+        "reviewer": "closure_r1_spec",
+        "status": "passed",
+        "open_findings": 0,
+        "closed_findings": [
+          "Scope primary128-token and diagnostic64-token workloads separately.",
+          "Use batch makespan as long-reference denominator.",
+          "Distinguish43113 timing-archive records from the separate admission warmup."
+        ],
+        "independent_checks": [
+          "All five served projection dispatches and fixed precision contract",
+          "Preregistered actual performance/quality/determinism coverage",
+          "Public numeric claims versus raw receipts",
+          "97 inventory hashes and full43113 archive accounting",
+          "Two distinct1664-response chat runs and48 observed target-row cells",
+          "Current clean43preflight/artifact hashes",
+          "Three locked probes matching26 original instances"
+        ]
+      },
+      "scope": "Full implementation, original evidence, public conclusions, remaining limitations and host registration; Round2 and final documentation/commit/push closure remain pending."
+    },
+    {
+      "schema": 1,
+      "round": 2,
+      "reviewed_source_commit": "4f6facf6b70660f923803d437d061f60798ec3eb",
+      "source_base": "8dfdade4a4cd80d24bc901547c51fc1a35a4de8b",
+      "infrastructure_base": "b4e0b985015806af4de2de6ecb407c4b8765dded",
+      "recorded_at": "2026-11-06T05:52:32.441993+00:00",
+      "standards": {
+        "reviewer": "closure_r2_standards_fresh",
+        "status": "passed",
+        "open_findings": 0,
+        "refinements": [
+          "Infrastructure lease program retained as an opaque evidence-only JSON source snapshot, with original bytes/SHA; no lifecycle execution entrypoint."
+        ],
+        "independent_checks": [
+          "Full delivery binder without output writes",
+          "Current source/operator integration and ownership seams",
+          "Raw full CUDA hash,564cases361controls0limits6known and five-SM compiler records",
+          "Three canonical native quality reports and paired quality gates",
+          "Both chat matrices,cancellation fingerprints and actual-row/process identities",
+          "All58 admitted reference compiler guards",
+          "689664 independent FP64 column records",
+          "60 infrastructure inventory memberships/hashes after evidence-only refinement",
+          "153 changed publication files and228 outgoing blobs privacy;34 public commit identities"
+        ]
+      },
+      "spec": {
+        "reviewer": "closure_r2_spec_fresh",
+        "status": "passed",
+        "open_findings": 0,
+        "independent_checks": [
+          "Five genuine shared-row projections including initial/decode LM head",
+          "Frozen FP64,quality,determinism and finite runtime contracts",
+          "689664 columns/20fixtures,stable/shared maxima equal",
+          "Canonical256utterance quality recomputation,zero degradation",
+          "3328chat1664STT512cancellation,8cache40formal pairs",
+          "42principal sustainedcells>=120seconds and64completions",
+          "Full binder43preflight97publicfiles170timing43113archive plus admission/scheduler",
+          "Three26instance locked restoration probes"
+        ]
+      },
+      "scope": "Fresh independent read-only implementation, raw evidence, public conclusions, remaining limits and host-registration review. No GPU/build/service/ATC writes or evidence mutations."
+    }
+  ],
+  "open_standards_findings": 0,
+  "open_spec_findings": 0,
+  "final_code_input_commit": "b3ed3192ffad08c2f765398cf6b9163cdd1361d9",
+  "note": "Review snapshot precedes final documentation-only closure. No serving arithmetic, thresholds, original oracles or captured raw workloads change at closure."
+}
