@@ -3,8 +3,8 @@
   "files": [
     {
       "file": "README.md",
-      "bytes": 15247,
-      "sha256": "f19a6aec5e271303622bdff7ddb97ebd3a799a69ccbe359747a5728255eef257"
+      "bytes": 15503,
+      "sha256": "e51325cdc3453cad902ff368c9bf6bef1c97d2325fc95dec973899e2c2aab14b"
     },
     {
       "file": "acceptance-replay.json",
@@ -98,8 +98,8 @@
     },
     {
       "file": "delivery-verifier-focused-checks.json",
-      "bytes": 2884,
-      "sha256": "8d32a593c6c810b2bc3399eb931e52ed8ec0db5305bdb289c7cc45147e92ff36"
+      "bytes": 3308,
+      "sha256": "f2ec5e1b83c68e05128a3b771791d813381bfb35d759dde9d0f77cb6fe0e9a20"
     },
     {
       "file": "determinism-current.json",
@@ -323,8 +323,8 @@
     },
     {
       "file": "qualification.json",
-      "bytes": 1460,
-      "sha256": "e97c93b28060238578485f0304ac5dc770d70be8251450022995beddfa40c144"
+      "bytes": 1629,
+      "sha256": "ae1ed322ec03306eaa305c9d5dc9afdf3a792037790190cf39734eee40ea4cab"
     },
     {
       "file": "quality-current-comparison-c1.json",
@@ -430,6 +430,11 @@
       "file": "reference-startup-attempts.json",
       "bytes": 3543,
       "sha256": "c9906d7a00b5ab3fee839884e4959b86ea8a20e176215c38852315e0994857f3"
+    },
+    {
+      "file": "restoration-summary.json",
+      "bytes": 1170,
+      "sha256": "5fc7bdb437b0f11d05e37d05ec27fb3ccb47447c2ddae3b64d2a5b4b3dfd0cad"
     },
     {
       "file": "results-summary.json",

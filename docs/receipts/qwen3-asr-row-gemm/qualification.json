@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "status": "gpu_checks_complete_review_pending",
+  "status": "validation_complete_review_pending",
   "qualification_pass": false,
   "default_math": "stable",
   "candidate_math": "throughput",
@@ -9,8 +9,7 @@
   "cuda_fatbin_sha256": "24bd73facfd8761aedc359c0a9d9ec72ae8fea31409a6c19025bc18a4a936971",
   "pending": [
     "two final complete independent Standards/Spec review rounds",
-    "final clean-source preflight and delivery artifact binding",
-    "fresh final resource audit after the next coordinated GPU lease"
+    "final documentation closure preflight and artifact binding"
   ],
   "completed": [
     "all five genuine shared-row projection classes including initial/decode LM head",
@@ -20,8 +19,11 @@
     "current full CUDA backend receipt and compiler/SM resource records",
     "168 admitted performance cells with separate failures and matched-work ablations",
     "post-capture stricter token-evidence replay",
-    "final native rebuild byte-identical to GPU-tested binary/fatbin"
+    "final native rebuild byte-identical to GPU-tested binary/fatbin",
+    "43-check clean-source candidate preflight and full 170-cell/43113-record binding",
+    "three independent resource probes under the shared GPU lock, 26 original instances restored"
   ],
   "default_decision": "Retain stable compatibility default; throughput remains explicit and limited to the measured runtime.",
-  "original_qwen_numerical_equivalence": false
+  "original_qwen_numerical_equivalence": false,
+  "restoration_summary": "restoration-summary.json"
 }

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "passed": true,
-  "checks": 25,
+  "checks": 29,
   "tests": [
     {
       "case": "perf-native-throughput-r0-b4-natural-fixed64",
@@ -102,9 +102,25 @@
     {
       "case": "admission raw hash altered",
       "expected_rejection": true
+    },
+    {
+      "case": "restoration-summary",
+      "baseline_passed": true
+    },
+    {
+      "case": "restoration summary altered: original_instances",
+      "expected_rejection": true
+    },
+    {
+      "case": "restoration summary altered: independent_locked_probes",
+      "expected_rejection": true
+    },
+    {
+      "case": "restoration summary altered: final_audit_raw_sha256",
+      "expected_rejection": true
     }
   ],
-  "verifier_sha256": "4e69a42fb6f7d3e7b44c09d990346d2fd017abb2ee7d586a99dc1ec5b6849c98",
+  "verifier_sha256": "cdcf5ddbebc85dcc9500b72e22448882019bbbc707fede1fc41cb82c12e2ba81",
   "publisher_sha256": "29cbca26b54f9e1dfe97ef3a4f3e624c6a10afb4434ad837277206f2a4483e60",
   "scope": "CPU-only replay of actual publisher AST transformations and actual raw cells, with mutations only in temporary copies. No model, GPU work or real public receipt was modified."
 }

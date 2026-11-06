@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "passed": true,
+  "scope": "Original-instance identity/state/health/restart audit after task cleanup and the next coordinated borrowing window. Host details stay in the infrastructure repository.",
+  "original_instances": 26,
+  "independent_locked_probes": 3,
+  "mismatches": 0,
+  "task_containers": 0,
+  "task_listeners": 0,
+  "task_gpu_processes": 0,
+  "own_lease_result": 0,
+  "own_lease_restoration_errors": 0,
+  "own_post_stop_fallback_passed": true,
+  "coordinated_handoff_preserved": true,
+  "intermediate_probe_during_next_lease_mismatches": 6,
+  "final_audit_raw_sha256": "3c41a9410097849f1b4d6d8605b7e27d2f2c9ac02896b98b3985c9aa5aa9acb9",
+  "coordination_raw_sha256": "ada307f1eea06a1a6d37508e20c455a9a9053b0310cfce7ea873622351ff283f",
+  "own_lease_raw_sha256": "f8263e362280099523ddfdd769edbb4e216d2f82ad1276f74c029fde2e868977",
+  "independent_probe_raw_sha256": [
+    "71d65073f5ea7fa18862fde8940fa7e30e7e057e835d9cf4fbee6f3c55751625",
+    "c57fde2549fec6718632e39989d6a94e2f294d52381ec15cfd74a1b7de8875d1",
+    "3c41a9410097849f1b4d6d8605b7e27d2f2c9ac02896b98b3985c9aa5aa9acb9"
+  ],
+  "completed_at": "2026-11-06T05:33:32.179092+00:00"
+}
